@@ -1,0 +1,37 @@
+name: CI Testing
+on:
+  push:
+    branches:
+      - 'master'
+  pull_request:
+jobs:
+  component-tests:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-20.04, macOS-10.15]
+        node: [16]
+        browser: [chrome, firefox]
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node }}
+      - uses: actions/cache@v2
+        with:
+          path: |
+            ~/.cache/Cypress
+            node_modules
+          key: my-cache-${{ runner.os }}-node${{ matrix.node }}-${{ hashFiles('yarn.lock') }}
+      - name: Cypress Component Tests
+        uses: cypress-io/github-action@v2
+        with:
+          install-command: yarn install --frozen-lockfile --silent
+          browser: ${{ matrix.browser }}
+          tag: node-${{ matrix.node }},${{ matrix.browser }}
+          ci-build-id: "${{ github.sha }}-${{ github.workflow }}-${{ github.event_name }}"
+          command: yarn test
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
