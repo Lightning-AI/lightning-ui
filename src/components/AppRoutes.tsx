@@ -17,9 +17,11 @@ const routesFor = (lightningState?: LightingState): LightningRoute[] => {
 
   try {
     // FIXME(alecmerdler): Parse routes from the `layout` property of the app state...
-    const routes = [] as LightningRoute[];
+    lightningState.vars._layout.forEach(layout => {
+      
+    })
 
-    return routes;
+    return [];
   } catch (e) {
     console.error(e);
 

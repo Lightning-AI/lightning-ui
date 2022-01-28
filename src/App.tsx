@@ -1,10 +1,10 @@
 import React from 'react';
 
-import LightningAppRoutes from 'components/Routes';
+import AppRoutes from 'components/AppRoutes';
 
 function App() {
   return (
-    <LightningAppRoutes />
+    <AppRoutes />
   );
 }
 

@@ -1,0 +1,129 @@
+{
+  "vars": {
+  },
+  "calls": {},
+  "children": {
+    "c2": {
+      "vars": {
+        "_layout": [
+          {
+            "name": "one",
+            "content": "root.c2.c21"
+          },
+          {
+            "name": "two",
+            "content": "root.c2.c22"
+          }
+        ]
+      },
+      "calls": {},
+      "children": {
+        "c21": {
+          "vars": {
+            "_layout": [
+              {
+                "type": "web",
+                "source": "/home/alec/work/PyTorchLightning/lightning/examples/app/ui1",
+                "target": "localhost:41515"
+              }
+            ]
+          },
+          "calls": {},
+          "children": {},
+          "works": {},
+          "changes": {},
+          "storage": {
+            "shared_access": {},
+            "root": "/home/alec/work/PyTorchLightning/lightning/storage/1234/c2/c21",
+            "transfer_files": {}
+          }
+        },
+        "c22": {
+          "vars": {
+            "_layout": [
+              {
+                "type": "web",
+                "source": "/home/alec/work/PyTorchLightning/lightning/examples/app/ui2",
+                "target": "localhost:46469"
+              }
+            ]
+          },
+          "calls": {},
+          "children": {},
+          "works": {},
+          "changes": {},
+          "storage": {
+            "shared_access": {},
+            "root": "/home/alec/work/PyTorchLightning/lightning/storage/1234/c2/c22",
+            "transfer_files": {}
+          }
+        }
+      },
+      "works": {},
+      "changes": {},
+      "storage": {
+        "shared_access": {},
+        "root": "/home/alec/work/PyTorchLightning/lightning/storage/1234/c2",
+        "transfer_files": {}
+      }
+    },
+    "c1": {
+      "vars": {
+        "_layout": [
+          {
+            "name": "c11",
+            "content": "root.c1.c11"
+          }
+        ]
+      },
+      "calls": {},
+      "children": {
+        "c11": {
+          "vars": {
+            "_layout": [
+              {
+                "type": "streamlit",
+                "source": {},
+                "target": "localhost:36015"
+              }
+            ]
+          },
+          "calls": {},
+          "children": {},
+          "works": {
+            "w": {
+              "vars": {},
+              "calls": {},
+              "changes": {},
+              "storage": {
+                "shared_access": {},
+                "root": "/home/alec/work/PyTorchLightning/lightning/storage/1234/c1/c11/w",
+                "transfer_files": {}
+              }
+            }
+          },
+          "changes": {},
+          "storage": {
+            "shared_access": {},
+            "root": "/home/alec/work/PyTorchLightning/lightning/storage/1234/c1/c11",
+            "transfer_files": {}
+          }
+        }
+      },
+      "works": {},
+      "changes": {},
+      "storage": {
+        "shared_access": {},
+        "root": "/home/alec/work/PyTorchLightning/lightning/storage/1234/c1",
+        "transfer_files": {}
+      }
+    }
+  },
+  "works": {},
+  "changes": {},
+  "storage": {
+    "shared_access": {},
+    "root": "/home/alec/work/PyTorchLightning/lightning/storage/1234",
+    "transfer_files": {}
+  }
+}

@@ -3,9 +3,8 @@
  * the `/state` endpoint of the Lightning HTTP API.
  */
  export type LightingState = {
-  layout: Layout[];
   vars: {
-    _navigation: string;
+    _layout: Layout[];
     [key: string]: any;
   };
   calls: {
@@ -35,11 +34,17 @@ export type Layout = LayoutBranch | LayoutLeaf;
 
 export type LayoutBranch = {
   name: string;
-  content: Layout[];
+  content: string;
 };
 
 export type LayoutLeaf = {
   name: string;
-  type: string;
+  type: LayoutType;
+  source?: string;
   target: string;
+};
+
+export enum LayoutType {
+  web = "web",
+  streamlit = "streamlit",
 };
