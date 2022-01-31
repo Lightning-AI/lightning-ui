@@ -1,6 +1,6 @@
 import get from "lodash/get";
 
-import { LightingState } from "types/lightning";
+import { LayoutBranch, LayoutLeaf, LightingState } from "types/lightning";
 
 export const componentPathFor = (path: string) => {
   const fullPath = path.replaceAll(".", ".children.");
@@ -11,4 +11,30 @@ export const componentPathFor = (path: string) => {
 
 export const childFor = (path: string, state: LightingState): LightingState => {
   return get(state, componentPathFor(path));
+};
+
+export type LightningRoute = {
+  path: string;
+  layout: LayoutBranch;
+};
+
+export const routesFor = (state: LightingState) => {
+  if (
+    state === undefined ||
+    state.vars === undefined ||
+    state.vars._layout === undefined
+  ) {
+    return [];
+  }
+
+  return Array.isArray(state.vars._layout)
+    ? state.vars._layout
+    : [state.vars._layout];
+};
+
+export const layoutFor = (state: LightingState): LightningRoute[] => {
+  return routesFor(state)
+    // Leaves at the top level are treated as external links, not tabs.
+    .filter(route => (route as LayoutLeaf).target === undefined)
+    .map(route => ({ path: `/${route.name}`, layout: (route as LayoutBranch) }));
 };

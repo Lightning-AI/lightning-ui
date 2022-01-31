@@ -1,5 +1,20 @@
 {
   "vars": {
+    "_layout": [
+      {
+        "name": "one",
+        "content": "root.c1.c11"
+      },
+      {
+        "name": "two",
+        "content": "root.c2"
+      },
+      {
+        "name": "three",
+        "content": "https://lightning.ai",
+        "target": "https://lightning.ai"
+      }
+    ]
   },
   "calls": {},
   "children": {
@@ -20,13 +35,11 @@
       "children": {
         "c21": {
           "vars": {
-            "_layout": [
-              {
-                "type": "web",
-                "source": "/home/alec/work/PyTorchLightning/lightning/examples/app/ui1",
-                "target": "localhost:41515"
-              }
-            ]
+            "_layout": {
+              "type": "web",
+              "source": "/home/sally/work/PyTorchLightning/lightning/examples/layout/ui1",
+              "target": "http://localhost:48049"
+            }
           },
           "calls": {},
           "children": {},
@@ -34,19 +47,17 @@
           "changes": {},
           "storage": {
             "shared_access": {},
-            "root": "/home/alec/work/PyTorchLightning/lightning/storage/1234/c2/c21",
+            "root": "/home/sally/work/PyTorchLightning/lightning/storage/1234/root/c2/c21",
             "transfer_files": {}
           }
         },
         "c22": {
           "vars": {
-            "_layout": [
-              {
-                "type": "web",
-                "source": "/home/alec/work/PyTorchLightning/lightning/examples/app/ui2",
-                "target": "localhost:46469"
-              }
-            ]
+            "_layout": {
+              "type": "web",
+              "source": "/home/sally/work/PyTorchLightning/lightning/examples/layout/ui2",
+              "target": "http://localhost:59915"
+            }
           },
           "calls": {},
           "children": {},
@@ -54,7 +65,7 @@
           "changes": {},
           "storage": {
             "shared_access": {},
-            "root": "/home/alec/work/PyTorchLightning/lightning/storage/1234/c2/c22",
+            "root": "/home/sally/work/PyTorchLightning/lightning/storage/1234/root/c2/c22",
             "transfer_files": {}
           }
         }
@@ -63,7 +74,7 @@
       "changes": {},
       "storage": {
         "shared_access": {},
-        "root": "/home/alec/work/PyTorchLightning/lightning/storage/1234/c2",
+        "root": "/home/sally/work/PyTorchLightning/lightning/storage/1234/root/c2",
         "transfer_files": {}
       }
     },
@@ -80,32 +91,20 @@
       "children": {
         "c11": {
           "vars": {
-            "_layout": [
-              {
-                "type": "streamlit",
-                "source": {},
-                "target": "localhost:36015"
-              }
-            ]
+            "_layout": {
+              "type": "streamlit",
+              "source": {},
+              "target": "http://localhost:51669"
+            },
+            "message": "Hello Streamlit!"
           },
           "calls": {},
           "children": {},
-          "works": {
-            "w": {
-              "vars": {},
-              "calls": {},
-              "changes": {},
-              "storage": {
-                "shared_access": {},
-                "root": "/home/alec/work/PyTorchLightning/lightning/storage/1234/c1/c11/w",
-                "transfer_files": {}
-              }
-            }
-          },
+          "works": {},
           "changes": {},
           "storage": {
             "shared_access": {},
-            "root": "/home/alec/work/PyTorchLightning/lightning/storage/1234/c1/c11",
+            "root": "/home/sally/work/PyTorchLightning/lightning/storage/1234/root/c1/c11",
             "transfer_files": {}
           }
         }
@@ -114,7 +113,7 @@
       "changes": {},
       "storage": {
         "shared_access": {},
-        "root": "/home/alec/work/PyTorchLightning/lightning/storage/1234/c1",
+        "root": "/home/sally/work/PyTorchLightning/lightning/storage/1234/root/c1",
         "transfer_files": {}
       }
     }
@@ -123,7 +122,7 @@
   "changes": {},
   "storage": {
     "shared_access": {},
-    "root": "/home/alec/work/PyTorchLightning/lightning/storage/1234",
+    "root": "/home/sally/work/PyTorchLightning/lightning/storage/1234/root",
     "transfer_files": {}
   }
 }

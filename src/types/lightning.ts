@@ -4,7 +4,7 @@
  */
  export type LightingState = {
   vars: {
-    _layout: Layout[];
+    _layout: Layout | Layout[];
     [key: string]: any;
   };
   calls: {

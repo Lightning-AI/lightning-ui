@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from "react";
+import { styled } from "@mui/material";
 
 import useLightingState from "hooks/useLightningState";
 
@@ -6,6 +7,11 @@ type Props = {
   name: string;
   iframeTargetUrl: string;
 };
+
+const IFrame = styled("iframe")({
+  height: "100%",
+  width: "100%",
+});
 
 export default function IFrameRoute(props: Props) {
   const iframeRef = useRef<HTMLIFrameElement>(null);
@@ -31,13 +37,13 @@ export default function IFrameRoute(props: Props) {
       iframeRef.current.contentWindow?.postMessage(
         // TODO(alecmerdler): Use tree traversal to only pass the piece of state for the given component...
         lightningState.data,
-        window.location.host
+        window.location.origin
       );
     }
   }, [lightningState.data]);
 
   return (
-    <iframe 
+    <IFrame 
       name={props.name} 
       src={props.iframeTargetUrl} 
       title={props.name} 
