@@ -7,4 +7,34 @@
 This project contains the source code for the Lightning app frontend.
 The frontend is a scaffold which reacts to changes in the app's internal
 state and renders components accordingly.
-  
+
+## Development
+
+### Required Tools
+
+- NodeJS 16.13.1+
+- Yarn 1.22.17+
+
+### Commands
+
+All commands are defined in the `scripts` section of the `package.json` file.
+
+**Install dependencies:**
+```
+$ yarn install
+```
+
+**Run app locally:**
+```
+$ yarn start
+```
+
+**Run tests:**
+```
+$ yarn run test
+```
+
+**Run tests interactively:**
+```
+$ yarn run test:open
+```
