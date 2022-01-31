@@ -2,7 +2,14 @@
   "baseUrl": "http://localhost:7501",
   "component": {
     "componentFolder": "src",
-    "testFiles": "**/*spec.{js,jsx,ts,tsx}"
+    "testFiles": "**/*spec.{js,jsx,ts,tsx}",
+    "video": false
   },
-  "testFiles": "**/*.spec.{js,ts,jsx,tsx}"
+  "env": {
+    "coverage": true
+  },
+  "screenshotOnRunFailure": true,
+  "taskTimeout": 300000,
+  "trashAssetsBeforeRuns": true,
+  "useRelativeSnapshots": true
 }
