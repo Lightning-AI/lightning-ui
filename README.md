@@ -1,4 +1,4 @@
-![Lightning.ai Logo](https://raw.githubusercontent.com/gridai/lightning-ui/master/src/resources/images/lightning-logo-with-text.svg?token=GHSAT0AAAAAABQG3SDLWTKOT2Y7ESSAABYIYP5DXSA "Lightning.ai")
+![Lightning.ai Logo](https://raw.githubusercontent.com/gridai/lightning-ui/master/src/resources/images/lightning-logo-with-text.svg?token=GHSAT0AAAAAABQG3SDK2OHNEQ7IENUOZ44KYQCVQOQ "Lightning.ai")
 
 [![CI Testing](https://github.com/gridai/lightning-ui/actions/workflows/ci-testing.yaml/badge.svg?branch=master)](https://github.com/gridai/lightning-ui/actions/workflows/ci-testing.yaml)
 
