@@ -7,7 +7,7 @@ import { styled } from "@mui/material";
 import useLightingState from "hooks/useLightningState";
 import { routesFor } from "utils/state";
 import { purple } from "lightning-colors";
-import { LayoutBranch, LayoutLeaf } from "types/lightning";
+import { LayoutBranch } from "types/lightning";
 
 const StyledMuiTabs = styled(MuiTabs)({
   marginBottom: "8px",
@@ -25,8 +25,7 @@ const StyledMuiTabs = styled(MuiTabs)({
 });
 
 type LinkTabProps = {
-  label?: string;
-  external: boolean;
+  label: string;
   href: string;
 };
 
@@ -37,11 +36,8 @@ function LinkTab(props: LinkTabProps) {
     <MuiTab
       component="a"
       onClick={(event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
-        if (!props.external) {
-          event.preventDefault();
-
-          navigate(props.href);
-        }        
+        event.preventDefault();
+        navigate(props.href);    
       }}
       {...props}
     />
@@ -56,27 +52,16 @@ export default function Tabs() {
     return null;
   }
 
-  const routes = routesFor(lightningState.data);
-  const internalLinks = routes.filter(route => (route as LayoutLeaf).target === undefined) as LayoutBranch[];
-  const externalLinks = routes.filter(route => (route as LayoutLeaf).target !== undefined) as LayoutLeaf[];
-  const activeTabIndex = internalLinks.findIndex(r => `/${r.name}` === location.pathname);
+  const routes = routesFor(lightningState.data) as LayoutBranch[];
+  const activeTabIndex = routes.findIndex(r => `/view/${r.name}` === location.pathname);
 
   return (
     <StyledMuiTabs value={activeTabIndex}>
-      {internalLinks.map(route => (
+      {routes.map(route => (
         <LinkTab 
           key={route.name} 
           label={route.name.toUpperCase()}
-          href={`/${route.name}`}
-          external={false}
-        />
-      ))}
-      {externalLinks.map(route => (
-        <LinkTab 
-          key={route.name} 
-          label={route.name.toUpperCase()}
-          href={route.target}
-          external={true}
+          href={`/view/${route.name}`}
         />
       ))}
     </StyledMuiTabs>

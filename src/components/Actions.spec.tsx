@@ -12,13 +12,15 @@ describe("Actions", () => {
     cy.contains("Running Locally").should("be.visible");
   });
 
-  it("displays a button to open the admin view", () => {
-    cy.contains("Admin").should("be.visible");
-    cy.contains("Admin").should("be.disabled");
-  });
-
   it("displays a share button", () => {
     cy.contains("Share").should("be.visible");
     cy.contains("Share").should("be.disabled");
+  });
+
+  it("displays a button to open the admin view", () => {
+    cy.contains("Admin").should("be.visible");
+    cy.contains("Admin").click();
+
+    cy.location("pathname").should("equal", "/admin");
   });
 });

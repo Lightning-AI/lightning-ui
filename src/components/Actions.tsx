@@ -21,7 +21,7 @@ export default function Actions() {
   return (
     <ActionsContainer>
       <Chip label="Running Locally" color="success" />
-      <ActionButton disabled>Admin</ActionButton>
+      <ActionButton href="/admin">Admin</ActionButton>
       <ActionButton disabled>Share</ActionButton>
     </ActionsContainer>
   );

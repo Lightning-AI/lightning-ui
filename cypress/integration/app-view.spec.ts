@@ -1,4 +1,4 @@
-const stateEndpoint = "http://localhost:7501/state";
+const stateEndpoint = "http://localhost:7501/api/v1/state";
 
 describe("Lightning App View", () => {
   describe("app with no UI components", () => {

@@ -15,7 +15,7 @@
     };
   };
   children: {
-    [key: string]: LightingState;
+    [key: string]: ChildState;
   };
   works: {
     [key: string]: any;
@@ -28,7 +28,12 @@
     root: string;
     transfer_files: any;
   };
+  app_state: {
+    stage: AppStage;
+  };
 };
+
+export type ChildState = Omit<LightingState, "app_state">;
 
 export type Layout = LayoutBranch | LayoutLeaf;
 
@@ -48,3 +53,9 @@ export enum LayoutType {
   web = "web",
   streamlit = "streamlit",
 };
+
+export enum AppStage {
+  blocking = "blocking",
+  running = "running",
+  stopping = "stopping",
+}

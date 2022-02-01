@@ -47,6 +47,6 @@
     "transfer_files": {}
   },
   "app_state": {
-    "stage": "blocking"
+    "stage": "running"
   }
 }

@@ -1,4 +1,4 @@
-import { LayoutType, LightingState } from "types/lightning";
+import { AppStage, LayoutType, LightingState } from "types/lightning";
 import { childFor, componentPathFor } from "./state";
 
 describe("componentPathFor", () => {
@@ -99,7 +99,10 @@ describe("childFor", () => {
       root: "",
       transfer_files: {}
     },
-    works: {}
+    works: {},
+    app_state: {
+      stage: AppStage.blocking
+    }
   };
 
   it("returns the correct state for the given child path", async () => {

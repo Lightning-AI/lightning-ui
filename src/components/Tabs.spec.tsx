@@ -1,22 +1,11 @@
 import React from "react";
-import { BrowserRouter as Router } from "react-router-dom";
 
 import mount from "tests/utils/testMount";
+import { stateEndpoint } from "tests/utils/lightning";
 import { Layout, LightingState } from "types/lightning";
-import TabsComponent from "./Tabs";
-
-// Need to wrap in a <Router> in order to test
-const Tabs = () => {
-  return (
-    <Router>
-      <TabsComponent />
-    </Router>
-  );
-};
+import Tabs from "./Tabs";
 
 describe("Tabs", () => {
-  const stateEndpoint = "/state";
-
   it("fetches the app state from the API on mount", () => {
     cy.intercept(
       "GET",
@@ -44,7 +33,9 @@ describe("Tabs", () => {
       const layout = state.vars._layout as Layout[];
 
       layout.forEach(item => {
-        cy.contains(item.name.toUpperCase()).should("be.visible");
+        cy.contains(item.name.toUpperCase()).click();
+        
+        cy.location("pathname").should("equal", `/view/${item.name}`);
       });
     });
   });

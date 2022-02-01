@@ -124,5 +124,8 @@
     "shared_access": {},
     "root": "/home/sally/work/PyTorchLightning/lightning/storage/1234/root",
     "transfer_files": {}
+  },
+  "app_state": {
+    "stage": "blocking"
   }
 }

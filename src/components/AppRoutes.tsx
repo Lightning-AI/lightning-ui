@@ -4,6 +4,8 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import useLightingState from "hooks/useLightningState";
 import LayoutView from "./LayoutView";
 import { layoutFor } from "utils/state";
+import AdminView from "./AdminView";
+import AppView from "./AppView";
 
 export default function LightningAppRoutes() {
   const lightningState = useLightingState();
@@ -18,12 +20,18 @@ export default function LightningAppRoutes() {
       )}
 
       {!lightningState.isLoading && homeRoute !== undefined && (
-        <Route path="/" element={<Navigate replace to={homeRoute.path} />} />
+        <Route path="/" element={<Navigate replace to={`/view/${homeRoute.path}`} />} />
       )}
 
-      {layoutFor(lightningState.data!).map(route => (
-        <Route path={route.path} element={<LayoutView layout={route.layout} />} key={route.path} />
-      ))}
+      <Route path="/admin" element={<AdminView />}>
+
+      </Route>
+
+      <Route path="/view" element={<AppView />}>
+        {layoutFor(lightningState.data!).map(route => (
+          <Route path={route.path} element={<LayoutView layout={route.layout} />} key={route.path} />
+        ))}
+      </Route>
 
       <Route path="*" element={<div>Not found</div>} />
     </Routes>

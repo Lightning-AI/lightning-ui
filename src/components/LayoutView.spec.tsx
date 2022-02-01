@@ -1,12 +1,11 @@
 import React from "react";
 
 import mount from "tests/utils/testMount";
+import { stateEndpoint } from "tests/utils/lightning";
 import { Layout, LayoutLeaf, LightingState } from "types/lightning";
 import LayoutView from "./LayoutView";
 
 describe("LayoutView", () => {
-  const stateEndpoint = "/state";
-
   beforeEach(() => {
     cy.intercept(
       "GET",
