@@ -1,4 +1,5 @@
 export const stateEndpoint = `${process.env.REACT_APP_LIGHTNING_API ?? window.location.origin}/api/v1/state`;
+export const specEndpoint = `${process.env.REACT_APP_LIGHTNING_API ?? window.location.origin}/api/v1/spec`;
 
 export const headersFor = () => {
   const headers = new Headers()

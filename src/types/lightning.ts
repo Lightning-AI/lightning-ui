@@ -58,4 +58,14 @@ export enum AppStage {
   blocking = "blocking",
   running = "running",
   stopping = "stopping",
-}
+};
+
+export type LightningSpec = ComponentSpec[];
+
+export type ComponentSpec = {
+  affiliation: string[];
+  cls_name: string;
+  module: string;
+  docstring: string;
+  hardware?: any;
+};

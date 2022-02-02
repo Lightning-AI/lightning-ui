@@ -6,6 +6,7 @@ import LayoutView from "./LayoutView";
 import { layoutFor } from "utils/state";
 import AdminView from "./AdminView";
 import AppView from "./AppView";
+import Components from "./Components";
 
 export default function LightningAppRoutes() {
   const lightningState = useLightingState();
@@ -24,7 +25,7 @@ export default function LightningAppRoutes() {
       )}
 
       <Route path="/admin" element={<AdminView />}>
-
+        <Route index element={<Components />} />
       </Route>
 
       <Route path="/view" element={<AppView />}>

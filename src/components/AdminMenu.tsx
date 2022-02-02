@@ -10,14 +10,18 @@ import useLightingState from "hooks/useLightningState";
 import useStartApp from "hooks/useStartApp";
 import useStopApp from "hooks/useStopApp";
 import { AppStage } from "types/lightning";
+import AdminTabs from "components/AdminTabs";
 
 const Wrapper = styled("div")({
-  alignItems: "center",
   background: menuBackground,
   display: "flex",
-  height: "56px",
-  justifyContent: "space-between",
+  flexDirection: "column",
   padding: "0 20px",
+});
+
+const TitleAndActions = styled("div")({
+  display: "flex",
+  justifyContent: "space-between"
 });
 
 const ActionsContainer = styled("div")({
@@ -105,8 +109,11 @@ function Actions() {
 export default function AdminMenu() {
   return (
     <Wrapper>
-      <h1>Local App</h1>
-      <Actions />
+      <TitleAndActions>
+        <h1>Local App</h1>
+        <Actions />
+      </TitleAndActions>
+      <AdminTabs />
     </Wrapper>
   );
 }

@@ -1,0 +1,64 @@
+[
+  {
+    "affiliation": [
+      "root"
+    ],
+    "cls_name": "Root",
+    "module": "__main__",
+    "docstring": "Initialize self.  See help(type(self)) for accurate signature.",
+    "hardware": null
+  },
+  {
+    "affiliation": [
+      "root",
+      "c1"
+    ],
+    "cls_name": "C1",
+    "module": "__main__",
+    "docstring": "Initialize self.  See help(type(self)) for accurate signature.",
+    "hardware": null
+  },
+  {
+    "affiliation": [
+      "root",
+      "c1",
+      "c11"
+    ],
+    "cls_name": "C11",
+    "module": "__main__",
+    "docstring": "Initialize self.  See help(type(self)) for accurate signature.",
+    "hardware": null
+  },
+  {
+    "affiliation": [
+      "root",
+      "c2"
+    ],
+    "cls_name": "C2",
+    "module": "__main__",
+    "docstring": "Initialize self.  See help(type(self)) for accurate signature.",
+    "hardware": null
+  },
+  {
+    "affiliation": [
+      "root",
+      "c2",
+      "c21"
+    ],
+    "cls_name": "C21",
+    "module": "__main__",
+    "docstring": "Initialize self.  See help(type(self)) for accurate signature.",
+    "hardware": null
+  },
+  {
+    "affiliation": [
+      "root",
+      "c2",
+      "c22"
+    ],
+    "cls_name": "C22",
+    "module": "__main__",
+    "docstring": "Initialize self.  See help(type(self)) for accurate signature.",
+    "hardware": null
+  }
+]

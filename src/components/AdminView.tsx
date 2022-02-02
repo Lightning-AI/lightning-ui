@@ -7,6 +7,11 @@ import useLightingState from "hooks/useLightningState";
 
 import LightningLogo from "resources/images/lightning-logo-with-text.svg";
 
+const Wrapper = styled("div")({
+  margin: "0 auto",
+  maxWidth: "1280px",
+});
+
 const Header = styled("div")({
   display: "flex",
   justifyContent: "space-between",
@@ -26,13 +31,13 @@ export default function AdminView() {
   }
 
   return (
-    <>
+    <Wrapper>
       <Header>
         <img src={LightningLogo} alt="Lightning Logo" />
         <Chip label="Local" color="error" />
       </Header>
       <AdminMenu />
       <Outlet />
-    </>
+    </Wrapper>
   );
 }
