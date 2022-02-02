@@ -7,7 +7,7 @@ import { queryKey } from "./useLightningState";
 export default function useStartApp() {
   const queryClient = useQueryClient();
 
-  const body = { stage: AppStage.stopping };
+  const body = { stage: AppStage.restarting };
 
   const mutation = useMutation(
     () => fetch(

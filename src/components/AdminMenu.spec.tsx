@@ -53,7 +53,7 @@ describe("AdminMenu", () => {
         "POST",
         stateEndpoint,
         (req) => {
-          expect(req.body).to.deep.equal({ stage: AppStage.stopping });
+          expect(req.body).to.deep.equal({ stage: AppStage.restarting });
         }
       ).as("postState");
     });
@@ -63,6 +63,15 @@ describe("AdminMenu", () => {
   
       cy.wait("@getState");
       cy.contains("Stop").should("be.enabled");
+    });
+
+    it("clicking the 'Stop' button sends an API request to stop the app", () => {
+      mount(<AdminMenu />);
+  
+      cy.wait("@getState");
+      cy.contains("Stop").click();
+  
+      cy.wait("@postState");
     });
   });
 });

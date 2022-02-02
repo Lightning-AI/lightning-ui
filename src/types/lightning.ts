@@ -56,6 +56,7 @@ export enum LayoutType {
 
 export enum AppStage {
   blocking = "blocking",
+  restarting = "restarting",
   running = "running",
   stopping = "stopping",
 };
