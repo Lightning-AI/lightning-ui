@@ -7,11 +7,31 @@ on:
 jobs:
   component-tests:
     runs-on: ubuntu-20.04
+    strategy:
+      fail-fast: false
+      matrix:
+        browser: [chrome, firefox]
     steps:
       - name: Checkout Code
         uses: actions/checkout@v2
+      - name: Setting up Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 16
+      - name: Caching
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.cache/Cypress
+            node_modules
+          key: my-cache-ubuntu-node16-${{ hashFiles('yarn.lock') }}
       - name: Run Component tests 🧪
         uses: cypress-io/github-action@v2
         with:
-          install: true
+          install-command: yarn install --frozen-lockfile --silent
+          browser: ${{ matrix.browser }}
+          tag: ${{ matrix.browser }}
+          ci-build-id: "${{ github.sha }}-${{ github.workflow }}-${{ github.event_name }}"
           command: yarn cypress run-ct
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
