@@ -35,7 +35,7 @@ export default function LayoutView(props: Props) {
 
   // Terminating case
   if ((props.layout as LayoutLeaf).target !== undefined) {
-    const iframeTargetUrl = (props.layout as LayoutLeaf).target;
+    const iframeTargetUrl = `${(props.layout as LayoutLeaf).target}/`;
 
     return <IFrameRoute name={props.layout.name} iframeTargetUrl={iframeTargetUrl} />;
   }

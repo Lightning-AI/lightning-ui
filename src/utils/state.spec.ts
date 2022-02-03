@@ -1,5 +1,5 @@
-import { AppStage, LayoutType, LightingState } from "types/lightning";
-import { childFor, componentPathFor } from "./state";
+import { AppStage, LayoutType, LightingState, Layout } from "types/lightning";
+import { childFor, componentPathFor, routesFor } from "./state";
 
 describe("componentPathFor", () => {
   it("returns the full path to access a child component in the Lightning state", () => {
@@ -118,6 +118,22 @@ describe("childFor", () => {
   });
 });
 
+describe("routesFor", () => {
+  it("returns `state.vars._layout`", () => {
+    cy.fixture("app-state--simple-layout.json").then((state: LightingState) => {
+      expect(routesFor(state)).to.deep.equal(state.vars._layout);
+    });
+  });
+
+  it("wraps `state.vars._layout` in an array if it contains only one item", () => {
+    cy.fixture("app-state--simple-layout.json").then((state: LightingState) => {
+      const stateWithSingleLayout = { ...state, vars: { ...state.vars, _layout: (state.vars._layout as Layout[])[0] } };
+
+      expect(routesFor(stateWithSingleLayout)).to.deep.equal([stateWithSingleLayout.vars._layout]);
+    });
+  });
+});
+
 xdescribe("layoutFor", () => {
-  // TODO(alecmerdler)
+
 });
