@@ -18,9 +18,11 @@ describe("Actions", () => {
   });
 
   it("displays a button to open the admin view", () => {
+    cy.stub(window, "open").as("window.open");
+
     cy.contains("Admin").should("be.visible");
     cy.contains("Admin").click();
 
-    cy.location("pathname").should("equal", "/admin");
+    cy.get("@window.open").should("be.calledWith", "/admin", "_blank");
   });
 });

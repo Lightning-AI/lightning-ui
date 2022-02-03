@@ -96,7 +96,7 @@ function Actions() {
       )}
       <ActionButton 
         disabled={stage !== AppStage.running}
-        href="/"
+        onClick={() => window.open("/view", "_blank")}
       >
           Open App
       </ActionButton>

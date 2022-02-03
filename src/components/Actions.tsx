@@ -21,7 +21,7 @@ export default function Actions() {
   return (
     <ActionsContainer>
       <Chip label="Running Locally" color="success" />
-      <ActionButton href="/admin">Admin</ActionButton>
+      <ActionButton onClick={() => window.open("/admin", "_blank")}>Admin</ActionButton>
       <ActionButton disabled>Share</ActionButton>
     </ActionsContainer>
   );
