@@ -35,7 +35,7 @@ describe("Tabs", () => {
       layout.forEach(item => {
         cy.contains(item.name.toUpperCase()).click();
         
-        cy.location("pathname").should("equal", `/view/${item.name}`);
+        cy.location("pathname").should("equal", `/view/${encodeURIComponent(item.name)}`);
       });
     });
   });

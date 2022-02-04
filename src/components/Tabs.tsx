@@ -53,7 +53,7 @@ export default function Tabs() {
   }
 
   const routes = routesFor(lightningState.data) as LayoutBranch[];
-  const activeTabIndex = routes.findIndex(r => `/view/${r.name}` === location.pathname);
+  const activeTabIndex = routes.findIndex(r => `/view/${encodeURIComponent(r.name)}` === location.pathname);
 
   return (
     <StyledMuiTabs value={activeTabIndex}>
@@ -61,7 +61,7 @@ export default function Tabs() {
         <LinkTab 
           key={route.name} 
           label={route.name.toUpperCase()}
-          href={`/view/${route.name}`}
+          href={`/view/${encodeURIComponent(route.name)}`}
         />
       ))}
     </StyledMuiTabs>

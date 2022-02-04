@@ -2,15 +2,15 @@
   "vars": {
     "_layout": [
       {
-        "name": "one",
+        "name": "My Dashboard",
         "content": "root.c1.c11"
       },
       {
-        "name": "two",
+        "name": "Tab_2",
         "content": "root.c2"
       },
       {
-        "name": "three",
+        "name": "Logs & Metrics",
         "content": "https://lightning.ai",
         "target": "https://lightning.ai"
       }
@@ -22,11 +22,11 @@
       "vars": {
         "_layout": [
           {
-            "name": "one",
+            "name": "My Dashboard",
             "content": "root.c2.c21"
           },
           {
-            "name": "two",
+            "name": "Tab_2",
             "content": "root.c2.c22"
           }
         ]

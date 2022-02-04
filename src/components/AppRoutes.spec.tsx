@@ -12,9 +12,9 @@ const AppRoutes = () => (
   <>
     <nav>
       <Link to="/">Home</Link>
-      <Link to="/view/one">one</Link>
-      <Link to="/view/two">two</Link>
-      <Link to="/view/three">three</Link>
+      <Link to={`/view/${encodeURIComponent("My Dashboard")}`}>My Dashboard</Link>
+      <Link to={`/view/${encodeURIComponent("Tab_2")}`}>Tab_2</Link>
+      <Link to={`/view/${encodeURIComponent("Logs & Metrics")}`}>{"Logs & Metrics"}</Link>
       <Link to="/does-not-exist">Link Which Does Not Exist</Link>
       <Link to="/admin">Admin</Link>
     </nav>
@@ -72,7 +72,7 @@ describe("AppRoutes", () => {
       layout.forEach(item => {
         cy.contains(item.name).click();
 
-        cy.location("pathname").should("equal", `/view/${item.name}`);
+        cy.location("pathname").should("equal", `/view/${encodeURIComponent(item.name)}`);
         cy.contains("Not found").should("not.exist");
         cy.get("iframe").should("be.visible");
       });

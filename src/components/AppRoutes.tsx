@@ -28,7 +28,7 @@ export default function LightningAppRoutes() {
           <Route index element={<Navigate replace to={`/view/${homeRoute.path}`} />} />
         )}
         {layoutFor(lightningState.data!).map(route => (
-          <Route path={route.path} element={<LayoutView layout={route.layout} />} key={route.path} />
+          <Route path={encodeURIComponent(route.path)} element={<LayoutView layout={route.layout} />} key={route.path} />
         ))}
       </Route>
       <Route path="*" element={<div>Not found</div>} />
