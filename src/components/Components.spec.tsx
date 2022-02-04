@@ -18,7 +18,7 @@ describe("Components", () => {
     it("displays empty message", () => {
       mount(<Components />);
 
-      cy.wait("@getLightiningSpec");
+      cy.wait("@getLightingSpec");
 
       cy.contains("No components defined").should("be.visible");
     });
@@ -36,7 +36,7 @@ describe("Components", () => {
     it("displays list of all defined components", () => {
       mount(<Components />);
 
-      cy.wait("@getLightiningSpec");
+      cy.wait("@getLightingSpec");
 
       cy.fixture("app-spec--simple-layout.json").then((spec: LightningSpec) => {
         spec.forEach(component => {

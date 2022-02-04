@@ -58,6 +58,14 @@ export default function Components() {
     return <div>Loading...</div>
   }
 
+  if (!lightningSpec.data || lightningSpec.data.length === 0) {
+    return (
+      <Box sx={{ marginBottom: "46px" }}>
+        <span>No components defined</span>
+      </Box>
+    );
+  }
+
   return (
     <Box sx={{ marginBottom: "46px" }}>
       <ComponentTable data={lightningSpec.data ?? []} />

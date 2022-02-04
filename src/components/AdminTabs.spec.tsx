@@ -4,9 +4,11 @@ import mount from "tests/utils/testMount";
 import AdminTabs from "./AdminTabs";
 
 describe("AdminTabs", () => {
+  const title = "Components";
+
   it("renders the correct tabs", () => {
     mount(<AdminTabs />);
 
-    cy.contains("Components").should("be.visible");
+    cy.contains(title.toUpperCase()).should("be.visible");
   });
 });
