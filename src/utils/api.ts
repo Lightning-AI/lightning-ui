@@ -13,3 +13,7 @@ export const headersFor = () => {
 
   return headers;
 };
+
+export const resolveResponse = <T extends Response>(res: T) => {
+  return res.ok ? res.json() : Promise.reject(res.statusText);
+}

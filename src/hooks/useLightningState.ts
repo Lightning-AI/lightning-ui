@@ -1,28 +1,20 @@
-
 import { useQuery } from "react-query";
 
-import { headersFor, stateEndpoint } from "utils/api";
 import { LightingState } from "types/lightning";
+import { headersFor, resolveResponse, stateEndpoint } from "utils/api";
 
 export const queryKey = "getLightningState";
 
 const refetchInterval = 1000;
 
 export default function useLightingState() {
-  const getState = () => fetch(stateEndpoint, { headers: headersFor() })
-    .then(res => {
-      if (!res.ok) {
-        return Promise.reject(res.statusText);
-      }
-
-      return res.json();
-    });
+  const getState = () => fetch(stateEndpoint, { headers: headersFor() }).then(resolveResponse);
 
   const lightningState = useQuery<LightingState>(
-    "getLightningState", 
-    getState, 
+    "getLightningState",
+    getState,
     // TODO(alecmerdler): Replace polling with WebSockets
-    { refetchInterval }
+    { refetchInterval },
   );
 
   return lightningState;
