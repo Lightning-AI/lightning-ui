@@ -14,6 +14,7 @@ state and renders components accordingly.
 
 - NodeJS 16.13.1+
 - Yarn 1.22.17+
+- Python 3.8+ (for `lightning` CLI)
 
 ### Commands
 
@@ -22,11 +23,6 @@ All commands are defined in the `scripts` section of the `package.json` file.
 **Install dependencies:**
 ```
 $ yarn install
-```
-
-**Run app locally:**
-```
-$ yarn start
 ```
 
 **Run tests:**
@@ -66,7 +62,7 @@ $ python -m venv venv
 $ source ./venv/bin/activate
 $ pip install -e .
 $ ln -s ./lightning/lightning/ui $HOME/lightning-ui/build
-$ lighting run app ./examples/layout/demo.py
+$ lighting start app ./examples/layout/demo.py
 ```
 
 The `lightning` CLI will now serve the frontend code at `http://localhost:7501`.

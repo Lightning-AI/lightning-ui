@@ -13,3 +13,10 @@ export const headersFor = () => {
 
   return headers;
 };
+
+/**
+ * Wraps `window.location`, mainly for stubbing during testing.
+ */
+export const location = {
+  getLocation: () => window.location
+};

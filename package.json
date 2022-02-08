@@ -36,6 +36,7 @@
     "build": "react-scripts build",
     "test": "cypress run-ct",
     "test:open": "cypress open-ct",
+    "test:clear": "cypress cache clear",
     "test:e2e": "cypress run",
     "test:e2e:open": "cypress open",
     "eject": "react-scripts eject"
