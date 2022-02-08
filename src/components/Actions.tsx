@@ -3,6 +3,8 @@ import { styled } from "@mui/material";
 import Button from '@mui/material/Button';
 import Chip from '@mui/material/Chip';
 
+import useAdminUrl from "hooks/useAdminUrl";
+
 const ActionsContainer = styled("div")({
   display: "flex",
   padding: "8px",
@@ -18,10 +20,12 @@ const ActionButton = styled(Button)({
 });
 
 export default function Actions() {
+  const adminUrl = useAdminUrl();
+
   return (
     <ActionsContainer>
       <Chip label="Running Locally" color="success" />
-      <ActionButton onClick={() => window.open("/admin", "_blank")}>Admin</ActionButton>
+      <ActionButton onClick={() => window.open(adminUrl, "_blank")}>Admin</ActionButton>
       <ActionButton disabled>Share</ActionButton>
     </ActionsContainer>
   );

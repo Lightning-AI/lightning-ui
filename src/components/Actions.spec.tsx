@@ -23,6 +23,6 @@ describe("Actions", () => {
     cy.contains("Admin").should("be.visible");
     cy.contains("Admin").click();
 
-    cy.get("@window.open").should("be.calledWith", "/admin", "_blank");
+    cy.get("@window.open").should("be.calledWith", `${window.location.origin}/admin`, "_blank");
   });
 });
