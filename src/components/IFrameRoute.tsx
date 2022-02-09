@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { styled } from "@mui/material";
 
 import useLightningState from "hooks/useLightningState";
@@ -14,33 +14,25 @@ const IFrame = styled("iframe")({
 });
 
 export default function IFrameRoute(props: Props) {
+  let [loaded, setLoaded] = useState(false);
   const iframeRef = useRef<HTMLIFrameElement>(null);
 
+  const onLoadHandler = () => setLoaded(true);
   const lightningState = useLightningState();
 
   useEffect(() => {
-    const onMessage = (e: MessageEvent) => {
-      if (e.origin === "TODO(alecmerdler): What do we expect here...?") {
-        console.log(e.data);
-      }
-    };
-
-    window.addEventListener("message", onMessage);
-
-    return () => {
-      window.removeEventListener("message", onMessage);
-    };
+    if (loaded && lightningState.data) {
+      iframeRef.current?.contentWindow?.postMessage(lightningState.data, props.iframeTargetUrl);
+    }
   });
 
-  useEffect(() => {
-    if (iframeRef.current && lightningState.data) {
-      iframeRef.current.contentWindow?.postMessage(
-        // TODO(alecmerdler): Use tree traversal to only pass the piece of state for the given component...
-        lightningState.data,
-        window.location.origin,
-      );
-    }
-  }, [lightningState.data]);
-
-  return <IFrame name={props.name} src={props.iframeTargetUrl} title={props.name} ref={iframeRef} />;
+  return (
+    <IFrame 
+      name={props.name} 
+      src={props.iframeTargetUrl} 
+      title={props.name} 
+      ref={iframeRef}
+      onLoad={onLoadHandler}
+    />
+  );
 }
