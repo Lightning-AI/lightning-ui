@@ -39,13 +39,13 @@ export default function IFrameRoute(props: Props) {
         setIframePort(message.ports[0]);
       }
     });
-  }, [iframePort]); 
+  }, [props.iframeTargetUrl, lightningState.data]); 
 
   useEffect(() => {
     if (iframePort && lightningState.data) {
       iframePort.postMessage(lightningState.data);
     }
-  }, [lightningState.data]);
+  }, [iframePort, lightningState.data]);
 
   return (
     <Box display={"flex"} flexDirection={"column"} height={"100%"}>
