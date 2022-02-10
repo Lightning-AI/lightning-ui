@@ -8,7 +8,7 @@ type Props = {
   iframeTargetUrl: string;
 };
 
-const isRegisterPortMessage = (
+const isEstablishCommunicationMessage = (
   message: MessageEvent,
   iframeTargetUrl: string
 ) => {
@@ -27,7 +27,7 @@ export default function IFrameRoute(props: Props) {
 
   useEffect(() => {
     window.addEventListener('message', (message: MessageEvent) => {
-      if(isRegisterPortMessage(message, props.iframeTargetUrl)) {
+      if(isEstablishCommunicationMessage(message, props.iframeTargetUrl)) {
         const internalPort = message.ports[0];
         message.ports[0].onmessage = (message: MessageEvent) => {
           if (message.data === "Subscribed" && lightningState.data) {
