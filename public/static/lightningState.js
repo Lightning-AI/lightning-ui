@@ -1,6 +1,6 @@
 (function(){
     const channel = new MessageChannel();
-    window.top.postMessage("Stablish communication", window.location.ancestorOrigins[0], [channel.port2]);
+    window.top.postMessage("Establish communication", window.location.ancestorOrigins[0], [channel.port2]);
     class LightningState {
         static subscribe(componentHandler) {
             channel.port1.onmessage = (message) => {

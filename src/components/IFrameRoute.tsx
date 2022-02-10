@@ -13,8 +13,8 @@ const isRegisterPortMessage = (
   iframeTargetUrl: string
 ) => {
   return (
-    (message.data === "Stablish communication") &&
-    (message.origin === iframeTargetUrl) &&
+    (message.data === "Establish communication") &&
+    (`${message.origin}/` === iframeTargetUrl) &&
     message?.ports?.[0]
   );
 };
