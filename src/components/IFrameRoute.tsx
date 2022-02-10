@@ -8,15 +8,8 @@ type Props = {
   iframeTargetUrl: string;
 };
 
-const isEstablishCommunicationMessage = (
-  message: MessageEvent,
-  iframeTargetUrl: string
-) => {
-  return (
-    (message.data === "Establish communication") &&
-    (`${message.origin}/` === iframeTargetUrl) &&
-    message?.ports?.[0]
-  );
+const isEstablishCommunicationMessage = (message: MessageEvent, iframeTargetUrl: string) => {
+  return message.data === "Establish communication" && `${message.origin}/` === iframeTargetUrl && message?.ports?.[0];
 };
 
 export default function IFrameRoute(props: Props) {
@@ -26,8 +19,8 @@ export default function IFrameRoute(props: Props) {
   const lightningState = useLightningState();
 
   useEffect(() => {
-    window.addEventListener('message', (message: MessageEvent) => {
-      if(isEstablishCommunicationMessage(message, props.iframeTargetUrl)) {
+    window.addEventListener("message", (message: MessageEvent) => {
+      if (isEstablishCommunicationMessage(message, props.iframeTargetUrl)) {
         const internalPort = message.ports[0];
         message.ports[0].onmessage = (message: MessageEvent) => {
           if (message.data === "Subscribed" && lightningState.data) {
@@ -39,7 +32,7 @@ export default function IFrameRoute(props: Props) {
         setIframePort(message.ports[0]);
       }
     });
-  }, [props.iframeTargetUrl, lightningState.data]); 
+  }, [props.iframeTargetUrl, lightningState.data]);
 
   useEffect(() => {
     if (iframePort && lightningState.data) {
@@ -54,9 +47,9 @@ export default function IFrameRoute(props: Props) {
         height={"100%"}
         width={"100%"}
         component={"iframe"}
-        name={props.name} 
-        src={props.iframeTargetUrl} 
-        title={props.name} 
+        name={props.name}
+        src={props.iframeTargetUrl}
+        title={props.name}
         ref={iframeRef}
       />
     </Box>
