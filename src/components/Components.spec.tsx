@@ -8,11 +8,7 @@ import { LightningSpec } from "types/lightning";
 describe("Components", () => {
   describe("an app without any components", () => {
     beforeEach(() => {
-      cy.intercept(
-        "GET",
-        specEndpoint,
-        { body: [] }
-      ).as("getLightingSpec");
+      cy.intercept("GET", specEndpoint, { body: [] }).as("getLightingSpec");
     });
 
     it("displays empty message", () => {
@@ -26,11 +22,7 @@ describe("Components", () => {
 
   describe("an app with components", () => {
     beforeEach(() => {
-      cy.intercept(
-        "GET",
-        specEndpoint,
-        { fixture: "app-spec--simple-layout.json" }
-      ).as("getLightingSpec");
+      cy.intercept("GET", specEndpoint, { fixture: "app-spec--simple-layout.json" }).as("getLightingSpec");
     });
 
     it("displays list of all defined components", () => {

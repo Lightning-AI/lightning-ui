@@ -1,7 +1,7 @@
-const injectDevServer = require('@cypress/react/plugins/react-scripts')
+const injectDevServer = require("@cypress/react/plugins/react-scripts");
 
 module.exports = (on, config) => {
-  injectDevServer(on, config)
+  injectDevServer(on, config);
 
-  return config
-}
+  return config;
+};

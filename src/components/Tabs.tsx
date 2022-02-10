@@ -1,6 +1,6 @@
 import React from "react";
-import MuiTabs from '@mui/material/Tabs';
-import MuiTab from '@mui/material/Tab';
+import MuiTabs from "@mui/material/Tabs";
+import MuiTab from "@mui/material/Tab";
 import { useLocation, useNavigate } from "react-router-dom";
 import { styled } from "@mui/material";
 
@@ -10,7 +10,7 @@ import { purple } from "lightning-colors";
 import { LayoutBranch } from "types/lightning";
 
 const StyledMuiTabs = styled(MuiTabs)({
-  marginBottom: "8px",
+  "marginBottom": "8px",
   ".MuiTab-root": {
     "fontSize": "14px",
     "textTransform": "none",
@@ -37,7 +37,7 @@ function LinkTab(props: LinkTabProps) {
       component="a"
       onClick={(event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
         event.preventDefault();
-        navigate(props.href);    
+        navigate(props.href);
       }}
       {...props}
     />
@@ -58,11 +58,7 @@ export default function Tabs() {
   return (
     <StyledMuiTabs value={activeTabIndex}>
       {routes.map(route => (
-        <LinkTab 
-          key={route.name} 
-          label={route.name.toUpperCase()}
-          href={`/view/${encodeURIComponent(route.name)}`}
-        />
+        <LinkTab key={route.name} label={route.name.toUpperCase()} href={`/view/${encodeURIComponent(route.name)}`} />
       ))}
     </StyledMuiTabs>
   );

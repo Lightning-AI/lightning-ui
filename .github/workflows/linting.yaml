@@ -1,0 +1,23 @@
+name: CI Linting
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+jobs:
+  lint:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 16
+      - uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: my-cache-${{ runner.os }}-${{ hashFiles('yarn.lock') }}
+      - name: Linter
+        run: |
+          yarn install --frozen-lockfile --silent
+          yarn lint

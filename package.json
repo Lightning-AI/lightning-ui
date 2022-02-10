@@ -29,17 +29,25 @@
     "@types/react": "^17.0.20",
     "@types/react-dom": "^17.0.9",
     "@types/react-table": "^7.7.9",
-    "cypress": "^9.4.1"
+    "cypress": "^9.4.1",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.3.3",
+    "prettier": "^2.5.1"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "lint": "prettier -c .",
     "test": "cypress run-ct",
     "test:open": "cypress open-ct",
     "test:clear": "cypress cache clear",
     "test:e2e": "cypress run",
     "test:e2e:open": "cypress open",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "prepare": "husky install"
+  },
+  "lint-staged": {
+    "**/*": "prettier --write --ignore-unknown"
   },
   "eslintConfig": {
     "extends": [

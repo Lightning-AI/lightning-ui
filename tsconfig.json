@@ -1,11 +1,7 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "baseUrl": "src",
     "skipLibCheck": true,
@@ -21,11 +17,6 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
-  "types": [
-    "cypress",
-    "node"
-  ],
-  "include": [
-    "src"
-  ]
+  "types": ["cypress", "node"],
+  "include": ["src"]
 }

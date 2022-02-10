@@ -5,17 +5,13 @@ import useAdminUrl from "./useAdminUrl";
 
 describe("useAdminUrl", () => {
   it("returns correct URL when app is running on `localhost`", () => {
-    cy.stub(location, "getLocation")
-      .as("getLocation")
-      .returns({
-        origin: "http://localhost:7501",
-        hostname: "localhost",
-        protocol: "http:",
-      });
+    cy.stub(location, "getLocation").as("getLocation").returns({
+      origin: "http://localhost:7501",
+      hostname: "localhost",
+      protocol: "http:",
+    });
 
-    mountHook(
-      () => useAdminUrl()
-    ).then(result => {
+    mountHook(() => useAdminUrl()).then(result => {
       cy.get("@getLocation").should("have.been.called");
 
       expect(result.current).to.equal("http://localhost:7501/admin");
@@ -23,17 +19,13 @@ describe("useAdminUrl", () => {
   });
 
   it("returns correct URL when app is running on `127.0.0.1`", () => {
-    cy.stub(location, "getLocation")
-      .as("getLocation")
-      .returns({
-        origin: "http://127.0.0.1:7501",
-        hostname: "127.0.0.1",
-        protocol: "http:",
-      });
+    cy.stub(location, "getLocation").as("getLocation").returns({
+      origin: "http://127.0.0.1:7501",
+      hostname: "127.0.0.1",
+      protocol: "http:",
+    });
 
-    mountHook(
-      () => useAdminUrl()
-    ).then(result => {
+    mountHook(() => useAdminUrl()).then(result => {
       expect(result.current).to.equal("http://127.0.0.1:7501/admin");
     });
   });
@@ -49,10 +41,10 @@ describe("useAdminUrl", () => {
         protocol: "https:",
       });
 
-    mountHook(
-      () => useAdminUrl()
-    ).then(result => {
-      expect(result.current).to.equal(`https://b975913c4b22eca5f0f9e8eff4c4b1c315340a0d.staging.lightning.ai/me/app/${appId}`);
+    mountHook(() => useAdminUrl()).then(result => {
+      expect(result.current).to.equal(
+        `https://b975913c4b22eca5f0f9e8eff4c4b1c315340a0d.staging.lightning.ai/me/app/${appId}`,
+      );
     });
   });
 });

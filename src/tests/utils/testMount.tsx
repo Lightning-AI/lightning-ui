@@ -8,16 +8,14 @@ export default function testMount(element: JSX.Element) {
     defaultOptions: {
       queries: {
         // Retries cause weird behavior in tests
-        retry: false
-      }
-    }
+        retry: false,
+      },
+    },
   });
 
   return mount(
     <QueryClientProvider client={client}>
-      <BrowserRouter>
-        {element}
-      </BrowserRouter>
-    </QueryClientProvider>
-  )
+      <BrowserRouter>{element}</BrowserRouter>
+    </QueryClientProvider>,
+  );
 }

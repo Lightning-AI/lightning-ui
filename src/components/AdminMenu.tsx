@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { styled } from "@mui/material";
-import Button from '@mui/material/Button';
-import PlayCircleOutlineIcon from '@mui/icons-material/PlayCircleOutline';
-import StopCircleIcon from '@mui/icons-material/StopCircle';
-import Chip from '@mui/material/Chip';
+import Button from "@mui/material/Button";
+import PlayCircleOutlineIcon from "@mui/icons-material/PlayCircleOutline";
+import StopCircleIcon from "@mui/icons-material/StopCircle";
+import Chip from "@mui/material/Chip";
 
 import { menuBackground } from "lightning-colors";
 import useLightingState from "hooks/useLightningState";
@@ -21,7 +21,7 @@ const Wrapper = styled("div")({
 
 const TitleAndActions = styled("div")({
   display: "flex",
-  justifyContent: "space-between"
+  justifyContent: "space-between",
 });
 
 const ActionsContainer = styled("div")({
@@ -49,10 +49,7 @@ function StartAction() {
   };
 
   return (
-    <ActionButton 
-      onClick={onStart}
-      disabled={desiredRunning}
-    >
+    <ActionButton onClick={onStart} disabled={desiredRunning}>
       <PlayCircleOutlineIcon />
       Run
     </ActionButton>
@@ -69,10 +66,7 @@ function StopAction() {
   };
 
   return (
-    <ActionButton 
-      onClick={onStop}
-      disabled={desiredStopped}
-    >
+    <ActionButton onClick={onStop} disabled={desiredStopped}>
       <StopCircleIcon />
       Stop
     </ActionButton>
@@ -89,22 +83,14 @@ function Actions() {
   return (
     <ActionsContainer>
       <Chip label={runningLabel} color={runningColor} />
-      {stage === AppStage.blocking ? (
-        <StartAction />
-      ) : (
-        <StopAction />
-      )}
-      <ActionButton 
-        disabled={stage !== AppStage.running}
-        onClick={() => window.open("/view", "_blank")}
-      >
-          Open App
+      {stage === AppStage.blocking ? <StartAction /> : <StopAction />}
+      <ActionButton disabled={stage !== AppStage.running} onClick={() => window.open("/view", "_blank")}>
+        Open App
       </ActionButton>
       <ActionButton disabled>Share</ActionButton>
     </ActionsContainer>
   );
 }
-
 
 export default function AdminMenu() {
   return (

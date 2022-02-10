@@ -1,4 +1,3 @@
-
 import { useQuery } from "react-query";
 
 import { headersFor, stateEndpoint } from "utils/api";
@@ -9,8 +8,8 @@ export const queryKey = "getLightningState";
 const refetchInterval = 1000;
 
 export default function useLightingState() {
-  const getState = () => fetch(stateEndpoint, { headers: headersFor() })
-    .then(res => {
+  const getState = () =>
+    fetch(stateEndpoint, { headers: headersFor() }).then(res => {
       if (!res.ok) {
         return Promise.reject(res.statusText);
       }
@@ -19,10 +18,10 @@ export default function useLightingState() {
     });
 
   const lightningState = useQuery<LightingState>(
-    "getLightningState", 
-    getState, 
+    "getLightningState",
+    getState,
     // TODO(alecmerdler): Replace polling with WebSockets
-    { refetchInterval }
+    { refetchInterval },
   );
 
   return lightningState;

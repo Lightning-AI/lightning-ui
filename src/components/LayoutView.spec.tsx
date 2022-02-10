@@ -7,11 +7,7 @@ import LayoutView from "./LayoutView";
 
 describe("LayoutView", () => {
   beforeEach(() => {
-    cy.intercept(
-      "GET",
-      stateEndpoint,
-      { fixture: "app-state--simple-layout" }
-    ).as("getState");
+    cy.intercept("GET", stateEndpoint, { fixture: "app-state--simple-layout" }).as("getState");
   });
 
   it("fetches app state from API on mount", () => {

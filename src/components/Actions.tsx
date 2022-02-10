@@ -1,7 +1,7 @@
 import React from "react";
 import { styled } from "@mui/material";
-import Button from '@mui/material/Button';
-import Chip from '@mui/material/Chip';
+import Button from "@mui/material/Button";
+import Chip from "@mui/material/Chip";
 
 import useAdminUrl from "hooks/useAdminUrl";
 

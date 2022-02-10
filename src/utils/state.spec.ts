@@ -7,7 +7,7 @@ describe("componentPathFor", () => {
       { path: "", expected: "" },
       { path: "root.a", expected: "children.a" },
       { path: "root.a.b", expected: "children.a.children.b" },
-      { path: "root.a.b.c", expected: "children.a.children.b.children.c" }
+      { path: "root.a.b.c", expected: "children.a.children.b.children.c" },
     ];
 
     tests.forEach(test => {
@@ -28,7 +28,7 @@ describe("childFor", () => {
           name: "Download Results",
           content: "root.results.download",
         },
-      ]
+      ],
     },
     children: {
       dashboard: {
@@ -37,9 +37,9 @@ describe("childFor", () => {
             {
               name: "Dashboard",
               type: LayoutType.streamlit,
-              target: "localhost:8888"
-            }
-          ]
+              target: "localhost:8888",
+            },
+          ],
         },
         children: {},
         calls: {},
@@ -48,7 +48,7 @@ describe("childFor", () => {
         storage: {
           shared_access: {},
           root: "",
-          transfer_files: {}
+          transfer_files: {},
         },
       },
       results: {
@@ -57,8 +57,8 @@ describe("childFor", () => {
             {
               name: "Download Results",
               content: "root.results.download",
-            }
-          ]
+            },
+          ],
         },
         children: {
           download: {
@@ -67,9 +67,9 @@ describe("childFor", () => {
                 {
                   name: "Download",
                   type: LayoutType.web,
-                  target: "localhost:8989"
-                }
-              ]
+                  target: "localhost:8989",
+                },
+              ],
             },
             children: {},
             calls: {},
@@ -78,9 +78,9 @@ describe("childFor", () => {
             storage: {
               shared_access: {},
               root: "",
-              transfer_files: {}
+              transfer_files: {},
             },
-          }
+          },
         },
         calls: {},
         changes: {},
@@ -88,7 +88,7 @@ describe("childFor", () => {
         storage: {
           shared_access: {},
           root: "",
-          transfer_files: {}
+          transfer_files: {},
         },
       },
     },
@@ -97,12 +97,12 @@ describe("childFor", () => {
     storage: {
       shared_access: {},
       root: "",
-      transfer_files: {}
+      transfer_files: {},
     },
     works: {},
     app_state: {
-      stage: AppStage.blocking
-    }
+      stage: AppStage.blocking,
+    },
   };
 
   it("returns the correct state for the given child path", async () => {
@@ -127,7 +127,10 @@ describe("routesFor", () => {
 
   it("wraps `state.vars._layout` in an array if it contains only one item", () => {
     cy.fixture("app-state--simple-layout.json").then((state: LightingState) => {
-      const stateWithSingleLayout = { ...state, vars: { ...state.vars, _layout: (state.vars._layout as Layout[])[0] } };
+      const stateWithSingleLayout = {
+        ...state,
+        vars: { ...state.vars, _layout: (state.vars._layout as Layout[])[0] },
+      };
 
       expect(routesFor(stateWithSingleLayout)).to.deep.equal([stateWithSingleLayout.vars._layout]);
     });

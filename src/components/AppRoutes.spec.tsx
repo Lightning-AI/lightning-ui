@@ -20,15 +20,11 @@ const AppRoutes = () => (
     </nav>
     <AppRoutesComponent />
   </>
-)
+);
 
 describe("AppRoutes", () => {
   it("fetches Lightning app state from API on mount", () => {
-    cy.intercept(
-      "GET",
-      stateEndpoint,
-      { fixture: "app-state--no-layout" }
-    ).as("getState");
+    cy.intercept("GET", stateEndpoint, { fixture: "app-state--no-layout" }).as("getState");
 
     mount(<AppRoutes />);
 
@@ -40,27 +36,19 @@ describe("AppRoutes", () => {
   });
 
   it("displays 404 view for nonexistent routes", () => {
-    cy.intercept(
-      "GET",
-      stateEndpoint,
-      { fixture: "app-state--simple-layout" }
-    ).as("getState");
+    cy.intercept("GET", stateEndpoint, { fixture: "app-state--simple-layout" }).as("getState");
 
     mount(<AppRoutes />);
 
     cy.wait("@getState");
     cy.contains("Link Which Does Not Exist").click();
-  
+
     cy.location("pathname").should("equal", "/does-not-exist");
     cy.contains("Not found").should("be.visible");
   });
 
   it("creates a <Route> for each entry in the app state layout", () => {
-    cy.intercept(
-      "GET",
-      stateEndpoint,
-      { fixture: "app-state--simple-layout" }
-    ).as("getState");
+    cy.intercept("GET", stateEndpoint, { fixture: "app-state--simple-layout" }).as("getState");
 
     mount(<AppRoutes />);
 
@@ -80,11 +68,7 @@ describe("AppRoutes", () => {
   });
 
   it("creates a <Route> for the local admin view", () => {
-    cy.intercept(
-      "GET",
-      stateEndpoint,
-      { fixture: "app-state--simple-layout" }
-    ).as("getState");
+    cy.intercept("GET", stateEndpoint, { fixture: "app-state--simple-layout" }).as("getState");
 
     mount(<AppRoutes />);
 

@@ -19,20 +19,13 @@ export type LightningRoute = {
 };
 
 export const routesFor = (state: LightingState) => {
-  if (
-    state === undefined ||
-    state.vars === undefined ||
-    state.vars._layout === undefined
-  ) {
+  if (state === undefined || state.vars === undefined || state.vars._layout === undefined) {
     return [];
   }
 
-  return Array.isArray(state.vars._layout)
-    ? state.vars._layout
-    : [state.vars._layout];
+  return Array.isArray(state.vars._layout) ? state.vars._layout : [state.vars._layout];
 };
 
 export const layoutFor = (state: LightingState): LightningRoute[] => {
-  return routesFor(state)
-    .map(route => ({ path: route.name, layout: (route as LayoutBranch) }));
+  return routesFor(state).map(route => ({ path: route.name, layout: route as LayoutBranch }));
 };

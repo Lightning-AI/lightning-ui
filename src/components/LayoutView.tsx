@@ -52,7 +52,7 @@ export default function LayoutView(props: Props) {
           </Separator>
         ))}
       </LayoutContainer>
-    )
+    );
   }
 
   // Recursive case (single child)

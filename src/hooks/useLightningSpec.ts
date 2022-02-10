@@ -6,8 +6,8 @@ import { headersFor, specEndpoint } from "utils/api";
 export const queryKey = "getLightningSpec";
 
 export default function useLightningSpec() {
-  const getState = () => fetch(specEndpoint, { headers: headersFor() })
-    .then(res => {
+  const getState = () =>
+    fetch(specEndpoint, { headers: headersFor() }).then(res => {
       if (!res.ok) {
         return Promise.reject(res.statusText);
       }

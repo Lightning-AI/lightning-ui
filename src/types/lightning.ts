@@ -1,8 +1,8 @@
 /**
- * Represents the internal state of a Lightning app as exposed by 
+ * Represents the internal state of a Lightning app as exposed by
  * the `/state` endpoint of the Lightning HTTP API.
  */
- export type LightingState = {
+export type LightingState = {
   vars: {
     _layout: Layout | Layout[];
     [key: string]: any;
@@ -52,14 +52,14 @@ export type LayoutLeaf = {
 export enum LayoutType {
   web = "web",
   streamlit = "streamlit",
-};
+}
 
 export enum AppStage {
   blocking = "blocking",
   restarting = "restarting",
   running = "running",
   stopping = "stopping",
-};
+}
 
 export type LightningSpec = ComponentSpec[];
 

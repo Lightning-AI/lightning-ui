@@ -13,8 +13,8 @@ const columns: Column<ComponentSpec>[] = [
   {
     Header: "Name",
     accessor: "cls_name",
-    Cell: ({ value }) => <code>{value}</code>
-  }
+    Cell: ({ value }) => <code>{value}</code>,
+  },
 ];
 
 function ComponentTable(props: ComponentTableProps) {
@@ -43,7 +43,7 @@ function ComponentTable(props: ComponentTableProps) {
                   <TableCell {...cell.getCellProps()}>{cell.render("Cell")}</TableCell>
                 ))}
               </TableRow>
-            )
+            );
           })}
         </TableBody>
       </MuiTable>
@@ -55,7 +55,7 @@ export default function Components() {
   const lightningSpec = useLightningSpec();
 
   if (lightningSpec.isLoading) {
-    return <div>Loading...</div>
+    return <div>Loading...</div>;
   }
 
   if (!lightningSpec.data || lightningSpec.data.length === 0) {

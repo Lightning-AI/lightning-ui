@@ -10,19 +10,17 @@ export default function useStartApp() {
   const body = { stage: AppStage.running };
 
   const mutation = useMutation(
-    () => fetch(
-      stateEndpoint, 
-      { 
-        body: JSON.stringify(body), 
-        method: "POST", 
-        headers: headersFor()
-      }
-    ),
+    () =>
+      fetch(stateEndpoint, {
+        body: JSON.stringify(body),
+        method: "POST",
+        headers: headersFor(),
+      }),
     {
       onSuccess: () => {
         queryClient.invalidateQueries(queryKey);
-      }
-    }
+      },
+    },
   );
 
   return mutation;

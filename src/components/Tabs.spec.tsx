@@ -7,11 +7,7 @@ import Tabs from "./Tabs";
 
 describe("Tabs", () => {
   it("fetches the app state from the API on mount", () => {
-    cy.intercept(
-      "GET",
-      stateEndpoint,
-      { fixture: "app-state--simple-layout" }
-    ).as("getState");
+    cy.intercept("GET", stateEndpoint, { fixture: "app-state--simple-layout" }).as("getState");
 
     mount(<Tabs />);
 
@@ -19,11 +15,7 @@ describe("Tabs", () => {
   });
 
   it("renders a tab for each component view in the app state layout", () => {
-    cy.intercept(
-      "GET",
-      stateEndpoint,
-      { fixture: "app-state--simple-layout" }
-    ).as("getState");
+    cy.intercept("GET", stateEndpoint, { fixture: "app-state--simple-layout" }).as("getState");
 
     mount(<Tabs />);
 
@@ -34,7 +26,7 @@ describe("Tabs", () => {
 
       layout.forEach(item => {
         cy.contains(item.name.toUpperCase()).click();
-        
+
         cy.location("pathname").should("equal", `/view/${encodeURIComponent(item.name)}`);
       });
     });
