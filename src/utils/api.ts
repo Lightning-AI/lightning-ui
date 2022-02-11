@@ -2,6 +2,7 @@ const host = process.env.REACT_APP_LIGHTNING_API ?? window.location.origin;
 
 export const stateEndpoint = `${host}/api/v1/state`;
 export const specEndpoint = `${host}/api/v1/spec`;
+export const wsEndpoint = `${host}/api/v1/ws`.replace("http", "ws");
 
 export const headersFor = () => {
   const headers = new Headers();

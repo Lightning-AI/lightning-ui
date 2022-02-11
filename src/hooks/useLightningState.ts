@@ -5,9 +5,7 @@ import { LightningState } from "types/lightning";
 
 export const queryKey = "getLightningState";
 
-const refetchInterval = 1000;
-
-export default function useLightningState() {
+export default function useLightingState() {
   const getState = () =>
     fetch(stateEndpoint, { headers: headersFor() }).then(res => {
       if (!res.ok) {
@@ -17,12 +15,7 @@ export default function useLightningState() {
       return res.json();
     });
 
-  const lightningState = useQuery<LightningState>(
-    "getLightningState",
-    getState,
-    // TODO(alecmerdler): Replace polling with WebSockets
-    { refetchInterval },
-  );
+  const lightningState = useQuery<LightningState>("getLightningState", getState);
 
   return lightningState;
 }
