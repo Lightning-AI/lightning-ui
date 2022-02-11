@@ -7,7 +7,7 @@ export const queryKey = "getLightningState";
 
 const refetchInterval = 1000;
 
-export default function useLightingState() {
+export default function useLightningState() {
   const getState = () =>
     fetch(stateEndpoint, { headers: headersFor() }).then(res => {
       if (!res.ok) {

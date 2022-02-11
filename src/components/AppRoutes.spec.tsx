@@ -36,7 +36,7 @@ describe("AppRoutes", () => {
   });
 
   it("displays 404 view for nonexistent routes", () => {
-    cy.intercept("GET", stateEndpoint, { fixture: "app-state--simple-layout" }).as("getState");
+    cy.intercept("GET", stateEndpoint, { fixture: "app-state--running--simple-layout" }).as("getState");
 
     mount(<AppRoutes />);
 
@@ -48,13 +48,13 @@ describe("AppRoutes", () => {
   });
 
   it("creates a <Route> for each entry in the app state layout", () => {
-    cy.intercept("GET", stateEndpoint, { fixture: "app-state--simple-layout" }).as("getState");
+    cy.intercept("GET", stateEndpoint, { fixture: "app-state--running--simple-layout" }).as("getState");
 
     mount(<AppRoutes />);
 
     cy.wait("@getState");
 
-    cy.fixture("app-state--simple-layout").then((state: LightingState) => {
+    cy.fixture("app-state--running--simple-layout").then((state: LightingState) => {
       const layout = state.vars._layout as Layout[];
 
       layout.forEach(item => {
@@ -68,7 +68,7 @@ describe("AppRoutes", () => {
   });
 
   it("creates a <Route> for the local admin view", () => {
-    cy.intercept("GET", stateEndpoint, { fixture: "app-state--simple-layout" }).as("getState");
+    cy.intercept("GET", stateEndpoint, { fixture: "app-state--running--simple-layout" }).as("getState");
 
     mount(<AppRoutes />);
 

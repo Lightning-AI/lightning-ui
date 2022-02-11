@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { styled } from "@mui/material";
 
-import useLightingState from "hooks/useLightningState";
+import useLightningState from "hooks/useLightningState";
 
 type Props = {
   name: string;
@@ -16,7 +16,7 @@ const IFrame = styled("iframe")({
 export default function IFrameRoute(props: Props) {
   const iframeRef = useRef<HTMLIFrameElement>(null);
 
-  const lightningState = useLightingState();
+  const lightningState = useLightningState();
 
   useEffect(() => {
     const onMessage = (e: MessageEvent) => {

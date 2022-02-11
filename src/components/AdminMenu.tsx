@@ -6,7 +6,7 @@ import StopCircleIcon from "@mui/icons-material/StopCircle";
 import Chip from "@mui/material/Chip";
 
 import { menuBackground } from "lightning-colors";
-import useLightingState from "hooks/useLightningState";
+import useLightningState from "hooks/useLightningState";
 import useStartApp from "hooks/useStartApp";
 import useStopApp from "hooks/useStopApp";
 import { AppStage } from "types/lightning";
@@ -74,7 +74,7 @@ function StopAction() {
 }
 
 function Actions() {
-  const lightningState = useLightingState();
+  const lightningState = useLightningState();
 
   const stage = lightningState.data?.app_state.stage;
   const runningLabel = stage === AppStage.running ? "Running Locally" : "Paused Locally";

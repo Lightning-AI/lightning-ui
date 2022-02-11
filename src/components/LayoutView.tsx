@@ -2,7 +2,7 @@ import React from "react";
 import { styled } from "@mui/material";
 
 import { Layout, LayoutBranch, LayoutLeaf } from "types/lightning";
-import useLightingState from "hooks/useLightningState";
+import useLightningState from "hooks/useLightningState";
 import { childFor } from "utils/state";
 import IFrameRoute from "./IFrameRoute";
 
@@ -27,7 +27,7 @@ const Separator = styled("div")({
  * starting point.
  */
 export default function LayoutView(props: Props) {
-  const lightningState = useLightingState();
+  const lightningState = useLightningState();
 
   if (lightningState.isLoading || lightningState.data === undefined) {
     return null;

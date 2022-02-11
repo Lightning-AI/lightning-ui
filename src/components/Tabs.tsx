@@ -4,7 +4,7 @@ import MuiTab from "@mui/material/Tab";
 import { useLocation, useNavigate } from "react-router-dom";
 import { styled } from "@mui/material";
 
-import useLightingState from "hooks/useLightningState";
+import useLightningState from "hooks/useLightningState";
 import { routesFor } from "utils/state";
 import { purple } from "lightning-colors";
 import { LayoutBranch } from "types/lightning";
@@ -46,7 +46,7 @@ function LinkTab(props: LinkTabProps) {
 
 export default function Tabs() {
   const location = useLocation();
-  const lightningState = useLightingState();
+  const lightningState = useLightningState();
 
   if (lightningState.isLoading || lightningState.data === undefined) {
     return null;

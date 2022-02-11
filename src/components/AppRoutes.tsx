@@ -1,7 +1,7 @@
 import React from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 
-import useLightingState from "hooks/useLightningState";
+import useLightningState from "hooks/useLightningState";
 import LayoutView from "./LayoutView";
 import { layoutFor } from "utils/state";
 import AdminView from "./AdminView";
@@ -9,7 +9,7 @@ import AppView from "./AppView";
 import Components from "./Components";
 
 export default function LightningAppRoutes() {
-  const lightningState = useLightingState();
+  const lightningState = useLightningState();
 
   // Just use the first component as the home route
   const homeRoute = layoutFor(lightningState.data!).find(() => true);

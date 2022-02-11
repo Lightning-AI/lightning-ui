@@ -3,7 +3,7 @@ import { Outlet } from "react-router-dom";
 import { Chip, styled } from "@mui/material";
 
 import AdminMenu from "./AdminMenu";
-import useLightingState from "hooks/useLightningState";
+import useLightningState from "hooks/useLightningState";
 
 import LightningLogo from "resources/images/lightning-logo-with-text.svg";
 
@@ -20,7 +20,7 @@ const Header = styled("div")({
 });
 
 export default function AdminView() {
-  const lightningState = useLightingState();
+  const lightningState = useLightningState();
 
   if (lightningState.isLoading) {
     return <div>Loading...</div>;
