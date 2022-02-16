@@ -20,19 +20,31 @@ describe("useRuntime", () => {
     });
   });
 
-  it("returns `local` when running in a local environment", () => {
-    ["localhost:7501", "127.0.0.1:7501"].forEach(hostname => {
-      cy.stub(location, "getLocation").as("getLocation").returns({
-        origin: "http://localhost:7501",
-        hostname: "localhost",
-        protocol: "http:",
-      });
+  it("returns `local` when running on `localhost:7501`", () => {
+    cy.stub(location, "getLocation").as("getLocation").returns({
+      origin: `http://localhost:7501`,
+      hostname: "localhost",
+      protocol: "http:",
+    });
 
-      mountHook(() => useRuntime()).then(result => {
-        cy.get("@getLocation").should("have.been.called");
+    mountHook(() => useRuntime()).then(result => {
+      cy.get("@getLocation").should("have.been.called");
 
-        expect(result.current).to.equal(Runtime.local);
-      });
+      expect(result.current).to.equal(Runtime.local);
+    });
+  });
+
+  it("returns `local` when running on `127.0.0.1:7501`", () => {
+    cy.stub(location, "getLocation").as("getLocation").returns({
+      origin: `http://127.0.0.1:7501`,
+      hostname: "127.0.0.1",
+      protocol: "http:",
+    });
+
+    mountHook(() => useRuntime()).then(result => {
+      cy.get("@getLocation").should("have.been.called");
+
+      expect(result.current).to.equal(Runtime.local);
     });
   });
 });

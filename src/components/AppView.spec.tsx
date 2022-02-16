@@ -24,6 +24,6 @@ describe("AppView", () => {
 
     cy.wait("@getState");
 
-    cy.contains("App is not running").should("not.be.visible");
+    cy.contains("App is not running").should("not.exist");
   });
 });
