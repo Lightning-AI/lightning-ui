@@ -22,9 +22,20 @@
     "web-vitals": "^2.1.0"
   },
   "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.16.7",
     "@craco/craco": "^6.4.3",
     "@cypress/react": "^5.12.1",
     "@cypress/webpack-dev-server": "^1.8.0",
+    "@storybook/addon-actions": "^6.4.19",
+    "@storybook/addon-essentials": "^6.4.19",
+    "@storybook/addon-interactions": "^6.4.19",
+    "@storybook/addon-links": "^6.4.19",
+    "@storybook/builder-webpack5": "^6.4.19",
+    "@storybook/manager-webpack5": "^6.4.19",
+    "@storybook/node-logger": "^6.4.19",
+    "@storybook/preset-create-react-app": "^4.0.1",
+    "@storybook/react": "^6.4.19",
+    "@storybook/testing-library": "^0.0.9",
     "@types/lodash": "^4.14.178",
     "@types/node": "^16.7.13",
     "@types/react": "^17.0.20",
@@ -33,7 +44,8 @@
     "cypress": "^9.4.1",
     "husky": "^7.0.4",
     "lint-staged": "^12.3.3",
-    "prettier": "^2.5.1"
+    "prettier": "^2.5.1",
+    "webpack": "^5.69.1"
   },
   "scripts": {
     "start": "BROWSER=none craco start",
@@ -45,7 +57,9 @@
     "test:e2e": "cypress run",
     "test:e2e:open": "cypress open",
     "eject": "react-scripts eject",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "storybook": "start-storybook -p 6006 -s public",
+    "build-storybook": "build-storybook -s public"
   },
   "lint-staged": {
     "**/*": "prettier --write --ignore-unknown"
@@ -53,6 +67,16 @@
   "eslintConfig": {
     "extends": [
       "react-app"
+    ],
+    "overrides": [
+      {
+        "files": [
+          "**/*.stories.*"
+        ],
+        "rules": {
+          "import/no-anonymous-default-export": "off"
+        }
+      }
     ]
   },
   "browserslist": {
