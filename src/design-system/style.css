@@ -1,0 +1,23 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:400&display=swap");
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+
+@font-face {
+  font-family: "UCity";
+  font-display: "swap";
+  font-weight: 300;
+  src: url("./fonts/UCity/UCity-Light.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "UCity";
+  font-display: "swap";
+  font-weight: 400;
+  src: url("./fonts/UCity/UCity-Regular.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "UCity";
+  font-display: "swap";
+  font-weight: 600;
+  src: url("./fonts/UCity/UCity-Semibold.otf") format("opentype");
+}
