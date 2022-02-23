@@ -13,6 +13,9 @@
 # production
 /build
 
+# design system documentation
+/storybook-static
+
 # misc
 .DS_Store
 .env.local
