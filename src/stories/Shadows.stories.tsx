@@ -4,6 +4,12 @@ import { Box } from "design-system/components/";
 export default {
   title: "Theme/Shadows",
   component: Box,
+  parameters: {
+      design: {
+          type: "figma",
+          url: "https://www.figma.com/file/tLrz5T82EKYMnqgvnk1Ldo/UILibrary?node-id=66758%3A29462",
+      },
+  },
 } as ComponentMeta<typeof Box>;
 
 export const All = () => {

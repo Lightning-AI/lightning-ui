@@ -4,6 +4,12 @@ import Typography from "design-system/components/Typography";
 export default {
   title: "Theme/Typography",
   component: Typography,
+  parameters: {
+    design: {
+      type: "figma",
+      url: "https://www.figma.com/file/tLrz5T82EKYMnqgvnk1Ldo/UILibrary?node-id=66905%3A31728",
+    },
+  },
 } as ComponentMeta<typeof Typography>;
 
 export const All = () => {
