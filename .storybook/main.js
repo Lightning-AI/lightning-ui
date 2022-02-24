@@ -12,5 +12,6 @@ module.exports = {
   "framework": "@storybook/react",
   "core": {
     "builder": "webpack5"
-  }
+  },
+  "staticDirs": ['../src/design-system/'],
 }
