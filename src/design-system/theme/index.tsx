@@ -6,9 +6,9 @@ import palette from "./palette";
 import shadows from "./shadows";
 
 export const theme = createTheme({
-    typography,
-    palette,
-    shadows,
+  typography,
+  palette,
+  shadows,
 });
 
 const ThemeProvider = ({ children }: { children: ReactNode }) => {

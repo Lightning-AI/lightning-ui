@@ -1,7 +1,5 @@
-import Typography from './Typography';
+import Typography from "./Typography";
 
-export * from '@mui/material';
+export * from "@mui/material";
 
-export {
-    Typography,
-}
+export { Typography };
