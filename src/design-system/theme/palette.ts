@@ -24,6 +24,7 @@ const success: PaletteColorOptions & Record<string, string> = {
     main: "#31A24C",
     "70": "#16593D",
     "50": "#31A24C",
+    "20": "#C0EBBE",
     "10": "#D7F5D5",
     contrastText: "#16593D",
 };
@@ -31,6 +32,7 @@ const warning: PaletteColorOptions & Record<string, string> = {
     main: "#FCBE2E",
     "70": "#823E1A",
     "50": "#FCBE2E",
+    "20": "#FCEEBF",
     "10": "#FFF6D4",
     contrastText: "#823E1A",
 };
@@ -38,6 +40,7 @@ const error: PaletteColorOptions & Record<string, string> = {
     main: "#E02C2D",
     "70": "#821D1E",
     "50": "#E02C2D",
+    "20": "#F4C5C9",
     "10": "#FFD4D5",
     contrastText: "#821D1E",
 };

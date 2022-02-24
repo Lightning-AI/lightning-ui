@@ -75,6 +75,10 @@ export const All = () => {
                     <Typography variant={"body1"} align={"center"}>50</Typography>
                 </Box>
                 <Box display={"flex"} flexDirection={"column"}>
+                    <Box m={1} width={65} height={65} sx={{backgroundColor: 'success.20'}}></Box>
+                    <Typography variant={"body1"} align={"center"}>20</Typography>
+                </Box>
+                <Box display={"flex"} flexDirection={"column"}>
                     <Box m={1} width={65} height={65} sx={{backgroundColor: 'success.10'}}></Box>
                     <Typography variant={"body1"} align={"center"}>10</Typography>
                 </Box>
@@ -92,6 +96,10 @@ export const All = () => {
                     <Typography variant={"body1"} align={"center"}>50</Typography>
                 </Box>
                 <Box display={"flex"} flexDirection={"column"}>
+                    <Box m={1} width={65} height={65} sx={{backgroundColor: 'warning.20'}}></Box>
+                    <Typography variant={"body1"} align={"center"}>20</Typography>
+                </Box>
+                <Box display={"flex"} flexDirection={"column"}>
                     <Box m={1} width={65} height={65} sx={{backgroundColor: 'warning.10'}}></Box>
                     <Typography variant={"body1"} align={"center"}>10</Typography>
                 </Box>
@@ -107,6 +115,10 @@ export const All = () => {
                 <Box display={"flex"} flexDirection={"column"}>
                     <Box m={1} width={65} height={65} sx={{backgroundColor: 'error.50'}}></Box>
                     <Typography variant={"body1"} align={"center"}>50</Typography>
+                </Box>
+                <Box display={"flex"} flexDirection={"column"}>
+                    <Box m={1} width={65} height={65} sx={{backgroundColor: 'error.20'}}></Box>
+                    <Typography variant={"body1"} align={"center"}>20</Typography>
                 </Box>
                 <Box display={"flex"} flexDirection={"column"}>
                     <Box m={1} width={65} height={65} sx={{backgroundColor: 'error.10'}}></Box>
