@@ -5,10 +5,10 @@ export default {
   title: "Theme/Palette",
   component: Box,
   parameters: {
-      design: {
-          type: "figma",
-          url: "https://www.figma.com/file/tLrz5T82EKYMnqgvnk1Ldo/UILibrary?node-id=66748%3A29398",
-      },
+    design: {
+      type: "figma",
+      url: "https://www.figma.com/file/tLrz5T82EKYMnqgvnk1Ldo/UILibrary?node-id=66748%3A29398",
+    },
   },
 } as ComponentMeta<typeof Box>;
 
