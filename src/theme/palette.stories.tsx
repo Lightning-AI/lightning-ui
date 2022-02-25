@@ -1,5 +1,6 @@
 import { ComponentMeta } from "@storybook/react";
-import { Box, Typography } from "design-system/components/";
+import { Typography } from "components";
+import { Box } from "@mui/material";
 
 export default {
   title: "Theme/Palette",

@@ -1,5 +1,5 @@
 import { ComponentMeta } from "@storybook/react";
-import { Box } from "design-system/components/";
+import { Box } from "@mui/material";
 
 export default {
   title: "Theme/Shadows",

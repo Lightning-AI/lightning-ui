@@ -1,5 +1,5 @@
 module.exports = {
-  stories: ["../src/**/*.stories.mdx", "../src/**/*.stories.@(js|jsx|ts|tsx)"],
+  stories: ["../stories/*.stories.mdx", "../src/**/*.stories.@(js|jsx|ts|tsx)"],
   addons: [
     "@storybook/addon-links",
     "@storybook/addon-essentials",
@@ -11,5 +11,5 @@ module.exports = {
   core: {
     builder: "webpack5",
   },
-  staticDirs: ["../src/design-system/"],
+  staticDirs: ["../stories/"],
 };

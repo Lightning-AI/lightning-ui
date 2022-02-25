@@ -23,4 +23,4 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
-@import "./design-system/style.css";
+@import "./resources/style.css";
