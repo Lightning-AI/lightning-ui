@@ -1,4 +1,4 @@
-import Typography from "./Typography";
+import Typography from "./typography";
 
 export * from "@mui/material";
 
