@@ -7,7 +7,7 @@ export type ButtonProps = {
   icon?: ReactNode;
   text?: string;
   color?: any;
-} & Pick<MuiButtonProps, "disabled" | "fullWidth" | "variant" | "href" | "sx" | "onClick" | "size">;
+} & Pick<MuiButtonProps, "disabled" | "fullWidth" | "variant" | "href" | "onClick" | "size">;
 
 const Button = (props: ButtonProps) => {
   const isPrimaryColor = typeof props.color === "undefined" || props.color?.startsWith("primary");
