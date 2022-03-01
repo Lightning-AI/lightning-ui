@@ -1,10 +1,5 @@
 import { Box } from "design-system/components/";
 
-export type LabelProps = {
-  text: string;
-  variant?: "default" | "primary" | "success" | "error" | "warning" | "purple";
-};
-
 const colorProperties = {
   default: {
     color: (theme: any) => theme.palette.common.white,
@@ -36,6 +31,12 @@ const colorProperties = {
   },
 };
 
+export type LabelProps = {
+    text: string;
+    color?: "default" | "primary" | "success" | "error" | "warning" | "purple";
+};
+
+
 const Label = (props: LabelProps) => {
   return (
     <Box
@@ -49,7 +50,7 @@ const Label = (props: LabelProps) => {
       borderRadius={"4px"}
       height={"20px"}
       fontWeight={"bold"}
-      sx={colorProperties[props.variant ?? "default"]}>
+      sx={colorProperties[props.color ?? "default"]}>
       {props.text}
     </Box>
   );

@@ -15,7 +15,7 @@ export default {
       defaultValue: "Label",
       control: "text",
     },
-    variant: {
+    color: {
       options: ["default", "primary", "success", "error", "warning", "grey", "purple"],
       control: "select",
     },
