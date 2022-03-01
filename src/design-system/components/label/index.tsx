@@ -32,10 +32,9 @@ const colorProperties = {
 };
 
 export type LabelProps = {
-    text: string;
-    color?: "default" | "primary" | "success" | "error" | "warning" | "purple";
+  text: string;
+  color?: "default" | "primary" | "success" | "error" | "warning" | "purple";
 };
-
 
 const Label = (props: LabelProps) => {
   return (
