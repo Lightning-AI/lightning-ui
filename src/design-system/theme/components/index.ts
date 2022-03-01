@@ -1,7 +1,7 @@
-import button from './button';
+import button from "./button";
 
 const components = {
-    ...button,
+  ...button,
 };
 
 export default components;

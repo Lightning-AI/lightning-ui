@@ -13,17 +13,17 @@ export default {
   argTypes: {
     text: {
       defaultValue: "Label",
-      control: 'text',
+      control: "text",
     },
     variant: {
-      options: ['default', 'primary', 'success', 'error', 'warning', 'grey', 'purple'],
-      control: 'select',
+      options: ["default", "primary", "success", "error", "warning", "grey", "purple"],
+      control: "select",
     },
   },
 } as ComponentMeta<typeof Label>;
 
 const Template: ComponentStory<typeof Label> = (args: LabelProps) => {
-  return <Label {...args} />
+  return <Label {...args} />;
 };
 
 export const Playground = Template.bind({});

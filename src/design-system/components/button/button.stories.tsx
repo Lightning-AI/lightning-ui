@@ -15,45 +15,45 @@ export default {
   argTypes: {
     text: {
       defaultValue: "Button",
-      control: 'text',
+      control: "text",
     },
     icon: {
       options: ["", ...Object.keys(Icons)],
       defaultValue: "",
-      control: 'select',
+      control: "select",
     },
     color: {
-      options: ['primary', 'grey', 'success', 'error'],
-      control: 'select',
+      options: ["primary", "grey", "success", "error"],
+      control: "select",
     },
     variant: {
-      options: ['contained', 'text'],
-      control: 'select',
+      options: ["contained", "text"],
+      control: "select",
     },
     size: {
-      options: ['medium', 'small'],
-      control: 'select',
+      options: ["medium", "small"],
+      control: "select",
     },
     disabled: {
-      control: 'boolean',
+      control: "boolean",
       defaultValue: false,
     },
     fullWidth: {
-      control: 'boolean',
+      control: "boolean",
       defaultValue: false,
     },
     href: {
-      control: 'text',
+      control: "text",
     },
-    onClick: { action: 'clicked' },
+    onClick: { action: "clicked" },
   },
 } as ComponentMeta<typeof Button>;
 
-const Template: ComponentStory<typeof Button> = ({icon, href,  ...args }: ButtonProps) => {
+const Template: ComponentStory<typeof Button> = ({ icon, href, ...args }: ButtonProps) => {
   // @ts-ignore
   const iconComponent = icon !== "" ? <SvgIcon component={Icons[icon]} /> : null;
   const onClickHandler = href ? () => window.alert(`Navigate to ${href}`) : args.onClick;
-  return <Button {...args} onClick={onClickHandler} icon={iconComponent} />
+  return <Button {...args} onClick={onClickHandler} icon={iconComponent} />;
 };
 
 export const Playground = Template.bind({});

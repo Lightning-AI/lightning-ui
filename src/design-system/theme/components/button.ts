@@ -1,15 +1,15 @@
-const button: any = { 
-    MuiButton: {
+const button: any = {
+  MuiButton: {
     defaultProps: {
-        disableRipple: true,
-        variant: "contained",
+      disableRipple: true,
+      variant: "contained",
     },
     styleOverrides: {
-        root: {
-            textTransform: "none",
-            borderRadius: "6px",
-            boxShadow: "none",
-        },
+      root: {
+        textTransform: "none",
+        borderRadius: "6px",
+        boxShadow: "none",
+      },
     },
   },
 };

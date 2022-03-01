@@ -8,9 +8,7 @@ export const decorators = [
   Story => (
     <ThemeProvider>
       <EmotionThemeProvider theme={theme}>
-        <BrowserRouter>
-          {Story()}
-        </BrowserRouter>
+        <BrowserRouter>{Story()}</BrowserRouter>
       </EmotionThemeProvider>
     </ThemeProvider>
   ),
