@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
  
 export type ButtonProps =  {
     icon?: ReactNode,
-    label?: string,
+    text?: string,
     color?: any,
 } & Pick<MuiButtonProps, "disabled" | "fullWidth" | "variant" | "href" | "sx" | "onClick" | "size" >;
 
@@ -49,7 +49,7 @@ const Button = (props: ButtonProps) => {
         onClick={onClickHandler}
         href={""}
     >
-        <Box marginTop={"1px"} fontStyle={"normal"} fontSize={"14px"} lineHeight={"20px"}>{props.label}</Box>
+        <Box marginTop={"1px"} fontStyle={"normal"} fontSize={"14px"} lineHeight={"20px"}>{props.text}</Box>
     </MuiButton>;
 }
 

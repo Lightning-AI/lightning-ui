@@ -13,7 +13,7 @@ export default {
     },
   },
   argTypes: {
-    label: {
+    text: {
       defaultValue: "Button",
       control: 'text',
     },
