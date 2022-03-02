@@ -33,13 +33,14 @@ export default {
 } as ComponentMeta<typeof Card>;
 
 const Template: ComponentStory<any> = ({ onClick, ...args }: CardProps & { onClick: any }) => {
+  const buttonOnClickHandler = (event: any) => event.stopPropagation();
   return (
     <Card {...args}>
       <CardActionArea onClick={onClick}>
         <CardHeader
           title={"Card Header"}
           subheader={"Support Details"}
-          action={<Button icon={<FilterAltOutlined />} text="Filter" variant="text" color="grey" />}
+          action={<Button icon={<FilterAltOutlined />} text="Filter" variant="text" color="grey" onClick={buttonOnClickHandler}/>}
         />
         <CardContent>
           <Box display={"flex"} justifyContent={"center"} alignItems={"center"} height={"150px"}>
@@ -48,9 +49,9 @@ const Template: ComponentStory<any> = ({ onClick, ...args }: CardProps & { onCli
         </CardContent>
         <CardActions>
           <Box display={"flex"} justifyContent={"end"} width={"100%"}>
-            <Button text="Cancel" color={"grey"} />
+            <Button text="Cancel" color={"grey"} onClick={buttonOnClickHandler}/>
             <Box px={1} />
-            <Button text="Confirm" />
+            <Button text="Confirm" onClick={buttonOnClickHandler}/>
           </Box>
         </CardActions>
       </CardActionArea>
