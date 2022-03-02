@@ -9,6 +9,7 @@ import Select from "./select";
 import Banner from "./banner";
 import Alert from "./alert";
 import Snackbar from "./snackbar";
+import { Card, CardHeader, CardContent, CardActions, CardActionArea, CardMedia } from "./card";
 
 export * from "@mui/material";
 
@@ -27,4 +28,10 @@ export {
   Banner,
   Alert,
   Snackbar,
+  Card,
+  CardHeader,
+  CardContent,
+  CardActions,
+  CardActionArea,
+  CardMedia,
 };
