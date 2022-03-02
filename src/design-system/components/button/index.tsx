@@ -34,6 +34,14 @@ const Button = (props: ButtonProps) => {
   };
 
   const onClickHandler = props.href ? navigateHandler(props.href) : props.onClick;
+  const hasNoText = (typeof props.text === 'undefined' || props.text === "");
+  const onlyIconStyle = hasNoText && {
+    minWidth: isSmallSize ? "32px" : "40px",
+    padding: isSmallSize ? "4px 8px" : "8px 12px",
+    "& .MuiButton-startIcon": {
+      margin: 0,
+    },
+  };
   return (
     <MuiButton
       disableElevation
@@ -47,13 +55,14 @@ const Button = (props: ButtonProps) => {
           color,
           backgroundColor,
         },
+        ...onlyIconStyle,
       }}
       {...props}
       startIcon={props.icon}
       variant={variant}
       onClick={onClickHandler}
       href={""}>
-      <Box marginTop={"1px"} fontStyle={"normal"} fontSize={"14px"} lineHeight={"20px"}>
+      <Box marginTop={"2px"} fontStyle={"normal"} fontSize={"14px"} lineHeight={"20px"}>
         {props.text}
       </Box>
     </MuiButton>
