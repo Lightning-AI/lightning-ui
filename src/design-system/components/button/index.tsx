@@ -34,10 +34,10 @@ const Button = (props: ButtonProps) => {
   };
 
   const onClickHandler = props.href ? navigateHandler(props.href) : props.onClick;
-  const hasNoText = (typeof props.text === 'undefined' || props.text === "");
+  const hasNoText = typeof props.text === "undefined" || props.text === "";
   const onlyIconStyle = hasNoText && {
-    minWidth: isSmallSize ? "32px" : "40px",
-    padding: isSmallSize ? "4px 8px" : "8px 12px",
+    "minWidth": isSmallSize ? "32px" : "40px",
+    "padding": isSmallSize ? "4px 8px" : "8px 12px",
     "& .MuiButton-startIcon": {
       margin: 0,
     },
