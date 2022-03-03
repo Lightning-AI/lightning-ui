@@ -11,7 +11,7 @@ const CardHeader = (props: CardHeaderProps) => (
       fontWeight: "600",
       fontStyle: "normal",
       lineHeight: "20px",
-      fontColor: "rgba(28, 28, 28, 1)",
+      color: "rgba(28, 28, 28, 1)",
     }}
     subheaderTypographyProps={{
       fontSize: "12px",
@@ -19,7 +19,7 @@ const CardHeader = (props: CardHeaderProps) => (
       fontWeight: "700",
       fontStyle: "normal",
       lineHeight: "16px",
-      fontColor: "rgba(91, 94, 105, 1)",
+      color: "rgba(91, 94, 105, 1)",
     }}
   />
 );

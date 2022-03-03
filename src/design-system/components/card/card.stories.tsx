@@ -36,33 +36,33 @@ const Template: ComponentStory<any> = ({ onClick, ...args }: CardProps & { onCli
   const buttonOnClickHandler = (event: any) => event.stopPropagation();
   return (
     <Card {...args}>
+      <CardHeader
+        title={"Card Header"}
+        subheader={"Support Details"}
+        action={
+          <Button
+            icon={<FilterAltOutlined />}
+            text="Filter"
+            variant="text"
+            color="grey"
+            onClick={buttonOnClickHandler}
+          />
+        }
+      />
       <CardActionArea onClick={onClick}>
-        <CardHeader
-          title={"Card Header"}
-          subheader={"Support Details"}
-          action={
-            <Button
-              icon={<FilterAltOutlined />}
-              text="Filter"
-              variant="text"
-              color="grey"
-              onClick={buttonOnClickHandler}
-            />
-          }
-        />
         <CardContent>
           <Box display={"flex"} justifyContent={"center"} alignItems={"center"} height={"150px"}>
             Card Content
           </Box>
         </CardContent>
-        <CardActions>
-          <Box display={"flex"} justifyContent={"end"} width={"100%"}>
-            <Button text="Cancel" color={"grey"} onClick={buttonOnClickHandler} />
-            <Box px={1} />
-            <Button text="Confirm" onClick={buttonOnClickHandler} />
-          </Box>
-        </CardActions>
       </CardActionArea>
+      <CardActions>
+        <Box display={"flex"} justifyContent={"end"} width={"100%"}>
+          <Button text="Cancel" color={"grey"} onClick={buttonOnClickHandler} />
+          <Box px={1} />
+          <Button text="Confirm" onClick={buttonOnClickHandler} />
+        </Box>
+      </CardActions>
     </Card>
   );
 };
