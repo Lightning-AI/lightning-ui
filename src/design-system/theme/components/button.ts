@@ -1,5 +1,5 @@
 const button: any = {
-  MuiButton: {
+  MuiButtonBase: {
     defaultProps: {
       disableRipple: true,
       variant: "contained",
