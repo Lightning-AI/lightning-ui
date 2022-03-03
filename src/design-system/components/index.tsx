@@ -10,6 +10,7 @@ import Banner from "./banner";
 import Alert from "./alert";
 import Snackbar from "./snackbar";
 import { Card, CardHeader, CardContent, CardActions, CardActionArea, CardMedia } from "./card";
+import Tabs from "./tabs";
 
 export * from "@mui/material";
 
@@ -34,4 +35,5 @@ export {
   CardActions,
   CardActionArea,
   CardMedia,
+  Tabs,
 };
