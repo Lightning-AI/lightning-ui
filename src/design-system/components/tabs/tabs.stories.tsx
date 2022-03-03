@@ -11,6 +11,10 @@ export default {
     },
   },
   argTypes: {
+    selectedTab: {
+      options: [0, 1, 2],
+      control: "select",
+    },
     variant: {
       options: ["text", "outlined"],
       control: "select",

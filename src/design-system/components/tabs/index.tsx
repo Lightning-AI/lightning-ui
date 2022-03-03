@@ -1,9 +1,9 @@
 import MuiTabs from "@mui/material/Tabs";
-import MuiTab, { TabProps as MuiTabProps } from "@mui/material/Tab";
+import MuiTab from "@mui/material/Tab";
 import MuiTabContext from "@mui/lab/TabContext";
 import MuiTabPanel from "@mui/lab/TabPanel";
 import Box from "@mui/material/Box";
-import { ReactElement, useState } from "react";
+import { ReactElement, useState, useEffect } from "react";
 
 export type TabItem = {
   content: ReactElement;
@@ -11,12 +11,18 @@ export type TabItem = {
 };
 
 export type TabsProps = {
+  selectedTab?: number;
   tabItems: TabItem[];
   variant?: "text" | "outlined";
 };
 
 const Tabs = (props: TabsProps) => {
   const [selectedTab, setSelectedTab] = useState("0");
+  useEffect(() => {
+    const selectedTab =
+      props.selectedTab && props.selectedTab < props.tabItems.length ? props.selectedTab.toString() : "0";
+    setSelectedTab(selectedTab);
+  }, [props.selectedTab]);
 
   return (
     <MuiTabContext value={selectedTab}>
