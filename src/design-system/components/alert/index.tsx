@@ -26,7 +26,7 @@ const Alert = ({ children, show, ...props }: AlertProps) => {
   const [isShown, setIsShown] = useState(show);
   useEffect(() => setIsShown(show), [show]);
   const display = isShown ? "flex" : "none";
-  const alignItems = (typeof props?.action !== "undefined") ? "center" : "flex-start";
+  const alignItems = typeof props?.action !== "undefined" ? "center" : "flex-start";
   return (
     <MuiAlert
       {...props}
@@ -35,14 +35,14 @@ const Alert = ({ children, show, ...props }: AlertProps) => {
       onClose={() => setIsShown(false)}
       sx={{
         display,
-        fontFamily: "Roboto",
-        fontWeight: "normal",
-        fontStyle: "normal",
-        fontSize: "14px",
-        lineHeight: "20px",
-        borderLeft: `8px solid ${severityColor[props.severity ?? "info"]}`,
+        "fontFamily": "Roboto",
+        "fontWeight": "normal",
+        "fontStyle": "normal",
+        "fontSize": "14px",
+        "lineHeight": "20px",
+        "borderLeft": `8px solid ${severityColor[props.severity ?? "info"]}`,
         "& .MuiAlert-action": {
-            alignItems,
+          alignItems,
         },
       }}>
       <MuiAlertTitle

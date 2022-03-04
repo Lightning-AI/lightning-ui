@@ -28,7 +28,7 @@ export type BannerProps = {
 
 const Banner = ({ children, ...props }: BannerProps) => {
   const [isShown, setIsShown] = useState(props.show);
-  useEffect(()=>setIsShown(props.show), [props.show]);
+  useEffect(() => setIsShown(props.show), [props.show]);
 
   return (
     <Box
@@ -50,8 +50,8 @@ const Banner = ({ children, ...props }: BannerProps) => {
         {variantIcon[props.variant]}
         {children}
       </Box>
-      <IconButton onClick={() => setIsShown(false)} >
-        <Close sx={{fontSize: "16px"}}/>
+      <IconButton onClick={() => setIsShown(false)}>
+        <Close sx={{ fontSize: "16px" }} />
       </IconButton>
     </Box>
   );
