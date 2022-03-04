@@ -6,6 +6,7 @@ import Popover from "./popover";
 import Dropdown from "./dropdown";
 import TextField from "./text-field";
 import Select from "./select";
+import Banner from "./banner";
 
 export * from "@mui/material";
 
@@ -21,4 +22,5 @@ export {
   Dropdown,
   TextField,
   Select,
+  Banner,
 };
