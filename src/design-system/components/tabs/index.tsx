@@ -2,9 +2,8 @@ import MuiTabs from "@mui/material/Tabs";
 import MuiTab from "@mui/material/Tab";
 import MuiTabContext from "@mui/lab/TabContext";
 import MuiTabPanel from "@mui/lab/TabPanel";
-import Box from "@mui/material/Box";
 import { ReactElement, useState, useEffect } from "react";
-import Divider from "@mui/material/Divider/Divider";
+import { Divider } from "design-system/components";
 
 export type TabItem = {
   content: ReactElement;
