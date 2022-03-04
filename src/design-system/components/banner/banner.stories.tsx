@@ -1,4 +1,3 @@
-import { Typography } from "@mui/material";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import Banner, { BannerProps } from "design-system/components/banner";
 
