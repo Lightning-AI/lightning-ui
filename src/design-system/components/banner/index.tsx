@@ -1,9 +1,9 @@
 import { Info, Dangerous, Warning, CheckCircle, Close } from "design-system/icons";
-import { Box } from "design-system/components";
-import { ReactNode, useState } from "react";
+import { Box, IconButton } from "design-system/components";
+import { ReactNode, useEffect, useState } from "react";
 
 const iconStyle = {
-  mx: 1,
+  paddingRight: 1,
   fontSize: "16px",
 };
 const variantIcon: Record<string, ReactNode> = {
@@ -27,7 +27,8 @@ export type BannerProps = {
 };
 
 const Banner = ({ children, ...props }: BannerProps) => {
-  const [isShown, setIsShown] = useState(props.show ?? true);
+  const [isShown, setIsShown] = useState(props.show);
+  useEffect(()=>setIsShown(props.show), [props.show]);
 
   return (
     <Box
@@ -36,7 +37,7 @@ const Banner = ({ children, ...props }: BannerProps) => {
       alignItems={"center"}
       justifyContent={"space-between"}
       sx={{
-        py: 1,
+        p: 1,
         minHeight: "20px",
         fontFamily: "Roboto",
         fontWeight: 400,
@@ -49,7 +50,9 @@ const Banner = ({ children, ...props }: BannerProps) => {
         {variantIcon[props.variant]}
         {children}
       </Box>
-      <Close sx={iconStyle} onClick={() => setIsShown(false)} />
+      <IconButton onClick={() => setIsShown(false)} >
+        <Close sx={{fontSize: "16px"}}/>
+      </IconButton>
     </Box>
   );
 };
