@@ -36,7 +36,8 @@ const Banner = ({ children, ...props }: BannerProps) => {
       alignItems={"center"}
       justifyContent={"space-between"}
       sx={{
-        height: "36px",
+        py: 1,
+        minHeight: "20px",
         fontFamily: "Roboto",
         fontWeight: 400,
         fontStyle: "normal",
