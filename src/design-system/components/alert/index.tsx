@@ -20,21 +20,25 @@ const severityIcon: Record<string, ReactNode> = {
 export type AlertProps = {
   title?: string;
   show?: boolean;
-} & Pick<MuiAlertProps, "severity" | "children" | "action">;
+} & Pick<MuiAlertProps, "severity" | "children" | "action" | "onClose">;
 
 const Alert = ({ children, show, ...props }: AlertProps) => {
   const [isShown, setIsShown] = useState(show);
   useEffect(() => setIsShown(show), [show]);
-  const display = isShown ? "flex" : "none";
   const alignItems = typeof props?.action !== "undefined" ? "center" : "flex-start";
-  return (
+  const onCloseHandler = (event: any) => {
+    props.onClose && props.onClose(event);
+    setIsShown(false);
+  };
+
+  return isShown ? (
     <MuiAlert
       {...props}
       variant={"outlined"}
       iconMapping={severityIcon}
-      onClose={() => setIsShown(false)}
+      onClose={onCloseHandler}
       sx={{
-        display,
+        "display": "flex",
         "fontFamily": "Roboto",
         "fontWeight": "normal",
         "fontStyle": "normal",
@@ -57,7 +61,7 @@ const Alert = ({ children, show, ...props }: AlertProps) => {
       </MuiAlertTitle>
       {children}
     </MuiAlert>
-  );
+  ) : null;
 };
 
 export default Alert;
