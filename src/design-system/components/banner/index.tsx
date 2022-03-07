@@ -30,10 +30,10 @@ const Banner = ({ children, ...props }: BannerProps) => {
   const [isShown, setIsShown] = useState(props.show);
   useEffect(() => setIsShown(props.show), [props.show]);
 
-  return (
+  return isShown ? (
     <Box
       {...props}
-      display={isShown ? "flex" : "none"}
+      display={"flex"}
       alignItems={"center"}
       justifyContent={"space-between"}
       sx={{
@@ -54,7 +54,7 @@ const Banner = ({ children, ...props }: BannerProps) => {
         <Close sx={{ fontSize: "16px" }} />
       </IconButton>
     </Box>
-  );
+  ) : null;
 };
 
 export default Banner;
