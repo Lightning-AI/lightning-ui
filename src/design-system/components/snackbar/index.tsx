@@ -1,20 +1,38 @@
-import MuiSnackbar, { SnackbarProps as MuiSnackbarProps } from "@mui/material/Snackbar";
+import MuiSnackbar, { SnackbarOrigin, SnackbarProps as MuiSnackbarProps } from "@mui/material/Snackbar";
 import Alert, { AlertProps } from "design-system/components/alert";
 import React from "react";
 import { Box } from "..";
 
-export type SnackbarProps = Pick<AlertProps, "severity" | "title" | "children"> & Pick<MuiSnackbarProps, "open">;
+export type SnackbarProps = {
+  onClose?: (event: any) => void;
+} & Pick<AlertProps, "severity" | "title" | "children"> &
+  Pick<MuiSnackbarProps, "open"> &
+  SnackbarOrigin;
 
 const AlertRef = React.forwardRef<HTMLDivElement, AlertProps>((props, ref) => {
-    return <Box ref={ref}><Alert {...props}/></Box>;
-  });
-
-const Snackbar = ({open, ...props}: SnackbarProps) => {
   return (
-    <MuiSnackbar open={open} autoHideDuration={5000}>
-      <AlertRef {...props} show={open}/>
-    </MuiSnackbar>
+    <Box ref={ref}>
+      <Alert {...props} />
+    </Box>
   );
+});
+
+const Snackbar = ({ open, onClose, vertical, horizontal, ...props }: SnackbarProps) => {
+  return open ? (
+    <MuiSnackbar
+      key={vertical + horizontal}
+      anchorOrigin={{ vertical, horizontal }}
+      open={open}
+      onClose={onClose}
+      autoHideDuration={5000}
+      sx={{
+        background: "white",
+        boxShadow: 2,
+        borderRadius: "8px",
+      }}>
+      <AlertRef {...props} show={open} onClose={onClose} />
+    </MuiSnackbar>
+  ) : null;
 };
 
 export default Snackbar;

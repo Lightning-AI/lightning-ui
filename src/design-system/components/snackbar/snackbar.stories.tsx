@@ -1,6 +1,8 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import Snackbar, { SnackbarProps } from "design-system/components/snackbar";
 import Button from "design-system/components/button";
+import { useState } from "react";
+import { Box } from "@mui/material";
 
 export default {
   title: "Components/Snackbar",
@@ -25,16 +27,40 @@ export default {
       defaultValue: "You are offline, Please check your connectiviy",
       control: "text",
     },
-    open: {
-      defaultValue: true,
-      control: "boolean",
+    vertical: {
+      defaultValue: "bottom",
+      options: ["top", "bottom"],
+      control: "select",
+    },
+    horizontal: {
+      defaultValue: "left",
+      options: ["left", "center", "right"],
+      control: "select",
     },
   },
 } as ComponentMeta<typeof Snackbar>;
 
 const Template: ComponentStory<typeof Snackbar> = (args: SnackbarProps) => {
-  return <Snackbar {...args} />;
+  const [open, setOpen] = useState(false);
+
+  const handleClick = () => {
+    setOpen(true);
+  };
+
+  const handleClose = (event?: React.SyntheticEvent | Event, reason?: string) => {
+    if (reason === "clickaway") return;
+
+    setOpen(false);
+  };
+
+  return (
+    <>
+      <Box height={"100vh"} display={"flex"} justifyContent={"center"} alignItems={"center"}>
+        <Button text={"Open snackbar"} onClick={handleClick} />
+      </Box>
+      <Snackbar {...args} open={open} onClose={handleClose} />
+    </>
+  );
 };
 
 export const Playground = Template.bind({});
-
