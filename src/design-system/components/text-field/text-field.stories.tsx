@@ -1,5 +1,7 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import TextField, { TextFieldProps } from "design-system/components/text-field";
+import * as Icons from "design-system/icons";
+import { SvgIcon } from "..";
 
 export default {
   title: "Components/TextField",
@@ -23,8 +25,18 @@ export default {
       defaultValue: "Placeholder",
       control: "text",
     },
+    icon: {
+      options: ["", ...Object.keys(Icons)],
+      defaultValue: "",
+      control: "select",
+    },
     status: {
       options: [undefined, "success", "warning", "error"],
+      control: "select",
+    },
+    size: {
+      defaultValue: "medium",
+      options: ["medium", "small"],
       control: "select",
     },
     statusText: {
@@ -39,11 +51,14 @@ export default {
       defaultValue: false,
       control: "boolean",
     },
+    onChange: { action: "changed" },
   },
 } as ComponentMeta<typeof TextField>;
 
-const Template: ComponentStory<typeof TextField> = (args: TextFieldProps) => {
-  return <TextField {...args} />;
+const Template: ComponentStory<typeof TextField> = ({ icon, ...args }: TextFieldProps) => {
+  // @ts-ignore
+  const iconComponent = icon !== "" ? <SvgIcon component={Icons[icon]} /> : null;
+  return <TextField {...args} icon={iconComponent} />;
 };
 
 export const Playground = Template.bind({});
