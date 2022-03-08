@@ -18,8 +18,8 @@ export default {
       control: "text",
     },
     icon: {
-      options: ["", ...Object.keys(Icons)],
-      defaultValue: "",
+      options: [undefined, ...Object.keys(Icons)],
+      defaultValue: undefined,
       control: "select",
     },
     color: {
@@ -51,7 +51,7 @@ export default {
 
 const Template: ComponentStory<typeof Button> = ({ icon, href, ...args }: ButtonProps) => {
   // @ts-ignore
-  const iconComponent = icon !== "" ? <SvgIcon component={Icons[icon]} /> : null;
+  const iconComponent = icon && <SvgIcon component={Icons[icon]} />;
   const onClickHandler = href ? () => window.alert(`Navigate to ${href}`) : args.onClick;
   return <Button {...args} onClick={onClickHandler} icon={iconComponent} />;
 };
