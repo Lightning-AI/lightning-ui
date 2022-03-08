@@ -26,8 +26,8 @@ export default {
       control: "text",
     },
     icon: {
-      options: ["", ...Object.keys(Icons)],
-      defaultValue: "",
+      options: [undefined, ...Object.keys(Icons)],
+      defaultValue: undefined,
       control: "select",
     },
     status: {
@@ -57,7 +57,7 @@ export default {
 
 const Template: ComponentStory<typeof TextField> = ({ icon, ...args }: TextFieldProps) => {
   // @ts-ignore
-  const iconComponent = icon !== "" ? <SvgIcon component={Icons[icon]} /> : null;
+  const iconComponent = icon && <SvgIcon component={Icons[icon]} />;
   return <TextField {...args} icon={iconComponent} />;
 };
 
