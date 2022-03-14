@@ -16,6 +16,8 @@ const FormControl = ({ label, helperText, statusText, children, status, fullWidt
     <FormLabel>{label}</FormLabel>
     <FormHelperText>{helperText}</FormHelperText>
     <Box
+      display={"flex"}
+      flexDirection={"column"}
       sx={{
         borderRadius: "6px",
         marginTop: "4px",
