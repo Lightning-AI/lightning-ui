@@ -9,7 +9,8 @@ const FormStatusText = (props: FormStatusTextProps) => (
   <Typography
     {...props}
     sx={{
-      height: "16px",
+      minHeight: "16px",
+      height: "auto",
       padding: "8px 12px",
       color: "rgba(28, 28, 28, 1)",
       fontFamily: "Roboto",
