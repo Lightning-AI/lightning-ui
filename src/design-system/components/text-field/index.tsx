@@ -21,6 +21,7 @@ export type TextFieldProps = {
   status?: "success" | "warning" | "error";
   statusText?: string;
   icon?: ReactNode;
+  type: "text" | "number" | "password";
   onChange: (value: string | null) => void;
 } & Pick<MuiOutlinedInputProps, "disabled" | "placeholder" | "fullWidth" | "size" | "value">;
 
