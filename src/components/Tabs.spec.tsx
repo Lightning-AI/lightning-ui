@@ -2,7 +2,7 @@ import React from "react";
 
 import mount from "tests/utils/testMount";
 import { stateEndpoint } from "tests/utils/lightning";
-import { Layout, LightingState } from "types/lightning";
+import { Layout, LightningState } from "types/lightning";
 import Tabs from "./Tabs";
 
 describe("Tabs", () => {
@@ -21,7 +21,7 @@ describe("Tabs", () => {
 
     cy.wait("@getState");
 
-    cy.fixture("app-state--simple-layout").then((state: LightingState) => {
+    cy.fixture("app-state--simple-layout").then((state: LightningState) => {
       const layout = state.vars._layout as Layout[];
 
       layout.forEach(item => {

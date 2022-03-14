@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import mount from "tests/utils/testMount";
 import { stateEndpoint } from "tests/utils/lightning";
-import { Layout, LightingState } from "types/lightning";
+import { Layout, LightningState } from "types/lightning";
 import AppRoutesComponent from "./AppRoutes";
 
 // Need to add `<Link>` elements to the component in order to test:
@@ -54,7 +54,7 @@ describe("AppRoutes", () => {
 
     cy.wait("@getState");
 
-    cy.fixture("app-state--running--simple-layout").then((state: LightingState) => {
+    cy.fixture("app-state--running--simple-layout").then((state: LightningState) => {
       const layout = state.vars._layout as Layout[];
 
       layout.forEach(item => {

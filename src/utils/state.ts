@@ -1,6 +1,6 @@
 import get from "lodash/get";
 
-import { LayoutBranch, LightingState } from "types/lightning";
+import { LayoutBranch, LightningState } from "types/lightning";
 
 export const componentPathFor = (path: string) => {
   const fullPath = path.replaceAll(".", ".children.");
@@ -9,7 +9,7 @@ export const componentPathFor = (path: string) => {
   return rootRemoved;
 };
 
-export const childFor = (path: string, state: LightingState): LightingState => {
+export const childFor = (path: string, state: LightningState): LightningState => {
   return get(state, componentPathFor(path));
 };
 
@@ -18,7 +18,7 @@ export type LightningRoute = {
   layout: LayoutBranch;
 };
 
-export const routesFor = (state: LightingState) => {
+export const routesFor = (state: LightningState) => {
   if (state === undefined || state.vars === undefined || state.vars._layout === undefined) {
     return [];
   }
@@ -26,6 +26,6 @@ export const routesFor = (state: LightingState) => {
   return Array.isArray(state.vars._layout) ? state.vars._layout : [state.vars._layout];
 };
 
-export const layoutFor = (state: LightingState): LightningRoute[] => {
+export const layoutFor = (state: LightningState): LightningRoute[] => {
   return routesFor(state).map(route => ({ path: route.name, layout: route as LayoutBranch }));
 };

@@ -1,7 +1,7 @@
 import { useQuery } from "react-query";
 
 import { headersFor, stateEndpoint } from "utils/api";
-import { LightingState } from "types/lightning";
+import { LightningState } from "types/lightning";
 
 export const queryKey = "getLightningState";
 
@@ -17,7 +17,7 @@ export default function useLightningState() {
       return res.json();
     });
 
-  const lightningState = useQuery<LightingState>(
+  const lightningState = useQuery<LightningState>(
     "getLightningState",
     getState,
     // TODO(alecmerdler): Replace polling with WebSockets

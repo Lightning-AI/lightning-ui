@@ -2,7 +2,7 @@
  * Represents the internal state of a Lightning app as exposed by
  * the `/state` endpoint of the Lightning HTTP API.
  */
-export type LightingState = {
+export type LightningState = {
   vars: {
     _layout: Layout | Layout[];
     [key: string]: any;
@@ -33,7 +33,7 @@ export type LightingState = {
   };
 };
 
-export type ChildState = Omit<LightingState, "app_state">;
+export type ChildState = Omit<LightningState, "app_state">;
 
 export type Layout = LayoutBranch | LayoutLeaf;
 

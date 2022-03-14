@@ -1,4 +1,4 @@
-import { AppStage, LayoutType, LightingState, Layout } from "types/lightning";
+import { AppStage, LayoutType, LightningState, Layout } from "types/lightning";
 import { childFor, componentPathFor, routesFor } from "./state";
 
 describe("componentPathFor", () => {
@@ -17,7 +17,7 @@ describe("componentPathFor", () => {
 });
 
 describe("childFor", () => {
-  const appState: LightingState = {
+  const appState: LightningState = {
     vars: {
       _layout: [
         {
@@ -120,13 +120,13 @@ describe("childFor", () => {
 
 describe("routesFor", () => {
   it("returns `state.vars._layout`", () => {
-    cy.fixture("app-state--simple-layout.json").then((state: LightingState) => {
+    cy.fixture("app-state--simple-layout.json").then((state: LightningState) => {
       expect(routesFor(state)).to.deep.equal(state.vars._layout);
     });
   });
 
   it("wraps `state.vars._layout` in an array if it contains only one item", () => {
-    cy.fixture("app-state--simple-layout.json").then((state: LightingState) => {
+    cy.fixture("app-state--simple-layout.json").then((state: LightningState) => {
       const stateWithSingleLayout = {
         ...state,
         vars: { ...state.vars, _layout: (state.vars._layout as Layout[])[0] },

@@ -1,7 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Box, Typography } from "@mui/material";
+import { Alert, Box } from "@mui/material";
 
 import useLightningState from "hooks/useLightningState";
+import useUpdateLightningState from "hooks/useUpdateLightningState";
 
 type Props = {
   name: string;
@@ -9,30 +10,37 @@ type Props = {
 };
 
 const isEstablishCommunicationMessage = (message: MessageEvent, iframeTargetUrl: string) => {
-  return message.data === "Establish communication" && `${message.origin}/` === iframeTargetUrl && message?.ports?.[0];
+  return (
+    message.data === "Establish communication" && message?.ports?.[0] && iframeTargetUrl.startsWith(message.origin)
+  );
 };
 
 export default function IFrameRoute(props: Props) {
-  const [iframeState, setIframeState] = useState("No state reported yet");
   const [iframePort, setIframePort] = useState<MessagePort | undefined>(undefined);
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const lightningState = useLightningState();
 
+  const lightningStateMutation = useUpdateLightningState();
+
   useEffect(() => {
-    window.addEventListener("message", (message: MessageEvent) => {
+    const iframeMessageListener = (message: MessageEvent) => {
       if (isEstablishCommunicationMessage(message, props.iframeTargetUrl)) {
         const internalPort = message.ports[0];
+        setIframePort(internalPort);
+
         message.ports[0].onmessage = (message: MessageEvent) => {
-          if (message.data === "Subscribed" && lightningState.data) {
-            internalPort.postMessage(lightningState.data);
-          } else {
-            setIframeState(message.data);
-          }
+          console.log(`FIXME(alecmerdler): Debugging`, message.data);
+          lightningStateMutation.mutate(message.data);
         };
-        setIframePort(message.ports[0]);
       }
-    });
-  }, [props.iframeTargetUrl, lightningState.data]);
+    };
+
+    window.addEventListener("message", iframeMessageListener);
+
+    return () => {
+      window.removeEventListener("message", iframeMessageListener);
+    };
+  }, [props.iframeTargetUrl, lightningState.data, lightningStateMutation]);
 
   useEffect(() => {
     if (iframePort && lightningState.data) {
@@ -42,7 +50,7 @@ export default function IFrameRoute(props: Props) {
 
   return (
     <Box display={"flex"} flexDirection={"column"} height={"100%"}>
-      <Typography>Component State: {iframeState}</Typography>
+      {lightningStateMutation.isError && <Alert severity="warning">Failed to update, please try again.</Alert>}
       <Box
         height={"100%"}
         width={"100%"}
