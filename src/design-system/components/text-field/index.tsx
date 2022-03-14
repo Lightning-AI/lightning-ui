@@ -23,13 +23,13 @@ export type TextFieldProps = {
   icon?: ReactNode;
   type: "text" | "number" | "password";
   onChange: (value: string | null) => void;
-} & Pick<MuiOutlinedInputProps, "disabled" | "placeholder" | "fullWidth" | "size" | "value">;
+  value: unknown;
+} & Pick<MuiOutlinedInputProps, "disabled" | "placeholder" | "fullWidth" | "size">;
 
 const TextField = ({ label, helperText, statusText, status, icon, fullWidth, onChange, ...props }: TextFieldProps) => {
   const hasStatus = typeof status !== "undefined";
   const onChangeHandler: ChangeEventHandler<HTMLInputElement> = event => {
     if (typeof onChange === "undefined") return;
-    console.log(event.target.value);
     const value = event.target.textContent;
     onChange(value);
   };
@@ -76,11 +76,11 @@ const TextField = ({ label, helperText, statusText, status, icon, fullWidth, onC
           "& .MuiSvgIcon-root": {
             fontSize: "16px",
           },
-          "&.MuiInputBase-adornedStart .MuiSvgIcon-root:first-child": {
+          "&.MuiInputBase-adornedStart .MuiSvgIcon-root:first-of-type": {
             color: "#050505",
             paddingRight: "8px",
           },
-          "&.Mui-disabled.MuiInputBase-adornedStart .MuiSvgIcon-root:first-child": {
+          "&.Mui-disabled.MuiInputBase-adornedStart .MuiSvgIcon-root:first-of-type": {
             color: (theme: any) => theme.palette.grey["50"],
           },
           "&.Mui-disabled.MuiInputBase-adornedEnd svg": {
