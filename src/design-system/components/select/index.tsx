@@ -42,6 +42,7 @@ const Select = ({
   const [selectedValue, setSelectedValue] = useState(value);
 
   const hasStatus = typeof status !== "undefined";
+  const isSmall = props.size === "small";
   const onChangeHandler = (event: any) => {
     const value = event.target.value;
     setSelectedValue(value);
@@ -66,7 +67,7 @@ const Select = ({
           multiple: multiple,
           MenuProps: {
             disablePortal: true,
-            PaperProps: { sx: { marginTop: "-8px" } },
+            PaperProps: { sx: { marginTop: isSmall ? "-4px" : "-8px" } },
           },
         }}
         sx={{
