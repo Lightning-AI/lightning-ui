@@ -3,6 +3,7 @@ import Popover from "design-system/components/popover";
 import Button from "design-system/components/button";
 import { Box, Typography } from "@mui/material";
 import { Settings } from "design-system/icons";
+import { useState } from "react";
 
 export default {
   title: "Components/Popover",
@@ -16,15 +17,17 @@ export default {
 } as ComponentMeta<typeof Popover>;
 
 const Template: ComponentStory<typeof Popover> = () => {
+  const [open, setOpen] = useState(false);
+
   return (
-    <Popover onClickable={<Button icon={<Settings />} text="View Options" color={"grey"}></Button>}>
+    <Popover open={open} onChange={(value) => setOpen(value)} onClickable={<Button icon={<Settings />} text="View Options" color={"grey"}></Button>}>
       <Box width={"250px"}>
         <Typography variant={"h6"}>View Options</Typography>
         <Typography variant={"body1"}>More content as the body of the options</Typography>
         <Box display={"flex"} flexDirection={"column"} paddingTop={"20px"}>
-          <Button color={"grey"} text={"Cancel"} fullWidth />
+          <Button color={"grey"} text={"Cancel"} fullWidth onClick={() => setOpen(false)}/>
           <Box paddingY={"5px"}></Box>
-          <Button text={"Apply"} fullWidth />
+          <Button text={"Apply"} fullWidth onClick={() => setOpen(false)}/>
         </Box>
       </Box>
     </Popover>

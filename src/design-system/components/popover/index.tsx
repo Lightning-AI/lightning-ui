@@ -1,25 +1,30 @@
 import * as React from "react";
 import MuiPopover, { PopoverProps as MuiPopoverProps } from "@mui/material/Popover";
-import { ReactElement } from "react";
+import { ReactElement, useState } from "react";
 import { Box } from "design-system/components";
 
 export type PopoverProps = {
   onClickable: ReactElement;
+  open?: boolean;
+  onChange?: (open: boolean) => void;
 } & Pick<MuiPopoverProps, "children">;
 
 const Popover = (props: PopoverProps) => {
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [anchorEl, setAnchorEl] = useState(null);
 
   const onClickHandler = (event: any) => {
     setAnchorEl(event.currentTarget);
+    props.onChange && props.onChange(true);
   };
 
   const handleClose = () => {
     setAnchorEl(null);
+    props.onChange && props.onChange(false);
   };
 
-  const open = Boolean(anchorEl);
   const clonedOnClickable = React.cloneElement(props.onClickable, { onClick: onClickHandler });
+
+  const open = props.open ?? Boolean(anchorEl);
 
   return (
     <Box>
