@@ -1,5 +1,5 @@
 import { MoreHoriz, ArrowDropDown } from "design-system/icons";
-import { Button as MuiButton, ButtonProps as MuiButtonProps } from "@mui/material";
+import { Button as MuiButton, ButtonProps as MuiButtonProps, Theme } from "@mui/material";
 import { Box, Menu, MenuItem } from "design-system/components/";
 import React, { ReactNode, useState } from "react";
 import Typography from "../typography";
@@ -8,7 +8,7 @@ export type DropdownProps = {
   icon?: ReactNode;
   text?: string;
   variant: "contained" | "text" | "more";
-  options: { key: string; text: string }[];
+  options: { label: string; value: string }[];
   onClick: (key: string) => void;
 } & Pick<MuiButtonProps, "disabled" | "size">;
 
@@ -18,7 +18,7 @@ const Dropdown = (props: DropdownProps) => {
   const isSmallSize = props.size === "small";
   const height = (isSmallSize && "28px") || "36px";
   const variant = props.variant === "text" ? props.variant : "contained";
-  const color = (theme: any) => theme.palette.common.black;
+  const color = (theme: Theme) => theme.palette.common.black;
   const backgroundColor = (theme: any) => {
     if (variant === "text") return "transparent";
     return theme.palette.grey["20"];
@@ -50,7 +50,7 @@ const Dropdown = (props: DropdownProps) => {
 
   const menuItems = props.options.map(option => {
     return (
-      <MenuItem disableRipple key={option.key} onClick={onClickHandlerMenuItem(option.key)}>
+      <MenuItem disableRipple key={option.label} onClick={onClickHandlerMenuItem(option.label)}>
         <Typography
           sx={{
             fontFamily: "Roboto",
@@ -59,7 +59,7 @@ const Dropdown = (props: DropdownProps) => {
             fontSize: "14px",
             lineHeight: "20px",
           }}>
-          {option.text}
+          {option.value}
         </Typography>
       </MenuItem>
     );

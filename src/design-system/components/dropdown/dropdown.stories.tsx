@@ -42,10 +42,10 @@ const Template: ComponentStory<typeof Dropdown> = ({ icon, ...args }: DropdownPr
   // @ts-ignore
   const iconComponent = icon !== "" ? <SvgIcon component={Icons[icon]} /> : undefined;
   const options = [
-    { key: "key 1", text: "Option 1" },
-    { key: "key 2", text: "Option 2" },
-    { key: "key 3", text: "Option 3" },
-    { key: "key 4", text: "Option 4" },
+    { label: "label 1", value: "Option 1" },
+    { label: "label 2", value: "Option 2" },
+    { label: "label 3", value: "Option 3" },
+    { label: "label 4", value: "Option 4" },
   ];
   return <Dropdown {...args} options={options} icon={iconComponent} />;
 };
