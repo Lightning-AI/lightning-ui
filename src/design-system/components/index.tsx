@@ -8,6 +8,7 @@ import TextField from "./text-field";
 import Select from "./select";
 import Banner from "./banner";
 import Alert from "./alert";
+import Snackbar from "./snackbar";
 
 export * from "@mui/material";
 
@@ -25,4 +26,5 @@ export {
   Select,
   Banner,
   Alert,
+  Snackbar,
 };
