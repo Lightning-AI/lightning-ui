@@ -11,6 +11,8 @@ import Alert from "./alert";
 import Snackbar from "./snackbar";
 import { Card, CardHeader, CardContent, CardActions, CardActionArea, CardMedia } from "./card";
 import Tabs from "./tabs";
+import Breadcrumbs from "./breadcrumbs";
+import Pagination from "./pagination";
 
 export * from "@mui/material";
 
@@ -36,4 +38,6 @@ export {
   CardActionArea,
   CardMedia,
   Tabs,
+  Breadcrumbs,
+  Pagination,
 };
