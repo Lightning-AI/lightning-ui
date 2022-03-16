@@ -54,9 +54,9 @@ export default {
     },
     options: {
       defaultValue: [
-        { key: "key 1", value: "Option 1" },
-        { key: "key 2", value: "Option 2" },
-        { key: "key 3", value: "Option 3" },
+        { label: "label 1", value: "Option 1" },
+        { label: "label 2", value: "Option 2" },
+        { label: "label 3", value: "Option 3" },
       ],
       control: "object",
     },
