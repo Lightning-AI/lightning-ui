@@ -21,7 +21,7 @@ export default {
       control: "boolean",
     },
     children: {
-      defaultValue: "You are offline, Please check your connectiviy",
+      defaultValue: "You are offline, Please check your connectivity",
       control: "text",
     },
   },

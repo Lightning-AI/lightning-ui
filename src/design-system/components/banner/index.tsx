@@ -1,5 +1,5 @@
 import { Info, Dangerous, Warning, CheckCircle, Close } from "design-system/icons";
-import { Box, IconButton } from "design-system/components";
+import { Stack, IconButton } from "design-system/components";
 import { ReactNode, useEffect, useState } from "react";
 
 const iconStyle = {
@@ -13,7 +13,9 @@ const variantIcon: Record<string, ReactNode> = {
   error: <Dangerous sx={{ ...iconStyle, color: "#E02C2D" }} />,
 };
 
-const variantBackgroundColor: Record<string, any> = {
+type Variants = "info" | "warning" | "error" | "success";
+
+const variantBackgroundColor: Record<Variants, any> = {
   info: "rgba(239, 238, 255, 1)",
   success: "rgba(49, 162, 76, 0.2)",
   warning: "rgba(241, 168, 23, 0.2)",
@@ -21,7 +23,7 @@ const variantBackgroundColor: Record<string, any> = {
 };
 
 export type BannerProps = {
-  variant: "info" | "warning" | "error" | "success";
+  variant: Variants;
   children: ReactNode;
   show?: boolean;
 };
@@ -31,9 +33,9 @@ const Banner = ({ children, ...props }: BannerProps) => {
   useEffect(() => setIsShown(props.show), [props.show]);
 
   return isShown ? (
-    <Box
+    <Stack
       {...props}
-      display={"flex"}
+      direction={"row"}
       alignItems={"center"}
       justifyContent={"space-between"}
       sx={{
@@ -46,14 +48,14 @@ const Banner = ({ children, ...props }: BannerProps) => {
         lineHeight: "20px",
         backgroundColor: variantBackgroundColor[props.variant],
       }}>
-      <Box display={"flex"} alignItems={"center"}>
+      <Stack direction={"row"} alignItems={"center"}>
         {variantIcon[props.variant]}
         {children}
-      </Box>
+      </Stack>
       <IconButton onClick={() => setIsShown(false)}>
         <Close sx={{ fontSize: "16px" }} />
       </IconButton>
-    </Box>
+    </Stack>
   ) : null;
 };
 

@@ -1,10 +1,14 @@
-import MuiSnackbar, { SnackbarOrigin, SnackbarProps as MuiSnackbarProps } from "@mui/material/Snackbar";
+import MuiSnackbar, {
+  SnackbarCloseReason,
+  SnackbarOrigin,
+  SnackbarProps as MuiSnackbarProps,
+} from "@mui/material/Snackbar";
 import Alert, { AlertProps } from "design-system/components/alert";
-import React from "react";
+import React, { SyntheticEvent } from "react";
 import { Box } from "..";
 
 export type SnackbarProps = {
-  onClose?: (event: any) => void;
+  onClose?: (event: Event | SyntheticEvent<any, Event>, reason?: SnackbarCloseReason) => void;
 } & Pick<AlertProps, "severity" | "title" | "children"> &
   Pick<MuiSnackbarProps, "open"> &
   SnackbarOrigin;
