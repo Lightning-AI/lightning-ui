@@ -13,12 +13,14 @@ import { Card, CardHeader, CardContent, CardActions, CardActionArea, CardMedia }
 import Tabs from "./tabs";
 import Breadcrumbs from "./breadcrumbs";
 import Pagination from "./pagination";
+import ButtonGroup from "./button-group";
 
 export * from "@mui/material";
 
 export {
   Typography,
   Button,
+  ButtonGroup,
   Label,
   Dialog,
   DialogTitle,

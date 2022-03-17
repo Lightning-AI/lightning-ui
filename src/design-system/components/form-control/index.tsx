@@ -21,7 +21,7 @@ const FormControl = ({ label, helperText, statusText, children, status, fullWidt
       sx={{
         borderRadius: "6px",
         marginTop: "4px",
-        backgroundColor: status ? (theme: any) => theme.palette[status]["20"] : "transparent",
+        backgroundColor: status && statusText ? (theme: any) => theme.palette[status]["20"] : "transparent",
       }}>
       {children}
       <FormStatusText>{statusText}</FormStatusText>

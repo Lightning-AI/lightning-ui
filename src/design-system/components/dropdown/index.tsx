@@ -7,9 +7,9 @@ import Typography from "../typography";
 export type DropdownProps = {
   icon?: ReactNode;
   text?: string;
-  variant: "contained" | "text" | "more";
+  variant?: "contained" | "text" | "more";
   options: { label: string; value: string }[];
-  onClick: (key: string) => void;
+  onClick?: (key: string) => void;
 } & Pick<MuiButtonProps, "disabled" | "size">;
 
 const Dropdown = (props: DropdownProps) => {
@@ -65,7 +65,7 @@ const Dropdown = (props: DropdownProps) => {
     );
   });
   return (
-    <Box>
+    <>
       <MuiButton
         disableElevation
         sx={{
@@ -104,7 +104,7 @@ const Dropdown = (props: DropdownProps) => {
         }}>
         {menuItems}
       </Menu>
-    </Box>
+    </>
   );
 };
 

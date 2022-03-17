@@ -1,7 +1,6 @@
 import * as React from "react";
 import MuiPopover, { PopoverProps as MuiPopoverProps } from "@mui/material/Popover";
 import { ReactElement, useState } from "react";
-import { Box } from "design-system/components";
 
 export type PopoverProps = {
   onClickable: ReactElement;
@@ -27,7 +26,7 @@ const Popover = (props: PopoverProps) => {
   const open = props.open ?? Boolean(anchorEl);
 
   return (
-    <Box>
+    <>
       {clonedOnClickable}
       <MuiPopover
         disablePortal
@@ -48,7 +47,7 @@ const Popover = (props: PopoverProps) => {
         }}>
         {props.children}
       </MuiPopover>
-    </Box>
+    </>
   );
 };
 
