@@ -10,8 +10,8 @@ export type ButtonProps = {
 } & Pick<MuiButtonProps, "disabled" | "fullWidth" | "variant" | "href" | "onClick" | "size">;
 
 const Button = ({ href, ...props }: ButtonProps) => {
-  const isPrimaryColor = typeof props.color === "undefined" || props.color?.startsWith("primary");
   const isTextVariant = props.variant === "text";
+  const isPrimaryColor = !isTextVariant && (typeof props.color === "undefined" || props.color?.startsWith("primary"));
   const isGreyColor = isTextVariant || props.color?.startsWith("grey");
   const variant = isTextVariant ? props.variant : "contained";
   const isSmallSize = props.size === "small";
