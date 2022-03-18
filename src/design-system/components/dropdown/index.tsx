@@ -1,6 +1,6 @@
-import { MoreHoriz, ArrowDropDown } from "design-system/icons";
+import { MoreHoriz, ArrowDropDown } from "../../icons";
 import { Button as MuiButton, ButtonProps as MuiButtonProps, Theme } from "@mui/material";
-import { Box, Menu, MenuItem } from "design-system/components/";
+import { Box, Menu, MenuItem } from "../";
 import React, { ReactNode, useState } from "react";
 import Typography from "../typography";
 

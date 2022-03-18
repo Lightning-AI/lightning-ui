@@ -1,4 +1,4 @@
-import { Box } from "design-system/components/";
+import { Box } from "../";
 
 const colorProperties = {
   default: {

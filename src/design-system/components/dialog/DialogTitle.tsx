@@ -1,5 +1,5 @@
 import MuiDialogTitle from "@mui/material/DialogTitle";
-import { Stack, Typography, IconButton } from "design-system/components";
+import { Stack, Typography, IconButton } from "../";
 import { Close } from "design-system/icons";
 
 export type DialogProps = {

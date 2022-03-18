@@ -1,4 +1,4 @@
-import { Typography } from "design-system/components";
+import { Typography } from "../";
 import { ReactNode } from "react";
 
 export type FormLabelProps = {

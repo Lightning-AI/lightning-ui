@@ -1,5 +1,5 @@
 import MuiOutlinedInput, { OutlinedInputProps as MuiOutlinedInputProps } from "@mui/material/OutlinedInput";
-import { Dangerous, Warning, CheckCircle } from "design-system/icons";
+import { Dangerous, Warning, CheckCircle } from "../../icons";
 import React, { ChangeEventHandler, ReactNode } from "react";
 import FormControl from "../form-control";
 

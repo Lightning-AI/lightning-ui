@@ -1,4 +1,4 @@
-import { Box } from "design-system/components";
+import { Box } from "../";
 import MuiFormControl, { FormControlProps as MuiFormControlProps } from "@mui/material/FormControl";
 import FormLabel from "../form-label";
 import FormStatusText from "../form-status-text";
