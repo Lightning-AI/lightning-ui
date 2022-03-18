@@ -55,6 +55,7 @@ export default function IFrameRoute(props: Props) {
         height={"100%"}
         width={"100%"}
         component={"iframe"}
+        sx={{ border: "none" }}
         name={props.name}
         src={props.iframeTargetUrl}
         title={props.name}

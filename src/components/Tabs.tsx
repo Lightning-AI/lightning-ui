@@ -10,7 +10,7 @@ import { purple } from "lightning-colors";
 import { LayoutBranch } from "types/lightning";
 
 const StyledMuiTabs = styled(MuiTabs)({
-  "marginBottom": "8px",
+  "marginBottom": "0",
   ".MuiTab-root": {
     "fontSize": "14px",
     "textTransform": "none",
