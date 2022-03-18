@@ -3,7 +3,7 @@ import MuiTab from "@mui/material/Tab";
 import MuiTabContext from "@mui/lab/TabContext";
 import MuiTabPanel from "@mui/lab/TabPanel";
 import { ReactElement, useState, useEffect } from "react";
-import { Divider } from "design-system/components";
+import { Divider } from "../";
 
 export type TabItem = {
   content: ReactElement;

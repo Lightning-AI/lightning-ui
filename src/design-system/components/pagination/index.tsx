@@ -1,4 +1,4 @@
-import { KeyboardDoubleArrowLeft, KeyboardDoubleArrowRight } from "design-system/icons";
+import { KeyboardDoubleArrowLeft, KeyboardDoubleArrowRight } from "../../icons";
 import MuiPagination, { PaginationProps as MuiPaginationProps } from "@mui/material/Pagination";
 import MuiPaginationItem from "@mui/material/PaginationItem";
 
