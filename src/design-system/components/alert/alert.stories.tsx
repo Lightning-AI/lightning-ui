@@ -21,7 +21,7 @@ export default {
       options: ["info", "success", "error", "warning"],
       control: "select",
     },
-    children: {
+    flows: {
       defaultValue: "You are offline, Please check your connectiviy",
       control: "text",
     },

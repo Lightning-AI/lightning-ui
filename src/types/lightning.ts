@@ -14,7 +14,7 @@ export type LightningState = {
       ret: boolean;
     };
   };
-  children: {
+  flows: {
     [key: string]: ChildState;
   };
   works: {

@@ -17,7 +17,7 @@
     ]
   },
   "calls": {},
-  "children": {
+  "flows": {
     "c2": {
       "vars": {
         "_layout": [
@@ -32,7 +32,7 @@
         ]
       },
       "calls": {},
-      "children": {
+      "flows": {
         "c21": {
           "vars": {
             "_layout": {
@@ -42,7 +42,7 @@
             }
           },
           "calls": {},
-          "children": {},
+          "flows": {},
           "works": {},
           "changes": {},
           "storage": {
@@ -60,7 +60,7 @@
             }
           },
           "calls": {},
-          "children": {},
+          "flows": {},
           "works": {},
           "changes": {},
           "storage": {
@@ -88,7 +88,7 @@
         ]
       },
       "calls": {},
-      "children": {
+      "flows": {
         "c11": {
           "vars": {
             "_layout": {
@@ -99,7 +99,7 @@
             "message": "Hello Streamlit!"
           },
           "calls": {},
-          "children": {},
+          "flows": {},
           "works": {},
           "changes": {},
           "storage": {

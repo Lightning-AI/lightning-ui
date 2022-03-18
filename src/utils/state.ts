@@ -3,7 +3,7 @@ import get from "lodash/get";
 import { LayoutBranch, LightningState } from "types/lightning";
 
 export const componentPathFor = (path: string) => {
-  const fullPath = path.replaceAll(".", ".children.");
+  const fullPath = path.replaceAll(".", ".flows.");
   const rootRemoved = fullPath.replace("root.", "");
 
   return rootRemoved;

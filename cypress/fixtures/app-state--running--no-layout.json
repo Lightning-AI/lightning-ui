@@ -3,11 +3,11 @@
     "counter": 0
   },
   "calls": {},
-  "children": {
+  "flows": {
     "slack": {
       "vars": {},
       "calls": {},
-      "children": {},
+      "flows": {},
       "works": {},
       "changes": {},
       "storage": {

@@ -5,9 +5,9 @@ describe("componentPathFor", () => {
   it("returns the full path to access a child component in the Lightning state", () => {
     const tests = [
       { path: "", expected: "" },
-      { path: "root.a", expected: "children.a" },
-      { path: "root.a.b", expected: "children.a.children.b" },
-      { path: "root.a.b.c", expected: "children.a.children.b.children.c" },
+      { path: "root.a", expected: "flows.a" },
+      { path: "root.a.b", expected: "flows.a.flows.b" },
+      { path: "root.a.b.c", expected: "flows.a.flows.b.flows.c" },
     ];
 
     tests.forEach(test => {
@@ -30,7 +30,7 @@ describe("childFor", () => {
         },
       ],
     },
-    children: {
+    flows: {
       dashboard: {
         vars: {
           _layout: [
@@ -41,7 +41,7 @@ describe("childFor", () => {
             },
           ],
         },
-        children: {},
+        flows: {},
         calls: {},
         changes: {},
         works: {},
@@ -60,7 +60,7 @@ describe("childFor", () => {
             },
           ],
         },
-        children: {
+        flows: {
           download: {
             vars: {
               _layout: [
@@ -71,7 +71,7 @@ describe("childFor", () => {
                 },
               ],
             },
-            children: {},
+            flows: {},
             calls: {},
             changes: {},
             works: {},
@@ -108,8 +108,8 @@ describe("childFor", () => {
   it("returns the correct state for the given child path", async () => {
     const tests = [
       { path: "", expected: undefined },
-      { path: "root.dashboard", expected: appState.children.dashboard },
-      { path: "root.results.download", expected: appState.children.results.children.download },
+      { path: "root.dashboard", expected: appState.flows.dashboard },
+      { path: "root.results.download", expected: appState.flows.results.flows.download },
     ];
 
     tests.forEach(test => {
