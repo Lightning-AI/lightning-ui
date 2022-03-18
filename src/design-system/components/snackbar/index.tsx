@@ -3,9 +3,9 @@ import MuiSnackbar, {
   SnackbarOrigin,
   SnackbarProps as MuiSnackbarProps,
 } from "@mui/material/Snackbar";
-import Alert, { AlertProps } from "design-system/components/alert";
+import Alert, { AlertProps } from "../alert";
 import React, { SyntheticEvent } from "react";
-import { Box } from "..";
+import { Box } from "../";
 
 export type SnackbarProps = {
   onClose?: (event: Event | SyntheticEvent<any, Event>, reason?: SnackbarCloseReason) => void;
