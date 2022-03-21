@@ -1,0 +1,26 @@
+name: Storybook Doc Builder
+on:
+  push:
+    branches:
+      - "build-docs"
+
+jobs:
+  build-docs:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+      - name: Setting up Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 16
+      - name: Generate Docs
+        run: |
+          yarn install --frozen-lockfile --silent
+          yarn build-storybook
+      - name: Publish generated content to GitHub Pages
+        uses: tsunematsu21/actions-publish-gh-pages@v1.0.2
+        with:
+          dir: storybook-static
+          branch: gh-pages
+          token: ${{ secrets.GITHUB_TOKEN }}
