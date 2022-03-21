@@ -61,7 +61,8 @@ const Button = ({ href, ...props }: ButtonProps) => {
       {...props}
       startIcon={props.icon}
       variant={variant}
-      onClick={onClickHandler}>
+      onClick={onClickHandler}
+      href={href}>
       <Box marginTop={"2px"} fontStyle={"normal"} fontSize={"14px"} lineHeight={"20px"}>
         {props.text}
       </Box>
