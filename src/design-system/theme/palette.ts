@@ -54,6 +54,8 @@ const grey: ColorPartial & Record<string, string> = {
   "10": "#F7F8FB",
   "contrastText": "#5B5E69",
 };
+
+const divider = grey["40"];
 const palette: PaletteOptions = {
   primary,
   secondary,
@@ -61,6 +63,7 @@ const palette: PaletteOptions = {
   warning,
   error,
   grey,
+  divider,
 };
 
 export default palette;

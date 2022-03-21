@@ -9,12 +9,18 @@ import Select from "./select";
 import Banner from "./banner";
 import Alert from "./alert";
 import Snackbar from "./snackbar";
+import { Card, CardHeader, CardContent, CardActions, CardActionArea, CardMedia } from "./card";
+import Tabs from "./tabs";
+import Breadcrumbs from "./breadcrumbs";
+import Pagination from "./pagination";
+import ButtonGroup from "./button-group";
 
 export * from "@mui/material";
 
 export {
   Typography,
   Button,
+  ButtonGroup,
   Label,
   Dialog,
   DialogTitle,
@@ -27,4 +33,13 @@ export {
   Banner,
   Alert,
   Snackbar,
+  Card,
+  CardHeader,
+  CardContent,
+  CardActions,
+  CardActionArea,
+  CardMedia,
+  Tabs,
+  Breadcrumbs,
+  Pagination,
 };

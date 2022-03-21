@@ -3,16 +3,15 @@ import React from "react";
 
 export type ButtonGroupProps = {
   children: React.ReactElement[];
-} & Pick<MuiButtonGroupProps, "disabled" | "fullWidth" | "size" | "color">;
+  color: "primary" | "grey" | "success" | "error";
+} & Pick<MuiButtonGroupProps, "disabled" | "fullWidth" | "size">;
 
-const ButtonGroup = (props: ButtonGroupProps) => {
+const ButtonGroup = ({ color, ...props }: ButtonGroupProps) => {
   const isSmallSize = props.size === "small";
   const buttons =
     props.children &&
     Array.isArray(props.children) &&
-    props.children.map((button, index) =>
-      React.cloneElement(button, { key: index, color: props.color, size: props.size }),
-    );
+    props.children.map((button, index) => React.cloneElement(button, { key: index, color, size: props.size }));
   return (
     <MuiButtonGroup
       {...props}

@@ -3,7 +3,7 @@ import MuiSnackbar, {
   SnackbarOrigin,
   SnackbarProps as MuiSnackbarProps,
 } from "@mui/material/Snackbar";
-import Alert, { AlertProps } from "design-system/components/alert";
+import Alert, { AlertProps } from "../alert";
 import React, { SyntheticEvent } from "react";
 import { Box } from "..";
 

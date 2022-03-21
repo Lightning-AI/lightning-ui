@@ -1,5 +1,5 @@
 import MuiOutlinedInput, { OutlinedInputProps as MuiOutlinedInputProps } from "@mui/material/OutlinedInput";
-import { Dangerous, Warning, CheckCircle } from "design-system/icons";
+import { Dangerous, Warning, CheckCircle } from "../../icons";
 import React, { ChangeEventHandler, ReactNode } from "react";
 import FormControl from "../form-control";
 
@@ -21,13 +21,16 @@ export type TextFieldProps = {
   status?: "success" | "warning" | "error";
   statusText?: string;
   icon?: ReactNode;
-  type: "text" | "number" | "password";
+  type?: "text" | "number" | "password";
   onChange: (value: string | null) => void;
-  value: unknown;
+  value?: unknown;
 } & Pick<MuiOutlinedInputProps, "disabled" | "placeholder" | "fullWidth" | "size">;
 
 const TextField = React.forwardRef(
-  ({ label, helperText, statusText, status, icon, fullWidth, onChange, ...props }: TextFieldProps, ref: any) => {
+  (
+    { label, helperText, statusText, status, icon, fullWidth, onChange, type = "text", ...props }: TextFieldProps,
+    ref: any,
+  ) => {
     const hasStatus = typeof status !== "undefined";
     const onChangeHandler: ChangeEventHandler<HTMLInputElement> = event => {
       if (typeof onChange === "undefined") return;
@@ -40,6 +43,7 @@ const TextField = React.forwardRef(
           inputRef={ref}
           fullWidth={fullWidth}
           onChange={onChangeHandler}
+          type={type}
           {...props}
           error={hasStatus}
           startAdornment={icon}

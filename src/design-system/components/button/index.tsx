@@ -1,5 +1,5 @@
 import { Button as MuiButton, ButtonProps as MuiButtonProps } from "@mui/material";
-import { Box } from "design-system/components/";
+import { Box } from "../";
 import { ReactNode } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -9,10 +9,11 @@ export type ButtonProps = {
   color?: any;
 } & Pick<MuiButtonProps, "disabled" | "fullWidth" | "variant" | "href" | "onClick" | "size">;
 
-const Button = (props: ButtonProps) => {
-  const isPrimaryColor = typeof props.color === "undefined" || props.color?.startsWith("primary");
-  const isGreyColor = props.color?.startsWith("grey");
-  const variant = props.variant === "text" && isGreyColor ? props.variant : "contained";
+const Button = ({ href, ...props }: ButtonProps) => {
+  const isTextVariant = props.variant === "text";
+  const isPrimaryColor = !isTextVariant && (typeof props.color === "undefined" || props.color?.startsWith("primary"));
+  const isGreyColor = isTextVariant || props.color?.startsWith("grey");
+  const variant = isTextVariant ? props.variant : "contained";
   const isSmallSize = props.size === "small";
   const height = (isSmallSize && "28px") || "36px";
   const color = (theme: any) => {
@@ -33,7 +34,7 @@ const Button = (props: ButtonProps) => {
     return () => navigate(url);
   };
 
-  const onClickHandler = props.href ? navigateHandler(props.href) : props.onClick;
+  const onClickHandler = href ? navigateHandler(href) : props.onClick;
   const hasNoText = typeof props.text === "undefined" || props.text === "";
   const onlyIconStyle = hasNoText && {
     "minWidth": isSmallSize ? "32px" : "40px",
@@ -61,7 +62,7 @@ const Button = (props: ButtonProps) => {
       startIcon={props.icon}
       variant={variant}
       onClick={onClickHandler}
-      href={""}>
+      href={href}>
       <Box marginTop={"2px"} fontStyle={"normal"} fontSize={"14px"} lineHeight={"20px"}>
         {props.text}
       </Box>

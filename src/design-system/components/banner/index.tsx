@@ -1,5 +1,5 @@
-import { Info, Dangerous, Warning, CheckCircle, Close } from "design-system/icons";
-import { Stack, IconButton } from "design-system/components";
+import { Info, Dangerous, Warning, CheckCircle, Close } from "../../icons";
+import { Stack, IconButton } from "../";
 import { ReactNode, useEffect, useState } from "react";
 
 const iconStyle = {

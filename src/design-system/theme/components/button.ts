@@ -1,9 +1,11 @@
 const button: any = {
-  MuiButton: {
+  MuiButtonBase: {
     defaultProps: {
       disableRipple: true,
       variant: "contained",
     },
+  },
+  MuiButton: {
     styleOverrides: {
       root: {
         textTransform: "none",

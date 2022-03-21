@@ -1,0 +1,30 @@
+name: Storybook Doc Builder
+on:
+  push:
+    branches:
+      - "master"
+    paths:
+      - src/design-system
+
+jobs:
+  build-docs:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+      - name: Setting up Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 16
+      - name: Generate Docs
+        run: |
+          yarn install --frozen-lockfile --silent
+          yarn build-storybook
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        if: ${{ github.ref == 'refs/heads/master' }}
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./storybook-static
+          allow_empty_commit: true
+          commit_message: ${{ github.event.head_commit.message }}

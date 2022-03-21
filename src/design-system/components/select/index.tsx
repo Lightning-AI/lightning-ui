@@ -1,6 +1,6 @@
 import MuiTextField, { TextFieldProps as MuiTextFieldProps } from "@mui/material/TextField";
-import { MenuItem } from "design-system/components";
-import { Dangerous, Warning, CheckCircle } from "design-system/icons";
+import { MenuItem } from "../";
+import { Dangerous, Warning, CheckCircle } from "../../icons";
 import React, { ReactNode, useState } from "react";
 import FormControl from "../form-control";
 
