@@ -4,6 +4,8 @@ const button: any = {
       disableRipple: true,
       variant: "contained",
     },
+  },
+  MuiButton: {
     styleOverrides: {
       root: {
         textTransform: "none",
