@@ -2,7 +2,9 @@ name: Storybook Doc Builder
 on:
   push:
     branches:
-      - "build-docs"
+      - "master"
+    paths:
+      - src/design-system
 
 jobs:
   build-docs:
@@ -20,7 +22,7 @@ jobs:
           yarn build-storybook
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
-        if: ${{ github.ref == 'refs/heads/build-docs' }}
+        if: ${{ github.ref == 'refs/heads/master' }}
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./storybook-static
