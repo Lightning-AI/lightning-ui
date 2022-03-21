@@ -14,8 +14,10 @@ export type BreadcrumbsProps = {
 
 export default function Breadcrumbs({ items }: BreadcrumbsProps) {
   const navigate = useNavigate();
-  const onClickHandler = (url: string) => {
-    return (event: any) => {
+  const onClickHandler = (
+    url: string,
+  ): React.MouseEventHandler<HTMLAnchorElement> & React.MouseEventHandler<HTMLSpanElement> => {
+    return event => {
       event.preventDefault();
       navigate(url);
     };
