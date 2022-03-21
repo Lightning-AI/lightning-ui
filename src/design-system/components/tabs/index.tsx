@@ -22,7 +22,7 @@ const Tabs = (props: TabsProps) => {
     const selectedTab =
       props.selectedTab && props.selectedTab < props.tabItems.length ? props.selectedTab.toString() : "0";
     setSelectedTab(selectedTab);
-  }, [props.selectedTab]);
+  }, [props.selectedTab, props.tabItems]);
 
   return (
     <MuiTabContext value={selectedTab}>
