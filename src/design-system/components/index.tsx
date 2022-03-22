@@ -14,6 +14,7 @@ import Tabs from "./tabs";
 import Breadcrumbs from "./breadcrumbs";
 import Pagination from "./pagination";
 import ButtonGroup from "./button-group";
+import Media from "./media";
 
 export * from "@mui/material";
 
@@ -42,4 +43,5 @@ export {
   Tabs,
   Breadcrumbs,
   Pagination,
+  Media,
 };
