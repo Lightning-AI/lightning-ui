@@ -20,8 +20,16 @@ const tabs: any = {
             border: ownerState.variant === "outlined" && "1px solid",
             borderRadius: "6px 6px 0 0",
             borderColor: theme.palette.divider,
+            backgroundColor: ownerState.variant === "outlined" && "white",
           },
         };
+      },
+    },
+  },
+  MuiTabPanel: {
+    styleOverrides: {
+      root: {
+        padding: "18px 0px",
       },
     },
   },
