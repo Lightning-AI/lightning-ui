@@ -31,7 +31,7 @@ const Button = ({ href, ...props }: ButtonProps) => {
   const navigate = useNavigate();
 
   const navigateHandler = (url: string): MouseEventHandler<HTMLButtonElement> => {
-    return (event) => {
+    return event => {
       event.preventDefault();
       navigate(url);
     };
