@@ -2,6 +2,7 @@ import React from "react";
 import { mount } from "@cypress/react";
 import { QueryClientProvider, QueryClient } from "react-query";
 import { BrowserRouter } from "react-router-dom";
+import ThemeProvider from "design-system/theme";
 
 let client: QueryClient;
 
@@ -19,8 +20,10 @@ export default function testMount(element: JSX.Element) {
     },
   });
   return mount(
-    <QueryClientProvider client={client}>
-      <BrowserRouter>{element}</BrowserRouter>
-    </QueryClientProvider>,
+    <ThemeProvider>
+      <QueryClientProvider client={client}>
+        <BrowserRouter>{element}</BrowserRouter>
+      </QueryClientProvider>
+    </ThemeProvider>,
   );
 }
