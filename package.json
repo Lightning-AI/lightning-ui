@@ -25,6 +25,7 @@
     "@babel/plugin-proposal-private-property-in-object": "^7.16.7",
     "@craco/craco": "^6.4.3",
     "@cypress/react": "^5.12.1",
+    "@cypress/snapshot": "^2.1.7",
     "@cypress/webpack-dev-server": "^1.8.0",
     "@storybook/addon-actions": "^6.4.19",
     "@storybook/addon-essentials": "^6.4.19",
