@@ -3,8 +3,6 @@ on:
   push:
     branches:
       - "master"
-    paths:
-      - src/design-system
 
 jobs:
   build-docs:
