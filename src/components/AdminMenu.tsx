@@ -10,7 +10,6 @@ import useLightningState from "hooks/useLightningState";
 import useStartApp from "hooks/useStartApp";
 import useStopApp from "hooks/useStopApp";
 import { AppStage } from "types/lightning";
-import AdminTabs from "components/AdminTabs";
 
 const Wrapper = styled("div")({
   background: menuBackground,
@@ -99,7 +98,6 @@ export default function AdminMenu() {
         <h1>Local App</h1>
         <Actions />
       </TitleAndActions>
-      <AdminTabs />
     </Wrapper>
   );
 }
