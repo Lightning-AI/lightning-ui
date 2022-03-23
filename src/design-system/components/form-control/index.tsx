@@ -9,11 +9,12 @@ export type FormControlProps = {
   helperText?: string;
   status?: "success" | "warning" | "error";
   statusText?: string;
+  optional?: boolean;
 } & Pick<MuiFormControlProps, "children" | "fullWidth">;
 
-const FormControl = ({ label, helperText, statusText, children, status, fullWidth }: FormControlProps) => (
+const FormControl = ({ label, helperText, statusText, children, status, fullWidth, optional }: FormControlProps) => (
   <MuiFormControl fullWidth={fullWidth}>
-    <FormLabel>{label}</FormLabel>
+    <FormLabel optional={optional}>{label}</FormLabel>
     <FormHelperText>{helperText}</FormHelperText>
     <Box
       display={"flex"}

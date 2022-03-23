@@ -47,6 +47,10 @@ export default {
       defaultValue: false,
       control: "boolean",
     },
+    optional: {
+      defaultValue: false,
+      control: "boolean",
+    },
     multiple: {
       table: {
         disable: true,
