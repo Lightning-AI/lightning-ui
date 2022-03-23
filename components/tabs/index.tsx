@@ -14,6 +14,7 @@ export type TabsProps = {
   selectedTab?: number;
   tabItems: TabItem[];
   variant?: "text" | "outlined";
+  backgroundColor?: string;
 };
 
 const Tabs = (props: TabsProps) => {
@@ -26,7 +27,11 @@ const Tabs = (props: TabsProps) => {
 
   return (
     <MuiTabContext value={selectedTab}>
-      <MuiTabs value={selectedTab} onChange={(e, value) => setSelectedTab(value)} variant={"scrollable"}>
+      <MuiTabs
+        value={selectedTab}
+        onChange={(e, value) => setSelectedTab(value)}
+        variant={"scrollable"}
+        sx={{ backgroundColor: props.backgroundColor }}>
         {props.tabItems.map((tabItem, index) => (
           // @ts-ignore
           <MuiTab key={tabItem.title} label={tabItem.title} value={index.toString()} variant={props.variant} />

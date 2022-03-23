@@ -24,11 +24,15 @@ export type SelectProps = {
   icon?: ReactNode;
   options: { label: string; value: string }[];
   onChange: (value: string | string[] | null) => void;
+  optional?: boolean;
   multiple?: boolean;
 } & Pick<MuiTextFieldProps, "disabled" | "fullWidth" | "size" | "value">;
 
 const Select = React.forwardRef(
-  ({ label, helperText, statusText, status, icon, fullWidth, multiple, onChange, ...props }: SelectProps, ref) => {
+  (
+    { label, helperText, statusText, status, icon, fullWidth, optional, multiple, onChange, ...props }: SelectProps,
+    ref,
+  ) => {
     const value = props.value ?? multiple ? [] : "";
     const [selectedValue, setSelectedValue] = useState(value);
 
@@ -42,7 +46,13 @@ const Select = React.forwardRef(
     };
 
     return (
-      <FormControl label={label} helperText={helperText} status={status} statusText={statusText} fullWidth={fullWidth}>
+      <FormControl
+        label={label}
+        helperText={helperText}
+        status={status}
+        statusText={statusText}
+        fullWidth={fullWidth}
+        optional={optional}>
         <MuiTextField
           inputRef={ref}
           value={selectedValue}

@@ -24,11 +24,23 @@ export type TextFieldProps = {
   type?: "text" | "number" | "password";
   onChange: (value: string | null) => void;
   value?: unknown;
+  optional?: boolean;
 } & Pick<MuiOutlinedInputProps, "disabled" | "placeholder" | "fullWidth" | "size">;
 
 const TextField = React.forwardRef(
   (
-    { label, helperText, statusText, status, icon, fullWidth, onChange, type = "text", ...props }: TextFieldProps,
+    {
+      label,
+      helperText,
+      statusText,
+      status,
+      icon,
+      fullWidth,
+      optional,
+      onChange,
+      type = "text",
+      ...props
+    }: TextFieldProps,
     ref: any,
   ) => {
     const hasStatus = typeof status !== "undefined";
@@ -38,7 +50,13 @@ const TextField = React.forwardRef(
       onChange(value);
     };
     return (
-      <FormControl label={label} helperText={helperText} status={status} statusText={statusText} fullWidth={fullWidth}>
+      <FormControl
+        label={label}
+        helperText={helperText}
+        status={status}
+        statusText={statusText}
+        fullWidth={fullWidth}
+        optional={optional}>
         <MuiOutlinedInput
           inputRef={ref}
           fullWidth={fullWidth}

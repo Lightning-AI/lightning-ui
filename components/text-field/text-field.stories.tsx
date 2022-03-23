@@ -51,6 +51,10 @@ export default {
       defaultValue: false,
       control: "boolean",
     },
+    optional: {
+      defaultValue: false,
+      control: "boolean",
+    },
     type: {
       defaultValue: "text",
       options: ["text", "number", "password"],

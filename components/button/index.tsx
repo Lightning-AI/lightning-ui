@@ -1,6 +1,6 @@
 import { Button as MuiButton, ButtonProps as MuiButtonProps } from "@mui/material";
 import { Box } from "../";
-import { ReactNode } from "react";
+import { MouseEventHandler, ReactNode } from "react";
 import { useNavigate } from "react-router-dom";
 
 export type ButtonProps = {
@@ -30,8 +30,11 @@ const Button = ({ href, ...props }: ButtonProps) => {
   };
   const navigate = useNavigate();
 
-  const navigateHandler = (url: string) => {
-    return () => navigate(url);
+  const navigateHandler = (url: string): MouseEventHandler<HTMLButtonElement> => {
+    return event => {
+      event.preventDefault();
+      navigate(url);
+    };
   };
 
   const onClickHandler = href ? navigateHandler(href) : props.onClick;
