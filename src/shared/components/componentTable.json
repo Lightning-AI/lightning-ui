@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Video Downloader",
+    "type": "S3 Data Download",
+    "provider": "AWS",
+    "lastStartTime": null
+  },
+  {
+    "name": "Pose Estimator Trainer",
+    "type": "Lightning Model Training",
+    "provider": "Lightning.ai",
+    "lastStartTime": "2022-01-28"
+  },
+  {
+    "name": "Model Deploy",
+    "type": "Lightning Deploy",
+    "provider": "Lightning.ai",
+    "lastStartTime": "2022-02-18"
+  }
+]
