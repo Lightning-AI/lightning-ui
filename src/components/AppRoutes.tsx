@@ -18,8 +18,7 @@ export default function LightningAppRoutes() {
     <Routes>
       {lightningState.isLoading && <Route path="*" element={<div>Lightning is initializing...</div>} />}
       <Route path="/" element={<Navigate replace to="/admin" />} />
-      <Route path="/admin" element={<AdminView />}>
-      </Route>
+      <Route path="/admin" element={<AdminView />}></Route>
       <Route path="/view" element={<AppView />}>
         {homeRoute !== undefined && <Route index element={<Navigate replace to={`/view/${homeRoute.path}`} />} />}
         {layoutFor(lightningState.data!).map(route => (

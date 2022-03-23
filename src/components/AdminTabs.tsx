@@ -17,17 +17,16 @@ const appDetailsProps: AppDetailsProps = {
 };
 
 const components: ComponentEntity[] = [
-    { status: StatusEnum.NOT_YET_RUN, ...componentTableJson[0] },
-    { status: StatusEnum.RUNNING, ...componentTableJson[1] },
-    { status: StatusEnum.FAILED, ...componentTableJson[2] },
-  ];
-
+  { status: StatusEnum.NOT_YET_RUN, ...componentTableJson[0] },
+  { status: StatusEnum.RUNNING, ...componentTableJson[1] },
+  { status: StatusEnum.FAILED, ...componentTableJson[2] },
+];
 
 export default function AdminTabs() {
   const tabItems = [
     {
       title: "App Overview",
-      content: <AppOverview appDetails={appDetailsProps} components={components}/>,
+      content: <AppOverview appDetails={appDetailsProps} components={components} />,
     },
     {
       content: <Components />,
