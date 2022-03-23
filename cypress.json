@@ -11,5 +11,7 @@
   "screenshotOnRunFailure": true,
   "taskTimeout": 300000,
   "trashAssetsBeforeRuns": true,
-  "useRelativeSnapshots": true
+  "useRelativeSnapshots": true,
+  "viewportHeight": 1080,
+  "viewportWidth": 1920
 }
