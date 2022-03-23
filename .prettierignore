@@ -2,3 +2,4 @@ resources
 build
 node_modules
 fonts
+src/**/snapshots.js
