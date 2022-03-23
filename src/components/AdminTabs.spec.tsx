@@ -4,11 +4,13 @@ import mount from "tests/utils/testMount";
 import AdminTabs from "./AdminTabs";
 
 describe("AdminTabs", () => {
-  const title = "Components";
+  const appOverviewTitle = "App Overview";
+  const componentsTitle = "Components";
 
   it("renders the correct tabs", () => {
     mount(<AdminTabs />);
 
-    cy.contains(title.toUpperCase()).should("be.visible");
+    cy.contains(appOverviewTitle).should("be.visible");
+    cy.contains(componentsTitle).should("be.visible");
   });
 });
