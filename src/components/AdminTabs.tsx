@@ -1,62 +1,39 @@
 import React from "react";
-import MuiTabs from "@mui/material/Tabs";
-import MuiTab from "@mui/material/Tab";
-import { useLocation, useNavigate } from "react-router-dom";
-import { styled } from "@mui/material";
+import { Tabs } from "design-system/components";
 
-import { purple } from "lightning-colors";
+import Components from "./Components";
+import { AppDetailsProps } from "../shared/components/AppDetails";
+import appDetailsJson from "../shared/components/appDetails.json";
+import { ComponentEntity } from "../shared/components/ComponentTable";
+import componentTableJson from "../shared/components/componentTable.json";
+import { StatusEnum } from "../shared/components/Status";
+import AppOverview from "shared/components/AppOverview";
 
-const StyledMuiTabs = styled(MuiTabs)({
-  ".MuiTab-root": {
-    "fontSize": "14px",
-    "textTransform": "none",
-    "&.Mui-selected": {
-      color: purple,
-    },
+const appDetailsProps: AppDetailsProps = {
+  ...appDetailsJson,
+  onEdit: () => {
+    console.log("Edit clicked");
   },
-  ".MuiTabs-indicator": {
-    background: purple,
-    height: "4px",
-  },
-});
-
-type LinkTabProps = {
-  label: string;
-  href: string;
 };
 
-function LinkTab(props: LinkTabProps) {
-  const navigate = useNavigate();
+const components: ComponentEntity[] = [
+    { status: StatusEnum.NOT_YET_RUN, ...componentTableJson[0] },
+    { status: StatusEnum.RUNNING, ...componentTableJson[1] },
+    { status: StatusEnum.FAILED, ...componentTableJson[2] },
+  ];
 
-  return (
-    <MuiTab
-      component="a"
-      onClick={(event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
-        event.preventDefault();
-        navigate(props.href);
-      }}
-      {...props}
-    />
-  );
-}
-
-const routes = [
-  {
-    name: "Components",
-    href: "",
-  },
-];
 
 export default function AdminTabs() {
-  const location = useLocation();
+  const tabItems = [
+    {
+      title: "App Overview",
+      content: <AppOverview appDetails={appDetailsProps} components={components}/>,
+    },
+    {
+      content: <Components />,
+      title: "Components",
+    },
+  ];
 
-  const activeTabIndex = routes.findIndex(r => `/admin${r.href}` === location.pathname);
-
-  return (
-    <StyledMuiTabs value={activeTabIndex}>
-      {routes.map(route => (
-        <LinkTab key={route.name} label={route.name.toUpperCase()} href={`/admin${route.href}`} />
-      ))}
-    </StyledMuiTabs>
-  );
+  return <Tabs tabItems={tabItems} variant={"outlined"} backgroundColor={"rgb(247, 248, 251)"} />;
 }
