@@ -2,7 +2,7 @@ import MuiAvatar from "@mui/material/Avatar";
 
 export type MediaProps = {
   variant?: "square" | "circle" | "portrait" | "landscape";
-  size: 16 | 24 | 32 | 48 | 64 | 96 | 144 | 180;
+  size?: 16 | 24 | 32 | 48 | 64 | 96 | 144 | 180;
   src?: string;
 };
 
