@@ -1,55 +1,9 @@
-import React from "react";
-import { Column, useTable } from "react-table";
-import { Table as MuiTable, TableBody, TableCell, TableContainer, TableHead, TableRow, Box } from "@mui/material";
+import React, { ReactNode } from "react";
+import { Table, Box } from "design-system/components";
 
 import useLightningSpec from "hooks/useLightningSpec";
-import { ComponentSpec } from "types/lightning";
 
-type ComponentTableProps = {
-  data: ComponentSpec[];
-};
-
-const columns: Column<ComponentSpec>[] = [
-  {
-    Header: "Name",
-    accessor: "cls_name",
-    Cell: ({ value }) => <code>{value}</code>,
-  },
-];
-
-function ComponentTable(props: ComponentTableProps) {
-  const { data } = props;
-  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } = useTable({ columns, data });
-
-  return (
-    <TableContainer>
-      <MuiTable {...getTableProps()}>
-        <TableHead>
-          {headerGroups.map(headerGroup => (
-            <TableRow {...headerGroup.getHeaderGroupProps()}>
-              {headerGroup.headers.map(column => (
-                <TableCell {...column.getHeaderProps()}>{column.render("Header")}</TableCell>
-              ))}
-            </TableRow>
-          ))}
-        </TableHead>
-        <TableBody {...getTableBodyProps()}>
-          {rows.map(row => {
-            prepareRow(row);
-
-            return (
-              <TableRow {...row.getRowProps()}>
-                {row.cells.map(cell => (
-                  <TableCell {...cell.getCellProps()}>{cell.render("Cell")}</TableCell>
-                ))}
-              </TableRow>
-            );
-          })}
-        </TableBody>
-      </MuiTable>
-    </TableContainer>
-  );
-}
+const Container = ({ children }: { children: ReactNode }) => <Box sx={{ marginBottom: "46px" }}>{children}</Box>;
 
 export default function Components() {
   const lightningSpec = useLightningSpec();
@@ -60,15 +14,17 @@ export default function Components() {
 
   if (!lightningSpec.data || lightningSpec.data.length === 0) {
     return (
-      <Box sx={{ marginBottom: "46px" }}>
+      <Container>
         <span>No components defined</span>
-      </Box>
+      </Container>
     );
   }
 
+  const rows = lightningSpec.data?.map(cell => [<code>{cell.cls_name}</code>]);
+
   return (
-    <Box sx={{ marginBottom: "46px" }}>
-      <ComponentTable data={lightningSpec.data ?? []} />
-    </Box>
+    <Container>
+      <Table header={["Name"]} rows={rows} />
+    </Container>
   );
 }
