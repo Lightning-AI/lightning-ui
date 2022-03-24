@@ -10,8 +10,7 @@ export type AppOverviewProps = {
 const AppOverview = (props: AppOverviewProps) => (
   <Stack>
     <AppDetails {...props.appDetails} />
-    <Box padding={1.75}></Box>
-    <Typography variant={"h6"} sx={{ fontFamily: "UCity" }}>
+    <Typography variant={"h6"} sx={{ fontFamily: "UCity", paddingTop: "14px", paddingBottom: "20px" }}>
       App Components
     </Typography>
     <ComponentTable rows={props.components} />
