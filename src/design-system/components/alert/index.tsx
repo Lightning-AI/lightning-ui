@@ -25,7 +25,8 @@ export type AlertProps = {
 const Alert = ({ children, show, ...props }: AlertProps) => {
   const [isShown, setIsShown] = useState(show);
   useEffect(() => setIsShown(show), [show]);
-  const alignItems = typeof props?.action !== "undefined" ? "center" : "flex-start";
+  const alignItemsIcon = props?.title ? "flex-start" : "center";
+  const alignItemsAction = typeof props?.action !== "undefined" ? "center" : "flex-start";
   const onCloseHandler = (event: any) => {
     props.onClose && props.onClose(event);
     setIsShown(false);
@@ -45,8 +46,11 @@ const Alert = ({ children, show, ...props }: AlertProps) => {
         "fontSize": "14px",
         "lineHeight": "20px",
         "borderLeft": `8px solid ${severityColor[props.severity ?? "info"]}`,
+        "& .MuiAlert-icon": {
+          alignItems: alignItemsIcon,
+        },
         "& .MuiAlert-action": {
-          alignItems,
+          alignItems: alignItemsAction,
         },
       }}>
       <MuiAlertTitle
