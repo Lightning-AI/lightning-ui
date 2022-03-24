@@ -76,7 +76,7 @@ function StopAction() {
 function Actions() {
   const lightningState = useLightningState();
 
-  const stage = lightningState.data?.app_state.stage;
+  const stage = lightningState.data?.app_state?.stage;
   const runningLabel = stage === AppStage.running ? "Running Locally" : "Paused Locally";
   const runningColor = stage === AppStage.running ? "success" : undefined;
 

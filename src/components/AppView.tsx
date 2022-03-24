@@ -21,7 +21,7 @@ const NotRunningMessage = styled("div")({
 export default function AppView() {
   const lightingState = useLightningState();
 
-  if (!lightingState.isLoading && lightingState.data?.app_state.stage !== AppStage.running) {
+  if (!lightingState.isLoading && lightingState.data?.app_state?.stage !== AppStage.running) {
     return (
       <NotRunningMessage>
         <img src={lightningLogo} alt="Lightning.ai Logo" />
