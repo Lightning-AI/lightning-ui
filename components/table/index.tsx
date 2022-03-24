@@ -13,6 +13,7 @@ const tableCellHeaderStyle = {
   fontSize: "14px",
   lineHeight: "20px",
   color: "#5B5E69",
+  padding: "8px 16px",
 };
 
 export type TableProps = {

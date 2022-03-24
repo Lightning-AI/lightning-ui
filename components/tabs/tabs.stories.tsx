@@ -19,6 +19,9 @@ export default {
       options: ["text", "outlined"],
       control: "select",
     },
+    backgroundColor: {
+      control: "color",
+    },
     tabItems: {
       table: {
         disable: true,

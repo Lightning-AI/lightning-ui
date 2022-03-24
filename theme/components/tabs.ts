@@ -29,7 +29,7 @@ const tabs: any = {
   MuiTabPanel: {
     styleOverrides: {
       root: {
-        padding: "18px 0px",
+        padding: "12px 0px",
       },
     },
   },
