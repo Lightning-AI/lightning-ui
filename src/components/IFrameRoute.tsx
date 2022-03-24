@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Alert, Box } from "@mui/material";
+import { Alert, Box } from "design-system/components";
 
 import useLightningState from "hooks/useLightningState";
 import useUpdateLightningState from "hooks/useUpdateLightningState";
@@ -50,7 +50,9 @@ export default function IFrameRoute(props: Props) {
 
   return (
     <Box display={"flex"} flexDirection={"column"} height={"100%"}>
-      {lightningStateMutation.isError && <Alert severity="warning">Failed to update, please try again.</Alert>}
+      <Alert title={"Warning"} severity="warning" show={lightningStateMutation.isError}>
+        Failed to update, please try again.
+      </Alert>
       <Box
         height={"100%"}
         width={"100%"}
