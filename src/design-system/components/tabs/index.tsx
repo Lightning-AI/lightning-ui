@@ -37,7 +37,7 @@ const Tabs = (props: TabsProps) => {
           <MuiTab key={tabItem.title} label={tabItem.title} value={index.toString()} variant={props.variant} />
         ))}
       </MuiTabs>
-      <Divider />
+      <Divider sx={{ margin: "0px -8px" }} />
       {props.tabItems.map((tabItem, index) => (
         <MuiTabPanel key={index.toString()} value={index.toString()}>
           {tabItem.content}
