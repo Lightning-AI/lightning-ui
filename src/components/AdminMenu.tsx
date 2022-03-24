@@ -43,7 +43,7 @@ function Actions() {
   const runningColor = stage === AppStage.running ? "success" : undefined;
 
   return (
-    <Stack direction={"row"} spacing={1} alignItems={"center"} padding={"8px"}>
+    <Stack direction={"row"} spacing={1} alignItems={"center"} padding={0.75}>
       <Label text={runningLabel} color={runningColor} />
       {stage === AppStage.blocking ? <StartAction /> : <StopAction />}
       <Button
@@ -59,9 +59,12 @@ function Actions() {
 
 export default function AdminMenu() {
   return (
-    <Stack padding={"0 20px"} sx={{ backgroundColor: menuBackground }}>
+    <Stack padding={"0 20px"} paddingBottom={3.5} sx={{ backgroundColor: menuBackground }}>
       <Stack direction={"row"} justifyContent={"space-between"} alignItems={"center"}>
-        <Typography variant={"h5"}>Local App</Typography>
+        <Stack direction={"row"} alignItems={"center"} spacing={1.5}>
+          <Typography variant={"h5"}>Local App</Typography>
+          <Label text="Local on your laptop" color="primary" />
+        </Stack>
         <Actions />
       </Stack>
     </Stack>
