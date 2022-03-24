@@ -1,41 +1,12 @@
 import React, { useState } from "react";
-import { styled } from "@mui/material";
-import Button from "@mui/material/Button";
-import PlayCircleOutlineIcon from "@mui/icons-material/PlayCircleOutline";
-import StopCircleIcon from "@mui/icons-material/StopCircle";
-import Chip from "@mui/material/Chip";
+import { PlayCircleOutline, StopCircle } from "design-system/icons";
+import { Label, Button, Stack, Typography } from "design-system/components";
 
 import { menuBackground } from "lightning-colors";
 import useLightningState from "hooks/useLightningState";
 import useStartApp from "hooks/useStartApp";
 import useStopApp from "hooks/useStopApp";
 import { AppStage } from "types/lightning";
-
-const Wrapper = styled("div")({
-  background: menuBackground,
-  display: "flex",
-  flexDirection: "column",
-  padding: "0 20px",
-});
-
-const TitleAndActions = styled("div")({
-  display: "flex",
-  justifyContent: "space-between",
-});
-
-const ActionsContainer = styled("div")({
-  display: "flex",
-  padding: "8px",
-  alignItems: "center",
-});
-
-const ActionButton = styled(Button)({
-  color: "black",
-  fontSize: "15px",
-  margin: "0 2px",
-  textTransform: "none",
-  background: "#E4E6EB",
-});
 
 function StartAction() {
   const [desiredRunning, setDesiredRunning] = useState(false);
@@ -48,10 +19,7 @@ function StartAction() {
   };
 
   return (
-    <ActionButton onClick={onStart} disabled={desiredRunning}>
-      <PlayCircleOutlineIcon />
-      Run
-    </ActionButton>
+    <Button icon={<PlayCircleOutline />} color={"grey"} onClick={onStart} disabled={desiredRunning} text={"Run"} />
   );
 }
 function StopAction() {
@@ -64,12 +32,7 @@ function StopAction() {
     stopApp.mutate();
   };
 
-  return (
-    <ActionButton onClick={onStop} disabled={desiredStopped}>
-      <StopCircleIcon />
-      Stop
-    </ActionButton>
-  );
+  return <Button icon={<StopCircle />} color={"grey"} onClick={onStop} disabled={desiredStopped} text={"Stop"} />;
 }
 
 function Actions() {
@@ -80,24 +43,27 @@ function Actions() {
   const runningColor = stage === AppStage.running ? "success" : undefined;
 
   return (
-    <ActionsContainer>
-      <Chip label={runningLabel} color={runningColor} />
+    <Stack direction={"row"} spacing={1} alignItems={"center"} padding={"8px"}>
+      <Label text={runningLabel} color={runningColor} />
       {stage === AppStage.blocking ? <StartAction /> : <StopAction />}
-      <ActionButton disabled={stage !== AppStage.running} onClick={() => window.open("/view", "_blank")}>
-        Open App
-      </ActionButton>
-      <ActionButton disabled>Share</ActionButton>
-    </ActionsContainer>
+      <Button
+        color={"grey"}
+        text={"Open App"}
+        disabled={stage !== AppStage.running}
+        onClick={() => window.open("/view", "_blank")}
+      />
+      <Button color={"grey"} text={"Share"} disabled />
+    </Stack>
   );
 }
 
 export default function AdminMenu() {
   return (
-    <Wrapper>
-      <TitleAndActions>
-        <h1>Local App</h1>
+    <Stack padding={"0 20px"} sx={{ backgroundColor: menuBackground }}>
+      <Stack direction={"row"} justifyContent={"space-between"} alignItems={"center"}>
+        <Typography variant={"h5"}>Local App</Typography>
         <Actions />
-      </TitleAndActions>
-    </Wrapper>
+      </Stack>
+    </Stack>
   );
 }
