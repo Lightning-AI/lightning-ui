@@ -8,9 +8,11 @@ import { ComponentEntity } from "../shared/components/ComponentTable";
 import componentTableJson from "../shared/components/componentTable.json";
 import { StatusEnum } from "../shared/components/Status";
 import AppOverview from "shared/components/AppOverview";
+import appImage from "shared/components/appImage.png";
 
 const appDetailsProps: AppDetailsProps = {
   ...appDetailsJson,
+  image: appImage,
   onEdit: () => {
     console.log("Edit clicked");
   },

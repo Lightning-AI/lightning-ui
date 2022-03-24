@@ -1,7 +1,6 @@
 import React from "react";
 import { Button, Media, Stack, Typography } from "../../design-system/components";
-import { Event, LocalOffer } from "../../design-system/icons";
-import appImage from "./appImage.png";
+import { Event, LocalOffer, Edit } from "../../design-system/icons";
 import formatDate from "../utils/formatDate";
 
 export type AppDetailsProps = {
@@ -15,7 +14,7 @@ export type AppDetailsProps = {
 const AppDetails = (props: AppDetailsProps) => {
   return (
     <Stack direction={"row"} spacing={1.5}>
-      <Media variant={"landscape"} size={96} src={appImage}></Media>
+      <Media variant={"landscape"} size={96} src={props.image}></Media>
       <Stack justifyContent={"space-between"} alignItems={"flex-start"}>
         <Typography variant={"body2"} sx={{ fontFamily: "Roboto", color: "#585757" }}>
           {props.description}
@@ -30,7 +29,7 @@ const AppDetails = (props: AppDetailsProps) => {
             {props.tags.join(", ")}
           </Typography>
         </Stack>
-        <Button color={"grey"} text="Edit" onClick={props.onEdit} />
+        <Button color={"grey"} text="Edit" icon={<Edit />} onClick={props.onEdit} />
       </Stack>
     </Stack>
   );
