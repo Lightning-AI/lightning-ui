@@ -2,9 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import mount from "tests/utils/testMount";
-import { stateEndpoint } from "tests/utils/lightning";
-import { Layout, LightningState } from "types/lightning";
+import { Layout } from "types/lightning";
 import AppRoutesComponent from "./AppRoutes";
+import { ExternalAppState } from "openapi/client";
+import lightningService from "openapi/singleton";
 
 // Need to add `<Link>` elements to the component in order to test:
 // https://github.com/cypress-io/cypress/blob/develop/npm/react/cypress/component/advanced/react-router-v6/app.jsx
@@ -24,11 +25,13 @@ const AppRoutes = () => (
 
 describe("AppRoutes", () => {
   it("fetches Lightning app state from API on mount", () => {
-    cy.intercept("GET", stateEndpoint, { fixture: "app-state--no-layout" }).as("getState");
+    cy.fixture("app-state--no-layout.json").then((state: ExternalAppState) => {
+      cy.stub(lightningService, "getStateApiV1StateGet").as("getStateApiV1StateGet").resolves(state);
+    });
 
     mount(<AppRoutes />);
 
-    cy.wait("@getState");
+    cy.get("@getStateApiV1StateGet").should("have.been.called");
   });
 
   xit("displays loading screen while app state is being fetched", () => {
@@ -36,11 +39,13 @@ describe("AppRoutes", () => {
   });
 
   it("displays 404 view for nonexistent routes", () => {
-    cy.intercept("GET", stateEndpoint, { fixture: "app-state--running--simple-layout" }).as("getState");
+    cy.fixture("app-state--running--simple-layout.json").then((state: ExternalAppState) => {
+      cy.stub(lightningService, "getStateApiV1StateGet").as("getStateApiV1StateGet").resolves(state);
+    });
 
     mount(<AppRoutes />);
 
-    cy.wait("@getState");
+    cy.get("@getStateApiV1StateGet").should("have.been.called");
     cy.contains("Link Which Does Not Exist").click();
 
     cy.location("pathname").should("equal", "/does-not-exist");
@@ -48,13 +53,15 @@ describe("AppRoutes", () => {
   });
 
   it("creates a <Route> for each entry in the app state layout", () => {
-    cy.intercept("GET", stateEndpoint, { fixture: "app-state--running--simple-layout" }).as("getState");
+    cy.fixture("app-state--running--simple-layout.json").then((state: ExternalAppState) => {
+      cy.stub(lightningService, "getStateApiV1StateGet").as("getStateApiV1StateGet").resolves(state);
+    });
 
     mount(<AppRoutes />);
 
-    cy.wait("@getState");
+    cy.get("@getStateApiV1StateGet").should("have.been.called");
 
-    cy.fixture("app-state--running--simple-layout").then((state: LightningState) => {
+    cy.fixture("app-state--running--simple-layout").then((state: ExternalAppState) => {
       const layout = state.vars._layout as Layout[];
 
       layout.forEach(item => {
@@ -68,11 +75,13 @@ describe("AppRoutes", () => {
   });
 
   it("creates a <Route> for the local admin view", () => {
-    cy.intercept("GET", stateEndpoint, { fixture: "app-state--running--simple-layout" }).as("getState");
+    cy.fixture("app-state--running--simple-layout.json").then((state: ExternalAppState) => {
+      cy.stub(lightningService, "getStateApiV1StateGet").as("getStateApiV1StateGet").resolves(state);
+    });
 
     mount(<AppRoutes />);
 
-    cy.wait("@getState");
+    cy.get("@getStateApiV1StateGet").should("have.been.called");
     cy.contains("Admin").click();
 
     cy.location("pathname").should("equal", "/admin");

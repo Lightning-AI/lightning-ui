@@ -6,7 +6,7 @@ import { menuBackground } from "lightning-colors";
 import useLightningState from "hooks/useLightningState";
 import useStartApp from "hooks/useStartApp";
 import useStopApp from "hooks/useStopApp";
-import { AppStage } from "types/lightning";
+import { AppStage } from "openapi/client";
 
 function StartAction() {
   const [desiredRunning, setDesiredRunning] = useState(false);
@@ -39,17 +39,17 @@ function Actions() {
   const lightningState = useLightningState();
 
   const stage = lightningState.data?.app_state?.stage;
-  const runningLabel = stage === AppStage.running ? "Running Locally" : "Paused Locally";
-  const runningColor = stage === AppStage.running ? "success" : undefined;
+  const runningLabel = stage === AppStage.RUNNING ? "Running Locally" : "Paused Locally";
+  const runningColor = stage === AppStage.RUNNING ? "success" : undefined;
 
   return (
     <Stack direction={"row"} spacing={1} alignItems={"center"} padding={0.75}>
       <Label text={runningLabel} color={runningColor} />
-      {stage === AppStage.blocking ? <StartAction /> : <StopAction />}
+      {stage === AppStage.BLOCKING ? <StartAction /> : <StopAction />}
       <Button
         color={"grey"}
         text={"Open App"}
-        disabled={stage !== AppStage.running}
+        disabled={stage !== AppStage.RUNNING}
         onClick={() => window.open("/view", "_blank")}
       />
       <Button color={"grey"} text={"Share"} disabled />

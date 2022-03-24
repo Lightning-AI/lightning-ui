@@ -27,12 +27,13 @@ export default function LayoutView(props: Props) {
   }
 
   const child = childFor((props.layout as LayoutBranch).content, lightningState.data);
+  const layout = child.vars._layout as Layout | Layout[];
 
   // Recursive case (multiple children)
-  if (Array.isArray(child.vars._layout)) {
+  if (Array.isArray(layout)) {
     return (
       <Stack sx={{ width: "100%", heigth: "100%" }}>
-        {child.vars._layout.map(layout => (
+        {layout.map(layout => (
           <Stack key={layout.name} flexGrow={1}>
             <LayoutView layout={layout} />
           </Stack>

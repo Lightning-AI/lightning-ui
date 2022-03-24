@@ -1,6 +1,7 @@
 import get from "lodash/get";
+import { ExternalAppState } from "openapi/client";
 
-import { LayoutBranch, LightningState } from "types/lightning";
+import { LayoutBranch, Layout } from "types/lightning";
 
 export const componentPathFor = (path: string) => {
   const fullPath = path.replaceAll(".", ".flows.");
@@ -9,7 +10,7 @@ export const componentPathFor = (path: string) => {
   return rootRemoved;
 };
 
-export const childFor = (path: string, state: LightningState): LightningState => {
+export const childFor = (path: string, state: ExternalAppState): ExternalAppState => {
   return get(state, componentPathFor(path));
 };
 
@@ -18,14 +19,17 @@ export type LightningRoute = {
   layout: LayoutBranch;
 };
 
-export const routesFor = (state: LightningState) => {
+export const routesFor = (state: ExternalAppState) => {
   if (state === undefined || state.vars === undefined || state.vars._layout === undefined) {
     return [];
   }
 
-  return Array.isArray(state.vars._layout) ? state.vars._layout : [state.vars._layout];
+  // FIXME(alecmerdler): Still need type coercion here because server does not define this type correctly.
+  const layout = state.vars._layout as Layout | Layout[];
+
+  return Array.isArray(layout) ? layout : [layout];
 };
 
-export const layoutFor = (state: LightningState): LightningRoute[] => {
+export const layoutFor = (state: ExternalAppState): LightningRoute[] => {
   return routesFor(state).map(route => ({ path: route.name, layout: route as LayoutBranch }));
 };

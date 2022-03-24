@@ -1,21 +1,18 @@
 import { useQuery } from "react-query";
 
-import { LightningSpec } from "types/lightning";
-import { headersFor, specEndpoint } from "utils/api";
+import { headersFor } from "utils/api";
+import { ExternalComponentSpec } from "openapi/client";
+import lightningService from "openapi/singleton";
 
 export const queryKey = "getLightningSpec";
 
 export default function useLightningSpec() {
-  const getState = () =>
-    fetch(specEndpoint, { headers: headersFor() }).then(res => {
-      if (!res.ok) {
-        return Promise.reject(res.statusText);
-      }
+  const headers = headersFor();
 
-      return res.json();
-    });
+  const query = () =>
+    lightningService.getSpecApiV1SpecGet(headers["X-Lightning-Session-UUID"]!, headers["X-Lightning-Session-ID"]!);
 
-  const lightningState = useQuery<LightningSpec>("getLightningSpec", getState);
+  const lightningSpec = useQuery<ExternalComponentSpec[]>("getLightningSpec", query);
 
-  return lightningState;
+  return lightningSpec;
 }

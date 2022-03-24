@@ -1,7 +1,8 @@
 import React from "react";
+
+import { useLocation, useNavigate } from "react-router-dom";
 import MuiTabs from "@mui/material/Tabs";
 import MuiTab from "@mui/material/Tab";
-import { useLocation, useNavigate } from "react-router-dom";
 import { styled } from "@mui/material";
 
 import useLightningState from "hooks/useLightningState";

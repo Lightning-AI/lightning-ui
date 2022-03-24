@@ -1,4 +1,5 @@
-import { AppStage, LayoutType, LightningState, Layout } from "types/lightning";
+import { AppStage, ExternalAppState } from "openapi/client";
+import { LayoutType, Layout } from "types/lightning";
 import { childFor, componentPathFor, routesFor } from "./state";
 
 describe("componentPathFor", () => {
@@ -17,7 +18,7 @@ describe("componentPathFor", () => {
 });
 
 describe("childFor", () => {
-  const appState: LightningState = {
+  const appState: ExternalAppState = {
     vars: {
       _layout: [
         {
@@ -101,7 +102,7 @@ describe("childFor", () => {
     },
     works: {},
     app_state: {
-      stage: AppStage.blocking,
+      stage: AppStage.RUNNING,
     },
   };
 
@@ -120,13 +121,13 @@ describe("childFor", () => {
 
 describe("routesFor", () => {
   it("returns `state.vars._layout`", () => {
-    cy.fixture("app-state--simple-layout.json").then((state: LightningState) => {
+    cy.fixture("app-state--simple-layout.json").then((state: ExternalAppState) => {
       expect(routesFor(state)).to.deep.equal(state.vars._layout);
     });
   });
 
   it("wraps `state.vars._layout` in an array if it contains only one item", () => {
-    cy.fixture("app-state--simple-layout.json").then((state: LightningState) => {
+    cy.fixture("app-state--simple-layout.json").then((state: ExternalAppState) => {
       const stateWithSingleLayout = {
         ...state,
         vars: { ...state.vars, _layout: (state.vars._layout as Layout[])[0] },

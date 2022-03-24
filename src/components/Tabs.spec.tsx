@@ -1,27 +1,30 @@
 import React from "react";
 
 import mount from "tests/utils/testMount";
-import { stateEndpoint } from "tests/utils/lightning";
-import { Layout, LightningState } from "types/lightning";
+import { Layout } from "types/lightning";
 import Tabs from "./Tabs";
+import { ExternalAppState } from "openapi/client";
+import lightningService from "openapi/singleton";
 
 describe("Tabs", () => {
-  it("fetches the app state from the API on mount", () => {
-    cy.intercept("GET", stateEndpoint, { fixture: "app-state--simple-layout" }).as("getState");
+  beforeEach(() => {
+    cy.fixture("app-state--simple-layout.json").then((state: ExternalAppState) => {
+      cy.stub(lightningService, "getStateApiV1StateGet").as("getStateApiV1StateGet").resolves(state);
+    });
+  });
 
+  it("fetches the app state from the API on mount", () => {
     mount(<Tabs />);
 
-    cy.wait("@getState");
+    cy.get("@getStateApiV1StateGet").should("have.been.called");
   });
 
   it("renders a tab for each component view in the app state layout", () => {
-    cy.intercept("GET", stateEndpoint, { fixture: "app-state--simple-layout" }).as("getState");
-
     mount(<Tabs />);
 
-    cy.wait("@getState");
+    cy.get("@getStateApiV1StateGet").should("have.been.called");
 
-    cy.fixture("app-state--simple-layout").then((state: LightningState) => {
+    cy.fixture("app-state--simple-layout").then((state: ExternalAppState) => {
       const layout = state.vars._layout as Layout[];
 
       layout.forEach(item => {

@@ -44,6 +44,7 @@
     "cypress": "^9.4.1",
     "husky": "^7.0.4",
     "lint-staged": "^12.3.3",
+    "openapi-typescript-codegen": "^0.20.1",
     "prettier": "^2.5.1",
     "storybook-addon-designs": "^6.2.1"
   },
@@ -58,10 +59,11 @@
     "test:e2e:open": "cypress open",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "generate-client": "openapi --input http://127.0.0.1:7501/openapi.json --output ./src/openapi/client --client fetch --indent 2 --name LightningService"
   },
   "lint-staged": {
-    "**/*": "prettier --write --ignore-unknown"
+    "**/*": "prettier --write --ignore-unknown ."
   },
   "eslintConfig": {
     "extends": [
