@@ -33,7 +33,7 @@ export default function LayoutView(props: Props) {
   // Recursive case (multiple children)
   if (Array.isArray(child.vars._layout)) {
     return (
-      <Stack sx={{width: "100%", heigth: "100%"}}>
+      <Stack sx={{ width: "100%", heigth: "100%" }}>
         {child.vars._layout.map(layout => (
           <Stack key={layout.name} flexGrow={1}>
             <LayoutView layout={layout} />
