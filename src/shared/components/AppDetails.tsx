@@ -14,7 +14,7 @@ export type AppDetailsProps = {
 
 const AppDetails = (props: AppDetailsProps) => {
   return (
-    <Stack direction={"row"} spacing={1}>
+    <Stack direction={"row"} spacing={1.5}>
       <Media variant={"landscape"} size={96} src={appImage}></Media>
       <Stack justifyContent={"space-between"} alignItems={"flex-start"}>
         <Typography variant={"body2"} sx={{ fontFamily: "Roboto", color: "#585757" }}>
