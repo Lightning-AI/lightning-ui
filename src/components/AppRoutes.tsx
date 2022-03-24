@@ -6,7 +6,6 @@ import LayoutView from "./LayoutView";
 import { layoutFor } from "utils/state";
 import AdminView from "./AdminView";
 import AppView from "./AppView";
-import Components from "./Components";
 
 export default function LightningAppRoutes() {
   const lightningState = useLightningState();
