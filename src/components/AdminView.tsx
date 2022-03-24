@@ -1,9 +1,4 @@
 import React from "react";
-<<<<<<< HEAD
-import { Chip, styled } from "@mui/material";
-=======
-import { Outlet } from "react-router-dom";
->>>>>>> ef00722 (Migrate AdminView to DS)
 
 import AdminMenu from "./AdminMenu";
 import useLightningState from "hooks/useLightningState";
@@ -30,12 +25,7 @@ export default function AdminView() {
         <Label text="Local" color="error" />
       </Stack>
       <AdminMenu />
-<<<<<<< HEAD
       <AdminTabs />
-    </Wrapper>
-=======
-      <Outlet />
     </Box>
->>>>>>> ef00722 (Migrate AdminView to DS)
   );
 }
