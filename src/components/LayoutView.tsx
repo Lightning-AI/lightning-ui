@@ -1,5 +1,5 @@
 import React from "react";
-import { styled } from "@mui/material";
+import { Stack } from "design-system/components";
 
 import { Layout, LayoutBranch, LayoutLeaf } from "types/lightning";
 import useLightningState from "hooks/useLightningState";
@@ -9,18 +9,6 @@ import IFrameRoute from "./IFrameRoute";
 type Props = {
   layout: Layout;
 };
-
-const LayoutContainer = styled("div")({
-  height: "100%",
-  width: "100%",
-  display: "flex",
-  flexDirection: "column",
-});
-
-// TODO(alecmerdler): Define styles for separating iframes...
-const Separator = styled("div")({
-  flexGrow: 1,
-});
 
 /**
  * Component which recursively renders a layout tree from the given
@@ -45,13 +33,13 @@ export default function LayoutView(props: Props) {
   // Recursive case (multiple children)
   if (Array.isArray(child.vars._layout)) {
     return (
-      <LayoutContainer>
+      <Stack sx={{width: "100%", heigth: "100%"}}>
         {child.vars._layout.map(layout => (
-          <Separator key={layout.name}>
+          <Stack key={layout.name} flexGrow={1}>
             <LayoutView layout={layout} />
-          </Separator>
+          </Stack>
         ))}
-      </LayoutContainer>
+      </Stack>
     );
   }
 
