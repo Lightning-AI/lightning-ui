@@ -1,4 +1,4 @@
-import { Box, Stack, Typography } from "../../design-system/components";
+import { Stack, Typography } from "../../design-system/components";
 import AppDetails, { AppDetailsProps } from "./AppDetails";
 import ComponentTable, { ComponentEntity } from "./ComponentTable";
 
