@@ -28,7 +28,7 @@ describe("LayoutView", () => {
 
       cy.wait("@getState");
 
-      cy.get("iframe").should("have.attr", "src", `${(layout[2] as LayoutLeaf).target}/`);
+      cy.get("iframe").should("have.attr", "src", (layout[2] as LayoutLeaf).target);
     });
   });
 
@@ -40,8 +40,8 @@ describe("LayoutView", () => {
 
       cy.wait("@getState");
 
-      cy.get("iframe").first().should("have.attr", "src", "http://localhost:48049/");
-      cy.get("iframe").last().should("have.attr", "src", "http://localhost:59915/");
+      cy.get("iframe").first().should("have.attr", "src", "http://localhost:48049");
+      cy.get("iframe").last().should("have.attr", "src", "http://localhost:59915");
     });
   });
 });
