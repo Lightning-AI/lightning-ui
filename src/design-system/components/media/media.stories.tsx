@@ -34,7 +34,7 @@ export default {
 const Template: ComponentStory<typeof Media> = ({ fallbackIcon, ...args }: MediaProps) => {
   // @ts-ignore
   const iconComponent = fallbackIcon && <SvgIcon component={Icons[fallbackIcon]} />;
-  return <Media {...args} fallbackIcon={iconComponent}/>
+  return <Media {...args} fallbackIcon={iconComponent} />;
 };
 
 export const Playground = Template.bind({});
