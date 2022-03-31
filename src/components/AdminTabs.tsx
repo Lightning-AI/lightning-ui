@@ -12,6 +12,7 @@ import appImage from "shared/components/appImage.png";
 
 const appDetailsProps: AppDetailsProps = {
   ...appDetailsJson,
+  lastEdited: undefined,
   image: appImage,
   onEdit: () => {
     console.log("Edit clicked");
@@ -19,9 +20,9 @@ const appDetailsProps: AppDetailsProps = {
 };
 
 const components: ComponentEntity[] = [
-  { status: StatusEnum.NOT_YET_RUN, ...componentTableJson[0] },
-  { status: StatusEnum.RUNNING, ...componentTableJson[1] },
-  { status: StatusEnum.FAILED, ...componentTableJson[2] },
+  { status: StatusEnum.NOT_YET_RUN, ...componentTableJson[0], lastStartTime: undefined },
+  { status: StatusEnum.RUNNING, ...componentTableJson[1], lastStartTime: new Date("2022-01-28") },
+  { status: StatusEnum.FAILED, ...componentTableJson[2], lastStartTime: new Date("2022-02-18") },
 ];
 
 export default function AdminTabs() {
