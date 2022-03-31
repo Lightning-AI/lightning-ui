@@ -11,10 +11,6 @@ export default {
     },
   },
   argTypes: {
-    selectedTab: {
-      options: [0, 1, 2],
-      control: "select",
-    },
     variant: {
       options: ["text", "outlined"],
       control: "select",
@@ -37,7 +33,7 @@ const tabItems: TabItem[] = [
 ];
 
 const Template: ComponentStory<typeof Tabs> = (args: TabsProps) => {
-  return <Tabs {...args} tabItems={tabItems} />;
+  return <Tabs {...args} tabItems={tabItems} selectedTab={1}/>;
 };
 
 export const Playground = Template.bind({});
