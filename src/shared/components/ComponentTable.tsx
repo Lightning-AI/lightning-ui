@@ -8,7 +8,7 @@ export type ComponentEntity = {
   name: string;
   type: string;
   provider: string;
-  lastStartTime: string | null;
+  lastStartTime?: Date;
 };
 
 export type ComponentTableProps = {
