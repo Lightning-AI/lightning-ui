@@ -47,7 +47,7 @@ const Label = (props: LabelProps) => {
       lineHeight={"16px"}
       fontStyle={"normal"}
       borderRadius={"4px"}
-      height={"20px"}
+      height={"16px"}
       fontWeight={"bold"}
       sx={colorProperties[props.color ?? "default"]}>
       {props.text}

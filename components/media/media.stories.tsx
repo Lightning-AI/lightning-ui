@@ -1,5 +1,7 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import Media, { MediaProps } from "design-system/components/media";
+import * as Icons from "design-system/icons";
+import { SvgIcon } from "..";
 
 export default {
   title: "Components/Media",
@@ -21,9 +23,18 @@ export default {
       options: [16, 24, 32, 48, 64, 96, 144, 180],
       control: "select",
     },
+    fallbackIcon: {
+      options: [undefined, ...Object.keys(Icons)],
+      defaultValue: undefined,
+      control: "select",
+    },
   },
 } as ComponentMeta<typeof Media>;
 
-const Template: ComponentStory<typeof Media> = (args: MediaProps) => <Media {...args} />;
+const Template: ComponentStory<typeof Media> = ({ fallbackIcon, ...args }: MediaProps) => {
+  // @ts-ignore
+  const iconComponent = fallbackIcon && <SvgIcon component={Icons[fallbackIcon]} />;
+  return <Media {...args} fallbackIcon={iconComponent} />;
+};
 
 export const Playground = Template.bind({});
