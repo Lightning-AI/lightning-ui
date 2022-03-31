@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from "react-query";
 
-import { AppStage } from "types/lightning";
+import { AppStage, LightningState } from "types/lightning";
 import { headersFor, stateEndpoint } from "utils/api";
 import { queryKey } from "./useLightningState";
 
@@ -18,7 +18,17 @@ export default function useStartApp() {
       }),
     {
       onSuccess: () => {
-        queryClient.invalidateQueries(queryKey);
+        const refeftchInterval = 500;
+
+        const interval = setInterval(() => {
+          const state = queryClient.getQueryData<LightningState>(queryKey);
+
+          if (state?.app_state.stage !== AppStage.running) {
+            queryClient.invalidateQueries(queryKey);
+          } else {
+            clearInterval(interval);
+          }
+        }, refeftchInterval);
       },
     },
   );
