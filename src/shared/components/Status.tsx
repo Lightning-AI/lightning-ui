@@ -9,6 +9,7 @@ export enum StatusEnum {
   RUNNING = "Running",
   STOPPED = "Stopped",
   DELETED = "Deleted",
+  FINISHED = "Finished",
   FAILED = "Failed",
 }
 
@@ -20,6 +21,7 @@ const StatusColor: Record<StatusEnum, string> = {
   [StatusEnum.RUNNING]: "#19A004",
   [StatusEnum.STOPPED]: "#65676B",
   [StatusEnum.DELETED]: "#FCBE2E",
+  [StatusEnum.FINISHED]: "#19A004",
   [StatusEnum.FAILED]: "#E02C2D",
 };
 
@@ -28,7 +30,7 @@ export type StatusProps = {
 };
 
 const Status = (props: StatusProps) => {
-  const iconStyle = { fontSize: "12px", color: StatusColor[props.status] };
+  const iconStyle = { fontSize: "14px", color: StatusColor[props.status] };
   const statusIcon =
     props.status === StatusEnum.NOT_YET_RUN ? <CircleOutlined sx={iconStyle} /> : <Circle sx={iconStyle} />;
   return (
