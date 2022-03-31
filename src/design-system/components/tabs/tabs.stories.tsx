@@ -33,7 +33,7 @@ const tabItems: TabItem[] = [
 ];
 
 const Template: ComponentStory<typeof Tabs> = (args: TabsProps) => {
-  return <Tabs {...args} tabItems={tabItems} selectedTab={1}/>;
+  return <Tabs {...args} tabItems={tabItems} selectedTab={1} />;
 };
 
 export const Playground = Template.bind({});

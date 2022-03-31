@@ -5,6 +5,6 @@ function TabContent(props: any) {
   return <>{children}</>;
 }
 
-const TabContentMemo = React.memo((props) => <TabContent {...props} />)
+const TabContentMemo = React.memo(props => <TabContent {...props} />);
 
 export default TabContentMemo;
