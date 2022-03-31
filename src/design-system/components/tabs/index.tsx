@@ -1,9 +1,11 @@
-import MuiTabs from "@mui/material/Tabs";
+import { ReactElement, useState } from "react";
+
+import { Box, Divider } from "../";
 import MuiTab from "@mui/material/Tab";
-import MuiTabContext from "@mui/lab/TabContext";
-import MuiTabPanel from "@mui/lab/TabPanel";
-import { ReactElement, useState, useEffect } from "react";
-import { Divider } from "../";
+import MuiTabs from "@mui/material/Tabs";
+
+import TabPanel from "./TabPanel";
+import TabContent from "./TabContent";
 
 export type TabItem = {
   content: ReactElement;
@@ -18,32 +20,29 @@ export type TabsProps = {
 };
 
 const Tabs = (props: TabsProps) => {
-  const [selectedTab, setSelectedTab] = useState("0");
-  useEffect(() => {
-    const selectedTab =
-      props.selectedTab && props.selectedTab < props.tabItems.length ? props.selectedTab.toString() : "0";
-    setSelectedTab(selectedTab);
-  }, [props.selectedTab, props.tabItems]);
+  const [selectedTab, setSelectedTab] = useState(props.selectedTab || 0);
 
   return (
-    <MuiTabContext value={selectedTab}>
+    <Box>
       <MuiTabs
         value={selectedTab}
         onChange={(e, value) => setSelectedTab(value)}
         variant={"scrollable"}
         sx={{ backgroundColor: props.backgroundColor }}>
-        {props.tabItems.map((tabItem, index) => (
+        {props.tabItems.map(tabItem => (
           // @ts-ignore
-          <MuiTab key={tabItem.title} label={tabItem.title} value={index.toString()} variant={props.variant} />
+          <MuiTab key={tabItem.title} label={tabItem.title} variant={props.variant} />
         ))}
       </MuiTabs>
       <Divider sx={{ margin: "0px -8px" }} />
-      {props.tabItems.map((tabItem, index) => (
-        <MuiTabPanel key={index.toString()} value={index.toString()}>
-          {tabItem.content}
-        </MuiTabPanel>
-      ))}
-    </MuiTabContext>
+      <Box paddingY={1.5}>
+        {props.tabItems.map((tabItem, index) => (
+          <TabPanel key={index.toString()} value={selectedTab} index={index}>
+            <TabContent>{tabItem.content}</TabContent>
+          </TabPanel>
+        ))}
+      </Box>
+    </Box>
   );
 };
 
