@@ -34,4 +34,3 @@ const Template: ComponentStory<typeof Tabs> = (args: TabsProps) => {
 };
 
 export const Playground = Template.bind({});
-
