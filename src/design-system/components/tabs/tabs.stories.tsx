@@ -15,9 +15,6 @@ export default {
       options: ["text", "outlined"],
       control: "select",
     },
-    backgroundColor: {
-      control: "color",
-    },
     tabItems: {
       table: {
         disable: true,
@@ -37,3 +34,4 @@ const Template: ComponentStory<typeof Tabs> = (args: TabsProps) => {
 };
 
 export const Playground = Template.bind({});
+
