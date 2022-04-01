@@ -2,7 +2,7 @@ import React from "react";
 import { Box, Stack } from "design-system/components";
 import { Link, Outlet } from "react-router-dom";
 
-import Tabs from "components/Tabs";
+import ComponentTabs from "components/ComponentTabs";
 import Actions from "components/Actions";
 import Footer from "components/Footer";
 import useLightningState from "hooks/useLightningState";
@@ -24,18 +24,10 @@ export default function AppView() {
 
   return (
     <>
-      <Box
-        sx={{
-          borderBottom: 1,
-          borderColor: "divider",
-          marginLeft: "15px",
-          marginRight: "15px",
-          display: "flex",
-          justifyContent: "space-between",
-        }}>
-        <Tabs />
+      <Stack direction={"row"} justifyContent={"space-between"} marginTop={0.75} marginX={2}>
+        <ComponentTabs />
         <Actions />
-      </Box>
+      </Stack>
       <Outlet />
       <Footer />
     </>
