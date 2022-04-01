@@ -37,5 +37,12 @@ export default function AdminTabs() {
     },
   ];
 
-  return <Tabs tabItems={tabItems} variant={"outlined"} backgroundColor={"rgb(247, 248, 251)"} />;
+  return (
+    <Tabs
+      tabItems={tabItems}
+      variant={"outlined"}
+      sxTabs={{ backgroundColor: (theme: any) => theme.palette.grey[10], paddingLeft: "20px" }}
+      sxContent={{ paddingLeft: "20px" }}
+    />
+  );
 }

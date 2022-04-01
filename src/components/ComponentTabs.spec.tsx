@@ -3,13 +3,13 @@ import React from "react";
 import mount from "tests/utils/testMount";
 import { stateEndpoint } from "tests/utils/lightning";
 import { Layout, LightningState } from "types/lightning";
-import Tabs from "./Tabs";
+import ComponentTabs from "./ComponentTabs";
 
-describe("Tabs", () => {
+describe("ComponentTabs", () => {
   it("fetches the app state from the API on mount", () => {
     cy.intercept("GET", stateEndpoint, { fixture: "app-state--simple-layout" }).as("getState");
 
-    mount(<Tabs />);
+    mount(<ComponentTabs />);
 
     cy.wait("@getState");
   });
@@ -17,7 +17,7 @@ describe("Tabs", () => {
   it("renders a tab for each component view in the app state layout", () => {
     cy.intercept("GET", stateEndpoint, { fixture: "app-state--simple-layout" }).as("getState");
 
-    mount(<Tabs />);
+    mount(<ComponentTabs />);
 
     cy.wait("@getState");
 
