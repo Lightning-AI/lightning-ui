@@ -50,7 +50,7 @@ const Tabs = (props: TabsProps) => {
     const hrefIndex = props.tabItems.findIndex((tabItem: any) => tabItem.href === locationUri);
     const newSelectedTab = hrefIndex !== -1 ? hrefIndex : 0;
     setSelectedTab(newSelectedTab);
-  }, [location]);
+  }, [props.tabItems, location, locationUri]);
 
   return (
     <Box>
