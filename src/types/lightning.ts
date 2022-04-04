@@ -61,6 +61,16 @@ export enum AppStage {
   stopping = "stopping",
 }
 
+export enum WorkStage {
+  stopped = "stopped",
+  requesting = "requesting",
+  pending = "pending",
+  starting = "starting",
+  running = "running",
+  succeeded = "succeeded",
+  failed = "failed",
+}
+
 export type LightningSpec = ComponentSpec[];
 
 export type ComponentSpec = {
