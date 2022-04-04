@@ -46,7 +46,7 @@ describe("Components", () => {
       cy.fixture("app-spec--simple-layout.json").then((spec: LightningSpec) => {
         const twoLevelDeepComponents = spec.filter(component => component.affiliation.length > 2);
         twoLevelDeepComponents.forEach(component => {
-          cy.get("code").should('not.have.text', component.cls_name);
+          cy.get("code").should("not.have.text", component.cls_name);
         });
       });
     });
