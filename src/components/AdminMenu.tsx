@@ -61,10 +61,7 @@ export default function AdminMenu() {
   return (
     <Stack padding={"0 20px"} paddingBottom={3.5} sx={{ backgroundColor: menuBackground }}>
       <Stack direction={"row"} justifyContent={"space-between"} alignItems={"center"}>
-        <Stack direction={"row"} alignItems={"center"} spacing={1.5}>
-          <Typography variant={"h5"}>Local App</Typography>
-          <Label text="Local on your laptop" color="primary" />
-        </Stack>
+        <Typography variant={"h5"}>Local App</Typography>
         <Actions />
       </Stack>
     </Stack>
