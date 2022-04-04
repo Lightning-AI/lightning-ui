@@ -49,7 +49,7 @@ const TextField = React.forwardRef(
     const hasStatus = typeof status !== "undefined";
     const onChangeHandler: ChangeEventHandler<HTMLInputElement> = event => {
       if (typeof onChange === "undefined") return;
-      const value = event.target.textContent;
+      const value = event.target.value;
       onChange(value);
     };
     return (
