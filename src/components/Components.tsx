@@ -20,7 +20,8 @@ export default function Components() {
     );
   }
 
-  const rows = lightningSpec.data?.map(cell => [<code>{cell.cls_name}</code>]);
+  const firstLevelComponents = lightningSpec.data?.filter(cell => cell.affiliation.length <= 2);
+  const rows = firstLevelComponents.map(cell => [<code>{cell.cls_name}</code>]);
 
   return (
     <Container>
