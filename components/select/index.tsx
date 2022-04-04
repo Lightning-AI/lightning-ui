@@ -26,7 +26,7 @@ export type SelectProps = {
   onChange: (value: string | string[] | null) => void;
   optional?: boolean;
   multiple?: boolean;
-} & Pick<MuiTextFieldProps, "disabled" | "fullWidth" | "size" | "value">;
+} & Pick<MuiTextFieldProps, "disabled" | "fullWidth" | "size" | "value" | "autoFocus">;
 
 const Select = React.forwardRef(
   (
