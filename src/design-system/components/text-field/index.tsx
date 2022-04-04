@@ -25,7 +25,10 @@ export type TextFieldProps = {
   onChange: (value: string | null) => void;
   value?: unknown;
   optional?: boolean;
-} & Pick<MuiOutlinedInputProps, "disabled" | "placeholder" | "fullWidth" | "size">;
+} & Pick<
+  MuiOutlinedInputProps,
+  "disabled" | "placeholder" | "fullWidth" | "size" | "autoComplete" | "autoCapitalize" | "autoCorrect" | "autoFocus"
+>;
 
 const TextField = React.forwardRef(
   (
