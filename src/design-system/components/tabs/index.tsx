@@ -45,12 +45,12 @@ const Tabs = (props: TabsProps) => {
 
   const hasContent = props.tabItems.some((tabItem: any) => typeof tabItem.content !== "undefined");
   const locationUri = location.pathname + location.hash + location.search;
+  const hrefIndex = props.tabItems.findIndex((tabItem: any) => tabItem.href === locationUri);
 
   useEffect(() => {
-    const hrefIndex = props.tabItems.findIndex((tabItem: any) => tabItem.href === locationUri);
     const newSelectedTab = hrefIndex !== -1 ? hrefIndex : 0;
     setSelectedTab(newSelectedTab);
-  }, [props.tabItems, location, locationUri]);
+  }, [hrefIndex, locationUri]);
 
   return (
     <Box>
