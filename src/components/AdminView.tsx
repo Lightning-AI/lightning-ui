@@ -22,7 +22,7 @@ export default function AdminView() {
     <Box margin={"0 auto"} maxWidth={"1280px"}>
       <Stack direction={"row"} alignItems={"center"} spacing={3}>
         <Box component={"img"} src={LightningLogo} alt="Lightning Logo" padding={1.25} />
-        <Label text="Local on your laptop" color="primary" />
+        <Label text="Local" color="primary" />
       </Stack>
       <AdminMenu />
       <AdminTabs />
