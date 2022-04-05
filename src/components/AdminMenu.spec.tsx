@@ -18,16 +18,17 @@ describe("AdminMenu", () => {
     it("the 'Run' button is enabled", () => {
       mount(<AdminMenu />);
 
-      cy.wait("@getState");
-
-      cy.contains("Run").should("be.enabled");
+      cy.wait("@getState").then(() => {
+        cy.contains("Run").should("be.enabled");
+      });
     });
 
     it("clicking the 'Run' button sends an API request to start the app", () => {
       mount(<AdminMenu />);
 
-      cy.wait("@getState");
-      cy.contains("Run").click();
+      cy.wait("@getState").then(() => {
+        cy.get("button .MuiButton-startIcon").click();
+      });
 
       cy.wait("@postState");
     });
@@ -42,18 +43,18 @@ describe("AdminMenu", () => {
       }).as("postState");
     });
 
-    it("the 'Stop' button is enabled", () => {
+    it("the 'Running Local' button is enabled", () => {
       mount(<AdminMenu />);
 
       cy.wait("@getState");
-      cy.contains("Stop").should("be.enabled");
+      cy.contains("Running Local").should("be.enabled");
     });
 
-    it("clicking the 'Stop' button sends an API request to stop the app", () => {
+    it("clicking the 'Running Local' button sends an API request to stop the app", () => {
       mount(<AdminMenu />);
 
       cy.wait("@getState");
-      cy.contains("Stop").click();
+      cy.contains("Running Local").click();
 
       cy.wait("@postState");
     });

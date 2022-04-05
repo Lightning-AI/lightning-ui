@@ -22,24 +22,4 @@ describe("AdminView", () => {
 
     cy.contains("Error loading app details...").should("be.visible");
   });
-
-  it("it displays message if the app is not currently running", () => {
-    cy.intercept("GET", stateEndpoint, { fixture: "app-state--no-layout.json" }).as("getState");
-
-    mount(<AdminView />);
-
-    cy.wait("@getState");
-
-    cy.contains("Paused Locally").should("be.visible");
-  });
-
-  xit("it displays message if the app is currently running", () => {
-    cy.intercept("GET", stateEndpoint, { fixture: "app-state--no-layout.json" }).as("getState");
-
-    mount(<AdminView />);
-
-    cy.wait("@getState");
-
-    cy.contains("Running Locally").should("be.visible");
-  });
 });

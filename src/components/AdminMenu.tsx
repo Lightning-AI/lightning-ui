@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { PlayCircleOutline, StopCircle } from "design-system/icons";
-import { Label, Button, Stack, Typography } from "design-system/components";
+import { PlayCircleOutline, PauseCircleOutline } from "design-system/icons";
+import { Button, Stack, Typography } from "design-system/components";
 
 import { menuBackground } from "lightning-colors";
 import useLightningState from "hooks/useLightningState";
@@ -17,7 +17,11 @@ const getAppName = (specData: LightningSpec) => {
 function AppName() {
   const lightningSpec = useLightningSpec();
   const appName = lightningSpec.data ? getAppName(lightningSpec.data) : "Local App";
-  return <Typography variant={"h5"}>{appName}</Typography>;
+  return (
+    <Typography fontFamily={"Ucity"} fontStyle={"normal"} fontWeight={600} fontSize={"24px"} lineHeight={"24px"}>
+      {appName}
+    </Typography>
+  );
 }
 
 function StartAction() {
@@ -44,19 +48,24 @@ function StopAction() {
     stopApp.mutate();
   };
 
-  return <Button icon={<StopCircle />} color={"grey"} onClick={onStop} disabled={desiredStopped} text={"Stop"} />;
+  return (
+    <Button
+      icon={<PauseCircleOutline />}
+      color={"success"}
+      onClick={onStop}
+      disabled={desiredStopped}
+      text={"Running Local"}
+    />
+  );
 }
 
 function Actions() {
   const lightningState = useLightningState();
 
   const stage = lightningState.data?.app_state?.stage;
-  const runningLabel = stage === AppStage.running ? "Running Locally" : "Paused Locally";
-  const runningColor = stage === AppStage.running ? "success" : undefined;
 
   return (
     <Stack direction={"row"} spacing={1} alignItems={"center"} padding={0.75}>
-      <Label text={runningLabel} color={runningColor} />
       {stage === AppStage.blocking ? <StartAction /> : <StopAction />}
       <Button
         color={"grey"}
@@ -65,6 +74,7 @@ function Actions() {
         onClick={() => window.open("/view", "_blank")}
       />
       <Button color={"grey"} text={"Share"} disabled />
+      <Button color={"grey"} text={"Publish"} disabled />
     </Stack>
   );
 }
