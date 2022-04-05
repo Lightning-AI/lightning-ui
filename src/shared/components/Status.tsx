@@ -14,7 +14,7 @@ export enum StatusEnum {
   STOPPING = "Stopping",
   STOPPED = "Stopped",
   DELETED = "Deleted",
-  FINISHED = "Finished", // Map to SUCCEEDED
+  SUCCEEDED = "Succeeded",
   FAILED = "Failed",
 }
 
@@ -31,7 +31,7 @@ const StatusColor: Record<StatusEnum, string> = {
   [StatusEnum.STOPPING]: "#65676B",
   [StatusEnum.STOPPED]: "#65676B",
   [StatusEnum.DELETED]: "#FCBE2E",
-  [StatusEnum.FINISHED]: "#19A004",
+  [StatusEnum.SUCCEEDED]: "#19A004",
   [StatusEnum.FAILED]: "#E02C2D",
 };
 

@@ -22,7 +22,7 @@ const workStageStatusMap = {
   [WorkStage.pending]: StatusEnum.PENDING,
   [WorkStage.starting]: StatusEnum.STARTING,
   [WorkStage.running]: StatusEnum.RUNNING,
-  [WorkStage.succeeded]: StatusEnum.FINISHED,
+  [WorkStage.succeeded]: StatusEnum.SUCCEEDED,
   [WorkStage.failed]: StatusEnum.FAILED,
 };
 
