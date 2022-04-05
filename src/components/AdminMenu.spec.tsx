@@ -18,17 +18,19 @@ describe("AdminMenu", () => {
     it("the 'Run' button is enabled", () => {
       mount(<AdminMenu />);
 
-      cy.wait("@getState").then(() => {
-        cy.contains("Run").should("be.enabled");
-      });
+      cy.wait("@getState");
+      cy.wait(1);
+      cy.contains("Run").should("be.enabled");
     });
 
     it("clicking the 'Run' button sends an API request to start the app", () => {
       mount(<AdminMenu />);
 
-      cy.wait("@getState").then(() => {
-        cy.get("button .MuiButton-startIcon").click();
-      });
+      cy.wait("@getState");
+
+      cy.wait(1);
+
+      cy.get("button .MuiButton-startIcon").click();
 
       cy.wait("@postState");
     });
