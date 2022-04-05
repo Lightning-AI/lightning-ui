@@ -30,7 +30,9 @@ export default function AppView() {
         </Box>
         <Actions />
       </Stack>
-      <Outlet />
+      <Box height={"100%"} marginX={2}>
+        <Outlet />
+      </Box>
       <Footer />
     </Stack>
   );
