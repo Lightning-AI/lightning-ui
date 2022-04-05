@@ -45,18 +45,18 @@ describe("AdminMenu", () => {
       }).as("postState");
     });
 
-    it("the 'Running Local' button is enabled", () => {
+    it("the 'Running Locally' button is enabled", () => {
       mount(<AdminMenu />);
 
       cy.wait("@getState");
-      cy.contains("Running Local").should("be.enabled");
+      cy.contains("Running Locally").should("be.enabled");
     });
 
     it("clicking the 'Running Local' button sends an API request to stop the app", () => {
       mount(<AdminMenu />);
 
       cy.wait("@getState");
-      cy.contains("Running Local").click();
+      cy.contains("Running Locally").click();
 
       cy.wait("@postState");
     });

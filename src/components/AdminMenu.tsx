@@ -54,7 +54,7 @@ function StopAction() {
       color={"success"}
       onClick={onStop}
       disabled={desiredStopped}
-      text={"Running Local"}
+      text={"Running Locally"}
     />
   );
 }
