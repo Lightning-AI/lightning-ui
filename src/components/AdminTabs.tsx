@@ -6,7 +6,8 @@ import { ComponentEntity } from "../shared/components/ComponentTable";
 import { StatusEnum } from "../shared/components/Status";
 import AppOverview from "shared/components/AppOverview";
 import useLightningState from "hooks/useLightningState";
-import { AppStage, LightningState, WorkStage } from "types/lightning";
+import useLightningSpec from "hooks/useLightningSpec";
+import { AppStage, LightningSpec, LightningState, WorkStage } from "types/lightning";
 
 const appStageStatusMap: Record<AppStage, StatusEnum> = {
   [AppStage.blocking]: StatusEnum.BLOCKING,
@@ -27,11 +28,25 @@ const workStageStatusMap = {
 
 const NO_VALUE = "--";
 
-const getFlowComponentsDetails = (lightningState: LightningState): ComponentEntity[] => {
+const getComponentClassName = (key: string, lightningSpec: LightningSpec) => {
+  const specItem = lightningSpec.find(item => item.affiliation.slice(-1)[0] === key);
+  return specItem?.cls_name ? `${specItem.cls_name} (${key})` : key;
+};
+
+const getAppComponentDetails = (lightningState: LightningState, lightningSpec: LightningSpec): ComponentEntity => {
+  return {
+    status: appStageStatusMap[lightningState.app_state.stage],
+    name: getComponentClassName("root", lightningSpec),
+    type: "Flow",
+    provider: NO_VALUE,
+  };
+};
+
+const getFlowComponentsDetails = (lightningState: LightningState, lightningSpec: LightningSpec): ComponentEntity[] => {
   return Object.entries(lightningState.flows).map(entry => {
     return {
       status: appStageStatusMap[lightningState.app_state.stage],
-      name: entry[0],
+      name: getComponentClassName(entry[0], lightningSpec),
       type: "Flow",
       provider: NO_VALUE,
     };
@@ -48,11 +63,11 @@ const getWorkComponentStatus = (workComponentCalls: any) => {
   return latestStatus.stage;
 };
 
-const getWorkComponentsDetails = (works: any): ComponentEntity[] => {
+const getWorkComponentsDetails = (works: any, lightningSpec: LightningSpec): ComponentEntity[] => {
   return Object.entries(works).map((entry: any[]) => {
     return {
       status: getWorkComponentStatus(entry[1].calls),
-      name: entry[0],
+      name: getComponentClassName(entry[0], lightningSpec),
       type: "Work",
       provider: NO_VALUE,
     };
@@ -61,10 +76,18 @@ const getWorkComponentsDetails = (works: any): ComponentEntity[] => {
 
 export default function AdminTabs() {
   const lightningState = useLightningState();
+  const lightningSpec = useLightningSpec();
 
-  const components = lightningState.data
-    ? [...getFlowComponentsDetails(lightningState.data), ...getWorkComponentsDetails(lightningState.data.works)]
-    : [];
+  const stateData = lightningState.data;
+  const specData = lightningSpec.data;
+  const components =
+    stateData && specData
+      ? [
+          getAppComponentDetails(stateData, specData),
+          ...getFlowComponentsDetails(stateData, specData),
+          ...getWorkComponentsDetails(stateData.works, specData),
+        ]
+      : [];
 
   const tabItems = [
     {
