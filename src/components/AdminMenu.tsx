@@ -6,7 +6,19 @@ import { menuBackground } from "lightning-colors";
 import useLightningState from "hooks/useLightningState";
 import useStartApp from "hooks/useStartApp";
 import useStopApp from "hooks/useStopApp";
-import { AppStage } from "types/lightning";
+import { AppStage, LightningSpec } from "types/lightning";
+import useLightningSpec from "hooks/useLightningSpec";
+
+const getAppName = (specData: LightningSpec) => {
+  const appName = specData.find(component => component.affiliation.slice(-1)[0] === "root");
+  return appName?.cls_name;
+};
+
+function AppName() {
+  const lightningSpec = useLightningSpec();
+  const appName = lightningSpec.data ? getAppName(lightningSpec.data) : "Local App";
+  return <Typography variant={"h5"}>{appName}</Typography>;
+}
 
 function StartAction() {
   const [desiredRunning, setDesiredRunning] = useState(false);
@@ -61,7 +73,7 @@ export default function AdminMenu() {
   return (
     <Stack padding={"0 20px"} paddingBottom={3.5} sx={{ backgroundColor: menuBackground }}>
       <Stack direction={"row"} justifyContent={"space-between"} alignItems={"center"}>
-        <Typography variant={"h5"}>Local App</Typography>
+        <AppName />
         <Actions />
       </Stack>
     </Stack>
