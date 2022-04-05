@@ -5,6 +5,11 @@ import useLightningSpec from "hooks/useLightningSpec";
 
 const Container = ({ children }: { children: ReactNode }) => <Box sx={{ marginBottom: "46px" }}>{children}</Box>;
 
+const getComponentName = ({ affiliation, cls_name }: { affiliation: string[]; cls_name: string }) => {
+  const lastAffiliation = affiliation.slice(-1)[0];
+  return `${cls_name} (${lastAffiliation})`;
+};
+
 export default function Components() {
   const lightningSpec = useLightningSpec();
 
@@ -20,8 +25,8 @@ export default function Components() {
     );
   }
 
-  const firstLevelComponents = lightningSpec.data?.filter(cell => cell.affiliation.length <= 2);
-  const rows = firstLevelComponents.map(cell => [<code>{cell.cls_name}</code>]);
+  const firstLevelComponents = lightningSpec.data?.filter(component => component.affiliation.length <= 2);
+  const rows = firstLevelComponents.map(component => [<>{getComponentName(component)}</>]);
 
   return (
     <Container>
