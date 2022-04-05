@@ -15,7 +15,7 @@ export default function useLightningSpec() {
       return res.json();
     });
 
-  const lightningState = useQuery<LightningSpec>("getLightningSpec", getState);
+  const lightningSpec = useQuery<LightningSpec>("getLightningSpec", getState);
 
-  return lightningState;
+  return lightningSpec;
 }
