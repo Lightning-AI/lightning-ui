@@ -23,13 +23,15 @@ export default function AppView() {
   }
 
   return (
-    <>
-      <Stack direction={"row"} justifyContent={"space-between"} marginTop={0.75} marginX={2}>
-        <ComponentTabs />
+    <Stack height={"100%"}>
+      <Stack direction={"row"} marginTop={0.75} marginX={2}>
+        <Box flex={2}>
+          <ComponentTabs />
+        </Box>
         <Actions />
       </Stack>
       <Outlet />
       <Footer />
-    </>
+    </Stack>
   );
 }
