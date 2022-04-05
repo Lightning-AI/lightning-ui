@@ -25,7 +25,7 @@ const FormControl = ({ label, helperText, statusText, children, status, fullWidt
         backgroundColor: status && statusText ? (theme: any) => theme.palette[status]["20"] : "transparent",
       }}>
       {children}
-      <FormStatusText>{statusText}</FormStatusText>
+      {statusText && <FormStatusText>{statusText}</FormStatusText>}
     </Box>
   </MuiFormControl>
 );
