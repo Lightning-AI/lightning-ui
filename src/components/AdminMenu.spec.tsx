@@ -19,6 +19,7 @@ describe("AdminMenu", () => {
       mount(<AdminMenu />);
 
       cy.wait("@getState");
+      // Added due to a re-rendering issue https://github.com/cypress-io/cypress/issues/7306
       cy.wait(1);
       cy.contains("Run").should("be.enabled");
     });
@@ -28,6 +29,7 @@ describe("AdminMenu", () => {
 
       cy.wait("@getState");
 
+      // Added due to a re-rendering issue https://github.com/cypress-io/cypress/issues/7306
       cy.wait(1);
 
       cy.get("button .MuiButton-startIcon").click();
