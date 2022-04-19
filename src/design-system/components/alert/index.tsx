@@ -46,6 +46,7 @@ const Alert = ({ children, show, ...props }: AlertProps) => {
         "fontSize": "14px",
         "lineHeight": "20px",
         "borderLeft": `8px solid ${severityColor[props.severity ?? "info"]}`,
+        "backgroundColor": "white",
         "& .MuiAlert-icon": {
           alignItems: alignItemsIcon,
         },
