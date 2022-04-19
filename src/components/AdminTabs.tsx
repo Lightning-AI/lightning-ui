@@ -60,7 +60,7 @@ const getWorkComponentStatus = (workComponentCalls: any) => {
   const latestCallHash = workComponentCalls[workComponentCalls.latest_call_hash];
   const { statuses } = latestCallHash;
   const latestStatus = statuses.slice(-1)[0];
-  return latestStatus.stage;
+  return workStageStatusMap[latestStatus.stage as WorkStage];
 };
 
 const getWorkComponentsDetails = (works: any, lightningSpec: LightningSpec): ComponentEntity[] => {
