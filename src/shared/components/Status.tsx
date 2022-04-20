@@ -52,7 +52,7 @@ const Status = (props: StatusProps) => {
   );
   return (
     <Stack direction={"row"} alignItems={"center"} spacing={1}>
-      {statusIcon} <Box>{props.status.toString()}</Box>
+      {statusIcon} <Box>{props.status?.toString()}</Box>
     </Stack>
   );
 };
