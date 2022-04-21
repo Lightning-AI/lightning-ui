@@ -6,7 +6,7 @@ import FormStatusText from "../form-status-text";
 
 export type LabelCheckboxProps = {
   helpText?: string;
-  error?: string;
+  error?: boolean;
 } & CheckboxProps &
   Pick<React.ComponentProps<typeof FormControlLabel>, "label">;
 
@@ -27,7 +27,7 @@ export const LabelCheckbox = (props: LabelCheckboxProps) => {
           <Icon>
             <ReportIcon />
           </Icon>
-          <FormStatusText>{props.error}</FormStatusText>
+          <FormStatusText>{props.helpText}</FormStatusText>
         </Stack>
       )}
 
@@ -36,6 +36,7 @@ export const LabelCheckbox = (props: LabelCheckboxProps) => {
           control={<Checkbox checked={props.checked} onChange={props.onChange} />}
           label={props.label}
         />
+        {!props.error && props.helpText && <FormStatusText>{props.helpText}</FormStatusText>}
       </Box>
     </Box>
   );
