@@ -25,7 +25,7 @@ export const LabelCheckbox = (props: LabelCheckboxProps) => {
             marginBottom: "4px",
           }}>
           <Icon>
-            <ReportIcon />
+            <ReportIcon sx={{ color: "#E02C2D" }} />
           </Icon>
           <FormStatusText>{props.helpText}</FormStatusText>
         </Stack>
