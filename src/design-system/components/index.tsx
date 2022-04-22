@@ -16,7 +16,7 @@ import Pagination from "./pagination";
 import ButtonGroup from "./button-group";
 import Media from "./media";
 import Table from "./table";
-
+import Checkbox from "./checkbox";
 export * from "@mui/material";
 
 export {
@@ -41,6 +41,7 @@ export {
   CardActions,
   CardActionArea,
   CardMedia,
+  Checkbox,
   Tabs,
   Breadcrumbs,
   Pagination,
