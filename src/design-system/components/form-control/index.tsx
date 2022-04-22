@@ -1,8 +1,7 @@
+import { FormControlProps as MuiFormControlProps } from "@mui/material/FormControl";
 import { Box } from "../";
-import MuiFormControl, { FormControlProps as MuiFormControlProps } from "@mui/material/FormControl";
-import FormLabel from "../form-label";
 import FormStatusText from "../form-status-text";
-import FormHelperText from "../form-helper-text";
+import FormControlContainer from "./FormControlContainer";
 
 export type FormControlProps = {
   label?: string;
@@ -13,9 +12,7 @@ export type FormControlProps = {
 } & Pick<MuiFormControlProps, "children" | "fullWidth">;
 
 const FormControl = ({ label, helperText, statusText, children, status, fullWidth, optional }: FormControlProps) => (
-  <MuiFormControl fullWidth={fullWidth}>
-    <FormLabel optional={optional}>{label}</FormLabel>
-    <FormHelperText>{helperText}</FormHelperText>
+  <FormControlContainer>
     <Box
       display={"flex"}
       flexDirection={"column"}
@@ -27,7 +24,7 @@ const FormControl = ({ label, helperText, statusText, children, status, fullWidt
       {children}
       {statusText && <FormStatusText>{statusText}</FormStatusText>}
     </Box>
-  </MuiFormControl>
+  </FormControlContainer>
 );
 
 export default FormControl;

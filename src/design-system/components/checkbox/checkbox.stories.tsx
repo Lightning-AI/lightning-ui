@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 
-import { Checkbox, CheckboxProps } from ".";
+import Checkbox, { CheckboxProps } from ".";
 
 export default {
   title: "Components/Checkbox",
@@ -8,7 +8,7 @@ export default {
   parameters: {
     design: {
       type: "figma",
-      url: "https://www.figma.com/file/tLrz5T82EKYMnqgvnk1Ldo/UILibrary?node-id=37781%3A2094",
+      url: "https://www.figma.com/file/XXxxfECxqzvlbvfr8SqHhg/Project-X",
     },
   },
   argTypes: {
@@ -16,12 +16,29 @@ export default {
       control: "boolean",
       defaultValue: true,
     },
+    label: {
+      control: "string",
+      defaultValue: "type of checkbox",
+    },
+    status: {
+      control: "select",
+      options: ["success", "warning", "error"],
+    },
     onChange: { action: "checkbox Clicked!" },
   },
 } as ComponentMeta<typeof Checkbox>;
 
 const Template: ComponentStory<any> = ({ ...args }: CheckboxProps) => {
-  return <Checkbox checked={args.checked} onChange={args.onChange} />;
+  return (
+    <Checkbox
+      name={args.name}
+      checked={args.checked}
+      onChange={args.onChange}
+      label={args.label}
+      helperText={args.helperText}
+      status={args.status}
+    />
+  );
 };
 
 export const Playground = Template.bind({});

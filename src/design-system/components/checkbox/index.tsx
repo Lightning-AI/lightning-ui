@@ -1,34 +1,48 @@
-import { Checkbox as MuiCheckbox } from "@mui/material";
+import ReportIcon from "@mui/icons-material/Report";
+import { Box, FormControlLabel, Icon, Stack } from "@mui/material";
 import React from "react";
+import CheckboxBase, { CheckboxOnlyProps } from "./CheckboxBase";
+import FormControl, { FormControlProps } from "../form-control";
+import FormStatusText from "../form-status-text";
 
 export type CheckboxProps = {
-  name?: string;
-  checked: boolean;
-  onChange: (e: boolean) => void;
-};
+  helperText?: string;
+  status?: "success" | "warning" | "error";
+  disabled?: boolean;
+} & CheckboxOnlyProps &
+  Pick<React.ComponentProps<typeof FormControlLabel>, "label"> &
+  FormControlProps;
 
-export const Checkbox = (props: CheckboxProps) => {
+const Checkbox = (props: CheckboxProps) => {
   return (
-    <MuiCheckbox
-      checked={props.checked}
-      inputProps={{ "aria-label": `Checkbox for ${props.name}` }}
-      onChange={e => props.onChange(e.target.checked)}
-      sx={{
-        "& .MuiSvgIcon-root": {
-          border: "1px solid #C5CBD7",
-          background: "#FFFFFF",
-          borderRadius: "6px",
-          backgroundSize: "auto",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-          backgroundImage: props.checked
-            ? `url("data:image/svg+xml,%3Csvg width='16' height='12' viewBox='0 0 16 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1.5 6.18L5.716 10.5L14.5 1.5' stroke='%23792EE5' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")`
-            : "none",
-        },
-        "& .MuiSvgIcon-root path": {
-          color: "#0000",
-        },
-      }}
-    />
+    <FormControl>
+      {props.status === "error" && (
+        <Stack
+          direction={"row"}
+          sx={{
+            backgroundColor: "#FFD4D5",
+            width: "auto",
+            borderRadius: "6px",
+            alignItems: "center",
+            paddingLeft: "8px",
+            marginBottom: "4px",
+          }}>
+          <Icon>
+            <ReportIcon sx={{ color: "#E02C2D" }} />
+          </Icon>
+          <FormStatusText>{props.helperText}</FormStatusText>
+        </Stack>
+      )}
+      <Box sx={{ backgroundColor: props.checked ? "#EFEEFF" : "initial", padding: "2px 12px", borderRadius: "6px" }}>
+        <FormControlLabel
+          disabled={props.disabled}
+          control={<CheckboxBase checked={props.checked} onChange={props.onChange} />}
+          label={props.label}
+        />
+      </Box>
+      {props.status !== "error" && props.helperText && <FormStatusText>{props.helperText}</FormStatusText>}
+    </FormControl>
   );
 };
+
+export default Checkbox;
