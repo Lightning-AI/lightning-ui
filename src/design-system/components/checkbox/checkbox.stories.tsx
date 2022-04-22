@@ -11,18 +11,20 @@ export default {
       url: "https://www.figma.com/file/XXxxfECxqzvlbvfr8SqHhg/Project-X",
     },
   },
+  args: {
+    label: "type of checkbox",
+    helperText: "some helper text",
+    statusText: "status text",
+  },
   argTypes: {
     checked: {
       control: "boolean",
       defaultValue: true,
     },
-    label: {
-      control: "string",
-      defaultValue: "type of checkbox",
-    },
     status: {
       control: "select",
-      options: ["success", "warning", "error"],
+      options: [undefined, "success", "warning", "error"],
+      defaultValue: "error",
     },
     onChange: { action: "checkbox Clicked!" },
   },
@@ -37,6 +39,7 @@ const Template: ComponentStory<any> = ({ ...args }: CheckboxProps) => {
       label={args.label}
       helperText={args.helperText}
       status={args.status}
+      statusText={args.statusText}
     />
   );
 };
