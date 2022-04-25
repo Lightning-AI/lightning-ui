@@ -14,7 +14,7 @@ const CheckboxBase = (props: CheckboxOnlyProps) => {
       inputProps={{ "aria-label": `Checkbox for ${props.name}` }}
       onChange={e => props.onChange(e.target.checked)}
       size={props.size}
-			disabled={props.disabled}
+      disabled={props.disabled}
       sx={{
         "& .MuiSvgIcon-root": {
           border: "1px solid #C5CBD7",
