@@ -1,20 +1,49 @@
-import ReportIcon from "@mui/icons-material/Report";
 import { Box, FormControlLabel, Icon, Stack } from "@mui/material";
 import React from "react";
 import CheckboxBase, { CheckboxOnlyProps } from "./CheckboxBase";
 import FormControl, { FormControlProps } from "../form-control/FormControlContainer";
 import FormStatusText from "../form-status-text";
+import { CheckCircle, Dangerous, Warning } from "@mui/icons-material";
 
 export type CheckboxProps = {
-  disabled?: boolean;
+  optional?: boolean;
 } & CheckboxOnlyProps &
   Pick<React.ComponentProps<typeof FormControlLabel>, "label"> &
   FormControlProps;
 
+const statusColor = {
+  success: "#31A24C",
+  warning: "#F1A817",
+  error: "#E02C2D",
+};
+
+const statusIcon = {
+  success: <CheckCircle sx={{ color: statusColor.success }} />,
+  warning: <Warning sx={{ color: statusColor.warning }} />,
+  error: <Dangerous sx={{ color: statusColor.error }} />,
+};
+
 const Checkbox = (props: CheckboxProps) => {
+  const hasErrorStatus = props.statusText && props.status === "error";
+  const hasStatusWithoutError = props.statusText && props.status !== "error";
   return (
     <FormControl {...props}>
-      {props.statusText && props.status === "error" && (
+      <Box sx={{ backgroundColor: props.checked ? "#EFEEFF" : "initial", padding: "2px 12px", borderRadius: "6px" }}>
+        <FormControlLabel
+          disabled={props.disabled}
+          control={
+            <CheckboxBase
+              checked={props.checked}
+              onChange={props.onChange}
+              size={props.size}
+              disabled={props.disabled}
+            />
+          }
+          label={props.label}
+        />
+      </Box>
+
+      {hasErrorStatus && (
         <Stack
           direction={"row"}
           sx={{
@@ -23,31 +52,26 @@ const Checkbox = (props: CheckboxProps) => {
             borderRadius: "6px",
             alignItems: "center",
             paddingLeft: "8px",
-            marginBottom: "4px",
+            marginTop: "4px",
           }}>
-          <Icon>
-            <ReportIcon sx={{ color: "#E02C2D" }} />
-          </Icon>
+          {props.status && <Icon>{statusIcon[props.status]}</Icon>}
           <FormStatusText>{props.statusText}</FormStatusText>
         </Stack>
       )}
 
-      <Box sx={{ backgroundColor: props.checked ? "#EFEEFF" : "initial", padding: "2px 12px", borderRadius: "6px" }}>
-        <FormControlLabel
-          disabled={props.disabled}
-          control={<CheckboxBase checked={props.checked} onChange={props.onChange} />}
-          label={props.label}
-        />
-      </Box>
-
-      {props.statusText && props.status && props.status !== "error" && (
-        <Box
+      {props.status && hasStatusWithoutError && (
+        <Stack
+          direction={"row"}
           sx={{
+            alignItems: "center",
             backgroundColor: props.statusText ? (theme: any) => theme.palette[props.status!]["20"] : "transparent",
             marginTop: "4px",
+            paddingLeft: "8px",
+            borderRadius: "6px",
           }}>
+          {props.status && <Icon>{statusIcon[props.status]}</Icon>}
           <FormStatusText>{props.statusText}</FormStatusText>
-        </Box>
+        </Stack>
       )}
     </FormControl>
   );

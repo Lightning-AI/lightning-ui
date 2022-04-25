@@ -11,20 +11,23 @@ export type FormControlProps = {
   optional?: boolean;
 } & Pick<MuiFormControlProps, "children" | "fullWidth">;
 
-const FormControl = ({ label, helperText, statusText, children, status, fullWidth, optional }: FormControlProps) => (
-  <FormControlContainer>
-    <Box
-      display={"flex"}
-      flexDirection={"column"}
-      sx={{
-        borderRadius: "6px",
-        marginTop: "4px",
-        backgroundColor: status && statusText ? (theme: any) => theme.palette[status]["20"] : "transparent",
-      }}>
-      {children}
-      {statusText && <FormStatusText>{statusText}</FormStatusText>}
-    </Box>
-  </FormControlContainer>
-);
+const FormControl = (props: FormControlProps) => {
+  const { statusText, children, status } = props;
+  return (
+    <FormControlContainer {...props}>
+      <Box
+        display={"flex"}
+        flexDirection={"column"}
+        sx={{
+          borderRadius: "6px",
+          marginTop: "4px",
+          backgroundColor: status && statusText ? (theme: any) => theme.palette[status]["20"] : "transparent",
+        }}>
+        {children}
+        {statusText && <FormStatusText>{statusText}</FormStatusText>}
+      </Box>
+    </FormControlContainer>
+  );
+};
 
 export default FormControl;

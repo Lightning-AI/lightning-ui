@@ -17,6 +17,14 @@ export default {
     statusText: "status text",
   },
   argTypes: {
+    disabled: {
+      control: "boolean",
+      defaultValue: false,
+    },
+    optional: {
+      control: "boolean",
+      defaultValue: false,
+    },
     checked: {
       control: "boolean",
       defaultValue: true,
@@ -26,6 +34,10 @@ export default {
       options: [undefined, "success", "warning", "error"],
       defaultValue: "error",
     },
+    size: {
+      control: "select",
+      options: [undefined, "small", "medium"],
+    },
     onChange: { action: "checkbox Clicked!" },
   },
 } as ComponentMeta<typeof Checkbox>;
@@ -33,12 +45,14 @@ export default {
 const Template: ComponentStory<any> = ({ ...args }: CheckboxProps) => {
   return (
     <Checkbox
+      {...args}
       name={args.name}
       checked={args.checked}
       onChange={args.onChange}
       label={args.label}
       helperText={args.helperText}
       status={args.status}
+      size={args.size}
       statusText={args.statusText}
     />
   );

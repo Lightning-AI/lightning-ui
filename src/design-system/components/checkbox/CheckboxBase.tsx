@@ -5,7 +5,7 @@ export type CheckboxOnlyProps = {
   name?: string;
   checked: boolean;
   onChange: (e: boolean) => void;
-};
+} & Pick<React.ComponentProps<typeof MuiCheckbox>, "size" | "disabled">;
 
 const CheckboxBase = (props: CheckboxOnlyProps) => {
   return (
@@ -13,6 +13,8 @@ const CheckboxBase = (props: CheckboxOnlyProps) => {
       checked={props.checked}
       inputProps={{ "aria-label": `Checkbox for ${props.name}` }}
       onChange={e => props.onChange(e.target.checked)}
+      size={props.size}
+			disabled={props.disabled}
       sx={{
         "& .MuiSvgIcon-root": {
           border: "1px solid #C5CBD7",
