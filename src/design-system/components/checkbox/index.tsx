@@ -7,6 +7,7 @@ import { CheckCircle, Dangerous, Warning } from "@mui/icons-material";
 
 export type CheckboxProps = {
   optional?: boolean;
+  description: React.ReactElement;
 } & CheckboxOnlyProps &
   Pick<React.ComponentProps<typeof FormControlLabel>, "label"> &
   FormControlProps;
@@ -39,7 +40,7 @@ const Checkbox = (props: CheckboxProps) => {
               disabled={props.disabled}
             />
           }
-          label={props.label}
+          label={props.description}
         />
       </Box>
 

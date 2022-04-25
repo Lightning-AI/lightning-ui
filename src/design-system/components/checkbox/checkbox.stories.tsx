@@ -15,6 +15,8 @@ export default {
     label: "type of checkbox",
     helperText: "some helper text",
     statusText: "status text",
+    description: <>some description for the checkbox</>,
+    fullWidth: false,
   },
   argTypes: {
     disabled: {
@@ -43,19 +45,7 @@ export default {
 } as ComponentMeta<typeof Checkbox>;
 
 const Template: ComponentStory<any> = ({ ...args }: CheckboxProps) => {
-  return (
-    <Checkbox
-      {...args}
-      name={args.name}
-      checked={args.checked}
-      onChange={args.onChange}
-      label={args.label}
-      helperText={args.helperText}
-      status={args.status}
-      size={args.size}
-      statusText={args.statusText}
-    />
-  );
+  return <Checkbox {...args} />;
 };
 
 export const Playground = Template.bind({});
