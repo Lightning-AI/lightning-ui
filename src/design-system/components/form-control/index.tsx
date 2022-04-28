@@ -20,7 +20,6 @@ const FormControl = (props: FormControlProps) => {
         flexDirection={"column"}
         sx={{
           borderRadius: "6px",
-          marginTop: "4px",
           backgroundColor: status && statusText ? (theme: any) => theme.palette[status]["20"] : "transparent",
         }}>
         {children}
