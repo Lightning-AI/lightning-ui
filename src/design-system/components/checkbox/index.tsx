@@ -43,7 +43,7 @@ const Checkbox = (props: CheckboxProps) => {
         sx={{
           "display": "block",
           "marginX": 0,
-          "borderRadius": 0.75,
+          "borderRadius": "6px",
           "backgroundColor": props.checked ? "#EFEEFF" : "initial",
           "& .MuiFormControlLabel-label": {
             fontFamily: "Roboto",
