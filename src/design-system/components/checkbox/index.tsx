@@ -1,16 +1,17 @@
-import { Box, FormControlLabel, Icon, Stack } from "@mui/material";
+import { Box, FormControlLabel, Icon, Stack } from "../";
 import React from "react";
 import CheckboxBase, { CheckboxOnlyProps } from "./CheckboxBase";
-import FormControl, { FormControlProps } from "../form-control/FormControlContainer";
+import FormControlContainer, { FormControlContainerProps } from "../form-control/FormControlContainer";
 import FormStatusText from "../form-status-text";
 import { CheckCircle, Dangerous, Warning } from "@mui/icons-material";
 
 export type CheckboxProps = {
   optional?: boolean;
   description: React.ReactElement;
+  status?: "success" | "warning" | "error";
+  statusText?: string;
 } & CheckboxOnlyProps &
-  Pick<React.ComponentProps<typeof FormControlLabel>, "label"> &
-  FormControlProps;
+  FormControlContainerProps;
 
 const statusColor = {
   success: "#31A24C",
@@ -25,56 +26,51 @@ const statusIcon = {
 };
 
 const Checkbox = (props: CheckboxProps) => {
-  const hasErrorStatus = props.statusText && props.status === "error";
-  const hasStatusWithoutError = props.statusText && props.status !== "error";
+  const { statusText, status } = props;
   return (
-    <FormControl {...props}>
-      <Box sx={{ backgroundColor: props.checked ? "#EFEEFF" : "initial", padding: "2px 12px", borderRadius: "6px" }}>
-        <FormControlLabel
-          disabled={props.disabled}
-          control={
-            <CheckboxBase
-              checked={props.checked}
-              onChange={props.onChange}
-              size={props.size}
-              disabled={props.disabled}
-            />
-          }
-          label={props.description}
-        />
-      </Box>
+    <FormControlContainer {...props}>
+      <FormControlLabel
+        disabled={props.disabled}
+        control={
+          <CheckboxBase
+            checked={props.checked}
+            onChange={props.onChange}
+            size={props.size}
+            disabled={props.disabled}
+          />
+        }
+        label={props.description}
+        sx={{
+          "display": "block",
+          "marginX": 0,
+          "borderRadius": 0.75,
+          "backgroundColor": props.checked ? "#EFEEFF" : "initial",
+          "& .MuiFormControlLabel-label": {
+            fontFamily: "Roboto",
+            fontWeight: 400,
+            fontSize: "14px",
+            lineHeight: "20px",
+            paddingRight: 1,
+          },
 
-      {hasErrorStatus && (
-        <Stack
-          direction={"row"}
-          sx={{
-            backgroundColor: "#FFD4D5",
-            width: "auto",
-            borderRadius: "6px",
-            alignItems: "center",
-            paddingLeft: "8px",
-            marginTop: "4px",
-          }}>
-          {props.status && <Icon>{statusIcon[props.status]}</Icon>}
-          <FormStatusText>{props.statusText}</FormStatusText>
-        </Stack>
-      )}
-
-      {props.status && hasStatusWithoutError && (
-        <Stack
-          direction={"row"}
-          sx={{
-            alignItems: "center",
-            backgroundColor: props.statusText ? (theme: any) => theme.palette[props.status!]["20"] : "transparent",
-            marginTop: "4px",
-            paddingLeft: "8px",
-            borderRadius: "6px",
-          }}>
-          {props.status && <Icon>{statusIcon[props.status]}</Icon>}
-          <FormStatusText>{props.statusText}</FormStatusText>
-        </Stack>
-      )}
-    </FormControl>
+        }}
+      />
+      <Stack
+        direction={"row"}
+        sx={{
+          "backgroundColor": status && statusText ? (theme: any) => theme.palette[status]["20"] : "transparent",
+          "borderRadius": "6px",
+          "alignItems": "center",
+          "paddingLeft": 1.5,
+          "marginTop": 0.5,
+          "& .MuiSvgIcon-root": {
+            fontSize: "16px",
+          },
+        }}>
+        {props.status && statusIcon[props.status]}
+        {props.statusText && <FormStatusText>{props.statusText}</FormStatusText>}
+      </Stack>
+    </FormControlContainer>
   );
 };
 
