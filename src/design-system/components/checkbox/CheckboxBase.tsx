@@ -16,6 +16,7 @@ const CheckboxBase = (props: CheckboxOnlyProps) => {
       size={props.size}
       disabled={props.disabled}
       sx={{
+        padding: 1,
         "& .MuiSvgIcon-root": {
           border: "1px solid #C5CBD7",
           background: "#FFFFFF",
