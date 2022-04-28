@@ -52,7 +52,6 @@ const Checkbox = (props: CheckboxProps) => {
             lineHeight: "20px",
             paddingRight: 1,
           },
-
         }}
       />
       <Stack
@@ -61,7 +60,7 @@ const Checkbox = (props: CheckboxProps) => {
           "backgroundColor": status && statusText ? (theme: any) => theme.palette[status]["20"] : "transparent",
           "borderRadius": "6px",
           "alignItems": "center",
-          "paddingLeft": 1.5,
+          "paddingLeft": props.status ? 1.5 : 3.5,
           "marginTop": 0.5,
           "& .MuiSvgIcon-root": {
             fontSize: "16px",
