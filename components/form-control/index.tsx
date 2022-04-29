@@ -1,8 +1,7 @@
+import { FormControlProps as MuiFormControlProps } from "@mui/material/FormControl";
 import { Box } from "../";
-import MuiFormControl, { FormControlProps as MuiFormControlProps } from "@mui/material/FormControl";
-import FormLabel from "../form-label";
 import FormStatusText from "../form-status-text";
-import FormHelperText from "../form-helper-text";
+import FormControlContainer from "./FormControlContainer";
 
 export type FormControlProps = {
   label?: string;
@@ -12,22 +11,22 @@ export type FormControlProps = {
   optional?: boolean;
 } & Pick<MuiFormControlProps, "children" | "fullWidth">;
 
-const FormControl = ({ label, helperText, statusText, children, status, fullWidth, optional }: FormControlProps) => (
-  <MuiFormControl fullWidth={fullWidth}>
-    <FormLabel optional={optional}>{label}</FormLabel>
-    <FormHelperText>{helperText}</FormHelperText>
-    <Box
-      display={"flex"}
-      flexDirection={"column"}
-      sx={{
-        borderRadius: "6px",
-        marginTop: "4px",
-        backgroundColor: status && statusText ? (theme: any) => theme.palette[status]["20"] : "transparent",
-      }}>
-      {children}
-      {statusText && <FormStatusText>{statusText}</FormStatusText>}
-    </Box>
-  </MuiFormControl>
-);
+const FormControl = (props: FormControlProps) => {
+  const { statusText, children, status } = props;
+  return (
+    <FormControlContainer {...props}>
+      <Box
+        display={"flex"}
+        flexDirection={"column"}
+        sx={{
+          borderRadius: "6px",
+          backgroundColor: status && statusText ? (theme: any) => theme.palette[status]["20"] : "transparent",
+        }}>
+        {children}
+        {statusText && <FormStatusText>{statusText}</FormStatusText>}
+      </Box>
+    </FormControlContainer>
+  );
+};
 
 export default FormControl;
