@@ -52,6 +52,9 @@ const Checkbox = (props: CheckboxProps) => {
             lineHeight: "20px",
             paddingRight: 1,
           },
+          "&.Mui-disabled": {
+            backgroundColor: (theme: any) => theme.palette.grey["20"],
+          },
         }}
       />
       <Stack
