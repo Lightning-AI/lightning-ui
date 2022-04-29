@@ -1,4 +1,4 @@
-import { Box, FormControlLabel, Icon, Stack } from "../";
+import { FormControlLabel, Stack } from "../";
 import React from "react";
 import CheckboxBase, { CheckboxOnlyProps } from "./CheckboxBase";
 import FormControlContainer, { FormControlContainerProps } from "../form-control/FormControlContainer";
