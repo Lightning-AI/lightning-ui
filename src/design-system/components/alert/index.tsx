@@ -61,17 +61,17 @@ const Alert = ({ children, show, ...props }: AlertProps) => {
           alignItems: alignItemsAction,
         },
       }}>
-        <MuiAlertTitle
-          sx={{
-            fontFamily: "UCity",
-            fontWeight: 600,
-            fontStyle: "normal",
-            fontSize: "14px",
-            lineHeight: "20px",
-          }}>
-          {props.title}
-        </MuiAlertTitle>
-        {children}
+      <MuiAlertTitle
+        sx={{
+          fontFamily: "UCity",
+          fontWeight: 600,
+          fontStyle: "normal",
+          fontSize: "14px",
+          lineHeight: "20px",
+        }}>
+        {props.title}
+      </MuiAlertTitle>
+      {children}
     </MuiAlert>
   ) : null;
 };
