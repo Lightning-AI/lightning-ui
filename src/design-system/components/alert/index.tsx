@@ -25,7 +25,7 @@ export type AlertProps = {
 const Alert = ({ children, show, ...props }: AlertProps) => {
   const [isShown, setIsShown] = useState(show);
   useEffect(() => setIsShown(show), [show]);
-  const alignItemsIcon = props?.title ? "flex-start" : "center";
+  const iconPadding = props?.title ? 0 : 0.5;
   const alignItemsAction = typeof props?.action !== "undefined" ? "center" : "flex-start";
   const onCloseHandler = (event: any) => {
     props.onClose && props.onClose(event);
@@ -50,27 +50,28 @@ const Alert = ({ children, show, ...props }: AlertProps) => {
         "backgroundColor": "white",
         "padding": "12px",
         "& .MuiAlert-icon": {
-          alignItems: alignItemsIcon,
-          padding: 0,
+          paddingTop: iconPadding,
+          alignItems: "flex-start",
         },
         "& .MuiAlert-message": {
-          padding: 0,
+          paddingTop: 0,
+          flex: 1,
         },
         "& .MuiAlert-action": {
           alignItems: alignItemsAction,
         },
       }}>
-      <MuiAlertTitle
-        sx={{
-          fontFamily: "UCity",
-          fontWeight: 600,
-          fontStyle: "normal",
-          fontSize: "14px",
-          lineHeight: "20px",
-        }}>
-        {props.title}
-      </MuiAlertTitle>
-      {children}
+        <MuiAlertTitle
+          sx={{
+            fontFamily: "UCity",
+            fontWeight: 600,
+            fontStyle: "normal",
+            fontSize: "14px",
+            lineHeight: "20px",
+          }}>
+          {props.title}
+        </MuiAlertTitle>
+        {children}
     </MuiAlert>
   ) : null;
 };
