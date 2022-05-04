@@ -20,6 +20,10 @@ export default {
       defaultValue: true,
       control: "boolean",
     },
+    closeable: {
+      defaultValue: true,
+      control: "boolean",
+    },
     children: {
       defaultValue: "You are offline, Please check your connectivity",
       control: "text",
