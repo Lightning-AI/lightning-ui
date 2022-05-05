@@ -7,7 +7,7 @@ const iconStyle = {
   fontSize: "16px",
 };
 const variantIcon: Record<string, ReactNode> = {
-  info: <Info sx={{ ...iconStyle, color: "#792EE5" }} />,
+  info: <Info sx={{ ...iconStyle, color: "#1877F2" }} />,
   success: <CheckCircle sx={{ ...iconStyle, color: "#31A24C" }} />,
   warning: <Warning sx={{ ...iconStyle, color: "#F1A817" }} />,
   error: <Dangerous sx={{ ...iconStyle, color: "#E02C2D" }} />,
@@ -16,7 +16,7 @@ const variantIcon: Record<string, ReactNode> = {
 type Variants = "info" | "warning" | "error" | "success";
 
 const variantBackgroundColor: Record<Variants, any> = {
-  info: "rgba(239, 238, 255, 1)",
+  info: "rgba(210, 226, 255, 1)",
   success: "rgba(49, 162, 76, 0.2)",
   warning: "rgba(241, 168, 23, 0.2)",
   error: "rgba(240, 40, 73, 0.2)",
@@ -25,6 +25,7 @@ const variantBackgroundColor: Record<Variants, any> = {
 export type BannerProps = {
   variant: Variants;
   children: ReactNode;
+  closeable?: boolean;
   show?: boolean;
 };
 
@@ -52,9 +53,11 @@ const Banner = ({ children, ...props }: BannerProps) => {
         {variantIcon[props.variant]}
         {children}
       </Stack>
-      <IconButton onClick={() => setIsShown(false)}>
-        <Close sx={{ fontSize: "16px" }} />
-      </IconButton>
+      {props.closeable && (
+        <IconButton onClick={() => setIsShown(false)} sx={{ padding: 0 }}>
+          <Close sx={{ fontSize: "16px" }} />
+        </IconButton>
+      )}
     </Stack>
   ) : null;
 };

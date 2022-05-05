@@ -34,7 +34,7 @@ const Template: ComponentStory<any> = (args: DialogProps) => {
   const buttonOnClickHandler = (event: any) => event.stopPropagation();
   return (
     <Dialog {...args}>
-      <DialogTitle text={"Dialog Header"} />
+      <DialogTitle text={"Dialog Header"} subtext={"Dialog Subheader"} />
       <DialogContent>
         <Box display={"flex"} justifyContent={"center"} alignItems={"center"} height={"150px"}>
           Dialog Content

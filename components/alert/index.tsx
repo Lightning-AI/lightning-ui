@@ -2,6 +2,7 @@ import { Info, Dangerous, Warning, CheckCircle } from "../../icons";
 import MuiAlert, { AlertProps as MuiAlertProps } from "@mui/material/Alert";
 import MuiAlertTitle from "@mui/material/AlertTitle";
 import { ReactNode, useEffect, useState } from "react";
+import { Box } from "..";
 
 const severityColor: Record<string, any> = {
   info: "#1877F2",
@@ -25,7 +26,7 @@ export type AlertProps = {
 const Alert = ({ children, show, ...props }: AlertProps) => {
   const [isShown, setIsShown] = useState(show);
   useEffect(() => setIsShown(show), [show]);
-  const alignItemsIcon = props?.title ? "flex-start" : "center";
+  const iconPadding = props?.title ? 0 : 0.5;
   const alignItemsAction = typeof props?.action !== "undefined" ? "center" : "flex-start";
   const onCloseHandler = (event: any) => {
     props.onClose && props.onClose(event);
@@ -50,14 +51,17 @@ const Alert = ({ children, show, ...props }: AlertProps) => {
         "backgroundColor": "white",
         "padding": "12px",
         "& .MuiAlert-icon": {
-          alignItems: alignItemsIcon,
-          padding: 0,
+          paddingTop: iconPadding,
+          alignItems: "flex-start",
         },
         "& .MuiAlert-message": {
-          padding: 0,
+          paddingY: 0,
+          flex: 1,
         },
         "& .MuiAlert-action": {
           alignItems: alignItemsAction,
+          paddingRight: 1,
+          paddingTop: 0,
         },
       }}>
       <MuiAlertTitle
@@ -67,10 +71,11 @@ const Alert = ({ children, show, ...props }: AlertProps) => {
           fontStyle: "normal",
           fontSize: "14px",
           lineHeight: "20px",
+          margin: 0,
         }}>
         {props.title}
       </MuiAlertTitle>
-      {children}
+      <Box paddingTop={0.5}>{children}</Box>
     </MuiAlert>
   ) : null;
 };

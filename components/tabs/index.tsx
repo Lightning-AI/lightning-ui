@@ -71,7 +71,7 @@ const Tabs = (props: TabsProps) => {
       </MuiTabs>
       <Divider />
       {hasContent && (
-        <Box paddingY={1.5} sx={props.sxContent}>
+        <Box paddingTop={3} paddingBottom={1.5} sx={props.sxContent}>
           {props.tabItems.map((tabItem: any, index) => (
             <TabPanel key={index.toString()} value={selectedTab} index={index}>
               <TabContent>{tabItem.content}</TabContent>
