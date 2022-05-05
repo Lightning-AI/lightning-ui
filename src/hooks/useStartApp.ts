@@ -18,7 +18,7 @@ export default function useStartApp() {
       }),
     {
       onSuccess: () => {
-        const refeftchInterval = 500;
+        const refetchInterval = 500;
 
         const interval = setInterval(() => {
           const state = queryClient.getQueryData<LightningState>(queryKey);
@@ -28,7 +28,7 @@ export default function useStartApp() {
           } else {
             clearInterval(interval);
           }
-        }, refeftchInterval);
+        }, refetchInterval);
       },
     },
   );

@@ -5,6 +5,8 @@ import { LightningState } from "types/lightning";
 
 export const queryKey = "getLightningState";
 
+const refetchInterval = 1000;
+
 export default function useLightingState() {
   const getState = () =>
     fetch(stateEndpoint, { headers: headersFor() }).then(res => {
@@ -15,7 +17,7 @@ export default function useLightingState() {
       return res.json();
     });
 
-  const lightningState = useQuery<LightningState>("getLightningState", getState);
+  const lightningState = useQuery<LightningState>("getLightningState", getState, { refetchInterval });
 
   return lightningState;
 }
