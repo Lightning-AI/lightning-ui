@@ -55,7 +55,7 @@ const Alert = ({ children, show, ...props }: AlertProps) => {
           alignItems: "flex-start",
         },
         "& .MuiAlert-message": {
-          paddingTop: 0,
+          paddingY: 0,
           flex: 1,
         },
         "& .MuiAlert-action": {
