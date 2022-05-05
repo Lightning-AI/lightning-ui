@@ -39,6 +39,7 @@ const Alert = ({ children, show, ...props }: AlertProps) => {
       iconMapping={severityIcon}
       onClose={onCloseHandler}
       sx={{
+        "color": "black",
         "display": "flex",
         "fontFamily": "Roboto",
         "fontWeight": "normal",
