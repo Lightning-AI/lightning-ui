@@ -2,6 +2,7 @@ import { Info, Dangerous, Warning, CheckCircle } from "../../icons";
 import MuiAlert, { AlertProps as MuiAlertProps } from "@mui/material/Alert";
 import MuiAlertTitle from "@mui/material/AlertTitle";
 import { ReactNode, useEffect, useState } from "react";
+import { Box } from "..";
 
 const severityColor: Record<string, any> = {
   info: "#1877F2",
@@ -59,6 +60,8 @@ const Alert = ({ children, show, ...props }: AlertProps) => {
         },
         "& .MuiAlert-action": {
           alignItems: alignItemsAction,
+          paddingRight: 1,
+          paddingTop: 0,
         },
       }}>
       <MuiAlertTitle
@@ -68,10 +71,11 @@ const Alert = ({ children, show, ...props }: AlertProps) => {
           fontStyle: "normal",
           fontSize: "14px",
           lineHeight: "20px",
+          margin: 0,
         }}>
         {props.title}
       </MuiAlertTitle>
-      {children}
+      <Box paddingTop={0.5}>{children}</Box>
     </MuiAlert>
   ) : null;
 };
