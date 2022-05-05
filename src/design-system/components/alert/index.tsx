@@ -4,9 +4,9 @@ import MuiAlertTitle from "@mui/material/AlertTitle";
 import { ReactNode, useEffect, useState } from "react";
 
 const severityColor: Record<string, any> = {
-  info: "#792EE5",
+  info: "#1877F2",
   success: "#31A24C",
-  warning: "#F1A817",
+  warning: "#FCBE2E",
   error: "#E02C2D",
 };
 
@@ -47,6 +47,7 @@ const Alert = ({ children, show, ...props }: AlertProps) => {
         "lineHeight": "20px",
         "borderLeft": `8px solid ${severityColor[props.severity ?? "info"]}`,
         "backgroundColor": "white",
+        "padding": "7px 12px",
         "& .MuiAlert-icon": {
           alignItems: alignItemsIcon,
         },
