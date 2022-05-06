@@ -1,5 +1,5 @@
 import { Info, Dangerous, Warning, CheckCircle, Close } from "../../icons";
-import { Stack, IconButton } from "../";
+import { Stack, IconButton, Box } from "../";
 import { ReactNode, useEffect, useState } from "react";
 
 const iconStyle = {
@@ -37,7 +37,7 @@ const Banner = ({ children, ...props }: BannerProps) => {
     <Stack
       {...props}
       direction={"row"}
-      alignItems={"center"}
+      alignItems={"flex-start"}
       justifyContent={"space-between"}
       sx={{
         p: 1,
@@ -49,14 +49,18 @@ const Banner = ({ children, ...props }: BannerProps) => {
         lineHeight: "20px",
         backgroundColor: variantBackgroundColor[props.variant],
       }}>
-      <Stack direction={"row"} alignItems={"center"}>
-        {variantIcon[props.variant]}
+      <Stack direction={"row"}>
+        <Box paddingTop={0.25} maxHeight={2}>
+          {variantIcon[props.variant]}
+        </Box>
         {children}
       </Stack>
       {props.closeable && (
-        <IconButton onClick={() => setIsShown(false)} sx={{ padding: 0 }}>
-          <Close sx={{ fontSize: "16px" }} />
-        </IconButton>
+        <Box>
+          <IconButton onClick={() => setIsShown(false)} sx={{ padding: 0 }}>
+            <Close sx={{ fontSize: "16px" }} />
+          </IconButton>
+        </Box>
       )}
     </Stack>
   ) : null;

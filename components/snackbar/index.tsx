@@ -9,7 +9,7 @@ import { Box } from "..";
 
 export type SnackbarProps = {
   onClose?: (event: Event | SyntheticEvent<any, Event>, reason?: SnackbarCloseReason) => void;
-} & Pick<AlertProps, "severity" | "title" | "children"> &
+} & Pick<AlertProps, "severity" | "title" | "children" | "action"> &
   Pick<MuiSnackbarProps, "open"> &
   SnackbarOrigin;
 

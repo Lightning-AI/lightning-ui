@@ -37,10 +37,14 @@ export default {
       options: ["left", "center", "right"],
       control: "select",
     },
+    action: {
+      defaultValue: false,
+      control: "boolean",
+    },
   },
 } as ComponentMeta<typeof Snackbar>;
 
-const Template: ComponentStory<typeof Snackbar> = (args: SnackbarProps) => {
+const Template: ComponentStory<typeof Snackbar> = ({ action, ...args }: SnackbarProps) => {
   const [open, setOpen] = useState(false);
 
   const handleClick = () => {
@@ -53,12 +57,14 @@ const Template: ComponentStory<typeof Snackbar> = (args: SnackbarProps) => {
     setOpen(false);
   };
 
+  const actionComponent = action ? <Button text="Call to Action" color={"grey"}></Button> : undefined;
   return (
     <>
       <Box height={"100vh"} display={"flex"} justifyContent={"center"} alignItems={"center"}>
         <Button text={"Open snackbar"} onClick={handleClick} />
       </Box>
-      <Snackbar {...args} open={open} onClose={handleClose} />
+
+      <Snackbar {...args} open={open} onClose={handleClose} action={actionComponent} />
     </>
   );
 };
