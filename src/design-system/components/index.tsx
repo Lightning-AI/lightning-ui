@@ -8,7 +8,8 @@ import TextField from "./text-field";
 import Select from "./select";
 import Banner from "./banner";
 import Alert from "./alert";
-import Snackbar from "./snackbar";
+import SnackbarProvider from "./snackbar-provider";
+import { useSnackbar } from "./snackbar-provider/useSnackbar";
 import { Card, CardHeader, CardContent, CardActions, CardActionArea, CardMedia } from "./card";
 import Tabs from "./tabs";
 import Breadcrumbs from "./breadcrumbs";
@@ -37,7 +38,8 @@ export {
   Select,
   Banner,
   Alert,
-  Snackbar,
+  SnackbarProvider,
+  useSnackbar,
   Card,
   CardHeader,
   CardContent,
