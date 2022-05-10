@@ -1,5 +1,5 @@
 import { Box, Stack } from "../../design-system/components";
-import InfoIconWithTooltipHelpMessage from "shared/components/InfoIconWithTooltipHelpMessage";
+import InfoIconWithTooltipHelpMessage from "../../shared/components/InfoIconWithTooltipHelpMessage";
 import { CircleOutlined, Circle } from "../../design-system/icons";
 
 export enum StatusEnum {
