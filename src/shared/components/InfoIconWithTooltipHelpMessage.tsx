@@ -1,8 +1,7 @@
 import React from "react";
 import { InfoRounded } from "@mui/icons-material";
 
-import Tooltip, { TooltipProps } from "../../design-system/components/tooltip";
-import { styled, tooltipClasses } from "@mui/material";
+import { Tooltip, TooltipProps, styled, tooltipClasses } from "@mui/material";
 
 const InfoIconTooltip = styled(({ className, ...props }: TooltipProps) => (
   <Tooltip {...props} classes={{ popper: className }} />
