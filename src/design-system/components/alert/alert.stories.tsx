@@ -39,9 +39,9 @@ export default {
 
 const Template: ComponentStory<typeof Alert> = ({ action, ...args }: AlertProps) => {
   const [show, setShow] = useState(args.show);
-  useEffect(()=>setShow(args.show), [args.show]);
+  useEffect(() => setShow(args.show), [args.show]);
   const actionComponent = action ? <Button text="Call to Action" color={"grey"}></Button> : undefined;
-  return <Alert {...args} action={actionComponent} onClose={()=>setShow(false)} show={show}/>;
+  return <Alert {...args} action={actionComponent} onClose={() => setShow(false)} show={show} />;
 };
 
 export const Playground = Template.bind({});
