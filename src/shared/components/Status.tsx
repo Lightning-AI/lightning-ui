@@ -1,8 +1,6 @@
-import IconButton from "@mui/material/IconButton";
-
 import { Box, Stack } from "../../design-system/components";
-import { CircleOutlined, Circle, InfoRounded } from "../../design-system/icons";
-import Tooltip from "../../design-system/components/tooltip";
+import InfoIconWithTooltipHelpMessage from "shared/components/InfoIconWithTooltipHelpMessage";
+import { CircleOutlined, Circle } from "../../design-system/icons";
 
 export enum StatusEnum {
   NOT_YET_RUN = "Not yet run",
@@ -57,11 +55,7 @@ const Status = ({ status, message }: StatusProps) => {
   return (
     <Stack direction={"row"} alignItems={"center"} spacing={1}>
       {statusIcon} <Box>{status?.toString()}</Box>
-      {message && (
-        <Tooltip title={message} placement={"top"}>
-          <InfoRounded sx={{ color: "black" }} />
-        </Tooltip>
-      )}
+      {message && <InfoIconWithTooltipHelpMessage message={message} />}
     </Stack>
   );
 };
