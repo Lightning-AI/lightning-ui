@@ -1,5 +1,4 @@
-import { Box, Stack } from "../../design-system/components";
-import InfoIconWithTooltipHelpMessage from "../../shared/components/InfoIconWithTooltipHelpMessage";
+import { Box, Stack, InfoIconWithHelpTooltip } from "../../design-system/components";
 import { CircleOutlined, Circle } from "../../design-system/icons";
 
 export enum StatusEnum {
@@ -55,7 +54,7 @@ const Status = ({ status, message }: StatusProps) => {
   return (
     <Stack direction={"row"} alignItems={"center"} spacing={1}>
       {statusIcon} <Box>{status?.toString()}</Box>
-      {message && <InfoIconWithTooltipHelpMessage message={message} />}
+      {message && <InfoIconWithHelpTooltip message={message} />}
     </Stack>
   );
 };

@@ -3,6 +3,8 @@ import { ComponentMeta, ComponentStory } from "@storybook/react";
 import Tooltip, { TooltipProps } from "design-system/components/tooltip";
 import { InfoRounded } from "design-system/icons";
 import { Box } from "design-system/components";
+import HelpMessage from "design-system/components/tooltip/HelpMessage";
+import InfoIconWithHelpTooltip from "design-system/components/tooltip/InfoIconWithHelpTooltip";
 
 export default {
   title: "Components/Tooltip",
@@ -50,4 +52,28 @@ const Template: ComponentStory<typeof Tooltip> = (args: TooltipProps) => {
   );
 };
 
-export const Playground = Template.bind({});
+export const TooltipPlayground = Template.bind({});
+
+const HelpMessageTemplate: ComponentStory<typeof HelpMessage> = (args: TooltipProps) => {
+  return (
+    <Box display={"flex"} height={"200px"} alignItems={"center"} justifyContent={"center"}>
+      <HelpMessage {...args}>
+        <IconButton>
+          <InfoRounded />
+        </IconButton>
+      </HelpMessage>
+    </Box>
+  );
+};
+
+export const HelpMessagePlayground = HelpMessageTemplate.bind({});
+
+const InfoIconWithHelpTooltipTemplate: ComponentStory<any> = (args: TooltipProps) => {
+  return (
+    <Box display={"flex"} height={"200px"} alignItems={"center"} justifyContent={"center"}>
+      <InfoIconWithHelpTooltip message={args.title as string} />
+    </Box>
+  );
+};
+
+export const InfoIconWithHelpTooltipPlayground = InfoIconWithHelpTooltipTemplate.bind({});

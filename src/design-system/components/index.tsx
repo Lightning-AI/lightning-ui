@@ -17,6 +17,7 @@ import ButtonGroup from "./button-group";
 import Media from "./media";
 import Table from "./table";
 import Checkbox from "./checkbox";
+import InfoIconWithHelpTooltip from "./tooltip/InfoIconWithHelpTooltip";
 export * from "@mui/material";
 
 export {
@@ -47,4 +48,5 @@ export {
   Pagination,
   Media,
   Table,
+  InfoIconWithHelpTooltip,
 };
