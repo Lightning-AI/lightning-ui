@@ -4,6 +4,7 @@ import ComponentStatus, { StatusEnum } from "./Status";
 
 export type ComponentEntity = {
   status: StatusEnum;
+  statusMessage?: string;
   name: string;
   type: string;
   provider: string;
@@ -17,7 +18,7 @@ export type ComponentTableProps = {
 const header: ReactNode[] = ["Status", "Name", "Type", "Source", "Last Run"];
 const getComponentCell = (component: ComponentEntity): ReactNode[] => {
   const cell = [
-    <ComponentStatus status={component.status} />,
+    <ComponentStatus status={component.status} message={component.statusMessage} />,
     component.name,
     component.type,
     component.provider,
