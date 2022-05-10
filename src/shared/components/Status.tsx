@@ -58,10 +58,8 @@ const Status = ({ status, message }: StatusProps) => {
     <Stack direction={"row"} alignItems={"center"} spacing={1}>
       {statusIcon} <Box>{status?.toString()}</Box>
       {message && (
-        <Tooltip title={message} placement={"top"} sx={{ maxWidth: "220px" }}>
-          <IconButton>
-            <InfoRounded />
-          </IconButton>
+        <Tooltip title={message} placement={"top"}>
+          <InfoRounded sx={{ color: "black" }} />
         </Tooltip>
       )}
     </Stack>
