@@ -1,8 +1,8 @@
-import { Box, Stack } from "../../design-system/components";
-import { CircleOutlined, Circle } from "../../design-system/icons";
-import Tooltip from "design-system/components/tooltip";
 import IconButton from "@mui/material/IconButton";
-import { InfoRounded } from "design-system/icons";
+
+import { Box, Stack } from "../../design-system/components";
+import { CircleOutlined, Circle, InfoRounded } from "../../design-system/icons";
+import Tooltip from "../../design-system/components/tooltip";
 
 export enum StatusEnum {
   NOT_YET_RUN = "Not yet run",
