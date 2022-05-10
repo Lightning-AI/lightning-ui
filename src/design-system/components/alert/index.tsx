@@ -1,7 +1,7 @@
 import { Info, Dangerous, Warning, CheckCircle } from "../../icons";
 import MuiAlert, { AlertProps as MuiAlertProps } from "@mui/material/Alert";
 import MuiAlertTitle from "@mui/material/AlertTitle";
-import { ReactNode, useEffect, useState } from "react";
+import { ReactNode } from "react";
 import { Box } from "..";
 
 const severityColor: Record<string, any> = {

@@ -16,7 +16,9 @@ export type SnackbarProviderProps = {
   children: ReactNode;
 };
 
-const content = (key: string, message: any) => {
+// We need to make it a function in order to be able to use hooks inside
+// so it is considered as a functional component
+const content = () => (key: string, message: any) => {
   const { closeSnackbar } = useSnackbar();
   const onCloseHandler = () => {
     !message.action && closeSnackbar(key);
@@ -44,7 +46,7 @@ export default function SnackbarProvider(props: SnackbarProviderProps) {
         vertical: "bottom",
         horizontal: "left",
       }}
-      content={content}>
+      content={content()}>
       {props.children}
     </NotistackSnackbarProvider>
   );
