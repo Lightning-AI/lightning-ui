@@ -10,7 +10,7 @@ export default function HelpMessage(props: TooltipProps) {
         tooltip: {
           sx: {
             maxWidth: 220,
-            backgroundColor: (theme) => theme.palette.grey[70],
+            backgroundColor: theme => theme.palette.grey[70],
           },
         },
       }}

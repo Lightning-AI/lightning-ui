@@ -4,7 +4,9 @@ import Tooltip, { TooltipProps } from "design-system/components/tooltip";
 import { InfoRounded } from "design-system/icons";
 import { Box } from "design-system/components";
 import HelpMessage from "design-system/components/tooltip/HelpMessage";
-import InfoIconWithHelpTooltip , { InfoIconWithHelpTooltipProps } from "design-system/components/tooltip/InfoIconWithHelpTooltip";
+import InfoIconWithHelpTooltip, {
+  InfoIconWithHelpTooltipProps,
+} from "design-system/components/tooltip/InfoIconWithHelpTooltip";
 
 export default {
   title: "Components/Tooltip",
@@ -18,6 +20,10 @@ export default {
   argTypes: {
     title: {
       defaultValue: "Tooltip is read-only",
+      control: "text",
+    },
+    message: {
+      defaultValue: "A very informative help message",
       control: "text",
     },
     placement: {
@@ -79,4 +85,4 @@ const InfoIconWithHelpTooltipTemplate: ComponentStory<any> = (args: InfoIconWith
 };
 
 export const InfoIconWithHelpTooltipPlayground = InfoIconWithHelpTooltipTemplate.bind({});
-InfoIconWithHelpTooltipPlayground.parameters = { controls: { include: ["message"] } };
+InfoIconWithHelpTooltipPlayground.parameters = { controls: { exclude: ["title"] } };

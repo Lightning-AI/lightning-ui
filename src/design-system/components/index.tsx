@@ -18,6 +18,8 @@ import Media from "./media";
 import Table from "./table";
 import Checkbox from "./checkbox";
 import InfoIconWithHelpTooltip from "./tooltip/InfoIconWithHelpTooltip";
+import HelpMessage from "./tooltip/HelpMessage";
+import Tooltip from "./tooltip";
 export * from "@mui/material";
 
 export {
@@ -49,4 +51,6 @@ export {
   Media,
   Table,
   InfoIconWithHelpTooltip,
+  HelpMessage,
+  Tooltip,
 };
