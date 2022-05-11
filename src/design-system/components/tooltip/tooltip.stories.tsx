@@ -77,3 +77,4 @@ const InfoIconWithHelpTooltipTemplate: ComponentStory<any> = (args: TooltipProps
 };
 
 export const InfoIconWithHelpTooltipPlayground = InfoIconWithHelpTooltipTemplate.bind({});
+InfoIconWithHelpTooltipPlayground.parameters = { controls: { include: ["message"] } };
