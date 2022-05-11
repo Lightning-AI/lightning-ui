@@ -1,6 +1,7 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import Alert, { AlertProps } from "design-system/components/alert";
 import Button from "design-system/components/button";
+import { useEffect, useState } from "react";
 
 export default {
   title: "Components/Alert",
@@ -37,8 +38,10 @@ export default {
 } as ComponentMeta<typeof Alert>;
 
 const Template: ComponentStory<typeof Alert> = ({ action, ...args }: AlertProps) => {
+  const [show, setShow] = useState(args.show);
+  useEffect(() => setShow(args.show), [args.show]);
   const actionComponent = action ? <Button text="Call to Action" color={"grey"}></Button> : undefined;
-  return <Alert {...args} action={actionComponent} />;
+  return <Alert {...args} action={actionComponent} onClose={() => setShow(false)} show={show} />;
 };
 
 export const Playground = Template.bind({});

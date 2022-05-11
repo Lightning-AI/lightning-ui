@@ -1,7 +1,7 @@
 import { Info, Dangerous, Warning, CheckCircle } from "../../icons";
 import MuiAlert, { AlertProps as MuiAlertProps } from "@mui/material/Alert";
 import MuiAlertTitle from "@mui/material/AlertTitle";
-import { ReactNode, useEffect, useState } from "react";
+import { ReactNode } from "react";
 import { Box } from "..";
 
 const severityColor: Record<string, any> = {
@@ -24,16 +24,13 @@ export type AlertProps = {
 } & Pick<MuiAlertProps, "severity" | "children" | "action" | "onClose">;
 
 const Alert = ({ children, show, ...props }: AlertProps) => {
-  const [isShown, setIsShown] = useState(show);
-  useEffect(() => setIsShown(show), [show]);
   const iconPadding = props?.title ? 0 : 0.5;
   const alignItemsAction = typeof props?.action !== "undefined" ? "center" : "flex-start";
   const onCloseHandler = (event: any) => {
     props.onClose && props.onClose(event);
-    setIsShown(false);
   };
 
-  return isShown ? (
+  return show ? (
     <MuiAlert
       {...props}
       variant={"outlined"}
