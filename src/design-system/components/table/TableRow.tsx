@@ -4,9 +4,9 @@ import MuiTableCell from "@mui/material/TableCell";
 import { ArrowDropDownRounded, ArrowDropUpRounded } from "../../icons";
 
 export type TableRowProps = {
-    cells: ReactNode[],
-    details?: ReactNode,
-}
+  cells: ReactNode[];
+  details?: ReactNode;
+};
 
 export default function TableRow(props: TableRowProps) {
   const [expanded, setExpanded] = useState(false);
@@ -26,7 +26,7 @@ export default function TableRow(props: TableRowProps) {
           </MuiTableCell>
         ))}
         {props.details && (
-          <MuiTableCell key={"expand"} sx={cellStyle}>
+          <MuiTableCell width={"10px"} sx={cellStyle}>
             {icon}
           </MuiTableCell>
         )}

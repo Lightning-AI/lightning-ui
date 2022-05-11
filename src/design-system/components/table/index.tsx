@@ -34,7 +34,7 @@ const Table = (props: TableProps) => {
                 {cell}
               </MuiTableCell>
             ))}
-            {props.rowDetails && <MuiTableCell key={"expand"} sx={tableCellHeaderStyle}></MuiTableCell>}
+            {props.rowDetails && <MuiTableCell width={"10px"} sx={tableCellHeaderStyle}></MuiTableCell>}
           </MuiTableRow>
         </MuiTableHead>
         <MuiTableBody>
