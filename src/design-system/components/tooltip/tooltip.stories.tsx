@@ -71,7 +71,7 @@ export const HelpMessagePlayground = HelpMessageTemplate.bind({});
 const InfoIconWithHelpTooltipTemplate: ComponentStory<any> = (args: TooltipProps) => {
   return (
     <Box display={"flex"} height={"200px"} alignItems={"center"} justifyContent={"center"}>
-      <InfoIconWithHelpTooltip message={args.title as string} />
+      <InfoIconWithHelpTooltip {...args} />
     </Box>
   );
 };
