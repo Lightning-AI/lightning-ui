@@ -2,7 +2,7 @@ import MuiTooltip, { TooltipProps as MuiTooltipProps } from "@mui/material/Toolt
 
 export type HelpMessageProps = Pick<MuiTooltipProps, "title" | "children" | "placement">;
 
-export default function HelpMessage(props: TooltipProps) {
+export default function HelpMessage(props: HelpMessageProps) {
   return (
     <MuiTooltip
       {...props}
