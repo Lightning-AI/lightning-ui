@@ -7,7 +7,7 @@ const Demo = ({ action, ...args }: { action: boolean }) => {
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();
 
   const actionComponent = action
-    ? (key: string) => <Button color={"grey"} text={"Add credits"} onClick={() => closeSnackbar(key)}></Button>
+    ? (key: string) => <Button color={"grey"} text={"Add credits"} onClick={() => closeSnackbar(key)} />
     : undefined;
   return (
     <Box height={"100vh"} display={"flex"} justifyContent={"center"} alignItems={"center"}>
