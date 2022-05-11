@@ -4,7 +4,7 @@ import Tooltip, { TooltipProps } from "design-system/components/tooltip";
 import { InfoRounded } from "design-system/icons";
 import { Box } from "design-system/components";
 import HelpMessage from "design-system/components/tooltip/HelpMessage";
-import InfoIconWithHelpTooltip from "design-system/components/tooltip/InfoIconWithHelpTooltip";
+import InfoIconWithHelpTooltip , { InfoIconWithHelpTooltipProps } from "design-system/components/tooltip/InfoIconWithHelpTooltip";
 
 export default {
   title: "Components/Tooltip",
