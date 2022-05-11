@@ -1,6 +1,7 @@
 import { useSnackbar as useNotistackSnackbar } from "notistack";
 import { AlertProps } from "../alert";
 
+// Added to only allow expected Alert props to be passed
 export type EnqueueSnackbarProps = Pick<AlertProps, "action" | "children" | "severity" | "title">;
 
 export function useSnackbar() {
