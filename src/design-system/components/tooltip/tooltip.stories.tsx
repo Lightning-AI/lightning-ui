@@ -53,6 +53,7 @@ const Template: ComponentStory<typeof Tooltip> = (args: TooltipProps) => {
 };
 
 export const TooltipPlayground = Template.bind({});
+TooltipPlayground.parameters = { controls: { exclude: ["message"] } };
 
 const HelpMessageTemplate: ComponentStory<typeof HelpMessage> = (args: TooltipProps) => {
   return (
