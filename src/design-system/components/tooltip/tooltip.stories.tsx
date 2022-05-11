@@ -68,6 +68,7 @@ const HelpMessageTemplate: ComponentStory<typeof HelpMessage> = (args: TooltipPr
 };
 
 export const HelpMessagePlayground = HelpMessageTemplate.bind({});
+HelpMessagePlayground.parameters = { controls: { exclude: ["message"] } };
 
 const InfoIconWithHelpTooltipTemplate: ComponentStory<any> = (args: InfoIconWithHelpTooltipProps) => {
   return (
