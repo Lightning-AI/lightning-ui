@@ -27,7 +27,7 @@ const Template: ComponentStory<typeof Table> = ({ header, rowDetails }: TablePro
     "Not yet run",
   ];
   const rows = [rowCell, rowCell, rowCell];
-  return <Table header={header} rows={rows} rowDetails={rowDetails}/>;
+  return <Table header={header} rows={rows} rowDetails={rowDetails} />;
 };
 
 export const WithHeader = Template.bind({});
@@ -36,15 +36,9 @@ WithHeader.args = {
 };
 export const WithoutHeader = Template.bind({});
 
-const detailsComponent = <Stack alignItems={"center"}>Row Details</Stack>
+const detailsComponent = <Stack alignItems={"center"}>Row Details</Stack>;
 export const WithDetails = Template.bind({});
 WithDetails.args = {
   header: ["Status", "Name", "Type", "Source", "Last Run"],
-  rowDetails: [
-    detailsComponent,
-    detailsComponent,
-    detailsComponent,
-    detailsComponent,
-    detailsComponent,
-  ],
+  rowDetails: [detailsComponent, detailsComponent, detailsComponent, detailsComponent, detailsComponent],
 };
