@@ -3,6 +3,10 @@ import { ComponentMeta, ComponentStory } from "@storybook/react";
 import Tooltip, { TooltipProps } from "design-system/components/tooltip";
 import { InfoRounded } from "design-system/icons";
 import { Box } from "design-system/components";
+import HelpMessage from "design-system/components/tooltip/HelpMessage";
+import InfoIconWithHelpTooltip, {
+  InfoIconWithHelpTooltipProps,
+} from "design-system/components/tooltip/InfoIconWithHelpTooltip";
 
 export default {
   title: "Components/Tooltip",
@@ -16,6 +20,10 @@ export default {
   argTypes: {
     title: {
       defaultValue: "Tooltip is read-only",
+      control: "text",
+    },
+    message: {
+      defaultValue: "A very informative help message",
       control: "text",
     },
     placement: {
@@ -50,4 +58,31 @@ const Template: ComponentStory<typeof Tooltip> = (args: TooltipProps) => {
   );
 };
 
-export const Playground = Template.bind({});
+export const TooltipPlayground = Template.bind({});
+TooltipPlayground.parameters = { controls: { exclude: ["message"] } };
+
+const HelpMessageTemplate: ComponentStory<typeof HelpMessage> = (args: TooltipProps) => {
+  return (
+    <Box display={"flex"} height={"200px"} alignItems={"center"} justifyContent={"center"}>
+      <HelpMessage {...args}>
+        <IconButton>
+          <InfoRounded />
+        </IconButton>
+      </HelpMessage>
+    </Box>
+  );
+};
+
+export const HelpMessagePlayground = HelpMessageTemplate.bind({});
+HelpMessagePlayground.parameters = { controls: { exclude: ["message"] } };
+
+const InfoIconWithHelpTooltipTemplate: ComponentStory<any> = (args: InfoIconWithHelpTooltipProps) => {
+  return (
+    <Box display={"flex"} height={"200px"} alignItems={"center"} justifyContent={"center"}>
+      <InfoIconWithHelpTooltip {...args} />
+    </Box>
+  );
+};
+
+export const InfoIconWithHelpTooltipPlayground = InfoIconWithHelpTooltipTemplate.bind({});
+InfoIconWithHelpTooltipPlayground.parameters = { controls: { exclude: ["title"] } };
