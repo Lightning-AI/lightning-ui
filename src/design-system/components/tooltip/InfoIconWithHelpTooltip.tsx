@@ -3,7 +3,7 @@ import { InfoRounded } from "@mui/icons-material";
 
 import HelpMessage from "./HelpMessage";
 
-type InfoIconWithHelpTooltipProps = {
+export type InfoIconWithHelpTooltipProps = {
   message: string;
 };
 
