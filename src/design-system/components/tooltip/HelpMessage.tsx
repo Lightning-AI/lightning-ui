@@ -1,6 +1,6 @@
 import MuiTooltip, { TooltipProps as MuiTooltipProps } from "@mui/material/Tooltip";
 
-export type TooltipProps = Pick<MuiTooltipProps, "title" | "children" | "placement">;
+export type HelpMessageProps = Pick<MuiTooltipProps, "title" | "children" | "placement">;
 
 export default function HelpMessage(props: TooltipProps) {
   return (
