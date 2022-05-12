@@ -3,7 +3,6 @@ import { Box, Stack } from "design-system/components";
 import { Link, Outlet } from "react-router-dom";
 
 import ComponentTabs from "components/ComponentTabs";
-import Actions from "components/Actions";
 import Footer from "components/Footer";
 import useLightningState from "hooks/useLightningState";
 import { AppStage } from "types/lightning";
@@ -28,7 +27,6 @@ export default function AppView() {
         <Box flex={2}>
           <ComponentTabs />
         </Box>
-        <Actions />
       </Stack>
       <Box height={"100%"} marginX={2}>
         <Outlet />
