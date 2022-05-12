@@ -6,7 +6,14 @@ import { Box } from "..";
 
 const AlertRef = React.forwardRef<HTMLDivElement, AlertProps>((props, ref) => {
   return (
-    <Box ref={ref}>
+    <Box
+      ref={ref}
+      sx={{
+        "backgroundColor": "transparent",
+        "& .MuiAlert-root": {
+          boxShadow: 2,
+        },
+      }}>
       <Alert {...props} />
     </Box>
   );
