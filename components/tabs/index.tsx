@@ -53,7 +53,7 @@ const Tabs = (props: TabsProps) => {
   }, [hrefIndex, locationUri]);
 
   return (
-    <Box>
+    <Box sx={{ maxWidth: { xs: 320, sm: 480, md: "100%" } }}>
       <MuiTabs
         value={selectedTab}
         onChange={(e, value) => setSelectedTab(value)}
