@@ -9,8 +9,10 @@ const AlertRef = React.forwardRef<HTMLDivElement, AlertProps>((props, ref) => {
     <Box
       ref={ref}
       sx={{
-        boxShadow: 3,
-        borderRadius: "8px",
+        backgroundColor: "transparent",
+        "& .MuiAlert-root": {
+          boxShadow: 2,
+        },
       }}>
       <Alert {...props} />
     </Box>
