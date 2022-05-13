@@ -25,17 +25,18 @@ export type DialogNotificationProps = {
   description: string;
   variant: DialogNotificationVariant;
   actions: ReactNode;
-} & Pick<DialogProps, "open" | "onClose">;
+  onClose: () => void;
+} & Pick<DialogProps, "open">;
 
 export default function DialogNotification({ ...props }: DialogNotificationProps) {
   const text = getText[props.variant];
   const src = getSrcIcon[props.variant];
   return (
     <Dialog open={props.open} onClose={props.onClose}>
-      <DialogTitle text={text}></DialogTitle>
+      <DialogTitle text={text} onClick={props.onClose} />
       <DialogContent>
         <Stack width={"400px"} justifyContent={"center"} alignItems={"center"} spacing={2.5}>
-          <Box component={"img"} width={"96px"} height={"96px"} src={src}></Box>
+          <Box component={"img"} width={"96px"} height={"96px"} src={src} />
           <Stack spacing={0.5} alignItems={"center"} textAlign={"center"}>
             <Typography fontFamily={"UCity"} fontWeight={600} fontSize={"16px"} lineHeight={"20px"}>
               {props.message}
