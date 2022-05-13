@@ -18,3 +18,14 @@ const ThemeProvider = ({ children }: { children: ReactNode }) => {
 };
 
 export default ThemeProvider;
+
+declare module "@mui/material/styles" {
+  interface PaletteColor {
+    "10": string;
+    "20": string;
+    "40": string;
+    "50": string;
+    "70": string;
+    "gradient": string;
+  }
+}
