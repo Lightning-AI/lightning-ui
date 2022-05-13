@@ -5,6 +5,7 @@ import MuiTableRow from "@mui/material/TableRow";
 import MuiTableCell from "@mui/material/TableCell";
 import MuiTableBody from "@mui/material/TableBody";
 import { ReactNode } from "react";
+import TableRow from "./TableRow";
 
 const tableCellHeaderStyle = {
   fontFamily: "Ucity",
@@ -19,6 +20,7 @@ const tableCellHeaderStyle = {
 export type TableProps = {
   header?: ReactNode[];
   rows: ReactNode[][];
+  rowDetails?: ReactNode[];
 };
 
 const Table = (props: TableProps) => {
@@ -32,15 +34,12 @@ const Table = (props: TableProps) => {
                 {cell}
               </MuiTableCell>
             ))}
+            {props.rowDetails && <MuiTableCell width={"10px"} sx={tableCellHeaderStyle}></MuiTableCell>}
           </MuiTableRow>
         </MuiTableHead>
         <MuiTableBody>
           {props.rows.map((row, index) => (
-            <MuiTableRow key={index} sx={{ boxShadow: "inset 0px -1px 0px #EBEDF3;" }}>
-              {row.map((cell, index) => (
-                <MuiTableCell key={index}>{cell}</MuiTableCell>
-              ))}
-            </MuiTableRow>
+            <TableRow cells={row} details={props.rowDetails?.[index]} />
           ))}
         </MuiTableBody>
       </MuiTable>
