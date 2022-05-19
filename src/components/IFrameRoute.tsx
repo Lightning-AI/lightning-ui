@@ -39,7 +39,6 @@ export default function IFrameRoute(props: Props) {
         setIframePort(internalPort);
 
         message.ports[0].onmessage = (message: MessageEvent) => {
-          console.log(`FIXME(alecmerdler): Debugging`, message.data);
           lightningStateMutation.mutate(message.data);
         };
       }
