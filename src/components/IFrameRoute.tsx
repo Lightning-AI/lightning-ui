@@ -27,7 +27,7 @@ const refetchInterval = 1000;
 export default function IFrameRoute(props: Props) {
   const [iframePort, setIframePort] = useState<MessagePort | undefined>(undefined);
   const iframeRef = useRef<HTMLIFrameElement>(null);
-  const [isAvailable, setIsAvailable] = useState(false);
+  const [isAvailable, setIsAvailable] = useState(true);
   const lightningState = useLightningState();
 
   const lightningStateMutation = useUpdateLightningState();
@@ -59,7 +59,9 @@ export default function IFrameRoute(props: Props) {
   }, [iframePort, lightningState.data]);
 
   useEffect(() => {
-    if (props.iframeTargetUrl && isFetchable(props.iframeTargetUrl)) {
+    if (props.iframeTargetUrl === "") {
+      setIsAvailable(false);
+    } else if (isFetchable(props.iframeTargetUrl)) {
       const interval = setInterval(() => {
         fetch(props.iframeTargetUrl).then(res => {
           if (res.status === 200) {

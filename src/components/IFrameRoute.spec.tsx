@@ -11,6 +11,13 @@ describe("IFrameRoute", () => {
     cy.get("iframe").should("have.attr", "src", "http://lightning.ai");
   });
 
+  it("renders loading spinner if <iframe> target URL is not populated yet", () => {
+    mount(<IFrameRoute name="test" iframeTargetUrl={""} />);
+
+    cy.get("iframe").should("not.exist");
+    cy.get("[data-testid=loading-spinner]").should("be.visible");
+  });
+
   it("renders loading spinner if <iframe> is not available", () => {
     const targetUrl = `http://${window.location.host}/frontend`;
 
