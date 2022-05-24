@@ -59,6 +59,9 @@ const Button = ({ href, ...props }: ButtonProps) => {
           color,
           backgroundColor,
         },
+        "& .MuiButton-startIcon": {
+          color: isGreyColor ? (theme: any) => theme.palette.grey[70] : "inherit",
+        },
         ...onlyIconStyle,
       }}
       {...props}
