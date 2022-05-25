@@ -1,8 +1,7 @@
 import { location } from "utils/api";
 import useRuntime, { Runtime } from "./useRuntime";
 
-// FIXME: Find more robust way of determining this domain...
-const productionDomain = "b975913c4b22eca5f0f9e8eff4c4b1c315340a0d.staging.lightning.ai";
+const productionDomain = "lightning.ai";
 
 export default function useAdminUrl() {
   const runtime = useRuntime();

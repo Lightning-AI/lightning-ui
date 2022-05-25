@@ -42,9 +42,7 @@ describe("useAdminUrl", () => {
       });
 
     mountHook(() => useAdminUrl()).then(result => {
-      expect(result.current).to.equal(
-        `https://b975913c4b22eca5f0f9e8eff4c4b1c315340a0d.staging.lightning.ai/me/app/${appId}`,
-      );
+      expect(result.current).to.equal(`https://lightning.ai/me/app/${appId}`);
     });
   });
 });
