@@ -69,7 +69,6 @@ const Tabs = (props: TabsProps) => {
           />
         ))}
       </MuiTabs>
-      <Divider />
       {hasContent && (
         <Box paddingTop={3} paddingBottom={1.5} sx={props.sxContent}>
           {props.tabItems.map((tabItem: any, index) => (

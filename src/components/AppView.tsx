@@ -28,7 +28,7 @@ export default function AppView() {
           <ComponentTabs />
         </Box>
       </Stack>
-      <Box height={"100%"} marginX={2}>
+      <Box height={"100%"} marginX={0}>
         <Outlet />
       </Box>
       <Footer />
