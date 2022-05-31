@@ -2,7 +2,7 @@ const tabs: any = {
   MuiTabs: {
     styleOverrides: {
       indicator: {
-        height: "4px",
+        height: "2px",
         transition: "none",
       },
     },

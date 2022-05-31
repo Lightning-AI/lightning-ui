@@ -1,6 +1,6 @@
 import { ReactNode, MouseEventHandler, useState, useEffect } from "react";
 
-import { Box, Divider, SxProps, Theme } from "../";
+import { Box, SxProps, Theme } from "../";
 import MuiTab from "@mui/material/Tab";
 import MuiTabs from "@mui/material/Tabs";
 
@@ -69,7 +69,6 @@ const Tabs = (props: TabsProps) => {
           />
         ))}
       </MuiTabs>
-      <Divider />
       {hasContent && (
         <Box paddingTop={3} paddingBottom={1.5} sx={props.sxContent}>
           {props.tabItems.map((tabItem: any, index) => (
