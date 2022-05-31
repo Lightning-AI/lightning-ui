@@ -1,6 +1,6 @@
 import { ReactNode, MouseEventHandler, useState, useEffect } from "react";
 
-import { Box, Divider, SxProps, Theme } from "../";
+import { Box, SxProps, Theme } from "../";
 import MuiTab from "@mui/material/Tab";
 import MuiTabs from "@mui/material/Tabs";
 
