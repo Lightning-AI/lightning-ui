@@ -38,6 +38,10 @@ export default {
       control: "boolean",
       defaultValue: false,
     },
+    loading: {
+      control: "boolean",
+      defaultValue: false,
+    },
     fullWidth: {
       control: "boolean",
       defaultValue: false,
