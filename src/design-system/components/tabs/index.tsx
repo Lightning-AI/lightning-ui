@@ -7,6 +7,8 @@ import MuiTabs from "@mui/material/Tabs";
 import TabPanel from "./TabPanel";
 import TabContent from "./TabContent";
 import { useNavigate, useLocation } from "react-router-dom";
+import LayoutView from "components/LayoutView";
+import useLightningState from "hooks/useLightningState";
 
 type StaticTabItem = {
   title: string;
@@ -47,6 +49,10 @@ const Tabs = (props: TabsProps) => {
   const locationUri = location.pathname + location.hash + location.search;
   const hrefIndex = props.tabItems.findIndex((tabItem: any) => tabItem.href === locationUri);
 
+  const lightningState = useLightningState();
+  const root_layout = lightningState.flows.root._layout
+  const has_multiple_layouts = true;
+
   useEffect(() => {
     const newSelectedTab = hrefIndex !== -1 ? hrefIndex : 0;
     setSelectedTab(newSelectedTab);
@@ -54,21 +60,30 @@ const Tabs = (props: TabsProps) => {
 
   return (
     <Box sx={{ maxWidth: { xs: 320, sm: 480, md: "100%" } }}>
-      <MuiTabs
-        value={selectedTab}
-        onChange={(e, value) => setSelectedTab(value)}
-        variant={"scrollable"}
-        sx={props.sxTabs}>
-        {props.tabItems.map((tabItem: any, index) => (
-          // @ts-ignore
-          <MuiTab
-            key={tabItem.title}
-            label={tabItem.title}
-            variant={props.variant}
-            onClick={tabItem.href && navigateHandler(tabItem.href, index)}
-          />
-        ))}
-      </MuiTabs>
+
+      {has_multiple_layouts ? 
+        <MuiTabs
+          value={selectedTab}
+          onChange={(e, value) => setSelectedTab(value)}
+          variant={"scrollable"}
+          sx={props.sxTabs}>
+          {props.tabItems.map((tabItem: any, index) => (
+            // @ts-ignore
+            <MuiTab
+              key={tabItem.title}
+              label={tabItem.title}
+              variant={props.variant}
+              onClick={tabItem.href && navigateHandler(tabItem.href, index)}
+            />
+          ))}
+        </MuiTabs>
+
+      : 
+
+        <LayoutView layout={root.vars._layout}
+
+      } 
+
       {hasContent && (
         <Box paddingTop={3} paddingBottom={1.5} sx={props.sxContent}>
           {props.tabItems.map((tabItem: any, index) => (
