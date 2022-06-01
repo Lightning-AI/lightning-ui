@@ -67,7 +67,9 @@ const Button = ({ href, ...props }: ButtonProps) => {
       }}
       {...props}
       disabled={props.loading || props.disabled}
-      startIcon={props.loading ? <CircularProgress thickness={6} color="inherit" size={isSmallSize ? 18 : 20} /> : props.icon}
+      startIcon={
+        props.loading ? <CircularProgress thickness={6} color="inherit" size={isSmallSize ? 18 : 20} /> : props.icon
+      }
       variant={variant}
       onClick={onClickHandler}
       href={href}>

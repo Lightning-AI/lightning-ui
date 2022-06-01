@@ -36,7 +36,7 @@ export default {
   },
 } as ComponentMeta<typeof Card>;
 
-const Template: ComponentStory<any> = ({ onClick, ...args }: CardProps & { onClick: any, to: string }) => {
+const Template: ComponentStory<any> = ({ onClick, ...args }: CardProps & { onClick: any; to: string }) => {
   const buttonOnClickHandler = (event: any) => event.stopPropagation();
   return (
     <Card {...args}>
