@@ -50,8 +50,12 @@ const Tabs = (props: TabsProps) => {
   const hrefIndex = props.tabItems.findIndex((tabItem: any) => tabItem.href === locationUri);
 
   const lightningState = useLightningState();
-  const root_layout = lightningState.flows.root._layout
-  const has_multiple_layouts = true;
+  console.log(lightningState);
+  const has_multiple_layouts = Array.isArray(lightningState.data?.vars._layout) && lightningState.data?.vars._layout.length >= 1;
+  if (!has_multiple_layouts){
+    var root_layout = lightningState.data.vars._layout[0];
+  }
+    
 
   useEffect(() => {
     const newSelectedTab = hrefIndex !== -1 ? hrefIndex : 0;
@@ -79,10 +83,8 @@ const Tabs = (props: TabsProps) => {
         </MuiTabs>
 
       : 
-
-        <LayoutView layout={root.vars._layout}
-
-      } 
+        <LayoutView layout={root_layout}
+      }
 
       {hasContent && (
         <Box paddingTop={3} paddingBottom={1.5} sx={props.sxContent}>
