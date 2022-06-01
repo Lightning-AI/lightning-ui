@@ -37,7 +37,7 @@ const Button = ({ href, ...props }: ButtonProps) => {
     };
   };
 
-  const onClickHandler = href ? navigateHandler(href) : props.onClick;
+  const onClickHandler = !props.onClick && href ? navigateHandler(href) : props.onClick;
   const hasNoText = typeof props.text === "undefined" || props.text === "";
   const onlyIconStyle = hasNoText && {
     "minWidth": isSmallSize ? "32px" : "40px",
