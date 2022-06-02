@@ -1,5 +1,5 @@
 import { Button as MuiButton, ButtonProps as MuiButtonProps } from "@mui/material";
-import { Box } from "../";
+import { Box, CircularProgress } from "../";
 import { MouseEventHandler, ReactNode } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -7,6 +7,7 @@ export type ButtonProps = {
   icon?: ReactNode;
   text?: string;
   color?: any;
+  loading?: boolean;
 } & Pick<MuiButtonProps, "disabled" | "fullWidth" | "variant" | "href" | "onClick" | "size">;
 
 const Button = ({ href, ...props }: ButtonProps) => {
@@ -59,10 +60,16 @@ const Button = ({ href, ...props }: ButtonProps) => {
           color,
           backgroundColor,
         },
+        "& .MuiButton-startIcon": {
+          color: isGreyColor ? (theme: any) => theme.palette.grey[70] : "inherit",
+        },
         ...onlyIconStyle,
       }}
       {...props}
-      startIcon={props.icon}
+      disabled={props.loading || props.disabled}
+      startIcon={
+        props.loading ? <CircularProgress thickness={6} color="inherit" size={isSmallSize ? 18 : 20} /> : props.icon
+      }
       variant={variant}
       onClick={onClickHandler}
       href={href}>

@@ -24,7 +24,14 @@ export type AlertProps = {
 } & Pick<MuiAlertProps, "severity" | "children" | "action" | "onClose">;
 
 const Alert = ({ children, show, ...props }: AlertProps) => {
-  const iconPadding = props?.title ? 0 : 0.5;
+  const hasChildren = typeof children !== "undefined" && children !== "";
+  const hasMoreThanOneLine =
+    (props.title && hasChildren) ||
+    (props?.title && props?.title?.length > 70) ||
+    (hasChildren && typeof children === "string" && children?.length > 70);
+  const iconPaddingTop = props?.title || hasMoreThanOneLine ? 0 : 0.5;
+  const iconPaddingBottom = !hasChildren ? 0 : 0.5;
+  const alignItems = hasMoreThanOneLine ? "flex-start" : "center";
   const alignItemsAction = typeof props?.action !== "undefined" ? "center" : "flex-start";
   const onCloseHandler = (event: any) => {
     props.onClose && props.onClose(event);
@@ -37,6 +44,7 @@ const Alert = ({ children, show, ...props }: AlertProps) => {
       iconMapping={severityIcon}
       onClose={onCloseHandler}
       sx={{
+        "alignItems": alignItems,
         "color": "#050505",
         "display": "flex",
         "fontFamily": "Roboto",
@@ -47,8 +55,11 @@ const Alert = ({ children, show, ...props }: AlertProps) => {
         "borderLeft": `8px solid ${severityColor[props.severity ?? "info"]}`,
         "backgroundColor": "white",
         "padding": "12px",
+        "width": "500px",
+        "wordBreak": "break-all",
         "& .MuiAlert-icon": {
-          paddingTop: iconPadding,
+          paddingTop: iconPaddingTop,
+          paddingBottom: iconPaddingBottom,
           alignItems: "flex-start",
         },
         "& .MuiAlert-message": {
@@ -72,7 +83,7 @@ const Alert = ({ children, show, ...props }: AlertProps) => {
         }}>
         {props.title}
       </MuiAlertTitle>
-      <Box paddingTop={0.5}>{children}</Box>
+      {children && <Box paddingTop={props?.title && 0.5}>{children}</Box>}
     </MuiAlert>
   ) : null;
 };

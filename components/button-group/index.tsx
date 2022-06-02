@@ -3,7 +3,7 @@ import React from "react";
 
 export type ButtonGroupProps = {
   children: React.ReactElement[];
-  color: "primary" | "grey" | "success" | "error";
+  color?: "primary" | "grey" | "success" | "error";
 } & Pick<MuiButtonGroupProps, "disabled" | "fullWidth" | "size">;
 
 const ButtonGroup = ({ color, ...props }: ButtonGroupProps) => {
@@ -11,7 +11,9 @@ const ButtonGroup = ({ color, ...props }: ButtonGroupProps) => {
   const buttons =
     props.children &&
     Array.isArray(props.children) &&
-    props.children.map((button, index) => React.cloneElement(button, { key: index, color, size: props.size }));
+    props.children.map((button, index) =>
+      React.cloneElement(button, { key: index, size: props.size, ...(color && { color }) }),
+    );
   return (
     <MuiButtonGroup
       {...props}
@@ -20,16 +22,27 @@ const ButtonGroup = ({ color, ...props }: ButtonGroupProps) => {
       disableRipple
       sx={{
         "& .MuiButtonGroup-grouped": {
-          borderRadius: "2px",
           padding: isSmallSize ? "4px 8px" : "8px 12px",
         },
         "& .MuiButtonGroup-grouped:not(:last-of-type)": {
           borderColor: "transparent",
           borderRight: "1px solid white",
+          borderRadius: "2px",
         },
         "& .Mui-disabled.MuiButtonGroup-grouped:not(:last-of-type)": {
           borderColor: "transparent",
           borderRight: "1px solid white",
+          borderRadius: "2px",
+        },
+        "& .MuiButtonGroup-grouped:first-of-type": {
+          borderRadius: "2px",
+          borderTopLeftRadius: "6px",
+          borderBottomLeftRadius: "6px",
+        },
+        "& .MuiButtonGroup-grouped:last-of-type": {
+          borderRadius: "2px",
+          borderTopRightRadius: "6px",
+          borderBottomRightRadius: "6px",
         },
       }}>
       {buttons}

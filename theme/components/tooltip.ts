@@ -1,16 +1,19 @@
 const tooltip = {
   MuiTooltip: {
     styleOverrides: {
-      tooltip: {
-        fontFamily: "Roboto",
-        fontWeight: "400",
-        fontStyle: "normal",
-        fontSize: "14px",
-        lineHeight: "20px",
-        color: "rgba(228, 230, 235, 1)",
-        backgroundColor: "rgba(50, 52, 54, 1)",
-        borderRadius: "8px",
-        maxWidth: "360px",
+      tooltip: ({ theme }: any) => {
+        return {
+          fontFamily: "Roboto",
+          fontWeight: "400",
+          fontStyle: "normal",
+          fontSize: "14px",
+          lineHeight: "20px",
+          borderRadius: "8px",
+          maxWidth: "360px",
+          backgroundColor: theme.palette.grey[70],
+          color: theme.palette.grey[20],
+          wordBreak: "break-all",
+        };
       },
     },
   },

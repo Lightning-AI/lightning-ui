@@ -23,6 +23,10 @@ export default {
       defaultValue: "750px",
       control: "text",
     },
+    to: {
+      defaultValue: "/?path=/story/introduction--page",
+      control: "text",
+    },
     children: {
       table: {
         disable: true,
@@ -32,7 +36,7 @@ export default {
   },
 } as ComponentMeta<typeof Card>;
 
-const Template: ComponentStory<any> = ({ onClick, ...args }: CardProps & { onClick: any }) => {
+const Template: ComponentStory<any> = ({ onClick, ...args }: CardProps & { onClick: any; to: string }) => {
   const buttonOnClickHandler = (event: any) => event.stopPropagation();
   return (
     <Card {...args}>
@@ -49,7 +53,7 @@ const Template: ComponentStory<any> = ({ onClick, ...args }: CardProps & { onCli
           />
         }
       />
-      <CardActionArea onClick={onClick}>
+      <CardActionArea onClick={onClick} to={args.to}>
         <CardContent>
           <Box display={"flex"} justifyContent={"center"} alignItems={"center"} height={"150px"}>
             Card Content

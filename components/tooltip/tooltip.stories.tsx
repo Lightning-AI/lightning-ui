@@ -85,4 +85,4 @@ const InfoIconWithHelpTooltipTemplate: ComponentStory<any> = (args: InfoIconWith
 };
 
 export const InfoIconWithHelpTooltipPlayground = InfoIconWithHelpTooltipTemplate.bind({});
-InfoIconWithHelpTooltipPlayground.parameters = { controls: { exclude: ["title"] } };
+InfoIconWithHelpTooltipPlayground.parameters = { controls: { exclude: ["title", "placement"] } };

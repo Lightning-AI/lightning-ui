@@ -21,8 +21,8 @@ const getSrcIcon: Record<DialogNotificationVariant, string> = {
 export type DialogNotificationVariant = "success" | "warning" | "error";
 
 export type DialogNotificationProps = {
-  message: string;
-  description: string;
+  message?: string;
+  description?: string;
   variant: DialogNotificationVariant;
   actions: ReactNode;
   onClose: () => void;
