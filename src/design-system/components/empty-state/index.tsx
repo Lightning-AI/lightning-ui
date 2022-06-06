@@ -13,7 +13,12 @@ export type EmptyStateProps = {
 
 export default function NoData(props: EmptyStateProps) {
   return (
-    <Stack justifyContent={"center"} alignItems={"center"} spacing={2.5} width={{ sm: "100%", md: "75%" }} margin={"auto"}>
+    <Stack
+      justifyContent={"center"}
+      alignItems={"center"}
+      spacing={2.5}
+      width={{ sm: "100%", md: "75%" }}
+      margin={"auto"}>
       <Box component={"img"} src={props.src}></Box>
       <Stack spacing={0.5} alignItems={"center"}>
         <Typography fontFamily={"UCity"} fontWeight={600} fontSize={"16px"} lineHeight={"20px"} textAlign={"center"}>
