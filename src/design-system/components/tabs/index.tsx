@@ -59,7 +59,7 @@ const Tabs = ({ divider = true, ...props }: TabsProps) => {
         value={selectedTab}
         onChange={(e, value) => setSelectedTab(value)}
         variant={"scrollable"}
-        sx={props.sxTabs}>
+        sx={{ ...props.sxTabs, "& .MuiTabs-indicator": { height: divider ? "4px" : "2px" } }}>
         {props.tabItems.map((tabItem: any, index) => (
           // @ts-ignore
           <MuiTab
