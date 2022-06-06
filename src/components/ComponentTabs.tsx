@@ -20,5 +20,5 @@ export default function ComponentTabs() {
       href: `/view/${encodeURIComponent(route.name)}`,
     };
   });
-  return <Tabs tabItems={tabItems} selectedTab={0} />;
+  return <Tabs tabItems={tabItems} selectedTab={0} divider={false} />;
 }
