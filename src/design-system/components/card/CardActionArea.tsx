@@ -4,12 +4,19 @@ import { Box } from "..";
 
 export type CardActionAreaProps = { to?: any } & Pick<MuiCardActionAreaProps, "children" | "onClick">;
 
-const CardActionArea = (props: CardActionAreaProps) => (
-  <Box component={Link} {...(props.to && { to: props.to })} color={"inherit"} sx={{ textDecoration: "none" }}>
+const CardActionArea = (props: CardActionAreaProps) => {
+  const content = (
     <MuiCardActionArea onClick={props.onClick} disableRipple>
       {props.children}
     </MuiCardActionArea>
-  </Box>
-);
+  );
+  return props.to || props.to !== "" ? (
+    <Box component={Link} to={props.to} color={"inherit"} sx={{ textDecoration: "none" }}>
+      {content}
+    </Box>
+  ) : (
+    <>{content}</>
+  );
+};
 
 export default CardActionArea;
