@@ -54,7 +54,7 @@ const Tabs = ({ divider = true, ...props }: TabsProps) => {
   }, [hrefIndex, locationUri]);
 
   return (
-    <>
+    <Box>
       <MuiTabs
         value={selectedTab}
         onChange={(e, value) => setSelectedTab(value)}
@@ -80,7 +80,7 @@ const Tabs = ({ divider = true, ...props }: TabsProps) => {
           ))}
         </Box>
       )}
-    </>
+    </Box>
   );
 };
 
