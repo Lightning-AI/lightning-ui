@@ -21,6 +21,7 @@ import Checkbox from "./checkbox";
 import InfoIconWithHelpTooltip from "./tooltip/InfoIconWithHelpTooltip";
 import HelpMessage from "./tooltip/HelpMessage";
 import Tooltip from "./tooltip";
+import EmptyState from "./empty-state";
 export * from "@mui/material";
 
 export {
@@ -55,4 +56,5 @@ export {
   InfoIconWithHelpTooltip,
   HelpMessage,
   Tooltip,
+  EmptyState,
 };

@@ -56,7 +56,7 @@ const Button = ({ href, ...props }: ButtonProps) => {
         background,
         backgroundColor,
         "&.Mui-disabled": {
-          opacity: 0.5,
+          opacity: isGreyColor ? 0.3 : 0.5,
           color,
           backgroundColor,
         },

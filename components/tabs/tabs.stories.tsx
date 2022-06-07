@@ -15,6 +15,10 @@ export default {
       options: ["text", "outlined"],
       control: "select",
     },
+    divider: {
+      defaultValue: true,
+      control: "boolean",
+    },
     tabItems: {
       table: {
         disable: true,
@@ -27,6 +31,9 @@ const tabItems: TabItem[] = [
   { title: "Tab Item 1", content: <>Tab Content 1</> },
   { title: "Tab Item 2", content: <>Tab Content 2</> },
   { title: "Tab Item 3", content: <>Tab Content 3</> },
+  { title: "Tab Item 4", content: <>Tab Content 4</> },
+  { title: "Tab Item 5", content: <>Tab Content 5</> },
+  { title: "Tab Item 6", content: <>Tab Content 6</> },
 ];
 
 const Template: ComponentStory<typeof Tabs> = (args: TabsProps) => {

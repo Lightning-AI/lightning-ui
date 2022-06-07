@@ -1,6 +1,6 @@
 import { ReactNode, MouseEventHandler, useState, useEffect } from "react";
 
-import { Box, SxProps, Theme } from "../";
+import { Box, Divider, SxProps, Theme } from "../";
 import MuiTab from "@mui/material/Tab";
 import MuiTabs from "@mui/material/Tabs";
 
@@ -25,11 +25,12 @@ export type TabsProps = {
   selectedTab?: number;
   tabItems: TabItem[];
   variant?: "text" | "outlined";
+  divider?: boolean;
   sxTabs?: SxProps<Theme>;
   sxContent?: SxProps<Theme>;
 };
 
-const Tabs = (props: TabsProps) => {
+const Tabs = ({ divider = true, ...props }: TabsProps) => {
   const [selectedTab, setSelectedTab] = useState(props.selectedTab || 0);
 
   const navigate = useNavigate();
@@ -53,12 +54,12 @@ const Tabs = (props: TabsProps) => {
   }, [hrefIndex, locationUri]);
 
   return (
-    <Box sx={{ maxWidth: { xs: 320, sm: 480, md: "100%" } }}>
+    <>
       <MuiTabs
         value={selectedTab}
         onChange={(e, value) => setSelectedTab(value)}
         variant={"scrollable"}
-        sx={props.sxTabs}>
+        sx={{ ...props.sxTabs, "& .MuiTabs-indicator": { height: divider ? "4px" : "2px" } }}>
         {props.tabItems.map((tabItem: any, index) => (
           // @ts-ignore
           <MuiTab
@@ -69,6 +70,7 @@ const Tabs = (props: TabsProps) => {
           />
         ))}
       </MuiTabs>
+      {divider && <Divider />}
       {hasContent && (
         <Box paddingTop={3} paddingBottom={1.5} sx={props.sxContent}>
           {props.tabItems.map((tabItem: any, index) => (
@@ -78,7 +80,7 @@ const Tabs = (props: TabsProps) => {
           ))}
         </Box>
       )}
-    </Box>
+    </>
   );
 };
 
