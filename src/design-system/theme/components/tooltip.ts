@@ -12,7 +12,7 @@ const tooltip = {
           maxWidth: "360px",
           backgroundColor: theme.palette.grey[70],
           color: theme.palette.grey[20],
-          wordBreak: "break-all",
+          wordBreak: "normal",
         };
       },
     },
