@@ -1,10 +1,10 @@
 import React from "react";
 import { InfoRounded } from "@mui/icons-material";
 
-import HelpMessage from "./HelpMessage";
+import HelpMessage, { HelpMessageProps } from "./HelpMessage";
 
 export type InfoIconWithHelpTooltipProps = {
-  message: string;
+  message: HelpMessageProps["title"];
 };
 
 export default function InfoIconWithHelpTooltip({ message }: InfoIconWithHelpTooltipProps) {
