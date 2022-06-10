@@ -26,6 +26,12 @@ const ThemeProvider = ({ children }: { children: ReactNode }) => {
 export default ThemeProvider;
 
 declare module "@mui/material" {
+  interface Color {
+    10: string;
+    20: string;
+    70: string;
+    main: string;
+  }
   interface TypographyPropsVariantOverrides {
     h1: true;
     h2: true;
