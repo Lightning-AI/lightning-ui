@@ -28,6 +28,7 @@ export type TabsProps = {
   divider?: boolean;
   sxTabs?: SxProps<Theme>;
   sxContent?: SxProps<Theme>;
+  onTabChanged?: (tab: number) => void;
 };
 
 const Tabs = ({ divider = true, ...props }: TabsProps) => {
@@ -36,10 +37,15 @@ const Tabs = ({ divider = true, ...props }: TabsProps) => {
   const navigate = useNavigate();
   const location = useLocation();
 
+  const onTabChangeHandler = (event: any, value: number) => {
+    props.onTabChanged?.(value);
+    setSelectedTab(value);
+  };
+
   const navigateHandler = (url: string, value: number): MouseEventHandler<HTMLButtonElement> => {
     return event => {
       event.preventDefault();
-      setSelectedTab(value);
+      onTabChangeHandler(event, value);
       navigate(url);
     };
   };
@@ -57,7 +63,7 @@ const Tabs = ({ divider = true, ...props }: TabsProps) => {
     <Box>
       <MuiTabs
         value={selectedTab}
-        onChange={(e, value) => setSelectedTab(value)}
+        onChange={onTabChangeHandler}
         variant={"scrollable"}
         sx={{ ...props.sxTabs, "& .MuiTabs-indicator": { height: divider ? "4px" : "2px" } }}>
         {props.tabItems.map((tabItem: any, index) => (
