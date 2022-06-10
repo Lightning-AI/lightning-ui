@@ -17,11 +17,7 @@ const getAppName = (specData: LightningSpec) => {
 function AppName() {
   const lightningSpec = useLightningSpec();
   const appName = lightningSpec.data ? getAppName(lightningSpec.data) : "Local App";
-  return (
-    <Typography fontFamily={"Ucity"} fontStyle={"normal"} fontWeight={600} fontSize={"24px"} lineHeight={"24px"}>
-      {appName}
-    </Typography>
-  );
+  return <Typography variant="h5">{appName}</Typography>;
 }
 
 function StartAction() {

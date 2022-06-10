@@ -6,17 +6,7 @@ export type FormHelperTextProps = {
 };
 
 const FormHelperText = (props: FormHelperTextProps) => (
-  <Typography
-    {...props}
-    sx={{
-      color: "rgba(91, 94, 105, 1)",
-      fontFamily: "Roboto",
-      fontWeight: 700,
-      fontStyle: "normal",
-      fontSize: "12px",
-      lineHeight: "16px",
-    }}
-  />
+  <Typography {...props} color={"secondary"} variant={"helper"} />
 );
 
 export default FormHelperText;

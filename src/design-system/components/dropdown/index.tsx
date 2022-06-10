@@ -51,16 +51,7 @@ const Dropdown = (props: DropdownProps) => {
   const menuItems = props.options.map(option => {
     return (
       <MenuItem disableRipple key={option.label} onClick={onClickHandlerMenuItem(option.label)}>
-        <Typography
-          sx={{
-            fontFamily: "Roboto",
-            fontWeight: 400,
-            fontStyle: "normal",
-            fontSize: "14px",
-            lineHeight: "20px",
-          }}>
-          {option.value}
-        </Typography>
+        <Typography variant="body">{option.value}</Typography>
       </MenuItem>
     );
   });

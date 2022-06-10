@@ -8,16 +8,11 @@ export type FormStatusTextProps = {
 const FormStatusText = (props: FormStatusTextProps) => (
   <Typography
     {...props}
+    variant={"helper"}
     sx={{
       minHeight: "16px",
       height: "auto",
       padding: "8px 12px",
-      color: "rgba(28, 28, 28, 1)",
-      fontFamily: "Roboto",
-      fontWeight: 700,
-      fontStyle: "normal",
-      fontSize: "12px",
-      lineHeight: "16px",
     }}
   />
 );

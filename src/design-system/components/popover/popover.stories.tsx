@@ -26,7 +26,7 @@ const Template: ComponentStory<typeof Popover> = () => {
       onClickable={<Button icon={<Settings />} text="View Options" color={"grey"}></Button>}>
       <Box width={"250px"}>
         <Typography variant={"h6"}>View Options</Typography>
-        <Typography variant={"body1"}>More content as the body of the options</Typography>
+        <Typography variant={"body"}>More content as the body of the options</Typography>
         <Box display={"flex"} flexDirection={"column"} paddingTop={"20px"}>
           <Button color={"grey"} text={"Cancel"} fullWidth onClick={() => setOpen(false)} />
           <Box paddingY={"5px"}></Box>

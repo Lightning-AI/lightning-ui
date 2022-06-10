@@ -38,12 +38,8 @@ export default function DialogNotification({ ...props }: DialogNotificationProps
         <Stack width={"400px"} justifyContent={"center"} alignItems={"center"} spacing={2.5}>
           <Box component={"img"} width={"96px"} height={"96px"} src={src} />
           <Stack spacing={0.5} alignItems={"center"} textAlign={"center"}>
-            <Typography fontFamily={"UCity"} fontWeight={600} fontSize={"16px"} lineHeight={"20px"}>
-              {props.message}
-            </Typography>
-            <Typography fontFamily={"Roboto"} fontWeight={400} fontSize={"14px"} lineHeight={"20px"}>
-              {props.description}
-            </Typography>
+            <Typography variant="largeEmphasized">{props.message}</Typography>
+            <Typography variant="body">{props.description}</Typography>
           </Stack>
         </Stack>
       </DialogContent>

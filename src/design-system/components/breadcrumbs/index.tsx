@@ -31,7 +31,7 @@ export default function Breadcrumbs({ items }: BreadcrumbsProps) {
     textDecoration: "none",
   };
   const lastItem = items.slice(-1).map(item => (
-    <Typography key={items.length - 1} color={"black"} sx={itemStyle}>
+    <Typography key={items.length - 1} sx={itemStyle}>
       {item.title}
     </Typography>
   ));
