@@ -78,9 +78,7 @@ const Button = ({ href, ...props }: ButtonProps) => {
       startIcon={
         props.loading ? <CircularProgress thickness={6} color="inherit" size={isSmallSize ? 18 : 20} /> : props.icon
       }
-      endIcon={
-        props.arrow ? <ArrowDropDownRounded /> : undefined
-      }
+      endIcon={props.arrow ? <ArrowDropDownRounded /> : undefined}
       variant={variant}
       onClick={onClickHandler}
       href={href}>
