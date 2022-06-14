@@ -9,7 +9,7 @@ const button: any = {
     styleOverrides: {
       root: {
         textTransform: "none",
-        borderRadius: "6px",
+        borderRadius: "20px",
         boxShadow: "none",
       },
     },

@@ -2,12 +2,14 @@ import { Button as MuiButton, ButtonProps as MuiButtonProps } from "@mui/materia
 import { Box, CircularProgress } from "../";
 import { MouseEventHandler, ReactNode } from "react";
 import { useNavigate } from "react-router-dom";
+import { ArrowDropDownRounded } from "@mui/icons-material";
 
 export type ButtonProps = {
   icon?: ReactNode;
   text?: string;
   color?: any;
   loading?: boolean;
+  arrow?: boolean;
 } & Pick<MuiButtonProps, "disabled" | "fullWidth" | "variant" | "href" | "onClick" | "size">;
 
 const Button = ({ href, ...props }: ButtonProps) => {
@@ -46,6 +48,9 @@ const Button = ({ href, ...props }: ButtonProps) => {
     "& .MuiButton-startIcon": {
       margin: 0,
     },
+    "& .MuiButton-endIcon": {
+      margin: 0,
+    },
   };
   return (
     <MuiButton
@@ -63,6 +68,9 @@ const Button = ({ href, ...props }: ButtonProps) => {
         "& .MuiButton-startIcon": {
           color: isGreyColor ? (theme: any) => theme.palette.grey[70] : "inherit",
         },
+        "& .MuiButton-endIcon": {
+          color: isGreyColor ? (theme: any) => theme.palette.grey[70] : "inherit",
+        },
         ...onlyIconStyle,
       }}
       {...props}
@@ -70,6 +78,7 @@ const Button = ({ href, ...props }: ButtonProps) => {
       startIcon={
         props.loading ? <CircularProgress thickness={6} color="inherit" size={isSmallSize ? 18 : 20} /> : props.icon
       }
+      endIcon={props.arrow ? <ArrowDropDownRounded /> : undefined}
       variant={variant}
       onClick={onClickHandler}
       href={href}>

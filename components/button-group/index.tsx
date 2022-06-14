@@ -35,13 +35,13 @@ const ButtonGroup = ({ color, ...props }: ButtonGroupProps) => {
           borderRadius: "2px",
         },
         "& .MuiButtonGroup-grouped:first-of-type": {
-          borderRadius: "6px 2px 2px 6px",
+          borderRadius: "20px 2px 2px 20px",
         },
         "& .Mui-disabled.MuiButtonGroup-grouped:first-of-type": {
-          borderRadius: "6px 2px 2px 6px",
+          borderRadius: "20px 2px 2px 20px",
         },
         "& .MuiButtonGroup-grouped:last-of-type": {
-          borderRadius: "2px 6px 6px 2px",
+          borderRadius: "2px 20px 20px 2px",
         },
       }}>
       {buttons}
