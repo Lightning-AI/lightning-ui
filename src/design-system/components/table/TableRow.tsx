@@ -20,7 +20,7 @@ export default function TableRow(props: TableRowProps) {
   const cellStyle = { borderBottom: expanded ? 0 : "1px solid rgba(248,248,250,1)" };
   return (
     <>
-      <MuiTableRow>
+      <MuiTableRow hover={!!props.hover}>
         {props.cells.map((cell, index) => (
           <MuiTableCell key={index} sx={cellStyle}>
             {cell}
