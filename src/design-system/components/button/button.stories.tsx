@@ -42,6 +42,10 @@ export default {
       control: "boolean",
       defaultValue: false,
     },
+    arrow: {
+      control: "boolean",
+      defaultValue: false,
+    },
     fullWidth: {
       control: "boolean",
       defaultValue: false,
