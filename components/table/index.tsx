@@ -21,6 +21,7 @@ export type TableProps = {
   header?: ReactNode[];
   rows: ReactNode[][];
   rowDetails?: ReactNode[];
+  rowHover?: boolean;
 };
 
 const Table = (props: TableProps) => {
@@ -39,7 +40,7 @@ const Table = (props: TableProps) => {
         </MuiTableHead>
         <MuiTableBody>
           {props.rows.map((row, index) => (
-            <TableRow cells={row} details={props.rowDetails?.[index]} />
+            <TableRow hover={!!props.rowHover} cells={row} details={props.rowDetails?.[index]} />
           ))}
         </MuiTableBody>
       </MuiTable>

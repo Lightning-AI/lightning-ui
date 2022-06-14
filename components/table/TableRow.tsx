@@ -6,6 +6,7 @@ import { ArrowDropDownRounded, ArrowDropUpRounded } from "../../icons";
 export type TableRowProps = {
   cells: ReactNode[];
   details?: ReactNode;
+  hover?: boolean;
 };
 
 export default function TableRow(props: TableRowProps) {
@@ -19,7 +20,7 @@ export default function TableRow(props: TableRowProps) {
   const cellStyle = { borderBottom: expanded ? 0 : "1px solid rgba(248,248,250,1)" };
   return (
     <>
-      <MuiTableRow>
+      <MuiTableRow hover={!!props.hover}>
         {props.cells.map((cell, index) => (
           <MuiTableCell key={index} sx={cellStyle}>
             {cell}
@@ -32,7 +33,7 @@ export default function TableRow(props: TableRowProps) {
         )}
       </MuiTableRow>
       {props.details && (
-        <MuiTableRow sx={{ display: expanded ? "table-row" : "none" }}>
+        <MuiTableRow hover sx={{ display: expanded ? "table-row" : "none" }}>
           <MuiTableCell colSpan={props.cells.length}>{props.details}</MuiTableCell>
           <MuiTableCell></MuiTableCell>
         </MuiTableRow>
