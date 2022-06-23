@@ -1,18 +1,24 @@
-import MuiTooltip, { TooltipProps as MuiTooltipProps } from "@mui/material/Tooltip";
+import MuiTooltip from "@mui/material/Tooltip";
+import { TooltipProps } from ".";
+import { Box } from "..";
 
-export type HelpMessageProps = Pick<MuiTooltipProps, "title" | "children" | "placement">;
+export type HelpMessageProps = TooltipProps;
 
-export default function HelpMessage(props: HelpMessageProps) {
+export default function HelpMessage({ title = "", children, placement = "top" }: HelpMessageProps) {
   return (
     <MuiTooltip
-      {...props}
+      title={title}
+      placement={placement}
       componentsProps={{
         tooltip: {
           sx: {
             maxWidth: 220,
           },
         },
-      }}
-    />
+      }}>
+      <Box component={"span"} sx={{ cursor: title ? "pointer" : "inherit" }}>
+        {children}
+      </Box>
+    </MuiTooltip>
   );
 }
