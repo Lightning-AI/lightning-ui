@@ -14,11 +14,17 @@ export default function ComponentTabs() {
 
   const routes = routesFor(lightningState.data) as LayoutBranch[];
 
-  const tabItems = routes.map((route, index) => {
+  if (routes.length === 1) {
+    return null;
+  }
+
+  const tabItems = routes.map(route => {
     return {
       title: route.name.toUpperCase(),
       href: `/view/${encodeURIComponent(route.name)}`,
     };
   });
+
+  // FIXME(alecmerdler): If there is a single tab defined in `configure_layout()`, render fullscreen without tabs...
   return <Tabs tabItems={tabItems} selectedTab={0} divider={false} />;
 }

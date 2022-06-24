@@ -31,4 +31,14 @@ describe("ComponentTabs", () => {
       });
     });
   });
+
+  it("renders no tabs if the Lightning app only has one tab defined in `configure_layout()`", () => {
+    cy.intercept("GET", stateEndpoint, { fixture: "app-state--single-tab-layout" }).as("getState");
+
+    mount(<ComponentTabs />);
+
+    cy.wait("@getState");
+
+    cy.get(".MuiTabs-root").should("not.exist");
+  });
 });

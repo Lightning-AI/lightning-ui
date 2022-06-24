@@ -1,0 +1,122 @@
+{
+  "vars": {
+    "_layout": [
+      {
+        "name": null,
+        "content": "root.c1.c11"
+      }
+    ]
+  },
+  "calls": {},
+  "flows": {
+    "c2": {
+      "vars": {
+        "_layout": [
+          {
+            "name": "My Dashboard",
+            "content": "root.c2.c21"
+          },
+          {
+            "name": "Tab_2",
+            "content": "root.c2.c22"
+          }
+        ]
+      },
+      "calls": {},
+      "flows": {
+        "c21": {
+          "vars": {
+            "_layout": {
+              "type": "web",
+              "source": "/home/sally/work/PyTorchLightning/lightning/examples/layout/ui1",
+              "target": "http://localhost:48049"
+            }
+          },
+          "calls": {},
+          "flows": {},
+          "works": {},
+          "changes": {},
+          "storage": {
+            "shared_access": {},
+            "root": "/home/sally/work/PyTorchLightning/lightning/storage/1234/root/c2/c21",
+            "transfer_files": {}
+          }
+        },
+        "c22": {
+          "vars": {
+            "_layout": {
+              "type": "web",
+              "source": "/home/sally/work/PyTorchLightning/lightning/examples/layout/ui2",
+              "target": "http://localhost:59915"
+            }
+          },
+          "calls": {},
+          "flows": {},
+          "works": {},
+          "changes": {},
+          "storage": {
+            "shared_access": {},
+            "root": "/home/sally/work/PyTorchLightning/lightning/storage/1234/root/c2/c22",
+            "transfer_files": {}
+          }
+        }
+      },
+      "works": {},
+      "changes": {},
+      "storage": {
+        "shared_access": {},
+        "root": "/home/sally/work/PyTorchLightning/lightning/storage/1234/root/c2",
+        "transfer_files": {}
+      }
+    },
+    "c1": {
+      "vars": {
+        "_layout": [
+          {
+            "name": "c11",
+            "content": "root.c1.c11"
+          }
+        ]
+      },
+      "calls": {},
+      "flows": {
+        "c11": {
+          "vars": {
+            "_layout": {
+              "type": "streamlit",
+              "source": {},
+              "target": "http://localhost:51669"
+            },
+            "message": "Hello Streamlit!"
+          },
+          "calls": {},
+          "flows": {},
+          "works": {},
+          "changes": {},
+          "storage": {
+            "shared_access": {},
+            "root": "/home/sally/work/PyTorchLightning/lightning/storage/1234/root/c1/c11",
+            "transfer_files": {}
+          }
+        }
+      },
+      "works": {},
+      "changes": {},
+      "storage": {
+        "shared_access": {},
+        "root": "/home/sally/work/PyTorchLightning/lightning/storage/1234/root/c1",
+        "transfer_files": {}
+      }
+    }
+  },
+  "works": {},
+  "changes": {},
+  "storage": {
+    "shared_access": {},
+    "root": "/home/sally/work/PyTorchLightning/lightning/storage/1234/root",
+    "transfer_files": {}
+  },
+  "app_state": {
+    "stage": "blocking"
+  }
+}
