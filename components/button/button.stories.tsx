@@ -17,6 +17,10 @@ export default {
       defaultValue: "Button",
       control: "text",
     },
+    tooltip: {
+      defaultValue: "A Tooltip",
+      control: "text",
+    },
     icon: {
       options: [undefined, ...Object.keys(Icons)],
       defaultValue: undefined,

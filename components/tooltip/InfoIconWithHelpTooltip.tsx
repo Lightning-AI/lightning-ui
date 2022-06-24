@@ -10,7 +10,7 @@ export type InfoIconWithHelpTooltipProps = {
 export default function InfoIconWithHelpTooltip({ message }: InfoIconWithHelpTooltipProps) {
   return (
     <HelpMessage title={message} placement={"top"}>
-      <InfoRounded sx={{ fontSize: "15px", color: (theme: any) => theme.palette.grey[70] }} />
+      <InfoRounded sx={{ fontSize: "15px", color: (theme: any) => theme.palette.grey[70], cursor: "pointer" }} />
     </HelpMessage>
   );
 }

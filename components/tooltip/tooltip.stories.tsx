@@ -1,4 +1,3 @@
-import IconButton from "@mui/material/IconButton";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import Tooltip, { TooltipProps } from "design-system/components/tooltip";
 import { InfoRounded } from "design-system/icons";
@@ -50,9 +49,7 @@ const Template: ComponentStory<typeof Tooltip> = (args: TooltipProps) => {
   return (
     <Box display={"flex"} height={"200px"} alignItems={"center"} justifyContent={"center"}>
       <Tooltip {...args}>
-        <IconButton>
-          <InfoRounded />
-        </IconButton>
+        <InfoRounded />
       </Tooltip>
     </Box>
   );
@@ -65,9 +62,7 @@ const HelpMessageTemplate: ComponentStory<typeof HelpMessage> = (args: TooltipPr
   return (
     <Box display={"flex"} height={"200px"} alignItems={"center"} justifyContent={"center"}>
       <HelpMessage {...args}>
-        <IconButton>
-          <InfoRounded />
-        </IconButton>
+        <InfoRounded />
       </HelpMessage>
     </Box>
   );

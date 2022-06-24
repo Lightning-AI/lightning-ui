@@ -13,6 +13,10 @@ export default {
     },
   },
   argTypes: {
+    tooltip: {
+      defaultValue: "A Tooltip",
+      control: "text",
+    },
     color: {
       options: ["primary", "grey", "success", "error"],
       control: "select",
