@@ -3,6 +3,7 @@ import { Box, CircularProgress, Tooltip } from "../";
 import { MouseEventHandler, ReactNode } from "react";
 import { useNavigate } from "react-router-dom";
 import { ArrowDropDownRounded } from "@mui/icons-material";
+import { TooltipProps } from "../tooltip";
 
 export type ButtonProps = {
   icon?: ReactNode;
@@ -10,7 +11,7 @@ export type ButtonProps = {
   color?: any;
   loading?: boolean;
   arrow?: boolean;
-  tooltip?: string;
+  tooltip?: TooltipProps["title"];
 } & Pick<MuiButtonProps, "disabled" | "fullWidth" | "variant" | "href" | "onClick" | "size">;
 
 const Button = ({ href, ...props }: ButtonProps) => {
