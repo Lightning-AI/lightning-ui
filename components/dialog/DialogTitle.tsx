@@ -5,7 +5,7 @@ import { Close } from "../../icons";
 export type DialogProps = {
   text: string;
   subtext?: string;
-  onClick?: () => void;
+  onCloseClick?: () => void;
 };
 
 const DialogTitle = (props: DialogProps) => (
@@ -23,9 +23,15 @@ const DialogTitle = (props: DialogProps) => (
           }}>
           {props.text}
         </Typography>
-        <IconButton disableRipple disableFocusRipple sx={{ color: "black", padding: 0 }} onClick={props.onClick}>
-          <Close sx={{ fontSize: "16px" }} />
-        </IconButton>
+        {props.onCloseClick && (
+          <IconButton
+            disableRipple
+            disableFocusRipple
+            sx={{ color: "black", padding: 0 }}
+            onClick={props.onCloseClick}>
+            <Close sx={{ fontSize: "16px" }} />
+          </IconButton>
+        )}
       </Stack>
       {props.subtext && (
         <Typography
