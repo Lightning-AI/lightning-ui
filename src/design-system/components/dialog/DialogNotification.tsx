@@ -33,7 +33,7 @@ export default function DialogNotification({ ...props }: DialogNotificationProps
   const src = getSrcIcon[props.variant];
   return (
     <Dialog open={props.open} onClose={props.onClose}>
-      <DialogTitle text={text} onClick={props.onClose} />
+      <DialogTitle text={text} onCloseClick={props.onClose} />
       <DialogContent>
         <Stack width={"400px"} justifyContent={"center"} alignItems={"center"} spacing={2.5}>
           <Box component={"img"} width={"96px"} height={"96px"} src={src} />
