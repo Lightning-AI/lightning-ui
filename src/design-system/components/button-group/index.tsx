@@ -24,7 +24,7 @@ const ButtonGroup = ({ color, ...props }: ButtonGroupProps) => {
         disableElevation
         disableRipple
         sx={{
-          "&.MuiButtonGroup-fullWidth span": {
+          "&.MuiButtonGroup-fullWidth > span": {
             width: "100%",
           },
           "& span .MuiButtonGroup-grouped": {
