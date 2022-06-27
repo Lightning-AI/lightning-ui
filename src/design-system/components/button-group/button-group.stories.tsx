@@ -1,7 +1,7 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import ButtonGroup, { ButtonGroupProps } from "design-system/components/button-group";
 import Button from "design-system/components/button";
-import { AccessTime } from "@mui/icons-material";
+import { PublicRounded } from "../../icons";
 
 export default {
   title: "Components/ButtonGroup",
@@ -33,15 +33,23 @@ export default {
       control: "boolean",
       defaultValue: false,
     },
+    showIcon: {
+      control: "boolean",
+      defaultValue: false,
+    },
   },
 } as ComponentMeta<typeof ButtonGroup>;
 
-const Template: ComponentStory<typeof ButtonGroup> = ({ color, ...args }: ButtonGroupProps) => {
+const Template: ComponentStory<typeof ButtonGroup> = ({
+  color,
+  showIcon,
+  ...args
+}: ButtonGroupProps & { showIcon?: boolean }) => {
   return (
     <ButtonGroup {...args} color={color}>
-      <Button text="First Action"></Button>
-      <Button text="Second Action"></Button>
-      <Button text="Third Action"></Button>
+      <Button icon={showIcon && <PublicRounded />} text="First Action"></Button>
+      <Button icon={showIcon && <PublicRounded />} text="Second Action"></Button>
+      <Button icon={showIcon && <PublicRounded />} text="Third Action"></Button>
     </ButtonGroup>
   );
 };
