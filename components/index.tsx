@@ -22,6 +22,7 @@ import InfoIconWithHelpTooltip from "./tooltip/InfoIconWithHelpTooltip";
 import HelpMessage from "./tooltip/HelpMessage";
 import Tooltip from "./tooltip";
 import EmptyState from "./empty-state";
+import { Stepper, Step } from "./stepper";
 export * from "@mui/material";
 
 export {
@@ -57,4 +58,6 @@ export {
   HelpMessage,
   Tooltip,
   EmptyState,
+  Stepper,
+  Step,
 };
