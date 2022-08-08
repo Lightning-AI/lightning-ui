@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 
 import useLightningState from "hooks/useLightningState";
@@ -15,6 +15,12 @@ export default function LightningAppRoutes() {
   // Just use the first component as the home route
   const homeRoute = layoutFor(lightningState.data!).find(() => true);
 
+  const homePage = useMemo(
+    () =>
+      homeRoute?.path !== undefined && <Route index element={<Navigate replace to={`/view/${homeRoute.path}/`} />} />,
+    [homeRoute?.path],
+  );
+
   return (
     <Routes>
       {lightningState.isLoading && <Route path="*" element={<div>Lightning is initializing...</div>} />}
@@ -22,7 +28,7 @@ export default function LightningAppRoutes() {
       {runtime === Runtime.local && <Route path="/admin" element={<AdminView />}></Route>}
 
       <Route path="/view" element={<AppView />}>
-        {homeRoute !== undefined && <Route index element={<Navigate replace to={`/view/${homeRoute.path}`} />} />}
+        {homePage}
         {layoutFor(lightningState.data!).map(route => (
           <Route
             path={encodeURIComponent(route.path)}
