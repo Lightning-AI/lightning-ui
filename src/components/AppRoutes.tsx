@@ -17,7 +17,12 @@ export default function LightningAppRoutes() {
 
   const homePage = useMemo(
     () =>
-      homeRoute?.path !== undefined && <Route index element={<Navigate replace to={`/view/${homeRoute.path}/`} />} />,
+      homeRoute?.path !== undefined && (
+        <Route
+          index
+          element={<Navigate replace to={`/view/${homeRoute.path}${homeRoute.path.endsWith("/") ? "" : "/"}`} />}
+        />
+      ),
     [homeRoute?.path],
   );
 
