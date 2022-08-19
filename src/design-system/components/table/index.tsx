@@ -6,6 +6,7 @@ import MuiTableCell from "@mui/material/TableCell";
 import MuiTableBody from "@mui/material/TableBody";
 import { ReactNode } from "react";
 import TableRow from "./TableRow";
+import { Box } from "..";
 
 const tableCellHeaderStyle = {
   fontFamily: "Ucity",
@@ -22,28 +23,42 @@ export type TableProps = {
   rows: ReactNode[][];
   rowDetails?: ReactNode[];
   rowHover?: boolean;
+  border?: boolean;
 };
 
 const Table = (props: TableProps) => {
   return (
     <MuiTableContainer>
-      <MuiTable>
-        <MuiTableHead sx={{ boxShadow: "inset 0px -2px 0px #65676B;" }}>
-          <MuiTableRow>
-            {props.header?.map((cell, index) => (
-              <MuiTableCell key={index} sx={tableCellHeaderStyle}>
-                {cell}
-              </MuiTableCell>
+      <Box
+        sx={
+          props.border
+            ? {
+                padding: "24px",
+                margin: "8px",
+                boxShadow: "0px 2px 8px rgba(0, 0, 0, 0.1), 0px 1px 1px rgba(0, 0, 0, 0.1)",
+                borderRadius: "8px",
+                minWidth: "fit-content",
+              }
+            : {}
+        }>
+        <MuiTable>
+          <MuiTableHead sx={{ boxShadow: "inset 0px -2px 0px #65676B;" }}>
+            <MuiTableRow>
+              {props.header?.map((cell, index) => (
+                <MuiTableCell key={index} sx={tableCellHeaderStyle}>
+                  {cell}
+                </MuiTableCell>
+              ))}
+              {props.rowDetails && <MuiTableCell width={"10px"} sx={tableCellHeaderStyle}></MuiTableCell>}
+            </MuiTableRow>
+          </MuiTableHead>
+          <MuiTableBody>
+            {props.rows.map((row, index) => (
+              <TableRow hover={!!props.rowHover} cells={row} details={props.rowDetails?.[index]} />
             ))}
-            {props.rowDetails && <MuiTableCell width={"10px"} sx={tableCellHeaderStyle}></MuiTableCell>}
-          </MuiTableRow>
-        </MuiTableHead>
-        <MuiTableBody>
-          {props.rows.map((row, index) => (
-            <TableRow hover={!!props.rowHover} cells={row} details={props.rowDetails?.[index]} />
-          ))}
-        </MuiTableBody>
-      </MuiTable>
+          </MuiTableBody>
+        </MuiTable>
+      </Box>
     </MuiTableContainer>
   );
 };

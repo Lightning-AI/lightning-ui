@@ -16,7 +16,7 @@ export default {
   },
 } as ComponentMeta<typeof Table>;
 
-const Template: ComponentStory<typeof Table> = ({ header, rowDetails }: TableProps) => {
+const Template: ComponentStory<typeof Table> = ({ header, rowDetails, border }: TableProps) => {
   const rowCell: ReactNode[] = [
     <Stack direction={"row"} alignItems={"center"} spacing={1}>
       <Circle sx={{ fontSize: "12px", color: "#19A004" }} /> <Box>Running</Box>
@@ -27,13 +27,20 @@ const Template: ComponentStory<typeof Table> = ({ header, rowDetails }: TablePro
     "Not yet run",
   ];
   const rows = [rowCell, rowCell, rowCell];
-  return <Table header={header} rows={rows} rowDetails={rowDetails} />;
+  return <Table header={header} rows={rows} rowDetails={rowDetails} border={border} />;
 };
 
 export const WithHeader = Template.bind({});
 WithHeader.args = {
   header: ["Status", "Name", "Type", "Source", "Last Run"],
 };
+
+export const WithHeaderAndBorder = Template.bind({});
+WithHeaderAndBorder.args = {
+  header: ["Status", "Name", "Type", "Source", "Last Run"],
+  border: true,
+};
+
 export const WithoutHeader = Template.bind({});
 
 const detailsComponent = <Stack alignItems={"center"}>Row Details</Stack>;
