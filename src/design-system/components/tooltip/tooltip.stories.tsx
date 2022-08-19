@@ -42,6 +42,11 @@ export default {
       ],
       control: "select",
     },
+    size: {
+      defaultValue: "default",
+      options: ["default", "small"],
+      control: "select",
+    },
   },
 } as ComponentMeta<typeof Tooltip>;
 
@@ -56,7 +61,7 @@ const Template: ComponentStory<typeof Tooltip> = (args: TooltipProps) => {
 };
 
 export const TooltipPlayground = Template.bind({});
-TooltipPlayground.parameters = { controls: { exclude: ["message"] } };
+TooltipPlayground.parameters = { controls: { exclude: ["message", "size"] } };
 
 const HelpMessageTemplate: ComponentStory<typeof HelpMessage> = (args: TooltipProps) => {
   return (
@@ -69,7 +74,7 @@ const HelpMessageTemplate: ComponentStory<typeof HelpMessage> = (args: TooltipPr
 };
 
 export const HelpMessagePlayground = HelpMessageTemplate.bind({});
-HelpMessagePlayground.parameters = { controls: { exclude: ["message"] } };
+HelpMessagePlayground.parameters = { controls: { exclude: ["message", "size"] } };
 
 const InfoIconWithHelpTooltipTemplate: ComponentStory<any> = (args: InfoIconWithHelpTooltipProps) => {
   return (
