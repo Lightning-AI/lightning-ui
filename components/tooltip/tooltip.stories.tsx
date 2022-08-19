@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import Tooltip, { TooltipProps } from "design-system/components/tooltip";
-import { InfoOutlined } from "design-system/icons";
+import { HelpOutlineRounded } from "design-system/icons";
 import { Box, Typography } from "design-system/components";
 import HelpMessage from "design-system/components/tooltip/HelpMessage";
 import InfoIconWithHelpTooltip, {
@@ -54,7 +54,7 @@ const Template: ComponentStory<typeof Tooltip> = (args: TooltipProps) => {
   return (
     <Box display={"flex"} height={"200px"} alignItems={"center"} justifyContent={"center"}>
       <Tooltip {...args}>
-        <InfoOutlined />
+        <HelpOutlineRounded />
       </Tooltip>
     </Box>
   );
@@ -67,7 +67,7 @@ const HelpMessageTemplate: ComponentStory<typeof HelpMessage> = (args: TooltipPr
   return (
     <Box display={"flex"} height={"200px"} alignItems={"center"} justifyContent={"center"}>
       <HelpMessage {...args}>
-        <InfoOutlined />
+        <HelpOutlineRounded />
       </HelpMessage>
     </Box>
   );
