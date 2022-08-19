@@ -1,7 +1,7 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import Tooltip, { TooltipProps } from "design-system/components/tooltip";
 import { InfoOutlined } from "design-system/icons";
-import { Box } from "design-system/components";
+import { Box, Typography } from "design-system/components";
 import HelpMessage from "design-system/components/tooltip/HelpMessage";
 import InfoIconWithHelpTooltip, {
   InfoIconWithHelpTooltipProps,
@@ -74,6 +74,9 @@ HelpMessagePlayground.parameters = { controls: { exclude: ["message"] } };
 const InfoIconWithHelpTooltipTemplate: ComponentStory<any> = (args: InfoIconWithHelpTooltipProps) => {
   return (
     <Box display={"flex"} height={"200px"} alignItems={"center"} justifyContent={"center"}>
+      <Typography variant={"body1"} marginRight={1}>
+        Text that can use a tooltip
+      </Typography>
       <InfoIconWithHelpTooltip {...args} />
     </Box>
   );
