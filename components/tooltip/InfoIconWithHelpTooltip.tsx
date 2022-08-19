@@ -4,12 +4,19 @@ import HelpMessageInternal, { HelpMessageInternalProps } from "./HelpMessageInte
 
 export type InfoIconWithHelpTooltipProps = {
   message: HelpMessageInternalProps["title"];
+  size?: "default" | "small";
 };
 
-export default function InfoIconWithHelpTooltip({ message }: InfoIconWithHelpTooltipProps) {
+export default function InfoIconWithHelpTooltip({ message, size }: InfoIconWithHelpTooltipProps) {
   return (
     <HelpMessageInternal title={message} placement={"top"}>
-      <InfoOutlined sx={{ fontSize: "15px", color: (theme: any) => theme.palette.grey[70], cursor: "pointer" }} />
+      <InfoOutlined
+        sx={{
+          fontSize: size === "small" ? "12px" : "15px",
+          color: (theme: any) => theme.palette.grey[70],
+          cursor: "pointer",
+        }}
+      />
     </HelpMessageInternal>
   );
 }
