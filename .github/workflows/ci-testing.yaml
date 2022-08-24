@@ -27,7 +27,7 @@ jobs:
           key: my-cache-ubuntu-node16-${{ hashFiles('yarn.lock') }}
       - name: Cleanup `./node_modules/.cache`
         # Without this, Cypress tests break on file renaming or removal
-        run: rm -rf ./lightning-ui/node_modules/.cache
+        run: rm -rf ./node_modules/.cache
       - name: Run Component tests 🧪
         uses: cypress-io/github-action@v2
         with:
