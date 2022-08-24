@@ -1,4 +1,4 @@
-import { HelpOutlineRounded } from "@mui/icons-material";
+import { InfoOutlined } from "@mui/icons-material";
 
 import HelpMessageInternal, { HelpMessageInternalProps } from "./HelpMessageInternal";
 
@@ -10,7 +10,7 @@ export type InfoIconWithHelpTooltipProps = {
 export default function InfoIconWithHelpTooltip({ message, size }: InfoIconWithHelpTooltipProps) {
   return (
     <HelpMessageInternal title={message} placement={"top"}>
-      <HelpOutlineRounded
+      <InfoOutlined
         sx={{
           fontSize: size === "small" ? "12px" : "15px",
           color: (theme: any) => theme.palette.grey[70],

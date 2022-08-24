@@ -9,7 +9,7 @@ describe("Status", () => {
     mount(<Status status={StatusEnum.FAILED} message={"A very informative and actionable failure description."} />);
 
     cy.contains("A very informative and actionable failure description.").should("not.exist");
-    cy.get(`svg[data-testid="HelpOutlineRoundedIcon"]`).trigger("mouseover");
+    cy.get(`svg[data-testid="InfoOutlinedIcon"]`).trigger("mouseover");
     cy.contains("A very informative and actionable failure description.");
   });
 });
