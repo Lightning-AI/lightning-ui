@@ -4,6 +4,8 @@ import { DialogTitle, DialogContent, DialogActions } from "design-system/compone
 import Button from "design-system/components/button";
 import { Box, Stack } from "..";
 import DialogNotification, { DialogNotificationProps } from "./DialogNotification";
+import DialogImageActions, { DialogImageActionsProps } from "./DialogImageActions";
+import phantomSrc from "./phantom.svg";
 
 export default {
   title: "Components/Dialog",
@@ -32,6 +34,10 @@ export default {
       defaultValue: "success",
       options: ["success", "error", "warning"],
       control: "select",
+    },
+    title: {
+      defaultValue: "Upload Image",
+      control: "text",
     },
     message: {
       defaultValue: "Successfully uploaded",
@@ -72,31 +78,56 @@ const Template: ComponentStory<any> = (args: DialogProps) => {
 export const Playground = Template.bind({});
 Playground.parameters = { controls: { include: ["open", "fullWidth"] } };
 
+const ImageActionsTemplate: ComponentStory<any> = (args: DialogImageActionsProps) => {
+  const actions = (
+    <Stack width={"100%"} direction={"row"} spacing={1}>
+      <Box width={"100%"}>
+        <Button text="Cancel" color={"grey"} onClick={buttonOnClickHandler} fullWidth />
+      </Box>
+      <Box width={"100%"}>
+        <Button text="Ok" onClick={buttonOnClickHandler} fullWidth />
+      </Box>
+    </Stack>
+  );
+  return <DialogImageActions {...args} actions={actions} imageSrc={phantomSrc}></DialogImageActions>;
+};
+
+export const ImageActions = ImageActionsTemplate.bind({});
+ImageActions.parameters = { controls: { include: ["open", "title", "message", "description"] } };
+
 const buttonOnClickHandler = (event: any) => event.stopPropagation();
 
 const getActions = {
   success: (
-    <Stack width={"100%"} alignItems={"end"}>
-      <Button text="Done" onClick={buttonOnClickHandler} />
-    </Stack>
+    <Box width={"100%"}>
+      <Button text="Done" onClick={buttonOnClickHandler} fullWidth />
+    </Box>
   ),
   error: (
     <>
-      <Button text="Report" color={"grey"} onClick={buttonOnClickHandler} fullWidth />
-      <Button text="Retry" onClick={buttonOnClickHandler} fullWidth />
+      <Box width={"100%"}>
+        <Button text="Report" color={"grey"} onClick={buttonOnClickHandler} fullWidth />
+      </Box>
+      <Box width={"100%"}>
+        <Button text="Retry" onClick={buttonOnClickHandler} fullWidth />
+      </Box>
     </>
   ),
   warning: (
     <>
-      <Button text="Back" color={"grey"} onClick={buttonOnClickHandler} fullWidth />
-      <Button text="Discard" onClick={buttonOnClickHandler} fullWidth />
+      <Box width={"100%"}>
+        <Button text="Back" color={"grey"} onClick={buttonOnClickHandler} fullWidth />
+      </Box>
+      <Box width={"100%"}>
+        <Button text="Discard" onClick={buttonOnClickHandler} fullWidth />
+      </Box>
     </>
   ),
 };
 
 const NotificationTemplate: ComponentStory<any> = (args: DialogNotificationProps) => {
   const actions = (
-    <Stack width={"100%"} direction={"row"} justifyContent={"space-between"}>
+    <Stack width={"100%"} direction={"row"} spacing={1}>
       {getActions[args.variant]}
     </Stack>
   );
