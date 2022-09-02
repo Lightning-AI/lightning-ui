@@ -55,16 +55,15 @@ const Template: ComponentStory<any> = (args: DialogProps) => {
     <Dialog {...args}>
       <DialogTitle text={"Dialog Header"} subtext={"Dialog Subheader"} onCloseClick={() => {}} />
       <DialogContent>
-        <Box display={"flex"} justifyContent={"center"} alignItems={"center"} height={"150px"}>
+        <Stack justifyContent={"center"} alignItems={"center"} height={"150px"}>
           Dialog Content
-        </Box>
+        </Stack>
       </DialogContent>
       <DialogActions>
-        <Box display={"flex"} justifyContent={"end"} width={"100%"}>
+        <Stack direction={"row"} justifyContent={"space-between"} width={"100%"}>
           <Button text="Cancel" color={"grey"} onClick={buttonOnClickHandler} />
-          <Box px={1} />
           <Button text="Confirm" onClick={buttonOnClickHandler} />
-        </Box>
+        </Stack>
       </DialogActions>
     </Dialog>
   );
@@ -77,9 +76,9 @@ const buttonOnClickHandler = (event: any) => event.stopPropagation();
 
 const getActions = {
   success: (
-    <>
-      <Button text="Done" onClick={buttonOnClickHandler} fullWidth />
-    </>
+    <Stack width={"100%"} alignItems={"end"}>
+      <Button text="Done" onClick={buttonOnClickHandler} />
+    </Stack>
   ),
   error: (
     <>
@@ -97,7 +96,7 @@ const getActions = {
 
 const NotificationTemplate: ComponentStory<any> = (args: DialogNotificationProps) => {
   const actions = (
-    <Stack width={"100%"} direction={"row"} spacing={1}>
+    <Stack width={"100%"} direction={"row"} justifyContent={"space-between"}>
       {getActions[args.variant]}
     </Stack>
   );
