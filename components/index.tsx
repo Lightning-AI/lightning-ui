@@ -1,7 +1,7 @@
 import Typography from "./typography";
 import Button from "./button";
 import Label from "./label";
-import { Dialog, DialogTitle, DialogContent, DialogActions } from "./dialog";
+import { Dialog, DialogTitle, DialogContent, DialogActions, DialogImageActions, DialogNotification } from "./dialog";
 import Popover from "./popover";
 import Dropdown from "./dropdown";
 import TextField from "./text-field";
@@ -23,6 +23,7 @@ import HelpMessage from "./tooltip/HelpMessage";
 import Tooltip from "./tooltip";
 import EmptyState from "./empty-state";
 import { Stepper, Step } from "./stepper";
+import ToggleButtonGroup from "./toggle-button-group";
 export * from "@mui/material";
 
 export {
@@ -34,6 +35,8 @@ export {
   DialogTitle,
   DialogContent,
   DialogActions,
+  DialogImageActions,
+  DialogNotification,
   Popover,
   Dropdown,
   TextField,
@@ -60,4 +63,5 @@ export {
   EmptyState,
   Stepper,
   Step,
+  ToggleButtonGroup,
 };

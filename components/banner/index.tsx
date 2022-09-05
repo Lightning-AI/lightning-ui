@@ -40,7 +40,9 @@ const Banner = ({ children, ...props }: BannerProps) => {
       alignItems={"flex-start"}
       justifyContent={"space-between"}
       sx={{
-        p: 1,
+        borderRadius: "36px",
+        px: 1.5,
+        py: 1,
         minHeight: "20px",
         fontFamily: "Roboto",
         fontWeight: 400,

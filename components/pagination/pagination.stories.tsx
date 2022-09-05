@@ -15,6 +15,10 @@ export default {
       defaultValue: 10,
       control: "number",
     },
+    disabled: {
+      defaultValue: false,
+      control: "boolean",
+    },
     onChange: { action: "changed" },
   },
 } as ComponentMeta<typeof Pagination>;

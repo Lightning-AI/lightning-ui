@@ -4,6 +4,8 @@ import { DialogTitle, DialogContent, DialogActions } from "design-system/compone
 import Button from "design-system/components/button";
 import { Box, Stack } from "..";
 import DialogNotification, { DialogNotificationProps } from "./DialogNotification";
+import DialogImageActions, { DialogImageActionsProps } from "./DialogImageActions";
+import phantomSrc from "./phantom.svg";
 
 export default {
   title: "Components/Dialog",
@@ -33,6 +35,10 @@ export default {
       options: ["success", "error", "warning"],
       control: "select",
     },
+    title: {
+      defaultValue: "Upload Image",
+      control: "text",
+    },
     message: {
       defaultValue: "Successfully uploaded",
       control: "text",
@@ -55,16 +61,15 @@ const Template: ComponentStory<any> = (args: DialogProps) => {
     <Dialog {...args}>
       <DialogTitle text={"Dialog Header"} subtext={"Dialog Subheader"} onCloseClick={() => {}} />
       <DialogContent>
-        <Box display={"flex"} justifyContent={"center"} alignItems={"center"} height={"150px"}>
+        <Stack justifyContent={"center"} alignItems={"center"} height={"150px"}>
           Dialog Content
-        </Box>
+        </Stack>
       </DialogContent>
       <DialogActions>
-        <Box display={"flex"} justifyContent={"end"} width={"100%"}>
+        <Stack direction={"row"} justifyContent={"space-between"} width={"100%"}>
           <Button text="Cancel" color={"grey"} onClick={buttonOnClickHandler} />
-          <Box px={1} />
           <Button text="Confirm" onClick={buttonOnClickHandler} />
-        </Box>
+        </Stack>
       </DialogActions>
     </Dialog>
   );
@@ -73,24 +78,49 @@ const Template: ComponentStory<any> = (args: DialogProps) => {
 export const Playground = Template.bind({});
 Playground.parameters = { controls: { include: ["open", "fullWidth"] } };
 
+const ImageActionsTemplate: ComponentStory<any> = (args: DialogImageActionsProps) => {
+  const actions = (
+    <Stack width={"100%"} direction={"row"} spacing={1}>
+      <Box width={"100%"}>
+        <Button text="Cancel" color={"grey"} onClick={buttonOnClickHandler} fullWidth />
+      </Box>
+      <Box width={"100%"}>
+        <Button text="Ok" onClick={buttonOnClickHandler} fullWidth />
+      </Box>
+    </Stack>
+  );
+  return <DialogImageActions {...args} actions={actions} imageSrc={phantomSrc}></DialogImageActions>;
+};
+
+export const ImageActions = ImageActionsTemplate.bind({});
+ImageActions.parameters = { controls: { include: ["open", "title", "message", "description"] } };
+
 const buttonOnClickHandler = (event: any) => event.stopPropagation();
 
 const getActions = {
   success: (
-    <>
+    <Box width={"100%"}>
       <Button text="Done" onClick={buttonOnClickHandler} fullWidth />
-    </>
+    </Box>
   ),
   error: (
     <>
-      <Button text="Report" color={"grey"} onClick={buttonOnClickHandler} fullWidth />
-      <Button text="Retry" onClick={buttonOnClickHandler} fullWidth />
+      <Box width={"100%"}>
+        <Button text="Report" color={"grey"} onClick={buttonOnClickHandler} fullWidth />
+      </Box>
+      <Box width={"100%"}>
+        <Button text="Retry" onClick={buttonOnClickHandler} fullWidth />
+      </Box>
     </>
   ),
   warning: (
     <>
-      <Button text="Back" color={"grey"} onClick={buttonOnClickHandler} fullWidth />
-      <Button text="Discard" onClick={buttonOnClickHandler} fullWidth />
+      <Box width={"100%"}>
+        <Button text="Back" color={"grey"} onClick={buttonOnClickHandler} fullWidth />
+      </Box>
+      <Box width={"100%"}>
+        <Button text="Discard" onClick={buttonOnClickHandler} fullWidth />
+      </Box>
     </>
   ),
 };
