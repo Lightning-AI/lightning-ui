@@ -12,6 +12,7 @@ export type ButtonProps = {
   loading?: boolean;
   arrow?: boolean;
   tooltip?: TooltipProps["title"];
+  children?: ReactNode;
 } & Pick<MuiButtonProps, "disabled" | "fullWidth" | "variant" | "href" | "onClick" | "size">;
 
 const Button = ({ href, ...props }: ButtonProps) => {
@@ -85,9 +86,12 @@ const Button = ({ href, ...props }: ButtonProps) => {
         variant={variant}
         onClick={onClickHandler}
         href={href}>
-        <Box marginTop={"2px"} fontStyle={"normal"} fontSize={"14px"} lineHeight={"20px"}>
-          {props.text}
-        </Box>
+        {!!props.text && (
+          <Box marginTop={"2px"} fontStyle={"normal"} fontSize={"14px"} lineHeight={"20px"}>
+            {props.text}
+          </Box>
+        )}
+        {props.children}
       </MuiButton>
     </Tooltip>
   );
