@@ -11,6 +11,7 @@ export const headersFor = () => {
   headers.append("X-Lightning-Type", "DEFAULT");
   headers.append("X-Lightning-Session-UUID", "1234");
   headers.append("X-Lightning-Session-ID", "1234");
+  headers.append("credentials", "include");
 
   return headers;
 };
