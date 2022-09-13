@@ -1,15 +1,11 @@
-import { FormControlProps as MuiFormControlProps } from "@mui/material/FormControl";
 import { Box } from "../";
 import FormStatusText from "../form-status-text";
-import FormControlContainer from "./FormControlContainer";
+import FormControlContainer, { FormControlContainerProps } from "./FormControlContainer";
 
 export type FormControlProps = {
-  label?: string;
-  helperText?: string;
   status?: "success" | "warning" | "error";
   statusText?: string;
-  optional?: boolean;
-} & Pick<MuiFormControlProps, "children" | "fullWidth">;
+} & FormControlContainerProps;
 
 const FormControl = (props: FormControlProps) => {
   const { statusText, children, status } = props;

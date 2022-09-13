@@ -2,10 +2,11 @@ import MuiFormControl, { FormControlProps as MuiFormControlProps } from "@mui/ma
 import FormHelperText from "../form-helper-text";
 import FormLabel from "../form-label";
 import { Box } from "../";
+import { ReactNode } from "react";
 
 export type FormControlContainerProps = {
   label?: string;
-  helperText?: string;
+  helperText?: string | ReactNode;
   optional?: boolean;
 } & Pick<MuiFormControlProps, "children" | "fullWidth">;
 

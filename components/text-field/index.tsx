@@ -1,7 +1,7 @@
 import MuiOutlinedInput, { OutlinedInputProps as MuiOutlinedInputProps } from "@mui/material/OutlinedInput";
 import { Dangerous, Warning, CheckCircle } from "../../icons";
 import React, { ChangeEventHandler, ReactNode } from "react";
-import FormControl from "../form-control";
+import FormControl, { FormControlProps } from "../form-control";
 
 const statusColor: Record<string, any> = {
   success: "#31A24C",
@@ -16,19 +16,15 @@ const statusIcon: Record<string, ReactNode> = {
 };
 
 export type TextFieldProps = {
-  label?: string;
-  helperText?: string;
-  status?: "success" | "warning" | "error";
-  statusText?: string;
   icon?: ReactNode;
   type?: "text" | "number" | "password";
   onChange: (value: string | null) => void;
   value?: unknown;
-  optional?: boolean;
-} & Pick<
-  MuiOutlinedInputProps,
-  "disabled" | "placeholder" | "fullWidth" | "size" | "autoComplete" | "autoCapitalize" | "autoCorrect" | "autoFocus"
->;
+} & FormControlProps &
+  Pick<
+    MuiOutlinedInputProps,
+    "disabled" | "placeholder" | "fullWidth" | "size" | "autoComplete" | "autoCapitalize" | "autoCorrect" | "autoFocus"
+  >;
 
 const TextField = React.forwardRef(
   (
