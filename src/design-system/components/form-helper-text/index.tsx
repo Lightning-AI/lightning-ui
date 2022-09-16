@@ -11,7 +11,7 @@ const FormHelperText = (props: FormHelperTextProps) => (
     sx={{
       color: "rgba(91, 94, 105, 1)",
       fontFamily: "Roboto",
-      fontWeight: 700,
+      fontWeight: 400,
       fontStyle: "normal",
       fontSize: "12px",
       lineHeight: "16px",
