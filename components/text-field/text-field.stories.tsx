@@ -55,6 +55,18 @@ export default {
       defaultValue: false,
       control: "boolean",
     },
+    suffix: {
+      defaultValue: "",
+      control: "text",
+    },
+    min: {
+      defaultValue: undefined,
+      control: "number",
+    },
+    max: {
+      defaultValue: undefined,
+      control: "number",
+    },
     type: {
       defaultValue: "text",
       options: ["text", "number", "password"],

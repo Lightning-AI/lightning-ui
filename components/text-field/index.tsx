@@ -1,7 +1,11 @@
 import MuiOutlinedInput, { OutlinedInputProps as MuiOutlinedInputProps } from "@mui/material/OutlinedInput";
 import { Dangerous, Warning, CheckCircle } from "../../icons";
-import React, { ChangeEventHandler, ReactNode } from "react";
+import React, { ChangeEventHandler, ReactNode, useEffect } from "react";
 import FormControl, { FormControlProps } from "../form-control";
+import { Box, Stack } from "..";
+import { BORDER_COLOR } from "./constants";
+import NumberInputButtons from "./NumberInputButtons";
+import getTextWidth from "shared/utils/getTextWidth";
 
 const statusColor: Record<string, any> = {
   success: "#31A24C",
@@ -20,11 +24,19 @@ export type TextFieldProps = {
   type?: "text" | "number" | "password";
   onChange: (value: string | null) => void;
   value?: unknown;
+  suffix?: string;
+  max?: number;
+  min?: number;
 } & FormControlProps &
   Pick<
     MuiOutlinedInputProps,
     "disabled" | "placeholder" | "fullWidth" | "size" | "autoComplete" | "autoCapitalize" | "autoCorrect" | "autoFocus"
   >;
+
+const INPUT_TEXT_FONT = "normal 14px/20px Roboto";
+// Setting max number to avoid displaying numbers with exponent in the input
+// min is -MAX_NUMBER
+const MAX_NUMBER = 999999999999999;
 
 const TextField = React.forwardRef(
   (
@@ -38,16 +50,48 @@ const TextField = React.forwardRef(
       optional,
       onChange,
       type = "text",
+      suffix,
+      max,
+      min,
       ...props
     }: TextFieldProps,
     ref: any,
   ) => {
+    const [suffixOffsetPx, setSuffixOffsetPx] = React.useState(0);
+    const [marginRightPx, setMarginRightPx] = React.useState(0);
+    // tracking current value to be able to correctly offset the suffix
+    const [valueInternal, setValueInternal] = React.useState(props.value);
+    const internalRef = React.useRef<HTMLInputElement>();
+    // adding leading space to suffix for offset
+    const preparedSuffix = suffix && " " + suffix;
+
+    useEffect(() => {
+      if (!preparedSuffix || (!valueInternal && valueInternal !== 0) || !internalRef.current) {
+        return;
+      }
+      const widthPx = getTextWidth((valueInternal as string)?.toString(), INPUT_TEXT_FONT);
+      const inputStyles = getComputedStyle(internalRef.current);
+      const textWidthPx = Math.min(widthPx, parseInt(inputStyles.width));
+      setSuffixOffsetPx(textWidthPx + parseInt(inputStyles.paddingLeft));
+    }, [valueInternal, preparedSuffix]);
+
+    useEffect(() => {
+      if (!preparedSuffix || !internalRef.current) {
+        return;
+      }
+      const width = getTextWidth(preparedSuffix, INPUT_TEXT_FONT);
+      setMarginRightPx(width);
+    }, [preparedSuffix]);
+
     const hasStatus = typeof status !== "undefined";
     const onChangeHandler: ChangeEventHandler<HTMLInputElement> = event => {
-      if (typeof onChange === "undefined") return;
-      const value = event.target.value;
-      onChange(value);
+      const newValue = event.target.value;
+      setValueInternal(newValue);
+      if (onChange) {
+        onChange(newValue);
+      }
     };
+
     return (
       <FormControl
         label={label}
@@ -56,61 +100,101 @@ const TextField = React.forwardRef(
         statusText={statusText}
         fullWidth={fullWidth}
         optional={optional}>
-        <MuiOutlinedInput
-          inputRef={ref}
-          fullWidth={fullWidth}
-          onChange={onChangeHandler}
-          type={type}
-          {...props}
-          error={hasStatus}
-          startAdornment={icon}
-          endAdornment={status && statusIcon[status]}
-          sx={{
-            "fontFamily": "Roboto",
-            "fontStyle": "normal",
-            "fontWeight": "normal",
-            "fontSize": "14px",
-            "lineHeight": "20px",
-            "height": "36px",
-            "backgroundColor": "white",
-            "borderRadius": "6px",
-            "&.MuiInputBase-colorPrimary:hover .MuiOutlinedInput-notchedOutline": {
-              borderColor: (theme: any) => theme.palette[status ?? "primary"].main,
-            },
-            "&.Mui-error .MuiOutlinedInput-notchedOutline": {
-              padding: 0,
-              borderColor: (theme: any) => (status ? theme.palette[status].main : undefined),
-            },
-            "&.Mui-disabled": {
-              backgroundColor: (theme: any) => theme.palette.grey["10"],
-            },
-            "&.Mui-disabled:hover .MuiOutlinedInput-notchedOutline": {
-              borderColor: "rgba(0,0,0,0.26)",
-            },
-            "&.Mui-error.Mui-disabled .MuiOutlinedInput-notchedOutline": {
-              borderColor: "rgba(0,0,0,0.26)",
-            },
-            "&.Mui-disabled .MuiOutlinedInput-input": {
-              color: (theme: any) => theme.palette.grey["20"],
-            },
-            "&.MuiInputBase-sizeSmall": {
-              height: "28px",
-            },
-            "& .MuiSvgIcon-root": {
-              fontSize: "16px",
-            },
-            "&.MuiInputBase-adornedStart .MuiSvgIcon-root:first-of-type": {
-              color: "#050505",
-              paddingRight: "8px",
-            },
-            "&.Mui-disabled.MuiInputBase-adornedStart .MuiSvgIcon-root:first-of-type": {
-              color: (theme: any) => theme.palette.grey["50"],
-            },
-            "&.Mui-disabled.MuiInputBase-adornedEnd svg": {
-              color: (theme: any) => theme.palette.grey["50"],
-            },
-          }}
-        />
+        <Stack direction={"row"}>
+          <MuiOutlinedInput
+            inputRef={input => {
+              internalRef.current = input;
+              if (ref) {
+                ref.current = input;
+              }
+            }}
+            fullWidth={fullWidth}
+            onChange={onChangeHandler}
+            type={type}
+            {...props}
+            inputProps={{
+              max: max !== undefined ? Math.min(max, MAX_NUMBER) : MAX_NUMBER,
+              min: min !== undefined ? Math.max(min, -MAX_NUMBER) : -MAX_NUMBER,
+            }}
+            error={hasStatus}
+            startAdornment={icon}
+            endAdornment={status && statusIcon[status]}
+            sx={{
+              "font": INPUT_TEXT_FONT,
+              "height": "36px",
+              "backgroundColor": "white",
+              "borderRadius": type === "number" ? "6px 0 0 6px" : "6px",
+              "input": {
+                marginRight: `${marginRightPx}px`,
+              },
+              "input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button": {
+                "-webkit-appearance": "none",
+                "margin": 0 /* <-- Apparently some margin are still there even though it's hidden */,
+              },
+              "input[type=number]": {
+                "-moz-appearance": "textfield" /* Firefox */,
+              },
+              "&.MuiInputBase-colorPrimary:hover .MuiOutlinedInput-notchedOutline": {
+                borderColor: (theme: any) => theme.palette[status ?? "primary"].main,
+              },
+              "&.Mui-error .MuiOutlinedInput-notchedOutline": {
+                padding: 0,
+                borderColor: (theme: any) => (status ? theme.palette[status].main : undefined),
+              },
+              "&.Mui-disabled": {
+                backgroundColor: (theme: any) => theme.palette.grey["10"],
+              },
+              "&.Mui-disabled:hover .MuiOutlinedInput-notchedOutline, &.Mui-error.Mui-disabled .MuiOutlinedInput-notchedOutline":
+                {
+                  borderColor: BORDER_COLOR,
+                },
+              "&.Mui-disabled .MuiOutlinedInput-input": {
+                color: (theme: any) => theme.palette.grey["20"],
+              },
+              "&.MuiInputBase-sizeSmall": {
+                height: "28px",
+              },
+              "& .MuiSvgIcon-root": {
+                fontSize: "16px",
+              },
+              "&.MuiInputBase-adornedStart .MuiSvgIcon-root:first-of-type": {
+                color: "#050505",
+                paddingRight: "8px",
+              },
+              "&.Mui-disabled.MuiInputBase-adornedStart .MuiSvgIcon-root:first-of-type": {
+                color: (theme: any) => theme.palette.grey["50"],
+              },
+              "&.Mui-disabled.MuiInputBase-adornedEnd svg": {
+                color: (theme: any) => theme.palette.grey["50"],
+              },
+            }}
+          />
+          {type === "number" && (
+            <NumberInputButtons
+              onIncreaseClick={() => {
+                internalRef.current?.stepUp();
+                internalRef.current?.dispatchEvent(new Event("change", { bubbles: true }));
+              }}
+              onDecreaseClick={() => {
+                internalRef.current?.stepDown();
+                internalRef.current?.dispatchEvent(new Event("change", { bubbles: true }));
+              }}
+            />
+          )}
+          {suffix && (valueInternal || valueInternal === 0) && (
+            // using `whiteSpace: "pre"` to preserve the leading space
+            <Box
+              sx={{
+                marginLeft: `${suffixOffsetPx}px`,
+                font: INPUT_TEXT_FONT,
+                position: "absolute",
+                marginTop: "8px",
+                whiteSpace: "pre",
+              }}>
+              {preparedSuffix}
+            </Box>
+          )}
+        </Stack>
       </FormControl>
     );
   },
