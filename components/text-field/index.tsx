@@ -122,6 +122,7 @@ const TextField = React.forwardRef(
             error={hasStatus}
             startAdornment={icon}
             endAdornment={status && statusIcon[status]}
+            // @ts-ignore -webkit-appearance and -moz-appearance
             sx={{
               "font": INPUT_TEXT_FONT,
               "height": "36px",
