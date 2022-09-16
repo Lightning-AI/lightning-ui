@@ -5,7 +5,7 @@ import FormControl, { FormControlProps } from "../form-control";
 import { Box, Stack } from "..";
 import { BORDER_COLOR } from "./constants";
 import NumberInputButtons from "./NumberInputButtons";
-import getTextWidth from "shared/utils/getTextWidth";
+import getTextWidth from "../../../shared/utils/getTextWidth";
 
 const statusColor: Record<string, any> = {
   success: "#31A24C",
