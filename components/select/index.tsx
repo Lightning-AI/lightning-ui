@@ -134,8 +134,8 @@ const Select = React.forwardRef(
             },
           }}>
           {props.options.map(option => (
-            <MenuItem key={option.label} value={option.label}>
-              {option.value}
+            <MenuItem key={option.label} value={option.value}>
+              {option.label}
             </MenuItem>
           ))}
         </MuiTextField>
