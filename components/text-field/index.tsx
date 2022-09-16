@@ -62,7 +62,10 @@ const TextField = React.forwardRef(
     // tracking current value to be able to correctly offset the suffix
     const [valueInternal, setValueInternal] = React.useState(props.value);
     const internalRef = React.useRef<HTMLInputElement>();
+
     // adding leading space to suffix for offset
+    // using whitespace for this instead of padding/margin to be able to compute the offset correctly
+    // and ensure that it's exactly a single whitespace wide
     const preparedSuffix = suffix && " " + suffix;
 
     useEffect(() => {
