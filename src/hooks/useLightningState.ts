@@ -1,13 +1,13 @@
 import { useQuery } from "react-query";
 
-import { headersFor, stateEndpoint } from "utils/api";
+import { requestParams, stateEndpoint } from "utils/api";
 import { LightningState } from "types/lightning";
 
 export const queryKey = "getLightningState";
 
 export default function useLightingState() {
   const getState = () =>
-    fetch(stateEndpoint, { headers: headersFor() }).then(res => {
+    fetch(stateEndpoint, { ...requestParams() }).then(res => {
       if (!res.ok) {
         return Promise.reject(res.statusText);
       }

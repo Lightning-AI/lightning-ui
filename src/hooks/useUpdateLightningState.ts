@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from "react-query";
 
-import { headersFor, stateEndpoint } from "utils/api";
+import { requestParams, stateEndpoint } from "utils/api";
 import { LightningState } from "types/lightning";
 import { queryKey } from "./useLightningState";
 
@@ -12,7 +12,7 @@ export default function useUpdateLightningState() {
       fetch(stateEndpoint, {
         body: JSON.stringify({ state }),
         method: "POST",
-        headers: headersFor(),
+        ...requestParams(),
       }),
     {
       onSuccess: () => {
