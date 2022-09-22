@@ -24,7 +24,7 @@ export default function AppView() {
 
   return (
     <Stack height={"100%"}>
-      <Stack direction={"row"} marginTop={0.75} marginX={2}>
+      <Stack direction={"row"} marginX={2}>
         <Box flex={2}>
           <ComponentTabs />
         </Box>
