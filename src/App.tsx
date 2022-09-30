@@ -1,9 +1,10 @@
 import React from "react";
+
+import ThemeProvider from "design-system/theme";
 import { BrowserRouter as Router } from "react-router-dom";
-import useLightningWs from "hooks/useLightningWs";
 
 import AppRoutes from "components/AppRoutes";
-import ThemeProvider from "design-system/theme";
+import useLightningWs from "hooks/useLightningWs";
 
 function App() {
   useLightningWs();

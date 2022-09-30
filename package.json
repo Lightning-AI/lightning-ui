@@ -74,7 +74,7 @@
     "build-storybook": "build-storybook"
   },
   "lint-staged": {
-    "**/*": "prettier --write --ignore-unknown"
+    "**/*": "yarn lint:fix"
   },
   "eslintConfig": {
     "env": {

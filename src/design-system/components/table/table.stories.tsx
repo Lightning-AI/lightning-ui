@@ -1,8 +1,9 @@
 import React from "react";
-import { ComponentMeta, ComponentStory } from "@storybook/react";
-import Table, { TableProps } from "design-system/components/table";
 import { ReactNode } from "react";
-import { Stack, Box } from "design-system/components";
+
+import { ComponentMeta, ComponentStory } from "@storybook/react";
+import { Box, Stack } from "design-system/components";
+import Table, { TableProps } from "design-system/components/table";
 import { Circle } from "design-system/icons";
 
 export default {

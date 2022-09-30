@@ -1,4 +1,5 @@
 import { location } from "utils/api";
+
 import useRuntime, { Runtime } from "./useRuntime";
 
 const productionDomain = "lightning.ai";

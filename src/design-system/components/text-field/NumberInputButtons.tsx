@@ -1,6 +1,7 @@
 import { Button } from "@mui/material";
-import { ArrowDropUpOutlined, ArrowDropDownOutlined } from "../../icons";
+
 import { Stack } from "..";
+import { ArrowDropDownOutlined, ArrowDropUpOutlined } from "../../icons";
 import { BORDER_COLOR } from "./constants";
 
 type NumberInputButtonsProps = {

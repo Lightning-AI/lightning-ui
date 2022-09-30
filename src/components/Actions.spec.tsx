@@ -1,7 +1,9 @@
 import React from "react";
 
-import mount from "tests/utils/testMount";
 import { location } from "utils/api";
+
+import mount from "tests/utils/testMount";
+
 import Actions from "./Actions";
 
 describe("Actions", () => {

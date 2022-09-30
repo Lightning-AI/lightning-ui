@@ -1,8 +1,10 @@
 import React from "react";
 
-import mount from "tests/utils/testMount";
-import { stateEndpoint } from "tests/utils/lightning";
 import { Layout, LightningState } from "types/lightning";
+
+import { stateEndpoint } from "tests/utils/lightning";
+import mount from "tests/utils/testMount";
+
 import ComponentTabs from "./ComponentTabs";
 
 describe("ComponentTabs", () => {

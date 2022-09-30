@@ -1,8 +1,10 @@
-import { Info, Dangerous, Warning, CheckCircle } from "../../icons";
+import { ReactNode } from "react";
+
 import MuiAlert, { AlertProps as MuiAlertProps } from "@mui/material/Alert";
 import MuiAlertTitle from "@mui/material/AlertTitle";
-import { ReactNode } from "react";
+
 import { Box } from "..";
+import { CheckCircle, Dangerous, Info, Warning } from "../../icons";
 
 const severityColor: Record<string, any> = {
   info: "#1877F2",

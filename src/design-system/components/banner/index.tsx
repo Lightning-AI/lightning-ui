@@ -1,6 +1,7 @@
-import { Info, Dangerous, Warning, CheckCircle, Close } from "../../icons";
-import { Stack, IconButton, Box } from "../";
 import { ReactNode, useEffect, useState } from "react";
+
+import { Box, IconButton, Stack } from "../";
+import { CheckCircle, Close, Dangerous, Info, Warning } from "../../icons";
 
 const iconStyle = {
   paddingRight: 1,

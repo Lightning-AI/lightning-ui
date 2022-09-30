@@ -1,9 +1,10 @@
 import React from "react";
 
-import useLightningState from "hooks/useLightningState";
-import { routesFor } from "utils/state";
-import { LayoutBranch } from "types/lightning";
 import { Tabs } from "design-system/components";
+
+import useLightningState from "hooks/useLightningState";
+import { LayoutBranch } from "types/lightning";
+import { routesFor } from "utils/state";
 
 export default function ComponentTabs() {
   const lightningState = useLightningState();

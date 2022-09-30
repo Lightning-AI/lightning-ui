@@ -1,6 +1,7 @@
 import { ReactNode } from "react";
-import { Dialog, DialogTitle, DialogContent, DialogActions } from ".";
-import { Stack, Box, Typography } from "..";
+
+import { Dialog, DialogActions, DialogContent, DialogTitle } from ".";
+import { Box, Stack, Typography } from "..";
 import { DialogProps } from "./Dialog";
 
 export type DialogImageActionsProps = {

@@ -1,9 +1,12 @@
 import React from "react";
+
 import { Link } from "react-router-dom";
 
-import mount from "tests/utils/testMount";
-import { stateEndpoint } from "tests/utils/lightning";
 import { Layout, LightningState } from "types/lightning";
+
+import { stateEndpoint } from "tests/utils/lightning";
+import mount from "tests/utils/testMount";
+
 import AppRoutesComponent from "./AppRoutes";
 
 // Need to add `<Link>` elements to the component in order to test:

@@ -1,11 +1,13 @@
-import MuiOutlinedInput, { OutlinedInputProps as MuiOutlinedInputProps } from "@mui/material/OutlinedInput";
-import { Dangerous, Warning, CheckCircle } from "../../icons";
 import React, { ChangeEventHandler, ReactNode, useEffect } from "react";
-import FormControl, { FormControlProps } from "../form-control";
+
+import MuiOutlinedInput, { OutlinedInputProps as MuiOutlinedInputProps } from "@mui/material/OutlinedInput";
+
 import { Box, Stack } from "..";
-import { BORDER_COLOR } from "./constants";
-import NumberInputButtons from "./NumberInputButtons";
 import getTextWidth from "../../../shared/utils/getTextWidth";
+import { CheckCircle, Dangerous, Warning } from "../../icons";
+import FormControl, { FormControlProps } from "../form-control";
+import NumberInputButtons from "./NumberInputButtons";
+import { BORDER_COLOR } from "./constants";
 
 const statusColor: Record<string, any> = {
   success: "#31A24C",

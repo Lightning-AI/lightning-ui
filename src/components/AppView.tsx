@@ -6,8 +6,8 @@ import { Link, Outlet } from "react-router-dom";
 import ComponentTabs from "components/ComponentTabs";
 import Footer from "components/Footer";
 import useLightningState from "hooks/useLightningState";
-import { AppStage } from "types/lightning";
 import lightningLogo from "resources/images/lightning-logo-with-text.svg";
+import { AppStage } from "types/lightning";
 
 export default function AppView() {
   const lightingState = useLightningState();

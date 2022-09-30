@@ -1,12 +1,12 @@
-import { ReactNode, MouseEventHandler, useState, useEffect } from "react";
+import { MouseEventHandler, ReactNode, useEffect, useState } from "react";
 
-import { Box, Divider, SxProps, Theme } from "../";
 import MuiTab from "@mui/material/Tab";
 import MuiTabs from "@mui/material/Tabs";
+import { useLocation, useNavigate } from "react-router-dom";
 
-import TabPanel from "./TabPanel";
+import { Box, Divider, SxProps, Theme } from "../";
 import TabContent from "./TabContent";
-import { useNavigate, useLocation } from "react-router-dom";
+import TabPanel from "./TabPanel";
 
 type StaticTabItem = {
   title: string;

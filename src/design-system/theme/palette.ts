@@ -1,4 +1,4 @@
-import { PaletteOptions, PaletteColorOptions } from "@mui/material";
+import { PaletteColorOptions, PaletteOptions } from "@mui/material";
 import { ColorPartial } from "@mui/material/styles/createPalette";
 
 const primary: PaletteColorOptions & Record<string, any> = {

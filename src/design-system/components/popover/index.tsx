@@ -1,6 +1,7 @@
 import * as React from "react";
-import MuiPopover, { PopoverProps as MuiPopoverProps } from "@mui/material/Popover";
 import { ReactElement, useState } from "react";
+
+import MuiPopover, { PopoverProps as MuiPopoverProps } from "@mui/material/Popover";
 
 export type PopoverProps = {
   onClickable: ReactElement;

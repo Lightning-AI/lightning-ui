@@ -1,4 +1,5 @@
 import { Box } from "../";
+
 function TabPanel(props: any) {
   const { children, value, index } = props;
 

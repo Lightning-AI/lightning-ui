@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Stack, Box } from "@mui/material";
+
+import { Box, Stack } from "@mui/material";
 import { Alert, CircularProgress } from "design-system/components";
 
 import useLightningState from "hooks/useLightningState";

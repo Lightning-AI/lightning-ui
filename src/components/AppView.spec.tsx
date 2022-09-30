@@ -1,7 +1,8 @@
 import React from "react";
-import { stateEndpoint } from "tests/utils/lightning";
 
+import { stateEndpoint } from "tests/utils/lightning";
 import mount from "tests/utils/testMount";
+
 import AppView from "./AppView";
 
 describe("AppView", () => {

@@ -1,6 +1,7 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import Select, { SelectProps } from "design-system/components/select";
 import * as Icons from "design-system/icons";
+
 import { SvgIcon } from "..";
 
 export default {

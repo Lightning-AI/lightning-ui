@@ -1,5 +1,7 @@
-import MuiButtonGroup, { ButtonGroupProps as MuiButtonGroupProps } from "@mui/material/ButtonGroup";
 import React from "react";
+
+import MuiButtonGroup, { ButtonGroupProps as MuiButtonGroupProps } from "@mui/material/ButtonGroup";
+
 import { Tooltip } from "..";
 
 export type ButtonGroupProps = {

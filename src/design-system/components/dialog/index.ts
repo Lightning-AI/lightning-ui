@@ -1,8 +1,8 @@
 import Dialog from "./Dialog";
-import DialogTitle from "./DialogTitle";
-import DialogContent from "./DialogContent";
 import DialogActions from "./DialogActions";
-import DialogNotification from "./DialogNotification";
+import DialogContent from "./DialogContent";
 import DialogImageActions from "./DialogImageActions";
+import DialogNotification from "./DialogNotification";
+import DialogTitle from "./DialogTitle";
 
 export { Dialog, DialogTitle, DialogContent, DialogActions, DialogImageActions, DialogNotification };

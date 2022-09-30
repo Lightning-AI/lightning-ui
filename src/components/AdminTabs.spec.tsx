@@ -1,6 +1,7 @@
 import React from "react";
 
 import mount from "tests/utils/testMount";
+
 import AdminTabs from "./AdminTabs";
 
 describe("AdminTabs", () => {
