@@ -1,8 +1,10 @@
-import { Button as MuiButton, ButtonProps as MuiButtonProps } from "@mui/material";
-import { Box, CircularProgress, Tooltip } from "../";
 import { MouseEventHandler, ReactNode } from "react";
-import { useNavigate } from "react-router-dom";
+
 import { ArrowDropDownRounded } from "@mui/icons-material";
+import { Button as MuiButton, ButtonProps as MuiButtonProps } from "@mui/material";
+import { useNavigate } from "react-router-dom";
+
+import { Box, CircularProgress, Tooltip } from "../";
 import { TooltipProps } from "../tooltip";
 
 export type ButtonProps = {

@@ -1,10 +1,11 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
-import Dialog, { DialogProps } from "design-system/components/dialog/Dialog";
-import { DialogTitle, DialogContent, DialogActions } from "design-system/components/dialog";
 import Button from "design-system/components/button";
+import { DialogActions, DialogContent, DialogTitle } from "design-system/components/dialog";
+import Dialog, { DialogProps } from "design-system/components/dialog/Dialog";
+
 import { Box, Stack } from "..";
-import DialogNotification, { DialogNotificationProps } from "./DialogNotification";
 import DialogImageActions, { DialogImageActionsProps } from "./DialogImageActions";
+import DialogNotification, { DialogNotificationProps } from "./DialogNotification";
 import phantomSrc from "./phantom.svg";
 
 export default {

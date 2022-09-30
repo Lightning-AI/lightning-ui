@@ -1,7 +1,7 @@
+import DialogImageActions, { DialogImageActionsProps } from "./DialogImageActions";
+import errorIcon from "./error.svg";
 import successIcon from "./success.svg";
 import warningIcon from "./warning.svg";
-import errorIcon from "./error.svg";
-import DialogImageActions, { DialogImageActionsProps } from "./DialogImageActions";
 
 const getText: Record<DialogNotificationVariant, string> = {
   success: "Success",

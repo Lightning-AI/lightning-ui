@@ -1,9 +1,11 @@
+import { ReactNode } from "react";
+
 import { Typography } from "@mui/material";
 import ToggleButton from "@mui/material/ToggleButton";
 import MuiToggleButtonGroup, {
   ToggleButtonGroupProps as MuiToggleButtonGroupProps,
 } from "@mui/material/ToggleButtonGroup";
-import { ReactNode } from "react";
+
 import { Stack, Tooltip } from "..";
 
 export type ToggleButtonItemProps = {

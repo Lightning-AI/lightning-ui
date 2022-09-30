@@ -1,5 +1,6 @@
-import MuiAvatar from "@mui/material/Avatar";
 import React from "react";
+
+import MuiAvatar from "@mui/material/Avatar";
 
 export type MediaProps = {
   variant?: "square" | "circle" | "portrait" | "landscape";

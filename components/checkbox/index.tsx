@@ -1,9 +1,11 @@
-import { FormControlLabel, Stack } from "../";
 import React from "react";
-import CheckboxBase, { CheckboxOnlyProps } from "./CheckboxBase";
+
+import { CheckCircle, Dangerous, Warning } from "@mui/icons-material";
+
+import { FormControlLabel, Stack } from "../";
 import FormControlContainer, { FormControlContainerProps } from "../form-control/FormControlContainer";
 import FormStatusText from "../form-status-text";
-import { CheckCircle, Dangerous, Warning } from "@mui/icons-material";
+import CheckboxBase, { CheckboxOnlyProps } from "./CheckboxBase";
 
 export type CheckboxProps = {
   optional?: boolean;

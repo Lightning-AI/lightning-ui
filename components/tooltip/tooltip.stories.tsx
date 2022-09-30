@@ -1,11 +1,11 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
-import Tooltip, { TooltipProps } from "design-system/components/tooltip";
-import { InfoOutlined } from "design-system/icons";
 import { Box, Typography } from "design-system/components";
+import Tooltip, { TooltipProps } from "design-system/components/tooltip";
 import HelpMessage from "design-system/components/tooltip/HelpMessage";
 import InfoIconWithHelpTooltip, {
   InfoIconWithHelpTooltipProps,
 } from "design-system/components/tooltip/InfoIconWithHelpTooltip";
+import { InfoOutlined } from "design-system/icons";
 
 export default {
   title: "Components/Tooltip",

@@ -1,8 +1,9 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
-import Card, { CardProps } from "design-system/components/card/Card";
-import { CardHeader, CardContent, CardActions, CardActionArea } from "design-system/components/card";
 import Button from "design-system/components/button";
+import { CardActionArea, CardActions, CardContent, CardHeader } from "design-system/components/card";
+import Card, { CardProps } from "design-system/components/card/Card";
 import { FilterAltOutlined } from "design-system/icons";
+
 import { Box } from "..";
 
 export default {

@@ -1,8 +1,10 @@
 import React, { ReactNode } from "react";
+
 import { SnackbarProvider as NotistackSnackbarProvider } from "notistack";
+
+import { Box } from "..";
 import Alert, { AlertProps } from "../alert";
 import { useSnackbar } from "./useSnackbar";
-import { Box } from "..";
 
 const AlertRef = React.forwardRef<HTMLDivElement, AlertProps>((props, ref) => {
   return (

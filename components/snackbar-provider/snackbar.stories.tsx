@@ -1,7 +1,8 @@
 import React from "react";
-import { useSnackbar } from "design-system/components/snackbar-provider/useSnackbar";
-import Button from "design-system/components/button";
+
 import { Box } from "@mui/material";
+import Button from "design-system/components/button";
+import { useSnackbar } from "design-system/components/snackbar-provider/useSnackbar";
 
 const Demo = ({ action, ...args }: { action: boolean }) => {
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();

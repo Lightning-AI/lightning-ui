@@ -1,5 +1,6 @@
-import { Typography } from "../";
 import { ReactNode } from "react";
+
+import { Typography } from "../";
 
 export type FormStatusTextProps = {
   children: ReactNode;

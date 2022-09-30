@@ -1,5 +1,5 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
-import Tabs, { TabsProps, TabItem } from "design-system/components/tabs";
+import Tabs, { TabItem, TabsProps } from "design-system/components/tabs";
 
 export default {
   title: "Components/Tabs",

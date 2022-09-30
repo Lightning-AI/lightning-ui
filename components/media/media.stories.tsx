@@ -1,6 +1,7 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import Media, { MediaProps } from "design-system/components/media";
 import * as Icons from "design-system/icons";
+
 import { SvgIcon } from "..";
 
 export default {

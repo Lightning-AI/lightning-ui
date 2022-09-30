@@ -1,6 +1,7 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import Button, { ButtonProps } from "design-system/components/button";
 import * as Icons from "design-system/icons";
+
 import { SvgIcon } from "..";
 
 export default {

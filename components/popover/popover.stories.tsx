@@ -1,9 +1,10 @@
-import { ComponentMeta, ComponentStory } from "@storybook/react";
-import Popover from "design-system/components/popover";
-import Button from "design-system/components/button";
-import { Box, Typography } from "@mui/material";
-import { Settings } from "design-system/icons";
 import { useState } from "react";
+
+import { Box, Typography } from "@mui/material";
+import { ComponentMeta, ComponentStory } from "@storybook/react";
+import Button from "design-system/components/button";
+import Popover from "design-system/components/popover";
+import { Settings } from "design-system/icons";
 
 export default {
   title: "Components/Popover",

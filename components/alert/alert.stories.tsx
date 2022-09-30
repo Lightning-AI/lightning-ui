@@ -1,7 +1,8 @@
+import { useEffect, useState } from "react";
+
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import Alert, { AlertProps } from "design-system/components/alert";
 import Button from "design-system/components/button";
-import { useEffect, useState } from "react";
 
 export default {
   title: "Components/Alert",

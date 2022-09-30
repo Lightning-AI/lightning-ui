@@ -1,4 +1,5 @@
 import MuiTooltip from "@mui/material/Tooltip";
+
 import { TooltipProps } from ".";
 
 export type HelpMessageInternalProps = TooltipProps;

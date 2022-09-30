@@ -1,7 +1,9 @@
-import { MoreHoriz, ArrowDropDown } from "../../icons";
-import { Button as MuiButton, ButtonProps as MuiButtonProps, Theme } from "@mui/material";
-import { Box, Menu, MenuItem } from "..";
 import React, { ReactNode, useState } from "react";
+
+import { Button as MuiButton, ButtonProps as MuiButtonProps, Theme } from "@mui/material";
+
+import { Box, Menu, MenuItem } from "..";
+import { ArrowDropDown, MoreHoriz } from "../../icons";
 import Typography from "../typography";
 
 export type DropdownProps = {

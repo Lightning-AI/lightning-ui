@@ -1,6 +1,8 @@
-import { useSnackbar as useNotistackSnackbar } from "notistack";
-import { AlertProps } from "../alert";
 import { useCallback } from "react";
+
+import { useSnackbar as useNotistackSnackbar } from "notistack";
+
+import { AlertProps } from "../alert";
 
 // Added to only allow expected Alert props to be passed
 export type EnqueueSnackbarProps = Pick<AlertProps, "action" | "children" | "severity" | "title">;
