@@ -32,7 +32,7 @@ export default {
       control: "select",
     },
     status: {
-      options: [undefined, "success", "warning", "error"],
+      options: [undefined, "success", "warning", "error", "info"],
       control: "select",
     },
     size: {

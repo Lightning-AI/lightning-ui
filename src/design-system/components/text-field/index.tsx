@@ -1,21 +1,22 @@
-import React, { ChangeEventHandler, ReactNode, useEffect } from "react";
-
 import MuiOutlinedInput, { OutlinedInputProps as MuiOutlinedInputProps } from "@mui/material/OutlinedInput";
+import { Dangerous, Warning, CheckCircle, Info } from "../../icons";
+import React, { ChangeEventHandler, ReactNode, useEffect } from "react";
 
 import { Box, Stack } from "..";
 import getTextWidth from "../../../shared/utils/getTextWidth";
-import { CheckCircle, Dangerous, Warning } from "../../icons";
 import FormControl, { FormControlProps } from "../form-control";
 import NumberInputButtons from "./NumberInputButtons";
 import { BORDER_COLOR } from "./constants";
 
 const statusColor: Record<string, any> = {
+  info: "#1877F2",
   success: "#31A24C",
   warning: "#F1A817",
   error: "#E02C2D",
 };
 
 const statusIcon: Record<string, ReactNode> = {
+  info: <Info sx={{ color: statusColor.info }} />,
   success: <CheckCircle sx={{ color: statusColor.success }} />,
   warning: <Warning sx={{ color: statusColor.warning }} />,
   error: <Dangerous sx={{ color: statusColor.error }} />,
