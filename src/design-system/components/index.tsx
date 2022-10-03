@@ -24,7 +24,7 @@ import Tooltip from "./tooltip";
 import HelpMessage from "./tooltip/HelpMessage";
 import InfoIconWithHelpTooltip from "./tooltip/InfoIconWithHelpTooltip";
 import Typography from "./typography";
-
+import Radio from "./radio";
 export * from "@mui/material";
 
 export {
@@ -65,4 +65,5 @@ export {
   Stepper,
   Step,
   ToggleButtonGroup,
+  Radio,
 };
