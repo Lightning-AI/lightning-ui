@@ -1,18 +1,19 @@
+import MuiTextField, { TextFieldProps as MuiTextFieldProps } from "@mui/material/TextField";
+import { MenuItem } from "../";
+import { Dangerous, Warning, CheckCircle, Info } from "../../icons";
 import React, { ReactNode, useState } from "react";
 
-import MuiTextField, { TextFieldProps as MuiTextFieldProps } from "@mui/material/TextField";
-
-import { MenuItem } from "../";
-import { CheckCircle, Dangerous, Warning } from "../../icons";
 import FormControl from "../form-control";
 
 const statusColor: Record<string, any> = {
+  info: "#1877F2",
   success: "#31A24C",
   warning: "#F1A817",
   error: "#E02C2D",
 };
 
 const statusIcon: Record<string, ReactNode> = {
+  info: <Info sx={{ color: statusColor.info }} />,
   success: <CheckCircle sx={{ color: statusColor.success }} />,
   warning: <Warning sx={{ color: statusColor.warning }} />,
   error: <Dangerous sx={{ color: statusColor.error }} />,
@@ -21,7 +22,7 @@ const statusIcon: Record<string, ReactNode> = {
 export type SelectProps = {
   label?: string;
   helperText?: string;
-  status?: "success" | "warning" | "error";
+  status?: "success" | "warning" | "error" | "info";
   statusText?: string;
   icon?: ReactNode;
   options: { label: string; value: string }[];
