@@ -7,6 +7,7 @@ import { CheckCircle, Dangerous, Warning, Info } from "@mui/icons-material";
 
 export type RadioProps = {
   optional?: boolean;
+  tooltip?: string;
   description: React.ReactElement;
   status?: "success" | "warning" | "error" | "info";
   statusText?: string;
@@ -34,12 +35,7 @@ const Radio = (props: RadioProps) => {
       <FormControlLabel
         disabled={props.disabled}
         control={
-          <RadioBase
-            checked={props.checked}
-            onChange={props.onChange}
-            size={props.size}
-            disabled={props.disabled}
-          />
+          <RadioBase checked={props.checked} onChange={props.onChange} size={props.size} disabled={props.disabled} />
         }
         label={props.description}
         sx={{

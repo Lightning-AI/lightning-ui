@@ -51,6 +51,7 @@ const TextField = React.forwardRef(
       icon,
       fullWidth,
       optional,
+      tooltip,
       onChange,
       type = "text",
       suffix,
@@ -107,7 +108,8 @@ const TextField = React.forwardRef(
         status={status}
         statusText={statusText}
         fullWidth={fullWidth}
-        optional={optional}>
+        optional={optional}
+        tooltip={tooltip}>
         <Stack direction={"row"}>
           <MuiOutlinedInput
             inputRef={input => {

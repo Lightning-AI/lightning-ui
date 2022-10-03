@@ -18,6 +18,10 @@ export default {
       defaultValue: "Label",
       control: "text",
     },
+    tooltip: {
+      defaultValue: "Tooltip message",
+      control: "text",
+    },
     helperText: {
       defaultValue: "Helper Text",
       control: "text",

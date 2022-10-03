@@ -13,6 +13,7 @@ export default {
   },
   args: {
     label: "type of checkbox",
+    tooltip: "tooltip message",
     helperText: "some helper text",
     statusText: "status text",
     description: <>some description for the checkbox</>,
