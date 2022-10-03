@@ -1,5 +1,5 @@
-import { Box, Stack, InfoIconWithHelpTooltip } from "../../design-system/components";
-import { CircleOutlined, Circle } from "../../design-system/icons";
+import { Box, InfoIconWithHelpTooltip, Stack } from "../../design-system/components";
+import { Circle, CircleOutlined } from "../../design-system/icons";
 
 export enum StatusEnum {
   NOT_YET_RUN = "Not yet run",

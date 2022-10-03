@@ -1,5 +1,6 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import EmptyState, { EmptyStateProps } from "design-system/components/empty-state";
+
 import { Button } from "../";
 import emptyListUrl from "../../stories/assets/empty-list.svg";
 

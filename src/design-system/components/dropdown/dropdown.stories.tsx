@@ -1,7 +1,7 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
+import { SvgIcon } from "design-system/components";
 import Dropdown, { DropdownProps } from "design-system/components/dropdown";
 import * as Icons from "design-system/icons";
-import { SvgIcon } from "design-system/components";
 
 export default {
   title: "Components/Dropdown",

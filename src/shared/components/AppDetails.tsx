@@ -1,6 +1,7 @@
 import React from "react";
+
 import { Button, Media, Stack, Typography } from "../../design-system/components";
-import { Event, LocalOffer, Edit, ImageOutlined } from "../../design-system/icons";
+import { Edit, Event, ImageOutlined, LocalOffer } from "../../design-system/icons";
 import formatDate from "../utils/formatDate";
 
 export type AppDetailsProps = {

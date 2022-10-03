@@ -1,10 +1,11 @@
 import { ReactNode } from "react";
 
 import { ThemeProvider as MuiThemeProvider, createTheme } from "@mui/material/styles";
-import typography from "./typography";
+
+import components from "./components";
 import palette from "./palette";
 import shadows from "./shadows";
-import components from "./components";
+import typography from "./typography";
 
 export const theme = createTheme({
   typography,

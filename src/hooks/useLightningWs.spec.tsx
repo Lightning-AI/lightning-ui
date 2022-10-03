@@ -1,9 +1,11 @@
 import { unmount } from "@cypress/react";
 
 import { wsEndpoint } from "utils/api";
+
 import mount, { getClientReference } from "tests/utils/testMount";
-import useLightningWs from "./useLightningWs";
+
 import { queryKey } from "./useLightningState";
+import useLightningWs from "./useLightningWs";
 
 let constructorMock: Function;
 let wsInstance: any;

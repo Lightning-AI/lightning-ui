@@ -1,8 +1,8 @@
-import button from "./button";
-import tooltip from "./tooltip";
 import alert from "./alert";
-import tabs from "./tabs";
+import button from "./button";
 import pagination from "./pagination";
+import tabs from "./tabs";
+import tooltip from "./tooltip";
 
 const components = {
   ...button,

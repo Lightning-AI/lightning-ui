@@ -1,6 +1,8 @@
 import React, { ReactNode, useState } from "react";
-import MuiTableRow from "@mui/material/TableRow";
+
 import MuiTableCell from "@mui/material/TableCell";
+import MuiTableRow from "@mui/material/TableRow";
+
 import { ArrowDropDownRounded, ArrowDropUpRounded } from "../../icons";
 
 export type TableRowProps = {

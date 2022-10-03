@@ -1,9 +1,11 @@
 import React from "react";
 
-import mount from "tests/utils/testMount";
-import { specEndpoint } from "tests/utils/lightning";
-import Components from "./Components";
 import { LightningSpec } from "types/lightning";
+
+import { specEndpoint } from "tests/utils/lightning";
+import mount from "tests/utils/testMount";
+
+import Components from "./Components";
 
 describe("Components", () => {
   describe("an app without any components", () => {

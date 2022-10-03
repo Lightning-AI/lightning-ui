@@ -1,13 +1,15 @@
 import React from "react";
-import { Tabs } from "design-system/components";
 
-import Components from "./Components";
+import { Tabs } from "design-system/components";
+import AppOverview from "shared/components/AppOverview";
+
+import useLightningSpec from "hooks/useLightningSpec";
+import useLightningState from "hooks/useLightningState";
+import { AppStage, LightningSpec, LightningState, WorkStage } from "types/lightning";
+
 import { ComponentEntity } from "../shared/components/ComponentTable";
 import { StatusEnum } from "../shared/components/Status";
-import AppOverview from "shared/components/AppOverview";
-import useLightningState from "hooks/useLightningState";
-import useLightningSpec from "hooks/useLightningSpec";
-import { AppStage, LightningSpec, LightningState, WorkStage } from "types/lightning";
+import Components from "./Components";
 
 const appStageStatusMap: Record<AppStage, StatusEnum> = {
   [AppStage.blocking]: StatusEnum.BLOCKING,

@@ -1,7 +1,9 @@
-import MuiTextField, { TextFieldProps as MuiTextFieldProps } from "@mui/material/TextField";
-import { MenuItem } from "../";
-import { Dangerous, Warning, CheckCircle } from "../../icons";
 import React, { ReactNode, useState } from "react";
+
+import MuiTextField, { TextFieldProps as MuiTextFieldProps } from "@mui/material/TextField";
+
+import { MenuItem } from "../";
+import { CheckCircle, Dangerous, Warning } from "../../icons";
 import FormControl from "../form-control";
 
 const statusColor: Record<string, any> = {

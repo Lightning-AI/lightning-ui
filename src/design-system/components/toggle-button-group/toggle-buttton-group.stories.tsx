@@ -1,7 +1,9 @@
+import { useEffect, useState } from "react";
+
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import ToggleButtonGroup, { ToggleButtonItemProps } from "design-system/components/toggle-button-group";
+
 import { LockOpenRounded, LockRounded } from "../../icons";
-import { useEffect, useState } from "react";
 
 export default {
   title: "Components/ToggleButtonGroup",

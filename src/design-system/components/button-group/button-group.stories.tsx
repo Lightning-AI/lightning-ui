@@ -1,6 +1,7 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
-import ButtonGroup, { ButtonGroupProps } from "design-system/components/button-group";
 import Button from "design-system/components/button";
+import ButtonGroup, { ButtonGroupProps } from "design-system/components/button-group";
+
 import { PublicRounded } from "../../icons";
 
 export default {

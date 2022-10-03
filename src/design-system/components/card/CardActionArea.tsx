@@ -1,5 +1,6 @@
 import MuiCardActionArea, { CardActionAreaProps as MuiCardActionAreaProps } from "@mui/material/CardActionArea";
 import { Link } from "react-router-dom";
+
 import { Box } from "..";
 
 export type CardActionAreaProps = { to?: any } & Pick<MuiCardActionAreaProps, "children" | "onClick">;

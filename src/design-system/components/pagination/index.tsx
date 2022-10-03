@@ -1,6 +1,7 @@
-import { KeyboardDoubleArrowLeft, KeyboardDoubleArrowRight } from "../../icons";
 import MuiPagination, { PaginationProps as MuiPaginationProps } from "@mui/material/Pagination";
 import MuiPaginationItem from "@mui/material/PaginationItem";
+
+import { KeyboardDoubleArrowLeft, KeyboardDoubleArrowRight } from "../../icons";
 
 export type PaginationProps = Pick<MuiPaginationProps, "page" | "count" | "onChange" | "disabled">;
 

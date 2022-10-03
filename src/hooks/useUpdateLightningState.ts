@@ -1,7 +1,8 @@
 import { useMutation, useQueryClient } from "react-query";
 
-import { requestParams, stateEndpoint } from "utils/api";
 import { LightningState } from "types/lightning";
+import { requestParams, stateEndpoint } from "utils/api";
+
 import { queryKey } from "./useLightningState";
 
 export default function useUpdateLightningState() {

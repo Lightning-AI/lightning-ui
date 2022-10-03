@@ -1,10 +1,12 @@
 import React from "react";
-import { Routes, Route, Navigate } from "react-router-dom";
+
+import { Navigate, Route, Routes } from "react-router-dom";
 
 import useLightningState from "hooks/useLightningState";
-import LayoutView from "./LayoutView";
 import { layoutFor } from "utils/state";
+
 import AppView from "./AppView";
+import LayoutView from "./LayoutView";
 
 export default function LightningAppRoutes() {
   const lightningState = useLightningState();

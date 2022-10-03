@@ -1,6 +1,7 @@
 import { mountHook } from "@cypress/react";
 
 import { location } from "utils/api";
+
 import useAdminUrl from "./useAdminUrl";
 
 describe("useAdminUrl", () => {

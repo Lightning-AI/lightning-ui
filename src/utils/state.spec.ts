@@ -1,4 +1,5 @@
-import { AppStage, LayoutType, LightningState, Layout } from "types/lightning";
+import { AppStage, Layout, LayoutType, LightningState } from "types/lightning";
+
 import { childFor, componentPathFor, routesFor } from "./state";
 
 describe("componentPathFor", () => {

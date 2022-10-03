@@ -1,8 +1,10 @@
 import React from "react";
 
-import mount from "tests/utils/testMount";
-import { stateEndpoint } from "tests/utils/lightning";
 import { Layout, LayoutLeaf, LightningState } from "types/lightning";
+
+import { stateEndpoint } from "tests/utils/lightning";
+import mount from "tests/utils/testMount";
+
 import LayoutView from "./LayoutView";
 
 describe("LayoutView", () => {

@@ -1,5 +1,6 @@
 import React, { ReactNode } from "react";
-import { Table, Box } from "design-system/components";
+
+import { Box, Table } from "design-system/components";
 
 import useLightningSpec from "hooks/useLightningSpec";
 

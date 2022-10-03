@@ -1,8 +1,9 @@
 import React from "react";
+
 import { mount } from "@cypress/react";
-import { QueryClientProvider, QueryClient } from "react-query";
-import { BrowserRouter } from "react-router-dom";
 import ThemeProvider from "design-system/theme";
+import { QueryClient, QueryClientProvider } from "react-query";
+import { BrowserRouter } from "react-router-dom";
 
 let client: QueryClient;
 

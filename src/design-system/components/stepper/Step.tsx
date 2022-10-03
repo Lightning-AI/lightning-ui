@@ -1,8 +1,9 @@
-import { CheckCircleRounded, ErrorRounded, RadioButtonUncheckedRounded } from "../../icons";
+import { Typography } from "@mui/material";
 import MuiStep, { StepProps as MuiStepProps } from "@mui/material/Step";
 import MuiStepLabel, { StepLabelProps as MuiStepLabelProps } from "@mui/material/StepLabel";
+
 import { CircularProgress } from "../";
-import { Typography } from "@mui/material";
+import { CheckCircleRounded, ErrorRounded, RadioButtonUncheckedRounded } from "../../icons";
 
 export type StepProps = { text: string } & Pick<MuiStepProps, "completed" | "active"> &
   Pick<MuiStepLabelProps, "error">;

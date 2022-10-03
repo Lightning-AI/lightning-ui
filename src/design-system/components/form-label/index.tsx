@@ -1,5 +1,6 @@
-import { Stack, Typography } from "../";
 import { ReactNode } from "react";
+
+import { Stack, Typography } from "../";
 
 export type FormLabelProps = {
   optional?: boolean;

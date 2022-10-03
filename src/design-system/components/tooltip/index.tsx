@@ -1,4 +1,5 @@
 import MuiTooltip, { TooltipProps as MuiTooltipProps } from "@mui/material/Tooltip";
+
 import { Box } from "..";
 
 export type TooltipProps = Partial<Pick<MuiTooltipProps, "title">> &
