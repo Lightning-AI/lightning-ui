@@ -9,7 +9,7 @@ import { CheckCircle, Dangerous, Warning, Info } from "@mui/icons-material";
 export type CheckboxProps = {
   optional?: boolean;
   description: React.ReactElement;
-  status?: "success" | "warning" | "error";
+  status?: "success" | "warning" | "error" | "info";
   statusText?: string;
 } & CheckboxOnlyProps &
   FormControlContainerProps;

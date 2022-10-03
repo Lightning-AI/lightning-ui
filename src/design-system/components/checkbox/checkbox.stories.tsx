@@ -8,7 +8,7 @@ export default {
   parameters: {
     design: {
       type: "figma",
-      url: "https://www.figma.com/file/XXxxfECxqzvlbvfr8SqHhg/Project-X",
+      url: "https://www.figma.com/file/tLrz5T82EKYMnqgvnk1Ldo/UILibrary?node-id=57007%3A76702",
     },
   },
   args: {
