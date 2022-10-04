@@ -2,6 +2,7 @@ import { ComponentMeta, ComponentStory } from "@storybook/react";
 import Select, { SelectProps } from "design-system/components/select";
 import * as Icons from "design-system/icons";
 
+import { LockRounded, SupervisorAccountRounded } from "design-system/icons";
 import { SvgIcon } from "..";
 
 export default {
@@ -80,6 +81,23 @@ const Template: ComponentStory<typeof Select> = ({ icon, ...args }: SelectProps)
 };
 
 export const Playground = Template.bind({});
+
+export const LabelObject = Template.bind({});
+const labelObjectOptions = [
+  {
+    value: "everyone",
+    label: {
+      text: "Everyone",
+      helpText: "Anyone with the link can access my app",
+      icon: <SupervisorAccountRounded />,
+    },
+  },
+  {
+    value: "only-me",
+    label: { text: "Only Me", helpText: "Only the owner can open and use the app", icon: <LockRounded /> },
+  },
+];
+LabelObject.args = { options: labelObjectOptions };
 
 export const MultipleVersion = Template.bind({});
 MultipleVersion.args = { multiple: true };
