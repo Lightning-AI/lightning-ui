@@ -5,7 +5,7 @@ import { Checkbox as MuiCheckbox } from "@mui/material";
 export type CheckboxOnlyProps = {
   name?: string;
   checked: boolean;
-  onChange: (e: boolean) => void;
+  onChange?: (e: boolean) => void;
 } & Pick<React.ComponentProps<typeof MuiCheckbox>, "size" | "disabled">;
 
 const CheckboxBase = (props: CheckboxOnlyProps) => {
@@ -13,7 +13,7 @@ const CheckboxBase = (props: CheckboxOnlyProps) => {
     <MuiCheckbox
       checked={props.checked}
       inputProps={{ "aria-label": `Checkbox for ${props.name}` }}
-      onChange={e => props.onChange(e.target.checked)}
+      onChange={e => props.onChange && props.onChange(e.target.checked)}
       size={props.size}
       disabled={props.disabled}
       sx={{

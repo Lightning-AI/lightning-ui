@@ -4,7 +4,7 @@ import React from "react";
 export type RadioOnlyProps = {
   name?: string;
   checked: boolean;
-  onChange: (e: boolean) => void;
+  onChange?: (e: boolean) => void;
 } & Pick<React.ComponentProps<typeof MuiRadio>, "size" | "disabled">;
 
 const RadioBase = (props: RadioOnlyProps) => {
@@ -12,7 +12,7 @@ const RadioBase = (props: RadioOnlyProps) => {
     <MuiRadio
       checked={props.checked}
       inputProps={{ "aria-label": `Radio for ${props.name}` }}
-      onChange={e => props.onChange(e.target.checked)}
+      onChange={e => props.onChange && props.onChange(e.target.checked)}
       size={props.size}
       disabled={props.disabled}
       sx={{
