@@ -1,10 +1,11 @@
 import React from "react";
 
+import { CheckCircle, Dangerous, Info, Warning } from "@mui/icons-material";
+
 import { FormControlLabel, Stack } from "../";
 import FormControlContainer, { FormControlContainerProps } from "../form-control/FormControlContainer";
 import FormStatusText from "../form-status-text";
 import CheckboxBase, { CheckboxOnlyProps } from "./CheckboxBase";
-import { CheckCircle, Dangerous, Warning, Info } from "@mui/icons-material";
 
 export type CheckboxProps = {
   optional?: boolean;

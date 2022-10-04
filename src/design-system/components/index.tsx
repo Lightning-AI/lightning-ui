@@ -12,6 +12,7 @@ import Label from "./label";
 import Media from "./media";
 import Pagination from "./pagination";
 import Popover from "./popover";
+import Radio from "./radio";
 import Select from "./select";
 import SnackbarProvider from "./snackbar-provider";
 import { useSnackbar } from "./snackbar-provider/useSnackbar";
@@ -24,7 +25,7 @@ import Tooltip from "./tooltip";
 import HelpMessage from "./tooltip/HelpMessage";
 import InfoIconWithHelpTooltip from "./tooltip/InfoIconWithHelpTooltip";
 import Typography from "./typography";
-import Radio from "./radio";
+
 export * from "@mui/material";
 
 export {

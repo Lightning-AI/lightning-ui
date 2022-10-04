@@ -1,5 +1,6 @@
-import { Radio as MuiRadio } from "@mui/material";
 import React from "react";
+
+import { Radio as MuiRadio } from "@mui/material";
 
 export type RadioOnlyProps = {
   name?: string;

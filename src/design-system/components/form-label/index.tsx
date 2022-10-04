@@ -1,5 +1,6 @@
-import { InfoIconWithHelpTooltip, Stack, Typography } from "../";
 import { ReactNode } from "react";
+
+import { InfoIconWithHelpTooltip, Stack, Typography } from "../";
 
 export type FormLabelProps = {
   optional?: boolean;
