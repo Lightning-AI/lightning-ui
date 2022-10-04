@@ -1,9 +1,12 @@
 import MuiTextField, { TextFieldProps as MuiTextFieldProps } from "@mui/material/TextField";
-import { MenuItem } from "../";
+import { Box, MenuItem, Stack } from "../";
 import { Dangerous, Warning, CheckCircle, Info } from "../../icons";
 import React, { ReactNode, useState } from "react";
 
 import FormControl from "../form-control";
+import RadioBase from "../radio/RadioBase";
+import { Typography } from "@mui/material";
+import CheckboxBase from "../checkbox/CheckboxBase";
 
 const statusColor: Record<string, any> = {
   info: "#1877F2",
@@ -19,13 +22,19 @@ const statusIcon: Record<string, ReactNode> = {
   error: <Dangerous sx={{ color: statusColor.error }} />,
 };
 
+type LabelType = {
+  text: string;
+  helpText: string;
+  icon: ReactNode;
+};
+
 export type SelectProps = {
   label?: string;
   helperText?: string;
   status?: "success" | "warning" | "error" | "info";
   statusText?: string;
   icon?: ReactNode;
-  options: { label: string; value: string }[];
+  options: { label: string | LabelType; value: string }[];
   onChange: (value: string | string[] | null) => void;
   optional?: boolean;
   tooltip?: string;
@@ -45,15 +54,17 @@ const Select = React.forwardRef(
       tooltip,
       multiple,
       onChange,
+      size,
       ...props
     }: SelectProps,
     ref,
   ) => {
+    const areLabelType = props.options.some(option => typeof option.label !== "string");
     const value = props.value ?? multiple ? [] : "";
     const [selectedValue, setSelectedValue] = useState(value);
 
     const hasStatus = typeof status !== "undefined";
-    const isSmall = props.size === "small";
+    const isSmall = size === "small";
     const onChangeHandler = (event: any) => {
       const value = event.target.value;
       setSelectedValue(value);
@@ -75,24 +86,75 @@ const Select = React.forwardRef(
           value={selectedValue}
           fullWidth={fullWidth}
           onChange={onChangeHandler}
+          size={areLabelType ? "medium" : size}
           {...props}
           error={hasStatus}
           InputProps={{
-            startAdornment: icon,
+            startAdornment: areLabelType ? undefined : icon,
             endAdornment: status && statusIcon[status],
           }}
           select
           SelectProps={{
-            multiple: multiple,
+            multiple: !areLabelType && multiple,
             MenuProps: {
               disablePortal: true,
-              PaperProps: { sx: { marginTop: isSmall ? "-4px" : "-8px" } },
+              PaperProps: {
+                sx: {
+                  marginTop:
+                    !selectedValue && areLabelType ? "2px" : areLabelType ? "-6px" : isSmall ? "-4px" : "-8px",
+                },
+              },
             },
+            renderValue: areLabelType
+              ? selected => {
+                  const selectedLabel = props.options.find(option => option.value === selected)!.label;
+                  if (typeof selectedLabel === "string") return selectedLabel;
+                  return (
+                    <Stack direction={"row"}>
+                      <Box
+                        sx={{
+                          "& svg.MuiSvgIcon-root:not(.MuiSelect-icon)": {
+                            fontSize: "20px",
+                            paddingTop: 0.5,
+                            color: (theme: any) => theme.palette.grey[70],
+                          },
+                        }}>
+                        {selectedLabel.icon}
+                      </Box>
+                      <Box paddingLeft={3}>
+                        <Typography
+                          fontFamily={"Roboto"}
+                          fontWeight={400}
+                          fontSize={"14px"}
+                          lineHeight={"20px"}
+                          color={"#1C1C1C"}>
+                          {selectedLabel.text}
+                        </Typography>
+                        <Typography
+                          fontFamily={"Roboto"}
+                          fontWeight={400}
+                          fontSize={"12px"}
+                          lineHeight={"16px"}
+                          color={"#5B5E69"}>
+                          {selectedLabel.helpText}
+                        </Typography>
+                      </Box>
+                    </Stack>
+                  );
+                }
+              : multiple
+              ? selected => {
+                  const itemsSelected = selected as string[];
+                  return itemsSelected.length > 1
+                    ? `${itemsSelected.length} items selected`
+                    : props.options.find(option => option.value === itemsSelected?.[0])?.label ?? "";
+                }
+              : selected => props.options.find(option => option.value === selected)!.label,
           }}
           sx={{
             "& .MuiOutlinedInput-root": {
               minWidth: "150px",
-              height: "36px",
+              height: areLabelType ? "56px" : "36px",
               fontFamily: "Roboto",
               fontStyle: "normal",
               fontWeight: "normal",
@@ -125,19 +187,19 @@ const Select = React.forwardRef(
               height: "28px",
             },
             "& .MuiSelect-select.MuiSelect-outlined.MuiOutlinedInput-input": {
-              paddingLeft: icon ? "36px" : "12px",
+              paddingLeft: !areLabelType && icon ? "36px" : "12px",
               paddingRight: hasStatus ? "52px" : "32px",
             },
             "& .MuiSvgIcon-root:not(.MuiSelect-icon)": {
               fontSize: "16px",
               position: "absolute",
             },
-            "& .MuiInputBase-adornedEnd svg:not(.MuiSelect-icon)": {
+            "& .MuiInputBase-adornedEnd > svg:not(.MuiSelect-icon)": {
               paddingRight: "8px",
               right: "22px",
               paddingLeft: "8px",
             },
-            "& .MuiInputBase-adornedStart .MuiSvgIcon-root:first-of-type": {
+            "& .MuiInputBase-adornedStart > .MuiSvgIcon-root:first-of-type": {
               color: "#050505",
               paddingRight: "8px",
               paddingLeft: "12px",
@@ -150,11 +212,70 @@ const Select = React.forwardRef(
               color: (theme: any) => theme.palette.grey["50"],
             },
           }}>
-          {props.options.map(option => (
-            <MenuItem key={option.label} value={option.value}>
-              {option.label}
-            </MenuItem>
-          ))}
+          {props.options.map(option =>
+            areLabelType ? (
+              <MenuItem key={option.value} value={option.value} sx={{ padding: 1 }}>
+                <Stack direction={"row"}>
+                  <Box marginTop={-0.5} marginLeft={-1} paddingRight={1}>
+                    <RadioBase checked={option.value === selectedValue} />
+                  </Box>
+                  <Box paddingX={1.5} paddingRight={6}>
+                    <Typography
+                      fontFamily={"Roboto"}
+                      fontWeight={400}
+                      fontSize={"14px"}
+                      lineHeight={"20px"}
+                      color={"#1C1C1C"}>
+                      {(option.label as LabelType).text}
+                    </Typography>
+                    <Typography
+                      fontFamily={"Roboto"}
+                      fontWeight={400}
+                      fontSize={"12px"}
+                      lineHeight={"16px"}
+                      color={"#5B5E69"}>
+                      {(option.label as LabelType).helpText}
+                    </Typography>
+                  </Box>
+                </Stack>
+                <Box
+                  position={"absolute"}
+                  top={"16px"}
+                  right={"24px"}
+                  paddingRight={1}
+                  sx={{
+                    "& svg.MuiSvgIcon-root:not(.MuiSelect-icon)": {
+                      fontSize: "20px",
+                      color: (theme: any) => theme.palette.grey[70],
+                    },
+                  }}>
+                  {(option.label as LabelType).icon}
+                </Box>
+              </MenuItem>
+            ) : (
+              <MenuItem key={option.value} value={option.value} sx={{ padding: 1 }}>
+                <Stack direction={"row"}>
+                  {multiple ? (
+                    <Box marginTop={-0.5} paddingRight={1}>
+                      <CheckboxBase checked={(selectedValue as Array<string>).includes(option.value)} />
+                    </Box>
+                  ) : (
+                    <Box marginTop={-1.75} marginLeft={-1} paddingRight={2}>
+                      <RadioBase checked={option.value === selectedValue} />
+                    </Box>
+                  )}
+                  <Typography
+                    fontFamily={"Roboto"}
+                    fontWeight={400}
+                    fontSize={"14px"}
+                    lineHeight={"20px"}
+                    color={"#1C1C1C"}>
+                    {option.label}
+                  </Typography>
+                </Stack>
+              </MenuItem>
+            ),
+          )}
         </MuiTextField>
       </FormControl>
     );
