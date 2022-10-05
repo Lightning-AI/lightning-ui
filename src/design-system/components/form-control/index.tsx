@@ -1,10 +1,12 @@
+import { ReactNode } from "react";
+
 import { Box } from "../";
 import FormStatusText from "../form-status-text";
 import FormControlContainer, { FormControlContainerProps } from "./FormControlContainer";
 
 export type FormControlProps = {
   status?: "success" | "warning" | "error" | "info";
-  statusText?: string;
+  statusText?: ReactNode;
 } & FormControlContainerProps;
 
 const FormControl = (props: FormControlProps) => {
