@@ -20,6 +20,14 @@ const secondary: PaletteColorOptions & Record<string, string> = {
   "10": "#D5F9FA",
   "contrastText": "#008087",
 };
+const info: PaletteColorOptions & Record<string, string> = {
+  "main": "rgba(24, 119, 242, 1)",
+  "70": "rgba(0, 59, 135, 1)",
+  "50": "rgba(24, 119, 242, 1)",
+  "20": "rgba(210,226,255,1)",
+  "10": "rgba(210, 226, 255, 1)",
+  "contrastText": "rgba(0, 59, 135, 1)",
+};
 const success: PaletteColorOptions & Record<string, string> = {
   "main": "#31A24C",
   "70": "#16593D",
@@ -59,6 +67,7 @@ const divider = grey["40"];
 const palette: PaletteOptions = {
   primary,
   secondary,
+  info,
   success,
   warning,
   error,

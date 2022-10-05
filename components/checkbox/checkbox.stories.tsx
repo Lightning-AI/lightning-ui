@@ -8,11 +8,12 @@ export default {
   parameters: {
     design: {
       type: "figma",
-      url: "https://www.figma.com/file/XXxxfECxqzvlbvfr8SqHhg/Project-X",
+      url: "https://www.figma.com/file/tLrz5T82EKYMnqgvnk1Ldo/UILibrary?node-id=57007%3A76702",
     },
   },
   args: {
     label: "type of checkbox",
+    tooltip: "tooltip message",
     helperText: "some helper text",
     statusText: "status text",
     description: <>some description for the checkbox</>,
@@ -33,7 +34,7 @@ export default {
     },
     status: {
       control: "select",
-      options: [undefined, "success", "warning", "error"],
+      options: [undefined, "success", "warning", "error", "info"],
       defaultValue: "error",
     },
     size: {

@@ -12,6 +12,7 @@ import Label from "./label";
 import Media from "./media";
 import Pagination from "./pagination";
 import Popover from "./popover";
+import Radio from "./radio";
 import Select from "./select";
 import SnackbarProvider from "./snackbar-provider";
 import { useSnackbar } from "./snackbar-provider/useSnackbar";
@@ -65,4 +66,5 @@ export {
   Stepper,
   Step,
   ToggleButtonGroup,
+  Radio,
 };

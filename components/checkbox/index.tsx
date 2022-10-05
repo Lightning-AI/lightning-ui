@@ -1,6 +1,6 @@
 import React from "react";
 
-import { CheckCircle, Dangerous, Warning } from "@mui/icons-material";
+import { CheckCircle, Dangerous, Info, Warning } from "@mui/icons-material";
 
 import { FormControlLabel, Stack } from "../";
 import FormControlContainer, { FormControlContainerProps } from "../form-control/FormControlContainer";
@@ -9,19 +9,22 @@ import CheckboxBase, { CheckboxOnlyProps } from "./CheckboxBase";
 
 export type CheckboxProps = {
   optional?: boolean;
+  tooltip?: string;
   description: React.ReactElement;
-  status?: "success" | "warning" | "error";
+  status?: "success" | "warning" | "error" | "info";
   statusText?: string;
 } & CheckboxOnlyProps &
   FormControlContainerProps;
 
 const statusColor = {
+  info: "#1877F2",
   success: "#31A24C",
   warning: "#F1A817",
   error: "#E02C2D",
 };
 
 const statusIcon = {
+  info: <Info sx={{ color: statusColor.info }} />,
   success: <CheckCircle sx={{ color: statusColor.success }} />,
   warning: <Warning sx={{ color: statusColor.warning }} />,
   error: <Dangerous sx={{ color: statusColor.error }} />,

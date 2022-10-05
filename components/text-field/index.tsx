@@ -4,18 +4,20 @@ import MuiOutlinedInput, { OutlinedInputProps as MuiOutlinedInputProps } from "@
 
 import { Box, Stack } from "..";
 import getTextWidth from "../../../shared/utils/getTextWidth";
-import { CheckCircle, Dangerous, Warning } from "../../icons";
+import { CheckCircle, Dangerous, Info, Warning } from "../../icons";
 import FormControl, { FormControlProps } from "../form-control";
 import NumberInputButtons from "./NumberInputButtons";
 import { BORDER_COLOR } from "./constants";
 
 const statusColor: Record<string, any> = {
+  info: "#1877F2",
   success: "#31A24C",
   warning: "#F1A817",
   error: "#E02C2D",
 };
 
 const statusIcon: Record<string, ReactNode> = {
+  info: <Info sx={{ color: statusColor.info }} />,
   success: <CheckCircle sx={{ color: statusColor.success }} />,
   warning: <Warning sx={{ color: statusColor.warning }} />,
   error: <Dangerous sx={{ color: statusColor.error }} />,
@@ -50,6 +52,7 @@ const TextField = React.forwardRef(
       icon,
       fullWidth,
       optional,
+      tooltip,
       onChange,
       type = "text",
       suffix,
@@ -106,7 +109,8 @@ const TextField = React.forwardRef(
         status={status}
         statusText={statusText}
         fullWidth={fullWidth}
-        optional={optional}>
+        optional={optional}
+        tooltip={tooltip}>
         <Stack direction={"row"}>
           <MuiOutlinedInput
             inputRef={input => {
