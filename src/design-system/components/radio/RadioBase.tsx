@@ -31,7 +31,7 @@ const RadioBase = (props: RadioOnlyProps) => {
           display: "none",
         },
         "&.Mui-checked .MuiSvgIcon-root:last-child path": {
-          d: "#792EE5",
+          color: "#792EE5",
         },
         "&:hover": {
           backgroundColor: "transparent",
