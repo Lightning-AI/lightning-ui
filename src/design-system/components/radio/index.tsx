@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactNode } from "react";
 
 import { CheckCircle, Dangerous, Info, Warning } from "@mui/icons-material";
 
@@ -12,7 +12,7 @@ export type RadioProps = {
   tooltip?: string;
   description: React.ReactElement;
   status?: "success" | "warning" | "error" | "info";
-  statusText?: string;
+  statusText?: ReactNode;
 } & RadioOnlyProps &
   FormControlContainerProps;
 
