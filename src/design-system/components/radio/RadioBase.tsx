@@ -27,11 +27,11 @@ const RadioBase = (props: RadioOnlyProps) => {
           backgroundRepeat: "no-repeat",
           borderColor: (theme: any) => theme.palette.grey.main,
         },
-        "& .MuiSvgIcon-root path": {
-          color: "#0000",
+        "& .MuiSvgIcon-root:first-child path": {
+          display: "none",
         },
         "&.Mui-checked .MuiSvgIcon-root:last-child path": {
-          color: "#792EE5",
+          d: "#792EE5",
         },
         "&:hover": {
           backgroundColor: "transparent",
