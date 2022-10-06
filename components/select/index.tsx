@@ -33,7 +33,7 @@ export type SelectProps = {
   label?: string;
   helperText?: string;
   status?: "success" | "warning" | "error" | "info";
-  statusText?: string;
+  statusText?: ReactNode;
   icon?: ReactNode;
   options: { label: string | LabelType; value: string }[];
   onChange: (value: string | string[] | null) => void;
