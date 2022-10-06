@@ -19,7 +19,7 @@ export default function Footer(props: { hideFooterShadow?: boolean }) {
             paddingY: 1.5,
             borderRadius: 0,
             backgroundColor: "#fff",
-            height: 24,
+            height: 28,
           }}
         />
       )}
