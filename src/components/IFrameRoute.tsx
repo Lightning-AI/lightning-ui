@@ -89,7 +89,7 @@ export default function IFrameRoute(props: Props) {
           width={"100%"}
           component={"iframe"}
           // NOTE: Needed to allow underlying app frontends to request browser permissions
-          allow={"camera; microphone; display-capture"}
+          allow={"camera; microphone; display-capture; clipboard-read; clipboard-write;"}
           sx={{ border: "none" }}
           name={props.name}
           src={props.iframeTargetUrl}
