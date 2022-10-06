@@ -2,8 +2,6 @@ import React from "react";
 
 import { Box, Paper, Stack, Typography } from "design-system/components";
 
-import LightningLogo from "resources/images/lightning-logo-with-text.svg";
-
 export default function Footer(props: { hideFooterShadow?: boolean }) {
   return (
     <>
@@ -33,7 +31,11 @@ export default function Footer(props: { hideFooterShadow?: boolean }) {
         sx={{ backgroundColor: "#fff", position: "fixed", bottom: 0, right: 0 }}>
         <Typography>Running on</Typography>
         &nbsp;
-        <Box component={"img"} src={LightningLogo} alt="Lightning.ai" />
+        <Box
+          component={"img"}
+          src={"https://storage.googleapis.com/grid-static/lightning-logo-with-text.svg"}
+          alt="Lightning.ai"
+        />
       </Stack>
     </>
   );
