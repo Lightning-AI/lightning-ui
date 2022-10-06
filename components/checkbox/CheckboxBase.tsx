@@ -49,7 +49,7 @@ const CheckboxBase = (props: CheckboxOnlyProps) => {
           backgroundImage: `url("data:image/svg+xml,%3Csvg width='12' height='10' viewBox='0 0 12 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 5.13507L4.243 8.37807L11 1.62207' stroke='%23BCC0C4' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")`,
         },
         "& .MuiSvgIcon-root path": {
-          color: "#0000",
+          display: "none",
         },
       }}
     />

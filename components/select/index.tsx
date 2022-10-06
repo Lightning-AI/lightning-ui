@@ -61,7 +61,7 @@ const Select = React.forwardRef(
     ref,
   ) => {
     const areLabelType = props.options.some(option => typeof option.label !== "string");
-    const value = props.value ?? multiple ? [] : "";
+    const value = typeof props.value !== "undefined" ? props.value : multiple ? [] : "";
     const [selectedValue, setSelectedValue] = useState(value);
 
     const hasStatus = typeof status !== "undefined";
