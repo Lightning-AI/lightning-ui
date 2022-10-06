@@ -32,7 +32,7 @@ export default function AppView() {
       <Box height={"100%"} marginX={0}>
         <Outlet />
       </Box>
-      <Footer showFooterShadow={lightingState.data?.vars?.show_footer_shadow} />
+      <Footer hideFooterShadow={lightingState.data?.vars?.hide_footer_shadow} />
     </Stack>
   );
 }

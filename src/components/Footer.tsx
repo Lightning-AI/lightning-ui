@@ -4,10 +4,10 @@ import { Box, Paper, Stack, Typography } from "design-system/components";
 
 import LightningLogo from "resources/images/lightning-logo-with-text.svg";
 
-export default function Footer(props: { showFooterShadow?: boolean }) {
+export default function Footer(props: { hideFooterShadow?: boolean }) {
   return (
     <>
-      {props.showFooterShadow && (
+      {!props.hideFooterShadow && (
         <Paper
           elevation={1}
           sx={{
