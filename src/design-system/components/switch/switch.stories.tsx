@@ -22,11 +22,7 @@ export default {
     },
     checked: {
       control: "boolean",
-      defaultValue: true,
-    },
-    size: {
-      control: "select",
-      options: [undefined, "small", "medium"],
+      defaultValue: false,
     },
     onChange: { action: "switch Clicked!" },
   },
