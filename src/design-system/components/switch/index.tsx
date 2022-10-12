@@ -3,7 +3,6 @@ import { ChangeEvent } from "react";
 import MuiSwitch, { SwitchProps as MuiSwitchProps } from "@mui/material/Switch";
 
 import { InfoIconWithHelpTooltip, Stack, Typography } from "..";
-import FormLabel from "../form-label";
 
 export type SwitchProps = Pick<MuiSwitchProps, "checked" | "disabled" | "size"> & {
   label: string;
