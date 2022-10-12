@@ -38,7 +38,7 @@ function Switch({ label, tooltip, checked, onChange, disabled }: SwitchProps) {
           "padding": 0,
           "& .MuiSwitch-switchBase": {
             "padding": 0,
-            transform: "scale(0.8)",
+            "transform": "scale(0.8)",
             "&.Mui-checked": {
               "transform": "translateX(16px)",
               "& + .MuiSwitch-track": {
