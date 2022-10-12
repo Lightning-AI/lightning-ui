@@ -17,6 +17,7 @@ import Select from "./select";
 import SnackbarProvider from "./snackbar-provider";
 import { useSnackbar } from "./snackbar-provider/useSnackbar";
 import { Step, Stepper } from "./stepper";
+import Switch from "./switch";
 import Table from "./table";
 import Tabs from "./tabs";
 import TextField from "./text-field";
@@ -67,4 +68,5 @@ export {
   Step,
   ToggleButtonGroup,
   Radio,
+  Switch,
 };
