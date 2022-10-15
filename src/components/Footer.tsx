@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Box, Paper, Stack, Typography } from "design-system/components";
+import { Box, Link, Paper, Stack, Typography } from "design-system/components";
 
 export default function Footer(props: { hideFooterShadow?: boolean }) {
   return (
@@ -22,21 +22,23 @@ export default function Footer(props: { hideFooterShadow?: boolean }) {
         />
       )}
 
-      <Stack
-        alignItems={"center"}
-        direction={"row"}
-        padding={1.5}
-        left={{ xs: 0, md: "unset" }}
-        justifyContent={{ xs: "center", md: "flex-end" }}
-        sx={{ backgroundColor: "#fff", position: "fixed", bottom: 0, right: 0 }}>
-        <Typography>Running on</Typography>
-        &nbsp;
-        <Box
-          component={"img"}
-          src={"https://storage.googleapis.com/grid-static/lightning-logo-with-text.svg"}
-          alt="Lightning.ai"
-        />
-      </Stack>
+      <Link href={"https://lightning.ai"} target={"_blank"}>
+        <Stack
+          alignItems={"center"}
+          direction={"row"}
+          padding={1.5}
+          left={{ xs: 0, md: "unset" }}
+          justifyContent={{ xs: "center", md: "flex-end" }}
+          sx={{ backgroundColor: "#fff", position: "fixed", bottom: 0, right: 0 }}>
+          <Typography color={"initial"}>Running on</Typography>
+          &nbsp;
+          <Box
+            component={"img"}
+            src={"https://storage.googleapis.com/grid-static/lightning-logo-with-text.svg"}
+            alt="Lightning.ai"
+          />
+        </Stack>
+      </Link>
     </>
   );
 }
