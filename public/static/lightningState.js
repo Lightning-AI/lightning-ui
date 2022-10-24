@@ -2,7 +2,7 @@
   const channel = new MessageChannel();
 
   // We use document.referrer to get parent container's url
-  window.top.postMessage("Establish communication", document.referrer, [channel.port2]);
+  window.parent.postMessage("Establish communication", document.referrer, [channel.port2]);
 
   class LightningState {
     static subscribe(componentHandler) {
