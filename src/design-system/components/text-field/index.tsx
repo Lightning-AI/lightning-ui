@@ -34,7 +34,18 @@ export type TextFieldProps = {
 } & FormControlProps &
   Pick<
     MuiOutlinedInputProps,
-    "disabled" | "placeholder" | "fullWidth" | "size" | "autoComplete" | "autoCapitalize" | "autoCorrect" | "autoFocus"
+    | "disabled"
+    | "placeholder"
+    | "fullWidth"
+    | "size"
+    | "autoComplete"
+    | "autoCapitalize"
+    | "autoCorrect"
+    | "autoFocus"
+    | "multiline"
+    | "rows"
+    | "minRows"
+    | "maxRows"
   >;
 
 const INPUT_TEXT_FONT = "normal 14px/20px Roboto";

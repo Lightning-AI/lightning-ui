@@ -77,6 +77,22 @@ export default {
       options: ["text", "number", "password"],
       control: "select",
     },
+    multiline: {
+      defaultValue: false,
+      control: "boolean",
+    },
+    rows: {
+      defaultValue: 1,
+      control: "number",
+    },
+    minRows: {
+      defaultValue: 1,
+      control: "number",
+    },
+    maxRows: {
+      defaultValue: 1,
+      control: "number",
+    },
     onChange: { action: "changed" },
   },
 } as ComponentMeta<typeof TextField>;
