@@ -10,9 +10,9 @@ import lightningLogo from "resources/images/lightning-logo-with-text.svg";
 import { AppStage } from "types/lightning";
 
 export default function AppView() {
-  const lightingState = useLightningState();
+  const lightningState = useLightningState();
 
-  if (!lightingState.isLoading && lightingState.data?.app_state?.stage !== AppStage.running) {
+  if (!lightningState.isLoading && lightningState.data?.app_state?.stage !== AppStage.running) {
     return (
       <Stack alignItems={"center"} justifyContent={"center"} height={"100%"} width={"100%"}>
         <Box component={"img"} src={lightningLogo} alt="Lightning.ai Logo" />
@@ -32,7 +32,9 @@ export default function AppView() {
       <Box height={"100%"} marginX={0}>
         <Outlet />
       </Box>
-      <Footer hideFooterShadow={lightingState.data?.vars?.hide_footer_shadow} />
+      {!lightningState.data?.vars?.hide_footer && (
+        <Footer hideFooterShadow={lightningState.data?.vars?.hide_footer_shadow} />
+      )}
     </Stack>
   );
 }
