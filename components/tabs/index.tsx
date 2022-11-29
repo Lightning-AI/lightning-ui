@@ -57,6 +57,8 @@ const Tabs = ({ divider = true, ...props }: TabsProps) => {
   useEffect(() => {
     const newSelectedTab = hrefIndex !== -1 ? hrefIndex : 0;
     setSelectedTab(newSelectedTab);
+    props.onTabChanged?.(newSelectedTab);
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- we don't want to call this on onTabChanged change
   }, [hrefIndex, locationUri]);
 
   return (
