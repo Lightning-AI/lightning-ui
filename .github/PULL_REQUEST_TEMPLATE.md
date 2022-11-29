@@ -35,4 +35,4 @@ Check also if some items are not applicable so each PR before merge shall have c
 
 - I added screenshots featuring related Figma designs and links to the corresponding Figma nodes
 - My implementation follows Figma design as close as possible in terms of colors, sizes, margins, proportions, and
-      positions
+  positions
