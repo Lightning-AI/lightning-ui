@@ -56,7 +56,7 @@ const Table = (props: TableProps) => {
           </MuiTableHead>
           <MuiTableBody>
             {props.rows.map((row, index) => (
-              <TableRow hover={!!props.rowHover} cells={row} details={props.rowDetails?.[index]} />
+              <TableRow key={index} hover={!!props.rowHover} cells={row} details={props.rowDetails?.[index]} />
             ))}
           </MuiTableBody>
         </MuiTable>
