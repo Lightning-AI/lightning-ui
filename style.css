@@ -5,19 +5,22 @@
   font-family: "UCity";
   font-display: "swap";
   font-weight: 300;
-  src: url("./fonts/UCity/UCity-Light.otf") format("opentype");
+  src: local("UCity Light"), url("./fonts/UCity/UCity-Light.woff2") format("woff2"),
+    url("./fonts/UCity/UCity-Light.woff") format("woff");
 }
 
 @font-face {
   font-family: "UCity";
   font-display: "swap";
   font-weight: 400;
-  src: url("./fonts/UCity/UCity-Regular.otf") format("opentype");
+  src: local("UCity Regular"), url("./fonts/UCity/UCity-Regular.woff2") format("woff2"),
+    url("./fonts/UCity/UCity-Regular.woff") format("woff");
 }
 
 @font-face {
   font-family: "UCity";
   font-display: "swap";
   font-weight: 600;
-  src: url("./fonts/UCity/UCity-Semibold.otf") format("opentype");
+  src: local("UCity Semibold"), url("./fonts/UCity/UCity-Semibold.woff2") format("woff2"),
+    url("./fonts/UCity/UCity-Semibold.woff") format("woff");
 }
