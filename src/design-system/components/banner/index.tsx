@@ -30,9 +30,9 @@ export type BannerProps = {
   show?: boolean;
 };
 
-const Banner = ({ children, ...props }: BannerProps) => {
-  const [isShown, setIsShown] = useState(props.show);
-  useEffect(() => setIsShown(props.show), [props.show]);
+const Banner = ({ children, show, ...props }: BannerProps) => {
+  const [isShown, setIsShown] = useState(show);
+  useEffect(() => setIsShown(show), [show]);
 
   return isShown ? (
     <Stack
