@@ -17,7 +17,7 @@ export type ButtonProps = {
   children?: ReactNode;
 } & Pick<MuiButtonProps, "disabled" | "fullWidth" | "variant" | "href" | "onClick" | "size">;
 
-const Button = ({ href, ...props }: ButtonProps) => {
+const Button = ({ arrow, loading, href, ...props }: ButtonProps) => {
   const isTextVariant = props.variant === "text";
   const isPrimaryColor = !isTextVariant && (typeof props.color === "undefined" || props.color?.startsWith("primary"));
   const isGreyColor = isTextVariant || props.color?.startsWith("grey");
@@ -80,11 +80,11 @@ const Button = ({ href, ...props }: ButtonProps) => {
           ...onlyIconStyle,
         }}
         {...props}
-        disabled={props.loading || props.disabled}
+        disabled={loading || props.disabled}
         startIcon={
-          props.loading ? <CircularProgress thickness={6} color="inherit" size={isSmallSize ? 18 : 20} /> : props.icon
+          loading ? <CircularProgress thickness={6} color="inherit" size={isSmallSize ? 18 : 20} /> : props.icon
         }
-        endIcon={props.arrow ? <ArrowDropDownRounded /> : undefined}
+        endIcon={arrow ? <ArrowDropDownRounded /> : undefined}
         variant={variant}
         onClick={onClickHandler}
         href={href}>
