@@ -27,7 +27,7 @@ Check also if some items are not applicable so each PR before merge shall have c
 -->
 
 - [ ] My PR is focused - addressing only one thing at the time
-- [ ] I wrote new tests [for a bug or new feature]
+- [ ] I wrote new tests \[for a bug or new feature\]
 - [ ] I manually QAed this PR in my local environment
 - [ ] I added screenshots or screencasts featuring all UI & UX changes introduced by the PR
 
