@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Layout, LayoutLeaf, LightningState } from "types/lightning";
+import { Layout, LayoutBranch, LayoutLeaf, LightningState } from "types/lightning";
 
 import { stateEndpoint } from "tests/utils/lightning";
 import mount from "tests/utils/testMount";
@@ -20,6 +20,14 @@ describe("LayoutView", () => {
 
       cy.wait("@getState");
     });
+  });
+
+  it("renders nothing if given a leaf node without a `target` property", () => {
+    mount(<LayoutView layout={{} as LayoutBranch} />);
+
+    cy.wait("@getState");
+
+    cy.get("iframe").should("not.exist");
   });
 
   it("renders iframe if given a leaf node with a `target` property", () => {

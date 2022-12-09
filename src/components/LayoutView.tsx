@@ -28,6 +28,13 @@ export default function LayoutView(props: Props) {
     return <IFrameRoute name={props.layout.name} iframeTargetUrl={(props.layout as LayoutLeaf).target} />;
   }
 
+  // Error case (can be caused when `Frontend` server is not running)
+  if ((props.layout as LayoutBranch).content === undefined) {
+    console.error("Layout content is undefined, this could mean that the frontend server is not running.");
+
+    return null;
+  }
+
   const child = childFor((props.layout as LayoutBranch).content, lightningState.data);
 
   // Recursive case (multiple children)
