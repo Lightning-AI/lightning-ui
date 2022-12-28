@@ -11,5 +11,8 @@
   "bracketSameLine": true,
   "quoteProps": "consistent",
   "trailingComma": "all",
-  "bracketSpacing": true
+  "bracketSpacing": true,
+  "importOrder": ["^react$", "<THIRD_PARTY_MODULES>", "^(components|hooks|resources|types|utils)", "^tests", "^[./]"],
+  "importOrderSeparation": true,
+  "importOrderSortSpecifiers": true
 }
