@@ -77,6 +77,7 @@
     "**/*": "yarn lint:fix"
   },
   "eslintConfig": {
+    "root": true,
     "env": {
       "browser": true
     },
