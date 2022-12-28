@@ -40,11 +40,9 @@ repos:
     rev: v8.28.0
     hooks:
       - id: eslint
-        files: \.[jt]sx?$  # *.js, *.jsx, *.ts and *.tsx
+        files: \.[jt]sx?$ # *.js, *.jsx, *.ts and *.tsx
         types: [file]
         args: ["--fix"]
-        additional_dependencies:
-          - eslint-config-react-app
 
   - repo: https://github.com/executablebooks/mdformat
     rev: 0.7.16
