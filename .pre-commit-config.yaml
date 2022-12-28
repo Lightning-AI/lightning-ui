@@ -42,10 +42,10 @@ repos:
       - id: eslint
         types: [file]
         args: [--fix]
-        additional_dependencies:
-          - eslint@8.3.0
-          - eslint-config-react-app@7.0.0
-          - eslint-plugin-react@7.27.1
+#        additional_dependencies:
+#          - eslint@8.3.0
+#          - eslint-config-react-app@7.0.0
+#          - eslint-plugin-react@7.27.1
 
   - repo: https://github.com/executablebooks/mdformat
     rev: 0.7.16

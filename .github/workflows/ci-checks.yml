@@ -13,10 +13,15 @@ jobs:
       azure-dir: ""
 
   pre-commit-check:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-python@v4
+        with:
+          python-version: "3.9"
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 16
 
       - name: set PY
         run: echo "PY=$(python -VV | sha256sum | cut -d' ' -f1)" >> $GITHUB_ENV
