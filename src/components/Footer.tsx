@@ -1,5 +1,3 @@
-import React from "react";
-
 import { Box, Link, Paper, Stack, Typography } from "design-system/components";
 
 export default function Footer(props: { hideFooterShadow?: boolean }) {
@@ -22,14 +20,14 @@ export default function Footer(props: { hideFooterShadow?: boolean }) {
         />
       )}
 
-      <Link href={"https://lightning.ai"} target={"_blank"}>
+      <Link href={"https://lightning.ai"} target={"_blank"} sx={{ textDecoration: "none", zIndex: 100 }}>
         <Stack
           alignItems={"center"}
           direction={"row"}
           padding={1.5}
           left={{ xs: 0, md: "unset" }}
           justifyContent={{ xs: "center", md: "flex-end" }}
-          sx={{ backgroundColor: "#fff", position: "fixed", bottom: 0, right: 0 }}>
+          sx={{ backgroundColor: "#fff" }}>
           <Typography color={"initial"}>Running on</Typography>
           &nbsp;
           <Box

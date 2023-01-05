@@ -88,8 +88,12 @@ export default function IFrameRoute(props: Props) {
           height={"100%"}
           width={"100%"}
           component={"iframe"}
-          // NOTE: Needed to allow underlying app frontends to request browser permissions
-          allow={"camera; microphone; display-capture; clipboard-read; clipboard-write;"}
+          // NOTE: Needed to allow underlying app frontends to request browser permissions.
+          // By default, this will give the iframes from the same `src` these permissions. For, allowing
+          // any other origin, we can do by `*`. Here we are only allowing the clipboard-write api to be
+          // allowed with cross-site iframes.
+          // https://sites.google.com/a/chromium.org/dev/Home/chromium-security/deprecating-permissions-in-cross-origin-iframes
+          allow={"camera; microphone; display-capture; clipboard-read; clipboard-write *;"}
           sx={{ border: "none" }}
           name={props.name}
           src={props.iframeTargetUrl}
