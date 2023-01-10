@@ -76,8 +76,8 @@ const Tabs = ({ divider = true, ...props }: TabsProps) => {
         variant={"scrollable"}
         sx={{ ...props.sxTabs, "& .MuiTabs-indicator": { height: divider ? "4px" : "2px" } }}>
         {props.tabItems.map((tabItem: any, index) => {
-          // @ts-ignore
           const tab = (
+            // @ts-ignore
             <MuiTab
               key={tabItem.title}
               label={tabItem.title}
