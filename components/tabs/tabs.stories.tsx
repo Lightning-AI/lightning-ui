@@ -28,7 +28,7 @@ export default {
 } as ComponentMeta<typeof Tabs>;
 
 const tabItems: TabItem[] = [
-  { title: "Tab Item 1", content: <>Tab Content 1</> },
+  { title: "Tab Item 1", content: <>Tab Content 1</>, disabled: true, tooltip: "This tab is disabled" },
   { title: "Tab Item 2", content: <>Tab Content 2</> },
   { title: "Tab Item 3", content: <>Tab Content 3</> },
   { title: "Tab Item 4", content: <>Tab Content 4</> },
@@ -37,7 +37,7 @@ const tabItems: TabItem[] = [
 ];
 
 const Template: ComponentStory<typeof Tabs> = (args: TabsProps) => {
-  return <Tabs {...args} tabItems={tabItems} selectedTab={1} />;
+  return <Tabs {...args} tabItems={tabItems} />;
 };
 
 export const Playground = Template.bind({});

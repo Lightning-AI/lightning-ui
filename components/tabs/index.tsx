@@ -4,22 +4,27 @@ import MuiTab from "@mui/material/Tab";
 import MuiTabs from "@mui/material/Tabs";
 import { useLocation, useNavigate } from "react-router-dom";
 
+import { Tooltip } from "..";
 import { Box, Divider, SxProps, Theme } from "../";
 import TabContent from "./TabContent";
 import TabPanel from "./TabPanel";
 
-type StaticTabItem = {
+type TabItemMetadata = {
   title: string;
+  disabled?: boolean;
+  tooltip?: string;
+};
+
+type StaticTabItem = {
   content: ReactNode;
 };
 
 type NavigableTabItem = {
-  title: string;
   href: string;
   content?: ReactNode;
 };
 
-export type TabItem = StaticTabItem | NavigableTabItem;
+export type TabItem = (StaticTabItem | NavigableTabItem) & TabItemMetadata;
 
 export type TabsProps = {
   selectedTab?: number;
@@ -32,7 +37,9 @@ export type TabsProps = {
 };
 
 const Tabs = ({ divider = true, ...props }: TabsProps) => {
-  const [selectedTab, setSelectedTab] = useState(props.selectedTab || 0);
+  const [selectedTab, setSelectedTab] = useState(
+    props.selectedTab || props.tabItems.findIndex(tabItem => !tabItem.disabled),
+  );
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -55,7 +62,7 @@ const Tabs = ({ divider = true, ...props }: TabsProps) => {
   const hrefIndex = props.tabItems.findIndex((tabItem: any) => tabItem.href === locationUri);
 
   useEffect(() => {
-    const newSelectedTab = hrefIndex !== -1 ? hrefIndex : 0;
+    const newSelectedTab = hrefIndex !== -1 ? hrefIndex : props.tabItems.findIndex(tabItem => !tabItem.disabled);
     setSelectedTab(newSelectedTab);
     props.onTabChanged?.(newSelectedTab);
     // eslint-disable-next-line react-hooks/exhaustive-deps -- we don't want to call this on onTabChanged change
@@ -68,15 +75,28 @@ const Tabs = ({ divider = true, ...props }: TabsProps) => {
         onChange={onTabChangeHandler}
         variant={"scrollable"}
         sx={{ ...props.sxTabs, "& .MuiTabs-indicator": { height: divider ? "4px" : "2px" } }}>
-        {props.tabItems.map((tabItem: any, index) => (
-          // @ts-ignore
-          <MuiTab
-            key={tabItem.title}
-            label={tabItem.title}
-            variant={props.variant}
-            onClick={tabItem.href && navigateHandler(tabItem.href, index)}
-          />
-        ))}
+        {props.tabItems.map((tabItem: any, index) => {
+          const tab = (
+            // @ts-ignore
+            <MuiTab
+              key={tabItem.title}
+              label={tabItem.title}
+              variant={props.variant}
+              disabled={tabItem.disabled}
+              onClick={tabItem.href && navigateHandler(tabItem.href, index)}
+            />
+          );
+
+          if (tabItem.tooltip) {
+            // If tab is disabled then the span will trigger user interactions to open the tooltip
+            return (
+              <Tooltip key={tabItem.title} title={tabItem.tooltip}>
+                <span>{tab}</span>
+              </Tooltip>
+            );
+          }
+          return tab;
+        })}
       </MuiTabs>
       {divider && <Divider />}
       {hasContent && (
