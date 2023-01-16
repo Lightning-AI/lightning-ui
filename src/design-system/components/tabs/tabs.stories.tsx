@@ -19,6 +19,10 @@ export default {
       defaultValue: true,
       control: "boolean",
     },
+    prerenderTabs: {
+      defaultValue: true,
+      control: "boolean",
+    },
     tabItems: {
       table: {
         disable: true,
