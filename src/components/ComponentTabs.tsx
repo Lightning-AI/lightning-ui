@@ -1,5 +1,3 @@
-import React from "react";
-
 import { Tabs } from "design-system/components";
 
 import useLightningState from "hooks/useLightningState";
@@ -22,7 +20,7 @@ export default function ComponentTabs() {
   const tabItems = routes.map(route => {
     return {
       title: route.name.toUpperCase(),
-      href: `/view/${encodeURIComponent(route.name)}`,
+      path: `/view/${encodeURIComponent(route.name)}`,
     };
   });
 
