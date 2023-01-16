@@ -110,7 +110,7 @@ const Tabs = ({
       {hasContent && (
         <Box paddingTop={3} paddingBottom={1.5} sx={sxContent}>
           {tabItems.map((tabItem, index) => (
-            <TabPanel key={tabItem.title} value={index.toString()}>
+            <TabPanel sx={{ padding: 0, background: "white" }} key={tabItem.title} value={index.toString()}>
               {prerenderTabs || selectedTab === index ? tabItem.content : null}
             </TabPanel>
           ))}
