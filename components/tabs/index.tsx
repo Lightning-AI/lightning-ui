@@ -20,7 +20,7 @@ type StaticTabItem = {
 };
 
 type NavigableTabItem = {
-  href: string;
+  path: string;
   content?: ReactNode;
 };
 
@@ -58,15 +58,14 @@ const Tabs = ({ divider = true, ...props }: TabsProps) => {
   };
 
   const hasContent = props.tabItems.some((tabItem: any) => typeof tabItem.content !== "undefined");
-  const locationUri = location.pathname + location.hash + location.search;
-  const hrefIndex = props.tabItems.findIndex((tabItem: any) => tabItem.href === locationUri);
+  const pathIndex = props.tabItems.findIndex((tabItem: any) => tabItem.path === location.pathname);
 
   useEffect(() => {
-    const newSelectedTab = hrefIndex !== -1 ? hrefIndex : props.tabItems.findIndex(tabItem => !tabItem.disabled);
+    const newSelectedTab = pathIndex !== -1 ? pathIndex : props.tabItems.findIndex(tabItem => !tabItem.disabled);
     setSelectedTab(newSelectedTab);
     props.onTabChanged?.(newSelectedTab);
     // eslint-disable-next-line react-hooks/exhaustive-deps -- we don't want to call this on onTabChanged change
-  }, [hrefIndex, locationUri]);
+  }, [pathIndex, location.pathname]);
 
   return (
     <Box>
@@ -83,7 +82,7 @@ const Tabs = ({ divider = true, ...props }: TabsProps) => {
               label={tabItem.title}
               variant={props.variant}
               disabled={tabItem.disabled}
-              onClick={tabItem.href && navigateHandler(tabItem.href, index)}
+              onClick={tabItem.path && navigateHandler(tabItem.path, index)}
             />
           );
 
