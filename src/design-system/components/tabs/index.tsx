@@ -97,15 +97,13 @@ const Tabs = ({
             />
           );
 
-          if (tabItem.tooltip) {
-            // If tab is disabled then the span will trigger user interactions to open the tooltip
-            return (
-              <Tooltip key={index} title={tabItem.tooltip}>
+          return tabItem.tooltip ? (
+            <Tooltip key={index} title={tabItem.tooltip}>
               {tab}
-              </Tooltip>
-            );
-          }
-          return tab;
+            </Tooltip>
+          ) : (
+            tab
+          );
         })}
       </MuiTabs>
       {divider && <Divider />}
