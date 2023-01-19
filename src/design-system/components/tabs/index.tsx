@@ -99,7 +99,7 @@ const Tabs = ({
 
           return tabItem.tooltip ? (
             <Tooltip key={index} title={tabItem.tooltip}>
-              {tab}
+              <Box>{tab}</Box>
             </Tooltip>
           ) : (
             tab
