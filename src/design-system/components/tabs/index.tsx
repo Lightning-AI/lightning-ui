@@ -9,6 +9,7 @@ import { Box, Divider, SxProps, Theme } from "../";
 
 type TabItemMetadata = {
   title: MuiTabProps["label"];
+  icon: MuiTabProps["icon"];
   disabled?: boolean;
   tooltip?: string;
 };
@@ -88,6 +89,7 @@ const Tabs = ({
             // @ts-ignore
             <MuiTab
               key={index}
+              icon={tabItem.icon}
               label={tabItem.title}
               variant={variant}
               disabled={tabItem.disabled}
