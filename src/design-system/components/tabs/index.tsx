@@ -1,14 +1,14 @@
 import { MouseEventHandler, ReactNode, useEffect, useState } from "react";
 
 import { TabContext, TabPanel } from "@mui/lab";
-import { Tab as MuiTab, Tabs as MuiTabs } from "@mui/material";
+import { Tab as MuiTab, TabProps as MuiTabProps, Tabs as MuiTabs } from "@mui/material";
 import { useLocation, useNavigate } from "react-router-dom";
 
 import { Tooltip } from "..";
 import { Box, Divider, SxProps, Theme } from "../";
 
 type TabItemMetadata = {
-  title: string;
+  title: MuiTabProps["label"];
   disabled?: boolean;
   tooltip?: string;
 };
@@ -87,7 +87,7 @@ const Tabs = ({
           const tab = (
             // @ts-ignore
             <MuiTab
-              key={tabItem.title}
+              key={index}
               label={tabItem.title}
               variant={variant}
               disabled={tabItem.disabled}
@@ -98,7 +98,7 @@ const Tabs = ({
           if (tabItem.tooltip) {
             // If tab is disabled then the span will trigger user interactions to open the tooltip
             return (
-              <Tooltip key={tabItem.title} title={tabItem.tooltip}>
+              <Tooltip key={index} title={tabItem.tooltip}>
                 <span>{tab}</span>
               </Tooltip>
             );
@@ -110,7 +110,7 @@ const Tabs = ({
       {hasContent && (
         <Box paddingTop={3} paddingBottom={1.5} sx={sxContent}>
           {tabItems.map((tabItem, index) => (
-            <TabPanel sx={{ padding: 0, background: "white" }} key={tabItem.title} value={index.toString()}>
+            <TabPanel sx={{ padding: 0, background: "white" }} key={index} value={index.toString()}>
               {prerenderTabs || selectedTab === index ? tabItem.content : null}
             </TabPanel>
           ))}
