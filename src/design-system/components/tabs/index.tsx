@@ -101,7 +101,7 @@ const Tabs = ({
             // If tab is disabled then the span will trigger user interactions to open the tooltip
             return (
               <Tooltip key={index} title={tabItem.tooltip}>
-              tab
+              {tab}
               </Tooltip>
             );
           }
