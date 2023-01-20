@@ -1,5 +1,4 @@
-import { Box, InfoIconWithHelpTooltip, Stack } from "../../design-system/components";
-import { Circle, CircleOutlined } from "../../design-system/icons";
+import { Stack, Tooltip, Typography } from "@mui/material";
 
 export enum StatusEnum {
   NOT_YET_RUN = "Not yet run",
@@ -44,19 +43,25 @@ export type StatusProps = {
   message?: string;
 };
 
-const Status = ({ status, message }: StatusProps) => {
-  const iconStyle = { fontSize: "14px", color: StatusColor[status] };
-  const statusIcon = [StatusEnum.NOT_YET_RUN, StatusEnum.NOT_STARTED].includes(status) ? (
-    <CircleOutlined sx={iconStyle} />
-  ) : (
-    <Circle sx={iconStyle} />
-  );
+const StatusPill = ({ status, message }: StatusProps) => {
   return (
-    <Stack direction={"row"} alignItems={"center"} spacing={1}>
-      {statusIcon} <Box>{status?.toString()}</Box>
-      {message && <InfoIconWithHelpTooltip message={message} />}
+    <Tooltip title={message? message : ''}>
+      <Stack 
+        direction={"row"} 
+        alignItems={"center"} 
+        justifyContent={'center'}
+        borderRadius={4}
+        width={'80px'}
+        spacing={1} 
+        sx={{
+          backgroundColor: `${StatusColor[status]}22`,
+          padding: '4px',
+        }}
+        >
+        <Typography fontWeight={800} fontSize={'12px'} color={StatusColor[status]}>{status?.toString()}</Typography>
     </Stack>
+    </Tooltip>
   );
 };
 
-export default Status;
+export default StatusPill;
