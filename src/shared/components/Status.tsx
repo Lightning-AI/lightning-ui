@@ -45,21 +45,22 @@ export type StatusProps = {
 
 const StatusPill = ({ status, message }: StatusProps) => {
   return (
-    <Tooltip title={message? message : ''}>
-      <Stack 
-        direction={"row"} 
-        alignItems={"center"} 
-        justifyContent={'center'}
+    <Tooltip title={message ? message : ""}>
+      <Stack
+        direction={"row"}
+        alignItems={"center"}
+        justifyContent={"center"}
         borderRadius={4}
-        width={'80px'}
-        spacing={1} 
+        width={"80px"}
+        spacing={1}
         sx={{
           backgroundColor: `${StatusColor[status]}22`,
-          padding: '4px',
-        }}
-        >
-        <Typography fontWeight={800} fontSize={'12px'} color={StatusColor[status]}>{status?.toString()}</Typography>
-    </Stack>
+          padding: "4px",
+        }}>
+        <Typography fontWeight={800} fontSize={"12px"} color={StatusColor[status]}>
+          {status?.toString()}
+        </Typography>
+      </Stack>
     </Tooltip>
   );
 };
