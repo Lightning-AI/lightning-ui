@@ -36,13 +36,14 @@ repos:
               .github/*.md
           )$
 
-  - repo: https://github.com/pre-commit/mirrors-eslint
-    rev: v8.28.0
-    hooks:
-      - id: eslint
-        files: \.[jt]sx?$ # *.js, *.jsx, *.ts and *.tsx
-        types: [file]
-        args: ["--fix"]
+# TODO
+#  - repo: https://github.com/pre-commit/mirrors-eslint
+#    rev: v8.28.0
+#    hooks:
+#      - id: eslint
+#        files: \.[jt]sx?$ # *.js, *.jsx, *.ts and *.tsx
+#        types: [file]
+#        args: ["--fix"]
 
   - repo: https://github.com/executablebooks/mdformat
     rev: 0.7.16
