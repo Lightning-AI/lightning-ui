@@ -20,4 +20,4 @@ jobs:
       - name: Linter
         run: |
           yarn install --frozen-lockfile --silent
-          yarn lint
+          yarn eslint --cache --max-warnings=0 . --fix
