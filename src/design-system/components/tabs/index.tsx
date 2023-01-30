@@ -1,7 +1,7 @@
 import { MouseEventHandler, ReactNode, useEffect, useState } from "react";
 
-import { TabContext, TabPanel } from "@mui/lab";
-import { Tab as MuiTab, TabProps as MuiTabProps, Tabs as MuiTabs } from "@mui/material";
+import { TabContext } from "@mui/lab";
+import { BoxProps, Tab as MuiTab, TabProps as MuiTabProps, Tabs as MuiTabs } from "@mui/material";
 import { useLocation, useNavigate } from "react-router-dom";
 
 import { Tooltip } from "..";
@@ -110,14 +110,35 @@ const Tabs = ({
       {hasContent && (
         <Box paddingTop={3} paddingBottom={1.5} sx={sxContent}>
           {tabItems.map((tabItem, index) => (
-            <TabPanel sx={{ padding: 0, background: "white" }} key={index} value={index.toString()}>
-              {prerenderTabs || selectedTab === index ? tabItem.content : null}
-            </TabPanel>
+            <PrerenderableTabPanel
+              sx={{ padding: 0, background: "white" }}
+              key={index}
+              index={index}
+              selectedIndex={selectedTab}
+              prerender={prerenderTabs}>
+              {tabItem.content}
+            </PrerenderableTabPanel>
           ))}
         </Box>
       )}
     </TabContext>
   );
 };
+
+type PrerenderableTabPanelProps = {
+  sx?: BoxProps["sx"];
+  children: ReactNode;
+  selectedIndex: number;
+  index: number;
+  prerender?: boolean;
+};
+
+function PrerenderableTabPanel({ sx, children, selectedIndex, index, prerender }: PrerenderableTabPanelProps) {
+  return (
+    <Box role={"tabpanel"} sx={sx} hidden={selectedIndex !== index}>
+      {prerender || selectedIndex === index ? children : null}
+    </Box>
+  );
+}
 
 export default Tabs;
