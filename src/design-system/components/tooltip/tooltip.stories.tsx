@@ -42,6 +42,10 @@ export default {
       ],
       control: "select",
     },
+    interactive: {
+      options: [true, false],
+      control: "boolean",
+    },
     size: {
       defaultValue: "default",
       options: ["default", "small"],
