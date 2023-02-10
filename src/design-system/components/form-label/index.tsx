@@ -13,7 +13,7 @@ const FormLabel = ({ optional, tooltip, children }: FormLabelProps) => (
     <Typography
       sx={{
         color: "rgba(28, 28, 28, 1)",
-        fontFamily: "UCity",
+        fontFamily: `"Plus Jakarta Sans", sans-serif`,
         fontWeight: 600,
         fontStyle: "normal",
         fontSize: "14px",
