@@ -14,7 +14,7 @@ const getStyleProps = (props: StepProps) => {
   const styleProps = {
     icon: <RadioButtonUncheckedRounded sx={{ fontSize: ICON_SIZE, color: (theme: any) => theme.palette.grey[70] }} />,
     color: (theme: any) => theme.palette.grey[100],
-    fontFamily: "Roboto",
+    fontFamily: "'Plus Jakarta Sans', sans-serif",
     fontWeight: 400,
     fontSize: "14px",
     lineHeight: "20px",

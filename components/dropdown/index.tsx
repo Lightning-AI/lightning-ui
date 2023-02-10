@@ -1,4 +1,4 @@
-import React, { ReactNode, useState } from "react";
+import { ReactNode, useState } from "react";
 
 import { Button as MuiButton, ButtonProps as MuiButtonProps, Theme } from "@mui/material";
 
@@ -55,7 +55,6 @@ const Dropdown = (props: DropdownProps) => {
       <MenuItem disableRipple key={option.label} onClick={onClickHandlerMenuItem(option.label)}>
         <Typography
           sx={{
-            fontFamily: "Roboto",
             fontWeight: 400,
             fontStyle: "normal",
             fontSize: "14px",

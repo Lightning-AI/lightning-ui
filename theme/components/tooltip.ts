@@ -3,7 +3,7 @@ const tooltip = {
     styleOverrides: {
       tooltip: ({ theme }: any) => {
         return {
-          fontFamily: "Roboto",
+          fontFamily: "'Plus Jakarta Sans', sans-serif",
           fontWeight: "400",
           fontStyle: "normal",
           fontSize: "14px",
