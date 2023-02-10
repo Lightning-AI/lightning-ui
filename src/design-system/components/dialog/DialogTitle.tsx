@@ -16,7 +16,6 @@ const DialogTitle = (props: DialogProps) => (
         <Typography
           sx={{
             fontSize: "16px",
-            fontFamily: `"Plus Jakarta Sans", sans-serif`,
             fontWeight: "600",
             fontStyle: "normal",
             lineHeight: "20px",
@@ -38,7 +37,6 @@ const DialogTitle = (props: DialogProps) => (
         <Typography
           sx={{
             fontSize: "14px",
-            fontFamily: "Roboto",
             fontWeight: "400",
             lineHeight: "16px",
             color: "rgba(91, 94, 105, 1)",

@@ -123,20 +123,10 @@ const Select = React.forwardRef(
                         {selectedLabel.icon}
                       </Box>
                       <Box paddingLeft={3}>
-                        <Typography
-                          fontFamily={"Roboto"}
-                          fontWeight={400}
-                          fontSize={"14px"}
-                          lineHeight={"20px"}
-                          color={"#1C1C1C"}>
+                        <Typography fontWeight={400} fontSize={"14px"} lineHeight={"20px"} color={"#1C1C1C"}>
                           {selectedLabel.text}
                         </Typography>
-                        <Typography
-                          fontFamily={"Roboto"}
-                          fontWeight={400}
-                          fontSize={"12px"}
-                          lineHeight={"16px"}
-                          color={"#5B5E69"}>
+                        <Typography fontWeight={400} fontSize={"12px"} lineHeight={"16px"} color={"#5B5E69"}>
                           {selectedLabel.helpText}
                         </Typography>
                       </Box>
@@ -156,7 +146,7 @@ const Select = React.forwardRef(
             "& .MuiOutlinedInput-root": {
               minWidth: "150px",
               height: areLabelType ? "56px" : "36px",
-              fontFamily: "Roboto",
+              fontFamily: "'Plus Jakarta Sans', sans-serif",
               fontStyle: "normal",
               fontWeight: "normal",
               fontSize: "14px",
@@ -221,20 +211,10 @@ const Select = React.forwardRef(
                     <RadioBase checked={option.value === selectedValue} />
                   </Box>
                   <Box paddingX={1.5} paddingRight={6}>
-                    <Typography
-                      fontFamily={"Roboto"}
-                      fontWeight={400}
-                      fontSize={"14px"}
-                      lineHeight={"20px"}
-                      color={"#1C1C1C"}>
+                    <Typography fontWeight={400} fontSize={"14px"} lineHeight={"20px"} color={"#1C1C1C"}>
                       {(option.label as LabelType).text}
                     </Typography>
-                    <Typography
-                      fontFamily={"Roboto"}
-                      fontWeight={400}
-                      fontSize={"12px"}
-                      lineHeight={"16px"}
-                      color={"#5B5E69"}>
+                    <Typography fontWeight={400} fontSize={"12px"} lineHeight={"16px"} color={"#5B5E69"}>
                       {(option.label as LabelType).helpText}
                     </Typography>
                   </Box>
@@ -265,12 +245,7 @@ const Select = React.forwardRef(
                       <RadioBase checked={option.value === selectedValue} />
                     </Box>
                   )}
-                  <Typography
-                    fontFamily={"Roboto"}
-                    fontWeight={400}
-                    fontSize={"14px"}
-                    lineHeight={"20px"}
-                    color={"#1C1C1C"}>
+                  <Typography fontWeight={400} fontSize={"14px"} lineHeight={"20px"} color={"#1C1C1C"}>
                     {option.label}
                   </Typography>
                 </Stack>

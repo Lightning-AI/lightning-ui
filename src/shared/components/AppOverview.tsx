@@ -12,7 +12,7 @@ const AppOverview = (props: AppOverviewProps) => (
     <AppDetails {...props.appDetails} />
     <Typography
       variant={"h6"}
-      sx={{ fontFamily: `"Plus Jakarta Sans", sans-serif`, paddingTop: "14px", paddingBottom: "20px" }}>
+      sx={{ paddingTop: "14px", paddingBottom: "20px" }}>
       App Components
     </Typography>
     <ComponentTable rows={props.components} />

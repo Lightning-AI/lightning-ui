@@ -42,7 +42,7 @@ const Label = (props: LabelProps) => {
       display={"inline-flex"}
       alignItems={"center"}
       p={"2px 8px"}
-      fontFamily={"Roboto"}
+      fontFamily={"'Plus Jakarta Sans', sans-serif"}
       fontSize={"12px"}
       lineHeight={"16px"}
       fontStyle={"normal"}

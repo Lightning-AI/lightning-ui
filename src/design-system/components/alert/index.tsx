@@ -49,7 +49,7 @@ const Alert = ({ children, show, ...props }: AlertProps) => {
         "alignItems": alignItems,
         "color": "#050505",
         "display": "flex",
-        "fontFamily": "Roboto",
+        "fontFamily": `"Plus Jakarta Sans", sans-serif`,
         "fontWeight": "normal",
         "fontStyle": "normal",
         "fontSize": "14px",
