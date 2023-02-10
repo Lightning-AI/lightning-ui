@@ -76,7 +76,7 @@ const Alert = ({ children, show, ...props }: AlertProps) => {
       }}>
       <MuiAlertTitle
         sx={{
-          fontFamily: "UCity",
+          fontFamily: `"Plus Jakarta Sans", sans-serif`,
           fontWeight: 600,
           fontStyle: "normal",
           fontSize: "14px",

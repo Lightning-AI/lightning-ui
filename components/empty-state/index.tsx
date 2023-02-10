@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import { ReactNode } from "react";
 
 import { Typography } from "@mui/material";
 
@@ -21,7 +21,12 @@ export default function NoData(props: EmptyStateProps) {
       margin={"auto"}>
       <Box component={"img"} src={props.src}></Box>
       <Stack spacing={0.5} alignItems={"center"}>
-        <Typography fontFamily={"UCity"} fontWeight={600} fontSize={"16px"} lineHeight={"20px"} textAlign={"center"}>
+        <Typography
+          fontFamily={`"Plus Jakarta Sans", sans-serif`}
+          fontWeight={600}
+          fontSize={"16px"}
+          lineHeight={"20px"}
+          textAlign={"center"}>
           {props.title}
         </Typography>
         <Typography fontFamily={"Roboto"} fontWeight={400} fontSize={"14px"} lineHeight={"20px"} textAlign={"center"}>
