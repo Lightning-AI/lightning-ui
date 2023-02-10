@@ -2,27 +2,3 @@
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 
 @import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;800&family=Roboto:ital,wght@0,300;0,400;0,700;1,500&display=swap");
-
-@font-face {
-  font-family: "UCity";
-  font-display: "swap";
-  font-weight: 300;
-  src: local("UCity Light"), url("./fonts/UCity/UCity-Light.woff2") format("woff2"),
-    url("./fonts/UCity/UCity-Light.woff") format("woff");
-}
-
-@font-face {
-  font-family: "UCity";
-  font-display: "swap";
-  font-weight: 400;
-  src: local("UCity Regular"), url("./fonts/UCity/UCity-Regular.woff2") format("woff2"),
-    url("./fonts/UCity/UCity-Regular.woff") format("woff");
-}
-
-@font-face {
-  font-family: "UCity";
-  font-display: "swap";
-  font-weight: 600;
-  src: local("UCity Semibold"), url("./fonts/UCity/UCity-Semibold.woff2") format("woff2"),
-    url("./fonts/UCity/UCity-Semibold.woff") format("woff");
-}
