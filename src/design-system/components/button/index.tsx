@@ -89,7 +89,7 @@ const Button = ({ arrow, loading, href, ...props }: ButtonProps) => {
         onClick={onClickHandler}
         href={href}>
         {!!props.text && (
-          <Box marginTop={"2px"} fontStyle={"normal"} fontSize={"14px"} lineHeight={"20px"}>
+          <Box fontStyle={"normal"} fontSize={"14px"} lineHeight={"20px"}>
             {props.text}
           </Box>
         )}

@@ -37,7 +37,7 @@ export type TextFieldProps = {
     "disabled" | "placeholder" | "fullWidth" | "size" | "autoComplete" | "autoCapitalize" | "autoCorrect" | "autoFocus"
   >;
 
-const INPUT_TEXT_FONT = "normal 14px/20px Roboto";
+const INPUT_TEXT_FONT = `normal 14px/20px "Plus Jakarta Sans"`;
 // Setting max number to avoid displaying numbers with exponent in the input
 // min is -MAX_NUMBER
 const MAX_NUMBER = 999999999999999;

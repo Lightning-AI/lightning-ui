@@ -11,7 +11,7 @@ import { Box } from "..";
 import TableRow from "./TableRow";
 
 const tableCellHeaderStyle = {
-  fontFamily: "Ucity",
+  fontFamily: `"Plus Jakarta Sans", sans-serif`,
   fontWeight: 600,
   fontStyle: "normal",
   fontSize: "14px",
