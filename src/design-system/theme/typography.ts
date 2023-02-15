@@ -1,7 +1,7 @@
 import { TypographyOptions } from "@mui/material/styles/createTypography";
 
 const typography: TypographyOptions = {
-  fontFamily: `"UCity", "Roboto"`,
+  fontFamily: `"Plus Jakarta Sans", sans-serif`,
   fontWeightLight: 300,
   fontWeightRegular: 400,
   fontWeightMedium: 600,

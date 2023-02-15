@@ -19,7 +19,6 @@ function Switch({ label, tooltip, checked, onChange, disabled }: SwitchProps) {
       <Typography
         sx={{
           color: (theme: any) => theme.palette.grey[disabled ? 40 : 100],
-          fontFamily: "Roboto",
           fontWeight: 400,
           fontStyle: "normal",
           fontSize: "14px",

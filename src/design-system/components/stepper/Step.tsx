@@ -14,7 +14,7 @@ const getStyleProps = (props: StepProps) => {
   const styleProps = {
     icon: <RadioButtonUncheckedRounded sx={{ fontSize: ICON_SIZE, color: (theme: any) => theme.palette.grey[70] }} />,
     color: (theme: any) => theme.palette.grey[100],
-    fontFamily: "Roboto",
+    fontFamily: "'Plus Jakarta Sans', sans-serif",
     fontWeight: 400,
     fontSize: "14px",
     lineHeight: "20px",
@@ -24,7 +24,7 @@ const getStyleProps = (props: StepProps) => {
   } else if (props.completed) {
     styleProps.icon = <CheckCircleRounded sx={{ fontSize: ICON_SIZE }} color={"primary"} />;
     styleProps.color = (theme: any) => theme.palette.primary[70];
-    styleProps.fontFamily = "UCity";
+    styleProps.fontFamily = `"Plus Jakarta Sans", sans-serif`;
     styleProps.fontWeight = 600;
   } else if (props.active) {
     styleProps.icon = <CircularProgress size={16} thickness={6} />;
