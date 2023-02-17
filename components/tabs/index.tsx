@@ -83,7 +83,10 @@ const Tabs = ({
         value={selectedTab}
         onChange={onTabChangeHandler}
         variant={"scrollable"}
-        sx={{ ...sxTabs, "& .MuiTabs-indicator": { height: divider ? "4px" : "2px" } }}>
+        sx={{
+          ...sxTabs,
+          "& .MuiTabs-indicator": { display: "none" },
+        }}>
         {tabItems.map((tabItem, index) => {
           const tab = (
             // @ts-ignore
@@ -93,6 +96,32 @@ const Tabs = ({
               label={tabItem.title}
               variant={variant}
               disabled={tabItem.disabled}
+              sx={{
+                "display": "inline-flex",
+                "flexDirection": "column",
+                "justifyContent": "space-between",
+                "alignItems": "center",
+                "borderRadius": "8px !important",
+                "padding": "8px 12px",
+                "boxSizing": "border-box",
+                "minHeight": "32px",
+                "fontWeight": "400",
+                "&.Mui-selected": {
+                  background: "#EFEEFF77",
+                  fontWeight: "900",
+                  borderWidth: "0px !important",
+                  boxShadow: variant === "outlined" ? "inset 0px 0px 0px 1px #792EE6" : "none",
+                },
+                "&:before": {
+                  content: "'" + tabItem.title + "'",
+                  fontWeight: "900",
+                  height: "0px",
+                  visibility: "hidden",
+                  pointerEvents: "none",
+                  overflow: "hidden",
+                  userSelect: "none",
+                },
+              }}
               onClick={"path" in tabItem && navigateHandler(tabItem.path, index)}
             />
           );
