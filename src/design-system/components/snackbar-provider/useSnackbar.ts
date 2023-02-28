@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 
-import { useSnackbar as useNotistackSnackbar } from "notistack";
+import { OptionsObject, useSnackbar as useNotistackSnackbar } from "notistack";
 
 import { AlertProps } from "../alert";
 
@@ -11,8 +11,8 @@ export function useSnackbar() {
   const { enqueueSnackbar: enqueueNotistackSnackbar, closeSnackbar } = useNotistackSnackbar();
 
   const enqueueSnackbar = useCallback(
-    (props: EnqueueSnackbarProps) => {
-      return enqueueNotistackSnackbar(props);
+    (props: EnqueueSnackbarProps, options?: OptionsObject) => {
+      return enqueueNotistackSnackbar(props, options);
     },
     [enqueueNotistackSnackbar],
   );

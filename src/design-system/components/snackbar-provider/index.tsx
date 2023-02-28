@@ -6,7 +6,7 @@ import { Box } from "..";
 import Alert, { AlertProps } from "../alert";
 import { EnqueueSnackbarProps, useSnackbar } from "./useSnackbar";
 
-const autoHideDuration = 1000 * 60 * 60 * 12;
+const AUTO_HIDE_DURATION_MS = 1000 * 5;
 
 const AlertRef = React.forwardRef<HTMLDivElement, AlertProps>((props, ref) => {
   return (
@@ -52,7 +52,7 @@ export default function SnackbarProvider(props: SnackbarProviderProps) {
   return (
     <NotistackSnackbarProvider
       maxSnack={5}
-      autoHideDuration={autoHideDuration}
+      autoHideDuration={AUTO_HIDE_DURATION_MS}
       anchorOrigin={{
         vertical: "bottom",
         horizontal: "left",
