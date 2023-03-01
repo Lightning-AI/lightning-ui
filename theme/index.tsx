@@ -22,7 +22,7 @@ export const darkTheme = createTheme({
   components,
 });
 
-const ThemeProvider = ({ children, colorScheme }: { children: ReactNode, colorScheme?: "light" | "dark" }) => {
+const ThemeProvider = ({ children, colorScheme }: { children: ReactNode; colorScheme?: "light" | "dark" }) => {
   return <MuiThemeProvider theme={colorScheme === "dark" ? darkTheme : theme} children={children} />;
 };
 
