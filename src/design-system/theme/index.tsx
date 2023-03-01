@@ -4,6 +4,7 @@ import { ThemeProvider as MuiThemeProvider, createTheme } from "@mui/material/st
 
 import components from "./components";
 import palette from "./palette";
+import paletteDark from "./paletteDark";
 import shadows from "./shadows";
 import typography from "./typography";
 
@@ -14,14 +15,22 @@ export const theme = createTheme({
   components,
 });
 
-const ThemeProvider = ({ children }: { children: ReactNode }) => {
-  return <MuiThemeProvider theme={theme} children={children} />;
+export const darkTheme = createTheme({
+  typography,
+  palette: paletteDark,
+  shadows,
+  components,
+});
+
+const ThemeProvider = ({ children, colorScheme }: { children: ReactNode, colorScheme?: "light" | "dark" }) => {
+  return <MuiThemeProvider theme={colorScheme === "dark" ? darkTheme : theme} children={children} />;
 };
 
 export default ThemeProvider;
 
 declare module "@mui/material/styles" {
   interface PaletteColor {
+    "5"?: string;
     "10": string;
     "20": string;
     "40": string;
