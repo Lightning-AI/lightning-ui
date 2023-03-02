@@ -1,13 +1,14 @@
 import React, { ChangeEventHandler, ReactNode, useEffect } from "react";
 
 import MuiOutlinedInput, { OutlinedInputProps as MuiOutlinedInputProps } from "@mui/material/OutlinedInput";
-
+import {CircularProgress} from "@mui/material";
 import { Box, Stack } from "..";
 import getTextWidth from "../../../shared/utils/getTextWidth";
 import { CheckCircle, Dangerous, Info, Warning } from "../../icons";
 import FormControl, { FormControlProps } from "../form-control";
 import NumberInputButtons from "./NumberInputButtons";
 import { BORDER_COLOR } from "./constants";
+
 
 const statusColor: Record<string, any> = {
   info: "#1877F2",
@@ -21,6 +22,7 @@ const statusIcon: Record<string, ReactNode> = {
   success: <CheckCircle sx={{ color: statusColor.success }} />,
   warning: <Warning sx={{ color: statusColor.warning }} />,
   error: <Dangerous sx={{ color: statusColor.error }} />,
+  loading: <CircularProgress thickness={6} color="inherit" size={20} />,
 };
 
 export type TextFieldProps = {
