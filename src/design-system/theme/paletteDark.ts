@@ -64,8 +64,8 @@ const grey: ColorPartial & Record<string, string> = {
   "contrastText": "#5B5E69",
 };
 const background: Partial<TypeBackground> = {
-  default: "#1F1F1F",
-  paper: "#1F1F1F",
+  default: "#191923",
+  paper: "#191923",
 };
 
 const text: Partial<TypeText> = {
