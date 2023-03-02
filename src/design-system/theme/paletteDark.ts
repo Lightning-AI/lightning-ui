@@ -55,12 +55,12 @@ const error: PaletteColorOptions & Record<string, string> = {
 };
 const grey: ColorPartial & Record<string, string> = {
   "main": "#A0A2AE",
-  "100": "F7F8FB",
-  "70": "#E4E6EB",
-  "50": "#C5CBD7",
-  "40": "#A0A2AE",
-  "20": "#5B5E69",
-  "10": "#40424A",
+  "100": "#E4E6EB",
+  "70": "#B0B3BE",
+  "50": "#727686",
+  "40": "#50535E",
+  "20": "#373940",
+  "10": "#212226",
   "contrastText": "#5B5E69",
 };
 const background: Partial<TypeBackground> = {
