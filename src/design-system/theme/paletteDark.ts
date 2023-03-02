@@ -3,7 +3,7 @@ import { ColorPartial } from "@mui/material/styles/createPalette";
 
 const primary: PaletteColorOptions & Record<string, any> = {
   "main": "#792EE5",
-  "white": "fff",
+  "white": "#fff",
   "background": "black",
   "70": "#4F00BA",
   "50": "#792EE5",
@@ -68,6 +68,7 @@ const grey: ColorPartial & Record<string, string> = {
 
 const divider = grey["40"];
 const palette: PaletteOptions = {
+  mode: "dark",
   primary,
   secondary,
   info,
