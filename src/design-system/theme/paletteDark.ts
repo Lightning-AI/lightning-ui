@@ -69,7 +69,7 @@ const background: Partial<TypeBackground> = {
 };
 
 const text: Partial<TypeText> = {
-  primary: "red",
+  primary: "#FF0000",
 };
 
 const divider = grey["40"];
