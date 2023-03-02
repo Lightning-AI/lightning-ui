@@ -132,10 +132,7 @@ const TextField = React.forwardRef(
             }}
             error={hasStatus}
             startAdornment={icon}
-            endAdornment={
-              
-              
-              loading ? <CircularProgress thickness={2} color="inherit" size={20} /> : status && statusIcon[status]}
+            endAdornment={loading ? <CircularProgress thickness={2} color="inherit" size={20} /> : status && statusIcon[status]}
             // @ts-ignore -webkit-appearance and -moz-appearance
             sx={{
               "font": INPUT_TEXT_FONT,
