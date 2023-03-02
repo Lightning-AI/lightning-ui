@@ -56,6 +56,10 @@ export default {
       defaultValue: false,
       control: "boolean",
     },
+    loading: {
+      defaultValue: false,
+      control: "boolean",
+    },
     optional: {
       defaultValue: false,
       control: "boolean",

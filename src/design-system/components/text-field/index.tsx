@@ -22,7 +22,6 @@ const statusIcon: Record<string, ReactNode> = {
   success: <CheckCircle sx={{ color: statusColor.success }} />,
   warning: <Warning sx={{ color: statusColor.warning }} />,
   error: <Dangerous sx={{ color: statusColor.error }} />,
-  loading: <CircularProgress thickness={6} color="inherit" size={20} />,
 };
 
 export type TextFieldProps = {
@@ -33,6 +32,7 @@ export type TextFieldProps = {
   suffix?: string;
   max?: number;
   min?: number;
+  loading?: boolean;
 } & FormControlProps &
   Pick<
     MuiOutlinedInputProps,
@@ -60,6 +60,7 @@ const TextField = React.forwardRef(
       suffix,
       max,
       min,
+      loading,
       ...props
     }: TextFieldProps,
     ref: any,
@@ -131,7 +132,7 @@ const TextField = React.forwardRef(
             }}
             error={hasStatus}
             startAdornment={icon}
-            endAdornment={status && statusIcon[status]}
+            endAdornment={loading ? <CircularProgress thickness={6} color="inherit" size={20} /> : status && statusIcon[status]}
             // @ts-ignore -webkit-appearance and -moz-appearance
             sx={{
               "font": INPUT_TEXT_FONT,
