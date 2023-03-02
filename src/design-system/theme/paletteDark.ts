@@ -68,6 +68,10 @@ const background: Partial<TypeBackground> = {
   paper: "#1F1F1F",
 };
 
+const text: ColorPartial & Record<string, string> = {
+  primary: "red",
+};
+
 const divider = grey["40"];
 const palette: PaletteOptions = {
   mode: "dark",
@@ -80,6 +84,7 @@ const palette: PaletteOptions = {
   grey,
   divider,
   background,
+  text
 };
 
 export default palette;
