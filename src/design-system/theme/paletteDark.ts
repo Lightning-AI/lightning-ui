@@ -56,8 +56,8 @@ const error: PaletteColorOptions & Record<string, string> = {
 };
 const grey: ColorPartial & Record<string, string> = {
   "main": "#A0A2AE",
-  "100": "#1C1C1C",
-  "70": "#5B5E69",
+  "100": "#FFF",
+  "70": "#5B5E6905",
   "50": "#A0A2AE",
   "40": "#C5CBD7",
   "20": "#E4E6EB",
