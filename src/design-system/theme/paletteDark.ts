@@ -65,7 +65,7 @@ const grey: ColorPartial & Record<string, string> = {
 };
 const background: Partial<TypeBackground> = {
   default: "#1F1F1F",
-  paper: "#1F1F1F80",
+  paper: "#1F1F1F",
 };
 
 const divider = grey["40"];
