@@ -1,5 +1,5 @@
 import { PaletteColorOptions, PaletteOptions } from "@mui/material";
-import { ColorPartial, TypeBackground } from "@mui/material/styles/createPalette";
+import { ColorPartial, TypeBackground, TypeText } from "@mui/material/styles/createPalette";
 
 const primary: PaletteColorOptions & Record<string, any> = {
   "main": "#792EE5",
@@ -68,6 +68,10 @@ const background: Partial<TypeBackground> = {
   paper: "#FFF",
 };
 
+const text: Partial<TypeText> = {
+  primary: "#1C1C1C",
+};
+
 const divider = grey["40"];
 const palette: PaletteOptions = {
   primary,
@@ -79,6 +83,7 @@ const palette: PaletteOptions = {
   grey,
   divider,
   background,
+  text,
 };
 
 export default palette;
