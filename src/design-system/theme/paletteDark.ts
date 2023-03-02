@@ -3,22 +3,22 @@ import { ColorPartial, TypeBackground, TypeText } from "@mui/material/styles/cre
 
 const primary: PaletteColorOptions & Record<string, any> = {
   "main": "#792EE5",
-  "70": "#4F00BA",
-  "50": "#792EE5",
+  "70": "#F0E5FF",
+  "50": "#E5D2FF",
   "40": "#AD8EEA",
-  "20": "#D6CEF5",
-  "10": "#EFEEFF",
-  "5": "#EFEEFF77",
+  "20": "#8C35FF",
+  "10": "#730BFF",
+  "5": "#212226",
   "contrastText": "#4F00BA",
   "gradient": "linear-gradient(206.91deg, #792EE5 16.83%, #3EABB3 144.59%);",
 };
 const secondary: PaletteColorOptions & Record<string, string> = {
   "main": "#792EE5",
-  "70": "#008087",
-  "50": "#3EABB3",
+  "70": "#D5F9FA",
+  "50": "#B1EBED",
   "40": "#80D2D7",
-  "20": "#B1EBED",
-  "10": "#D5F9FA",
+  "20": "#3EABB3",
+  "10": "#008087",
   "contrastText": "#008087",
 };
 const info: PaletteColorOptions & Record<string, string> = {
@@ -60,7 +60,7 @@ const grey: ColorPartial & Record<string, string> = {
   "50": "#727686",
   "40": "#50535E",
   "20": "#373940",
-  "10": "#212226",
+  "10": "#2C2D3C",
   "contrastText": "#5B5E69",
 };
 const background: Partial<TypeBackground> = {
