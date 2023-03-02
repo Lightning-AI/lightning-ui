@@ -1,14 +1,14 @@
 import React, { ChangeEventHandler, ReactNode, useEffect } from "react";
 
+import { CircularProgress } from "@mui/material";
 import MuiOutlinedInput, { OutlinedInputProps as MuiOutlinedInputProps } from "@mui/material/OutlinedInput";
-import {CircularProgress} from "@mui/material";
+
 import { Box, Stack } from "..";
 import getTextWidth from "../../../shared/utils/getTextWidth";
 import { CheckCircle, Dangerous, Info, Warning } from "../../icons";
 import FormControl, { FormControlProps } from "../form-control";
 import NumberInputButtons from "./NumberInputButtons";
 import { BORDER_COLOR } from "./constants";
-
 
 const statusColor: Record<string, any> = {
   info: "#1877F2",
@@ -132,8 +132,9 @@ const TextField = React.forwardRef(
             }}
             error={hasStatus}
             startAdornment={icon}
-            // Enable loading
-            endAdornment={loading ? <CircularProgress thickness={2} color="inherit" size={20} /> : status && statusIcon[status]}
+            endAdornment={
+              loading ? <CircularProgress thickness={2} color="inherit" size={20} /> : status && statusIcon[status]
+            }
             // @ts-ignore -webkit-appearance and -moz-appearance
             sx={{
               "font": INPUT_TEXT_FONT,
