@@ -16,6 +16,9 @@ const AlertRef = React.forwardRef<HTMLDivElement, AlertProps>((props, ref) => {
         "backgroundColor": "transparent",
         "& .MuiAlert-root": {
           boxShadow: 2,
+          overflowWrap: "break-word",
+          wordWrap: "break-word",
+          wordBreak: "break-word",
         },
       }}>
       <Alert {...props} />
