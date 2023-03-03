@@ -2,18 +2,16 @@ import { PaletteColorOptions, PaletteOptions } from "@mui/material";
 import { ColorPartial, TypeBackground, TypeText } from "@mui/material/styles/createPalette";
 
 const primary: PaletteColorOptions & Record<string, any> = {
-  "main": "#8E5FFA",
-  "70": "#673AB7",
-  "50": "#8E5FFA",
-  "40": "#BDB6FF",
-  "20": "#EDE9FE",
-  "10": "#F5F3FF",
-  "5": "#F8F7FF",
-  "contrastText": "#E7D4FF",
-  "gradient": "linear-gradient(206.91deg, #8E5FFA 16.83%, #3EABB3 144.59%);",
+  "main": "#792EE5",
+  "70": "#AD00FF",
+  "50": "#D597FF",
+  "40": "#AD8EEA",
+  "20": "#8C35FF",
+  "10": "#EFEEFF",
+  "5": "#212226",
+  "contrastText": "#FFFFFF",
+  "gradient": "linear-gradient(206.91deg, #792EE5 16.83%, #3EABB3 144.59%);",
 };
-
-
 const secondary: PaletteColorOptions & Record<string, string> = {
   "main": "#792EE5",
   "70": "#D5F9FA",
