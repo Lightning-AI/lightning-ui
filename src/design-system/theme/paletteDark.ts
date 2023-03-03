@@ -7,7 +7,7 @@ const primary: PaletteColorOptions & Record<string, any> = {
   "50": "#BF2FD7",
   "40": "#AD8EEA",
   "20": "#8C35FF",
-  "10": "#BE35FF",
+  "10": "#EFEEFF",
   "5": "#212226",
   "contrastText": "#FFFFFF",
   "gradient": "linear-gradient(206.91deg, #792EE5 16.83%, #3EABB3 144.59%);",
