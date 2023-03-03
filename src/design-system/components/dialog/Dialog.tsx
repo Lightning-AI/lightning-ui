@@ -1,11 +1,12 @@
 import MuiDialog, { DialogProps as MuiDialogProps } from "@mui/material/Dialog";
 
-export type DialogProps = Pick<MuiDialogProps, "open" | "children" | "fullWidth" | "onClose">;
+export type DialogProps = MuiDialogProps;
 
-const Dialog = (props: DialogProps) => (
+const Dialog = ({ PaperProps, ...props }: DialogProps) => (
   <MuiDialog
     PaperProps={{
-      style: { borderRadius: "8px" },
+      ...PaperProps,
+      style: { borderRadius: "8px", ...PaperProps?.style },
     }}
     {...props}
   />

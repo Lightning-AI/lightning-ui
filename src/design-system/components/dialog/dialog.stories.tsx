@@ -22,6 +22,14 @@ export default {
       defaultValue: true,
       control: "boolean",
     },
+    centerTitle: {
+      defaultValue: false,
+      control: "boolean",
+    },
+    disableCloseButton: {
+      defaultValue: false,
+      control: "boolean",
+    },
     fullWidth: {
       defaultValue: true,
       control: "boolean",
@@ -56,11 +64,20 @@ export default {
   },
 } as ComponentMeta<typeof Dialog>;
 
-const Template: ComponentStory<any> = (args: DialogProps) => {
+const Template: ComponentStory<any> = ({
+  centerTitle,
+  disableCloseButton,
+  ...dialogProps
+}: DialogProps & { centerTitle?: boolean; disableCloseButton?: boolean }) => {
   const buttonOnClickHandler = (event: any) => event.stopPropagation();
   return (
-    <Dialog {...args}>
-      <DialogTitle text={"Dialog Header"} subtext={"Dialog Subheader"} onCloseClick={() => {}} />
+    <Dialog {...dialogProps}>
+      <DialogTitle
+        text={"Dialog Header"}
+        subtext={"Dialog Subheader"}
+        center={centerTitle}
+        onCloseClick={disableCloseButton ? undefined : () => {}}
+      />
       <DialogContent>
         <Stack justifyContent={"center"} alignItems={"center"} height={"150px"}>
           Dialog Content
@@ -77,7 +94,7 @@ const Template: ComponentStory<any> = (args: DialogProps) => {
 };
 
 export const Playground = Template.bind({});
-Playground.parameters = { controls: { include: ["open", "fullWidth"] } };
+Playground.parameters = { controls: { include: ["open", "fullWidth", "centerTitle", "disableCloseButton"] } };
 
 const ImageActionsTemplate: ComponentStory<any> = (args: DialogImageActionsProps) => {
   const actions = (

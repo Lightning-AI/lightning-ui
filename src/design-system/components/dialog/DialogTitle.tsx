@@ -3,37 +3,39 @@ import MuiDialogTitle from "@mui/material/DialogTitle";
 import { IconButton, Stack, Typography } from "..";
 import { Close } from "../../icons";
 
-export type DialogProps = {
+export type DialogTitleProps = {
   text: string;
   subtext?: string;
   onCloseClick?: () => void;
+  center?: boolean;
 };
 
-const DialogTitle = (props: DialogProps) => (
+const DialogTitle = ({ text, subtext, onCloseClick, center }: DialogTitleProps) => (
   <MuiDialogTitle>
-    <Stack spacing={0.75}>
-      <Stack direction={"row"} justifyContent={"space-between"} alignItems={"center"}>
+    <Stack spacing={0.75} alignItems={center ? "center" : undefined}>
+      <Stack direction={"row"} justifyContent={center ? "center" : "flex-start"} alignItems={"center"}>
         <Typography
           sx={{
+            marginX: center ? "20px" : undefined,
             fontSize: "16px",
             fontWeight: "600",
             fontStyle: "normal",
             lineHeight: "20px",
             color: "rgba(28, 28, 28, 1)",
           }}>
-          {props.text}
+          {text}
         </Typography>
-        {props.onCloseClick && (
+        {onCloseClick && (
           <IconButton
             disableRipple
             disableFocusRipple
-            sx={{ color: "black", padding: 0 }}
-            onClick={props.onCloseClick}>
+            sx={{ color: "black", padding: 0, position: "absolute", right: "24px" }}
+            onClick={onCloseClick}>
             <Close sx={{ fontSize: "16px" }} />
           </IconButton>
         )}
       </Stack>
-      {props.subtext && (
+      {subtext && (
         <Typography
           sx={{
             fontSize: "14px",
@@ -41,7 +43,7 @@ const DialogTitle = (props: DialogProps) => (
             lineHeight: "16px",
             color: "rgba(91, 94, 105, 1)",
           }}>
-          {props.subtext}
+          {subtext}
         </Typography>
       )}
     </Stack>
