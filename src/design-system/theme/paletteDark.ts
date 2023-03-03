@@ -34,7 +34,7 @@ const success: PaletteColorOptions & Record<string, string> = {
   "70": "#16593D",
   "50": "#31A24C",
   "20": "#C0EBBE",
-  "10": "#D7F5D5",
+  "10": "#16593D",
   "contrastText": "#16593D",
 };
 const warning: PaletteColorOptions & Record<string, string> = {
@@ -42,7 +42,7 @@ const warning: PaletteColorOptions & Record<string, string> = {
   "70": "#823E1A",
   "50": "#FCBE2E",
   "20": "#FCEEBF",
-  "10": "#FFF6D4",
+  "10": "#CC8106",
   "contrastText": "#823E1A",
 };
 const error: PaletteColorOptions & Record<string, string> = {
@@ -50,7 +50,7 @@ const error: PaletteColorOptions & Record<string, string> = {
   "70": "#821D1E",
   "50": "#E02C2D",
   "20": "#F4C5C9",
-  "10": "#FFD4D5",
+  "10": "#C00002",
   "contrastText": "#821D1E",
 };
 const grey: ColorPartial & Record<string, string> = {
