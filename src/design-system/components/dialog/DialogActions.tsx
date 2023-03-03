@@ -1,7 +1,4 @@
-import MuiDialogActions, { DialogActionsProps as MuiDialogActionsProps } from "@mui/material/DialogActions";
+import DialogActions, { DialogActionsProps as MuiDialogActionProps } from "@mui/material/DialogActions";
 
-export type DialogActionsProps = Pick<MuiDialogActionsProps, "children">;
-
-const DialogActions = (props: DialogActionsProps) => <MuiDialogActions {...props} />;
-
+export type DialogActionsProps = MuiDialogActionProps;
 export default DialogActions;

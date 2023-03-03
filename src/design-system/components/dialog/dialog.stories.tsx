@@ -6,6 +6,7 @@ import Dialog, { DialogProps } from "design-system/components/dialog/Dialog";
 import { Box, Stack } from "..";
 import DialogImageActions, { DialogImageActionsProps } from "./DialogImageActions";
 import DialogNotification, { DialogNotificationProps } from "./DialogNotification";
+import { DialogTitleProps } from "./DialogTitle";
 import phantomSrc from "./phantom.svg";
 
 export default {
@@ -20,6 +21,14 @@ export default {
   argTypes: {
     open: {
       defaultValue: true,
+      control: "boolean",
+    },
+    centerTitle: {
+      defaultValue: false,
+      control: "boolean",
+    },
+    disableCloseButton: {
+      defaultValue: false,
       control: "boolean",
     },
     fullWidth: {
@@ -56,11 +65,20 @@ export default {
   },
 } as ComponentMeta<typeof Dialog>;
 
-const Template: ComponentStory<any> = (args: DialogProps) => {
+const Template: ComponentStory<any> = ({
+  centerTitle,
+  disableCloseButton,
+  ...dialogProps
+}: DialogProps & Pick<DialogTitleProps, "centerTitle"> & { disableCloseButton?: boolean }) => {
   const buttonOnClickHandler = (event: any) => event.stopPropagation();
   return (
-    <Dialog {...args}>
-      <DialogTitle text={"Dialog Header"} subtext={"Dialog Subheader"} onCloseClick={() => {}} />
+    <Dialog {...dialogProps}>
+      <DialogTitle
+        text={"Dialog Header"}
+        subtext={"Dialog Subheader"}
+        centerTitle={centerTitle}
+        onCloseClick={disableCloseButton ? undefined : () => {}}
+      />
       <DialogContent>
         <Stack justifyContent={"center"} alignItems={"center"} height={"150px"}>
           Dialog Content
@@ -77,7 +95,7 @@ const Template: ComponentStory<any> = (args: DialogProps) => {
 };
 
 export const Playground = Template.bind({});
-Playground.parameters = { controls: { include: ["open", "fullWidth"] } };
+Playground.parameters = { controls: { include: ["open", "fullWidth", "centerTitle", "disableCloseButton"] } };
 
 const ImageActionsTemplate: ComponentStory<any> = (args: DialogImageActionsProps) => {
   const actions = (
