@@ -74,7 +74,7 @@ const text: Partial<TypeText> = {
   primary: "#FFFFFF",
 };
 
-const divider = grey["40"];
+const divider = grey["20"];
 const palette: PaletteOptions = {
   mode: "dark",
   primary,
