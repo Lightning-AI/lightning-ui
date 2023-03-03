@@ -162,9 +162,17 @@ type PrerenderableTabPanelProps = {
   prerender?: boolean;
 };
 
-function PrerenderableTabPanel({ sx, children, selectedIndex, index, prerender }: PrerenderableTabPanelProps) {
+export function PrerenderableTabPanel({ sx, children, selectedIndex, index, prerender }: PrerenderableTabPanelProps) {
   return (
-    <Box role={"tabpanel"} sx={sx} hidden={selectedIndex !== index}>
+    <Box
+      data-testid={"prerenderable-tab-panel"}
+      role={"tabpanel"}
+      sx={{
+        ...sx,
+        ...(selectedIndex !== index
+          ? { zIndex: -100500, opacity: 0, position: "absolute", minHeight: "50px", minWidth: "50px" }
+          : undefined),
+      }}>
       {prerender || selectedIndex === index ? children : null}
     </Box>
   );
