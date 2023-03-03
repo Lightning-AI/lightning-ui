@@ -3,11 +3,11 @@ import { ColorPartial, TypeBackground, TypeText } from "@mui/material/styles/cre
 
 const primary: PaletteColorOptions & Record<string, any> = {
   "main": "#792EE5",
-  "70": "#F0E5FF",
-  "50": "#E5D2FF",
+  "70": "#AD00FF",
+  "50": "#BE35FF",
   "40": "#AD8EEA",
   "20": "#8C35FF",
-  "10": "#730BFF",
+  "10": "#BE35FF",
   "5": "#212226",
   "contrastText": "#4F00BA",
   "gradient": "linear-gradient(206.91deg, #792EE5 16.83%, #3EABB3 144.59%);",
