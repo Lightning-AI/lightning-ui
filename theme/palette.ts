@@ -1,15 +1,14 @@
 import { PaletteColorOptions, PaletteOptions } from "@mui/material";
-import { ColorPartial } from "@mui/material/styles/createPalette";
+import { ColorPartial, TypeBackground, TypeText } from "@mui/material/styles/createPalette";
 
 const primary: PaletteColorOptions & Record<string, any> = {
   "main": "#792EE5",
-  "white": "fff",
   "70": "#4F00BA",
   "50": "#792EE5",
   "40": "#AD8EEA",
   "20": "#D6CEF5",
   "10": "#EFEEFF",
-  "5": "#EFEEFF77",
+  "5": "#F7F6FF",
   "contrastText": "#4F00BA",
   "gradient": "linear-gradient(206.91deg, #792EE5 16.83%, #3EABB3 144.59%);",
 };
@@ -64,8 +63,16 @@ const grey: ColorPartial & Record<string, string> = {
   "10": "#F7F8FB",
   "contrastText": "#5B5E69",
 };
+const background: Partial<TypeBackground> = {
+  default: "#FFF",
+  paper: "#FFF",
+};
 
-const divider = grey["40"];
+const text: Partial<TypeText> = {
+  primary: "#1C1C1C",
+};
+
+const divider = grey["20"];
 const palette: PaletteOptions = {
   primary,
   secondary,
@@ -75,6 +82,8 @@ const palette: PaletteOptions = {
   error,
   grey,
   divider,
+  background,
+  text,
 };
 
 export default palette;

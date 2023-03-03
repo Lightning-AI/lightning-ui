@@ -1,25 +1,24 @@
 import { PaletteColorOptions, PaletteOptions } from "@mui/material";
-import { ColorPartial } from "@mui/material/styles/createPalette";
+import { ColorPartial, TypeBackground, TypeText } from "@mui/material/styles/createPalette";
 
 const primary: PaletteColorOptions & Record<string, any> = {
   "main": "#792EE5",
-  "white": "fff",
-  "70": "#4F00BA",
-  "50": "#792EE5",
+  "70": "#AD00FF",
+  "50": "#B45AFF",
   "40": "#AD8EEA",
-  "20": "#D6CEF5",
+  "20": "#8C35FF",
   "10": "#EFEEFF",
-  "5": "#EFEEFF77",
-  "contrastText": "#4F00BA",
+  "5": "#212226",
+  "contrastText": "#FFFFFF",
   "gradient": "linear-gradient(206.91deg, #792EE5 16.83%, #3EABB3 144.59%);",
 };
 const secondary: PaletteColorOptions & Record<string, string> = {
   "main": "#792EE5",
-  "70": "#008087",
-  "50": "#3EABB3",
+  "70": "#D5F9FA",
+  "50": "#B1EBED",
   "40": "#80D2D7",
-  "20": "#B1EBED",
-  "10": "#D5F9FA",
+  "20": "#3EABB3",
+  "10": "#008087",
   "contrastText": "#008087",
 };
 const info: PaletteColorOptions & Record<string, string> = {
@@ -35,7 +34,7 @@ const success: PaletteColorOptions & Record<string, string> = {
   "70": "#16593D",
   "50": "#31A24C",
   "20": "#C0EBBE",
-  "10": "#D7F5D5",
+  "10": "#16593D",
   "contrastText": "#16593D",
 };
 const warning: PaletteColorOptions & Record<string, string> = {
@@ -43,7 +42,7 @@ const warning: PaletteColorOptions & Record<string, string> = {
   "70": "#823E1A",
   "50": "#FCBE2E",
   "20": "#FCEEBF",
-  "10": "#FFF6D4",
+  "10": "#CC8106",
   "contrastText": "#823E1A",
 };
 const error: PaletteColorOptions & Record<string, string> = {
@@ -51,22 +50,33 @@ const error: PaletteColorOptions & Record<string, string> = {
   "70": "#821D1E",
   "50": "#E02C2D",
   "20": "#F4C5C9",
-  "10": "#FFD4D5",
+  "10": "#C00002",
   "contrastText": "#821D1E",
 };
 const grey: ColorPartial & Record<string, string> = {
   "main": "#A0A2AE",
-  "100": "#1C1C1C",
-  "70": "#5B5E69",
-  "50": "#A0A2AE",
-  "40": "#C5CBD7",
-  "20": "#E4E6EB",
-  "10": "#F7F8FB",
+  "100": "#E4E6EB",
+  "70": "#B0B3BE",
+  "50": "#727686",
+  "40": "#50535E",
+  "20": "#373940",
+  "10": "#2C2D3C",
   "contrastText": "#5B5E69",
 };
+const background: Partial<TypeBackground> = {
+  // default: "#191923",
+  // paper: "#191923",
+  default: "#0E061C",
+  paper: "#0E061C",
+};
 
-const divider = grey["40"];
+const text: Partial<TypeText> = {
+  primary: "#FFFFFF",
+};
+
+const divider = grey["20"];
 const palette: PaletteOptions = {
+  mode: "dark",
   primary,
   secondary,
   info,
@@ -75,6 +85,8 @@ const palette: PaletteOptions = {
   error,
   grey,
   divider,
+  background,
+  text,
 };
 
 export default palette;
