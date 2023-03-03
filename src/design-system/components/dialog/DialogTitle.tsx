@@ -7,16 +7,16 @@ export type DialogTitleProps = {
   text: string;
   subtext?: string;
   onCloseClick?: () => void;
-  centerTitle?: boolean;
+  center?: boolean;
 };
 
-const DialogTitle = ({ text, subtext, onCloseClick, centerTitle }: DialogTitleProps) => (
+const DialogTitle = ({ text, subtext, onCloseClick, center }: DialogTitleProps) => (
   <MuiDialogTitle>
-    <Stack spacing={0.75} alignItems={centerTitle ? "center" : undefined}>
-      <Stack direction={"row"} justifyContent={centerTitle ? "center" : "flex-start"} alignItems={"center"}>
+    <Stack spacing={0.75} alignItems={center ? "center" : undefined}>
+      <Stack direction={"row"} justifyContent={center ? "center" : "flex-start"} alignItems={"center"}>
         <Typography
           sx={{
-            marginX: centerTitle ? "20px" : undefined,
+            marginX: center ? "20px" : undefined,
             fontSize: "16px",
             fontWeight: "600",
             fontStyle: "normal",

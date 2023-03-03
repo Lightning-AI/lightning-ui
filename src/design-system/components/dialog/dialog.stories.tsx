@@ -6,7 +6,6 @@ import Dialog, { DialogProps } from "design-system/components/dialog/Dialog";
 import { Box, Stack } from "..";
 import DialogImageActions, { DialogImageActionsProps } from "./DialogImageActions";
 import DialogNotification, { DialogNotificationProps } from "./DialogNotification";
-import { DialogTitleProps } from "./DialogTitle";
 import phantomSrc from "./phantom.svg";
 
 export default {
@@ -69,14 +68,14 @@ const Template: ComponentStory<any> = ({
   centerTitle,
   disableCloseButton,
   ...dialogProps
-}: DialogProps & Pick<DialogTitleProps, "centerTitle"> & { disableCloseButton?: boolean }) => {
+}: DialogProps & { centerTitle?: boolean; disableCloseButton?: boolean }) => {
   const buttonOnClickHandler = (event: any) => event.stopPropagation();
   return (
     <Dialog {...dialogProps}>
       <DialogTitle
         text={"Dialog Header"}
         subtext={"Dialog Subheader"}
-        centerTitle={centerTitle}
+        center={centerTitle}
         onCloseClick={disableCloseButton ? undefined : () => {}}
       />
       <DialogContent>
