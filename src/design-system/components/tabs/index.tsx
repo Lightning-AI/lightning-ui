@@ -107,14 +107,14 @@ const Tabs = ({
                 "minHeight": "32px",
                 "fontWeight": "400",
                 "&.Mui-selected": {
-                  background: "#EFEEFF77",
-                  fontWeight: "900",
+                  background: (theme: any) => theme.palette.grey[10],
+                  fontWeight: "600",
                   borderWidth: "0px !important",
                   boxShadow: variant === "outlined" ? "inset 0px 0px 0px 1px #792EE6" : "none",
                 },
                 "&:before": {
                   content: "'" + tabItem.title + "'",
-                  fontWeight: "900",
+                  fontWeight: "600",
                   height: "0px",
                   visibility: "hidden",
                   pointerEvents: "none",
