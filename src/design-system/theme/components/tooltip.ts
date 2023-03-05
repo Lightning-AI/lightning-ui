@@ -3,9 +3,9 @@ const tooltip = {
     styleOverrides: {
       tooltip: ({ theme }: any) => {
         return {
-          fontWeight: "400",
+          fontWeight: "500",
           fontStyle: "normal",
-          fontSize: "14px",
+          fontSize: "13px",
           lineHeight: "20px",
           borderRadius: "8px",
           padding: "8px",
