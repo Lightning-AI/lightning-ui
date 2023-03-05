@@ -10,8 +10,8 @@ const tooltip = {
           borderRadius: "8px",
           padding: "8px",
           maxWidth: "360px",
-          backgroundColor: theme.palette.grey[40],
-          color: theme.palette.text.secondary,
+          backgroundColor: theme.palette.primary[50],
+          color: theme.palette.text.primary,
           wordBreak: "normal",
         };
       },
