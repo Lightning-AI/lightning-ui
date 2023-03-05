@@ -12,7 +12,7 @@ const tooltip = {
           maxWidth: "360px",
           boxShadow: theme.palette.grey.shadow,
           backgroundColor: theme.palette.grey.oppositeBackground,
-          border: `1px solid ${theme.palette.grey[20]}` ,
+          border: `0.5px solid ${theme.palette.grey[10]}` ,
           color: theme.palette.primary.oppositeMainText,
           wordBreak: "normal",
         };
