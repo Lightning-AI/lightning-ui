@@ -123,10 +123,18 @@ const Select = React.forwardRef(
                         {selectedLabel.icon}
                       </Box>
                       <Box paddingLeft={3}>
-                        <Typography fontWeight={400} fontSize={"14px"} lineHeight={"20px"} color={(theme: any) => theme.palette.text.primary}>
+                        <Typography
+                          fontWeight={400}
+                          fontSize={"14px"}
+                          lineHeight={"20px"}
+                          color={(theme: any) => theme.palette.text.primary}>
                           {selectedLabel.text}
                         </Typography>
-                        <Typography fontWeight={400} fontSize={"12px"} lineHeight={"16px"} color={(theme: any) => theme.palette.text.secondary}>
+                        <Typography
+                          fontWeight={400}
+                          fontSize={"12px"}
+                          lineHeight={"16px"}
+                          color={(theme: any) => theme.palette.text.secondary}>
                           {selectedLabel.helpText}
                         </Typography>
                       </Box>
@@ -210,10 +218,18 @@ const Select = React.forwardRef(
                     <RadioBase checked={option.value === selectedValue} />
                   </Box>
                   <Box paddingX={1.5} paddingRight={6}>
-                    <Typography fontWeight={400} fontSize={"14px"} lineHeight={"20px"} color={(theme: any) => theme.palette.text.primary}>
+                    <Typography
+                      fontWeight={400}
+                      fontSize={"14px"}
+                      lineHeight={"20px"}
+                      color={(theme: any) => theme.palette.text.primary}>
                       {(option.label as LabelType).text}
                     </Typography>
-                    <Typography fontWeight={400} fontSize={"12px"} lineHeight={"16px"} color={(theme: any) => theme.palette.text.secondary}>
+                    <Typography
+                      fontWeight={400}
+                      fontSize={"12px"}
+                      lineHeight={"16px"}
+                      color={(theme: any) => theme.palette.text.secondary}>
                       {(option.label as LabelType).helpText}
                     </Typography>
                   </Box>
@@ -244,13 +260,12 @@ const Select = React.forwardRef(
                       <RadioBase checked={option.value === selectedValue} />
                     </Box>
                   )}
-                  <Typography 
-                    className="option-label" 
-                    fontWeight={400} 
-                    fontSize={"14px"} 
-                    lineHeight={"20px"} 
-                    color={(theme: any) => theme.palette.text.primary}
-                  >
+                  <Typography
+                    className="option-label"
+                    fontWeight={400}
+                    fontSize={"14px"}
+                    lineHeight={"20px"}
+                    color={(theme: any) => theme.palette.text.primary}>
                     {option.label}
                   </Typography>
                 </Stack>
