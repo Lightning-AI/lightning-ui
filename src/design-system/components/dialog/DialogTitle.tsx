@@ -21,7 +21,7 @@ const DialogTitle = ({ text, subtext, onCloseClick, center }: DialogTitleProps) 
             fontWeight: "600",
             fontStyle: "normal",
             lineHeight: "20px",
-            color: "rgba(28, 28, 28, 1)",
+            color: (theme: any) => theme.palette.text.primary,
           }}>
           {text}
         </Typography>
@@ -29,7 +29,7 @@ const DialogTitle = ({ text, subtext, onCloseClick, center }: DialogTitleProps) 
           <IconButton
             disableRipple
             disableFocusRipple
-            sx={{ color: "black", padding: 0, position: "absolute", right: "24px" }}
+            sx={{ color: (theme: any) => theme.palette.text.primary, padding: 0, position: "absolute", right: "24px" }}
             onClick={onCloseClick}>
             <Close sx={{ fontSize: "16px" }} />
           </IconButton>
@@ -41,7 +41,7 @@ const DialogTitle = ({ text, subtext, onCloseClick, center }: DialogTitleProps) 
             fontSize: "14px",
             fontWeight: "400",
             lineHeight: "16px",
-            color: "rgba(91, 94, 105, 1)",
+            color: (theme: any) => theme.palette.text.secondary,
           }}>
           {subtext}
         </Typography>
