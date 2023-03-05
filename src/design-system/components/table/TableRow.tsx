@@ -19,13 +19,15 @@ export default function TableRow(props: TableRowProps) {
   ) : (
     <ArrowDropDownRounded onClick={onClickHandler} />
   );
-  const cellStyle = { 
-      borderBottom: expanded ? 0 : (theme: any) => theme.palette.grey[20],
+  const cellStyle = {
+    borderBottom: expanded ? 0 : (theme: any) => theme.palette.grey[20],
   };
 
   return (
     <>
-      <MuiTableRow sx={{":hover": {bgcolor: (theme: any) => + theme.palette.primary[5] + ' !important'}}} hover={!!props.hover}>
+      <MuiTableRow
+        sx={{ ":hover": { bgcolor: (theme: any) => +theme.palette.primary[5] + " !important" } }}
+        hover={!!props.hover}>
         {props.cells.map((cell, index) => (
           <MuiTableCell key={index} sx={cellStyle}>
             {cell}

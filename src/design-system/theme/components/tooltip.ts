@@ -8,7 +8,7 @@ const tooltip = {
           fontSize: "14px",
           lineHeight: "20px",
           borderRadius: "8px",
-          padding: '8px',
+          padding: "8px",
           maxWidth: "360px",
           backgroundColor: theme.palette.grey[40],
           color: theme.palette.text.secondary,
