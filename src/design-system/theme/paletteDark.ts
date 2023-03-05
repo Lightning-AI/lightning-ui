@@ -62,6 +62,7 @@ const grey: ColorPartial & Record<string, string> = {
   "20": "#373940",
   "10": "#2C2D3C",
   "contrastText": "#5B5E69",
+  "shadow": "0px 3px 5px -1px rgba(255, 255, 255, 0.2), 0px 6px 10px rgba(255, 255, 255, 0.05), 0px 1px 18px rgba(255, 255, 255, 0.25)",
 };
 const background: Partial<TypeBackground> = {
   // default: "#191923",
