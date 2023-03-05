@@ -10,9 +10,10 @@ const tooltip = {
           borderRadius: "8px",
           padding: "8px",
           maxWidth: "360px",
-          boxShadow: '0px 3px 5px -1px rgba(45, 64, 86, 0.2), 0px 6px 10px rgba(45, 64, 86, 0.14), 0px 1px 18px rgba(45, 64, 86, 0.12);',
-          backgroundColor: theme.palette.grey.shadow,
-          color: theme.palette.common.white,
+          boxShadow: theme.palette.grey.shadow,
+          backgroundColor: theme.palette.grey.oppositeBackground,
+          border: `1px solid ${theme.palette.grey[20]}` ,
+          color: theme.palette.primary.oppositeMain,
           wordBreak: "normal",
         };
       },
