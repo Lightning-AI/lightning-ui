@@ -45,7 +45,6 @@ const Banner = ({ children, show, ...props }: BannerProps) => {
         px: 1.5,
         py: 1,
         minHeight: "20px",
-        fontFamily: "'Plus Jakarta Sans', sans-serif",
         fontWeight: 400,
         fontStyle: "normal",
         fontSize: "14px",

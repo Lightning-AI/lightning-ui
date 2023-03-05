@@ -51,7 +51,6 @@ const Checkbox = (props: CheckboxProps) => {
           "borderRadius": "6px",
           "backgroundColor": props.checked ? "#EFEEFF" : "initial",
           "& .MuiFormControlLabel-label": {
-            fontFamily: "'Plus Jakarta Sans', sans-serif",
             fontWeight: 400,
             fontSize: "14px",
             lineHeight: "20px",

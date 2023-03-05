@@ -85,11 +85,7 @@ const ToggleButtonGroup = (props: ToggleButtonGroupProps) => {
             <ToggleButton key={item.value} value={item.value}>
               <Stack direction={"row"} alignItems={"center"} spacing={1}>
                 {item.icon}{" "}
-                <Typography
-                  fontFamily={`"Plus Jakarta Sans", sans-serif`}
-                  fontWeight={600}
-                  fontSize={"14px"}
-                  lineHeight={"20px"}>
+                <Typography fontWeight={600} fontSize={"14px"} lineHeight={"20px"}>
                   {item.text}
                 </Typography>
               </Stack>

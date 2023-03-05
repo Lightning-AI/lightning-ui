@@ -49,7 +49,6 @@ const Alert = ({ children, show, ...props }: AlertProps) => {
         "alignItems": alignItems,
         "color": "#050505",
         "display": "flex",
-        "fontFamily": `"Plus Jakarta Sans", sans-serif`,
         "fontWeight": "normal",
         "fontStyle": "normal",
         "fontSize": "14px",
@@ -76,7 +75,6 @@ const Alert = ({ children, show, ...props }: AlertProps) => {
       }}>
       <MuiAlertTitle
         sx={{
-          fontFamily: `"Plus Jakarta Sans", sans-serif`,
           fontWeight: 600,
           fontStyle: "normal",
           fontSize: "14px",

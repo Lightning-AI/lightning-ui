@@ -2,6 +2,8 @@ import { Typography as MuiTypography, TypographyProps as MuiTypographyProps } fr
 
 export type TypographyProps = MuiTypographyProps;
 
-const Typography = (props: TypographyProps) => <MuiTypography {...props} />;
+const Typography = (props: TypographyProps) => (
+  <MuiTypography color={(theme: any) => theme.palette.text.primary} {...props} />
+);
 
 export default Typography;

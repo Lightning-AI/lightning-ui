@@ -10,6 +10,7 @@ const primary: PaletteColorOptions & Record<string, any> = {
   "10": "#EFEEFF",
   "5": "#F7F6FF",
   "contrastText": "#4F00BA",
+  "oppositeMainText": "#FFFFFF",
   "gradient": "linear-gradient(206.91deg, #792EE5 16.83%, #3EABB3 144.59%);",
 };
 const secondary: PaletteColorOptions & Record<string, string> = {
@@ -62,6 +63,9 @@ const grey: ColorPartial & Record<string, string> = {
   "20": "#E4E6EB",
   "10": "#F7F8FB",
   "contrastText": "#5B5E69",
+  "oppositeBackground": "#0E061C",
+  "shadow":
+    "0px 3px 5px -1px rgba(45, 64, 86, 0.2), 0px 6px 10px rgba(45, 64, 86, 0.14), 0px 1px 18px rgba(45, 64, 86, 0.12)",
 };
 const background: Partial<TypeBackground> = {
   default: "#FFF",

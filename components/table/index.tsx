@@ -11,12 +11,11 @@ import { Box } from "..";
 import TableRow from "./TableRow";
 
 const tableCellHeaderStyle = {
-  fontFamily: `"Plus Jakarta Sans", sans-serif`,
-  fontWeight: 600,
+  fontWeight: 700,
   fontStyle: "normal",
   fontSize: "14px",
   lineHeight: "20px",
-  color: "#5B5E69",
+  color: (theme: any) => theme.palette.text.secondary,
   padding: "8px 16px",
 };
 
@@ -25,6 +24,7 @@ export type TableProps = {
   rows: ReactNode[][];
   rowDetails?: ReactNode[];
   rowHover?: boolean;
+  rowClick?: any;
   border?: boolean;
 };
 
@@ -44,7 +44,7 @@ const Table = (props: TableProps) => {
             : {}
         }>
         <MuiTable>
-          <MuiTableHead sx={{ boxShadow: "inset 0px -2px 0px #65676B;" }}>
+          <MuiTableHead>
             <MuiTableRow>
               {props.header?.map((cell, index) => (
                 <MuiTableCell key={index} sx={tableCellHeaderStyle}>
