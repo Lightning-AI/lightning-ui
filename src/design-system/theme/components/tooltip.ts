@@ -13,7 +13,7 @@ const tooltip = {
           boxShadow: theme.palette.grey.shadow,
           backgroundColor: theme.palette.grey.oppositeBackground,
           border: `1px solid ${theme.palette.grey[20]}` ,
-          color: 'red',
+          color: theme.palette.primary.oppositeMainText,
           wordBreak: "normal",
         };
       },
