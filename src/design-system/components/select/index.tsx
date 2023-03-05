@@ -8,7 +8,6 @@ import { CheckCircle, Dangerous, Info, Warning } from "../../icons";
 import CheckboxBase from "../checkbox/CheckboxBase";
 import FormControl from "../form-control";
 import RadioBase from "../radio/RadioBase";
-import { theme } from "design-system/theme";
 
 const statusColor: Record<string, any> = {
   info: "#1877F2",
