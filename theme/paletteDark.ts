@@ -5,20 +5,20 @@ const primary: PaletteColorOptions & Record<string, any> = {
   "main": "#792EE5",
   "70": "#AD00FF",
   "50": "#B45AFF",
-  "40": "#AD8EEA",
-  "20": "#8C35FF",
-  "10": "#EFEEFF",
+  "40": "#730BFF",
+  "20": "#35146F",
+  "10": "#1E0C3D",
   "5": "#212226",
   "contrastText": "#FFFFFF",
   "gradient": "linear-gradient(206.91deg, #792EE5 16.83%, #3EABB3 144.59%);",
 };
 const secondary: PaletteColorOptions & Record<string, string> = {
   "main": "#792EE5",
-  "70": "#D5F9FA",
-  "50": "#B1EBED",
-  "40": "#80D2D7",
-  "20": "#3EABB3",
-  "10": "#008087",
+  "70": "#0BF0FF",
+  "50": "#69F6FF",
+  "40": "#01A9B4",
+  "20": "#004246",
+  "10": "#002426",
   "contrastText": "#008087",
 };
 const info: PaletteColorOptions & Record<string, string> = {
@@ -72,6 +72,7 @@ const background: Partial<TypeBackground> = {
 
 const text: Partial<TypeText> = {
   primary: "#FFFFFF",
+  secondary: "#B7B4BB",
 };
 
 const divider = grey["20"];
