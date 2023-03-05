@@ -7,7 +7,6 @@ const CardHeader = (props: CardHeaderProps) => (
     {...props}
     titleTypographyProps={{
       fontSize: "16px",
-      fontFamily: `"Plus Jakarta Sans", sans-serif`,
       fontWeight: "600",
       fontStyle: "normal",
       lineHeight: "20px",
@@ -15,7 +14,6 @@ const CardHeader = (props: CardHeaderProps) => (
     }}
     subheaderTypographyProps={{
       fontSize: "12px",
-      fontFamily: `"Plus Jakarta Sans", sans-serif`,
       fontWeight: "700",
       fontStyle: "normal",
       lineHeight: "16px",

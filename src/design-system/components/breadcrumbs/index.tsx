@@ -24,7 +24,6 @@ export default function Breadcrumbs({ items }: BreadcrumbsProps) {
     };
   };
   const itemStyle = {
-    fontFamily: `"Plus Jakarta Sans", sans-serif`,
     fontWeight: 600,
     fontStyle: "normal",
     fontSize: "18px",

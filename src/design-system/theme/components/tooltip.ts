@@ -3,15 +3,15 @@ const tooltip = {
     styleOverrides: {
       tooltip: ({ theme }: any) => {
         return {
-          fontFamily: "'Plus Jakarta Sans', sans-serif",
           fontWeight: "400",
           fontStyle: "normal",
           fontSize: "14px",
           lineHeight: "20px",
           borderRadius: "8px",
+          padding: '8px',
           maxWidth: "360px",
-          backgroundColor: theme.palette.grey[70],
-          color: theme.palette.grey[20],
+          backgroundColor: theme.palette.grey[40],
+          color: theme.palette.text.secondary,
           wordBreak: "normal",
         };
       },
