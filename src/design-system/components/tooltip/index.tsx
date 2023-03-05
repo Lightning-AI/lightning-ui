@@ -7,6 +7,7 @@ export type TooltipProps = Partial<Pick<MuiTooltipProps, "title">> &
     width?: number | string;
     interactive?: boolean;
     delay?: number;
+    enterNextDelay?: number;
   };
 
 const Tooltip = ({
@@ -15,10 +16,16 @@ const Tooltip = ({
   placement = "top",
   width,
   interactive = true,
-  delay = 400,
+  delay = 1500,
+  enterNextDelay = 500,
 }: TooltipProps) => {
   return (
-    <MuiTooltip title={title} placement={placement} disableInteractive={interactive} enterDelay={delay}>
+    <MuiTooltip
+      title={title}
+      placement={placement}
+      disableInteractive={interactive}
+      enterDelay={delay}
+      enterNextDelay={enterNextDelay}>
       <Box component={"span"} sx={{ cursor: title ? "pointer" : "inherit", width }}>
         {children}
       </Box>
