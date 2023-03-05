@@ -123,10 +123,10 @@ const Select = React.forwardRef(
                         {selectedLabel.icon}
                       </Box>
                       <Box paddingLeft={3}>
-                        <Typography fontWeight={400} fontSize={"14px"} lineHeight={"20px"} color={"#1C1C1C"}>
+                        <Typography fontWeight={400} fontSize={"14px"} lineHeight={"20px"} color={(theme: any) => theme.palette.text.primary}>
                           {selectedLabel.text}
                         </Typography>
-                        <Typography fontWeight={400} fontSize={"12px"} lineHeight={"16px"} color={"#5B5E69"}>
+                        <Typography fontWeight={400} fontSize={"12px"} lineHeight={"16px"} color={(theme: any) => theme.palette.text.secondary}>
                           {selectedLabel.helpText}
                         </Typography>
                       </Box>
@@ -244,7 +244,13 @@ const Select = React.forwardRef(
                       <RadioBase checked={option.value === selectedValue} />
                     </Box>
                   )}
-                  <Typography className="option-label" fontWeight={400} fontSize={"14px"} lineHeight={"20px"} color={"#1C1C1C"}>
+                  <Typography 
+                    className="option-label" 
+                    fontWeight={400} 
+                    fontSize={"14px"} 
+                    lineHeight={"20px"} 
+                    color={(theme: any) => theme.palette.text.primary}
+                  >
                     {option.label}
                   </Typography>
                 </Stack>
