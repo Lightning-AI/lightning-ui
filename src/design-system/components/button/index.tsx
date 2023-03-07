@@ -64,8 +64,18 @@ const Button = ({ arrow, loading, href, ...props }: ButtonProps) => {
         sx={{
           height,
           color,
-          background,
           backgroundColor,
+          background,
+          ...(!isTextVariant &&
+            isPrimaryColor && {
+              "transition": "0.3s ease-in-out",
+              "backgroundSize": "100% 100%",
+              "backgroundPosition": "50% 50%",
+              "&:hover": {
+                backgroundSize: "400% 100%",
+                filter: "brightness(1.1)",
+              },
+            }),
           "&.Mui-disabled": {
             opacity: isGreyColor ? 0.3 : 0.5,
             color,
