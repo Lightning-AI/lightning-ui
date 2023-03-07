@@ -15,12 +15,12 @@ export type ButtonProps = {
   arrow?: boolean;
   tooltip?: TooltipProps["title"];
   children?: ReactNode;
-  ref?: any;
+  cursor?: boolean;
 } & Pick<MuiButtonProps, "disabled" | "fullWidth" | "variant" | "href" | "onClick" | "size">;
 
 const Button = ({ arrow, loading, href, ...props }: ButtonProps) => {
   const isTextVariant = props.variant === "text";
-  const isCursorVariant = props.variant === "cursor";
+  const isCursorVariant = props.cursor;
   const isPrimaryColor = !isTextVariant && (typeof props.color === "undefined" || props.color?.startsWith("primary"));
   const isGreyColor = isTextVariant || props.color?.startsWith("grey");
   const variant = isTextVariant ? props.variant : "contained";

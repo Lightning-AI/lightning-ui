@@ -32,8 +32,12 @@ export default {
       control: "select",
     },
     variant: {
-      options: ["contained", "text", "cursor"],
+      options: ["contained", "text"],
       control: "select",
+    },
+    cursor: {
+      control: "boolean",
+      defaultValue: false,
     },
     size: {
       options: ["medium", "small"],
