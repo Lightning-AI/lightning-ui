@@ -108,7 +108,7 @@ const Button = ({ arrow, loading, href, ...props }: ButtonProps) => {
             },
             "&:before": {
               opacity: "0",
-              transition: "opacity 0.3s ease-in-out",
+              transition: "opacity 0.3s ease-in-out, transform 1s cubic-bezier(0.175, 0.885, 0.32, 1.275)",
               content: "''",
               position: "absolute",
               pointerEvents: "none",
