@@ -35,6 +35,10 @@ export default {
       options: ["contained", "text"],
       control: "select",
     },
+    cursor: {
+      control: "boolean",
+      defaultValue: false,
+    },
     size: {
       options: ["medium", "small"],
       control: "select",

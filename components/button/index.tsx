@@ -15,10 +15,12 @@ export type ButtonProps = {
   arrow?: boolean;
   tooltip?: TooltipProps["title"];
   children?: ReactNode;
+  cursor?: boolean;
 } & Pick<MuiButtonProps, "disabled" | "fullWidth" | "variant" | "href" | "onClick" | "size">;
 
 const Button = ({ arrow, loading, href, ...props }: ButtonProps) => {
   const isTextVariant = props.variant === "text";
+  const isCursorVariant = props.cursor;
   const isPrimaryColor = !isTextVariant && (typeof props.color === "undefined" || props.color?.startsWith("primary"));
   const isGreyColor = isTextVariant || props.color?.startsWith("grey");
   const variant = isTextVariant ? props.variant : "contained";
@@ -45,6 +47,19 @@ const Button = ({ arrow, loading, href, ...props }: ButtonProps) => {
     };
   };
 
+  const mouseMoveHandler = (event: any) => {
+    // Get the bounding rectangle of target
+    const rect = event.target?.getBoundingClientRect();
+
+    // Mouse position
+    if (rect?.left && rect?.top) {
+      const x = event.clientX - rect.left;
+      const y = event.clientY - rect.top;
+      event.target?.style.setProperty("--x", `${x}px`);
+      event.target?.style.setProperty("--y", `${y}px`);
+    }
+  };
+
   const onClickHandler = !props.onClick && href ? navigateHandler(href) : props.onClick;
   const hasNoText = typeof props.text === "undefined" || props.text === "";
   const onlyIconStyle = hasNoText && {
@@ -64,8 +79,48 @@ const Button = ({ arrow, loading, href, ...props }: ButtonProps) => {
         sx={{
           height,
           color,
-          background,
           backgroundColor,
+          background,
+          ...(!isTextVariant &&
+            isPrimaryColor && {
+              "transition": "0.3s ease-in-out",
+              "backgroundSize": "100% 100%",
+              "backgroundPosition": "50% 50%",
+              "&:hover": {
+                backgroundSize: "400% 100%",
+                filter: "brightness(1.1)",
+              },
+            }),
+          ...(isCursorVariant && {
+            "position": "relative",
+            "overflow": "hidden",
+            "> div": {
+              pointerEvents: "none",
+              position: "relative",
+              zIndex: 1,
+            },
+            "&:hover": {
+              "&:before": {
+                opacity: "1",
+              },
+            },
+            "&:before": {
+              opacity: "0",
+              transition: "opacity 0.3s ease-in-out, transform 1s cubic-bezier(0.175, 0.885, 0.32, 1.275)",
+              content: "''",
+              position: "absolute",
+              pointerEvents: "none",
+              top: 0,
+              left: 0,
+              width: "15px",
+              height: "15px",
+              borderRadius: "100%",
+              filter: "blur(8px)",
+              transform: "translate(calc(var(--x) - 7.5px), calc(var(--y) - 5px)) translateZ(0px)",
+              background: (theme: any) => theme.palette.secondary[40],
+              zIndex: "0",
+            },
+          }),
           "&.Mui-disabled": {
             opacity: isGreyColor ? 0.3 : 0.5,
             color,
@@ -87,6 +142,7 @@ const Button = ({ arrow, loading, href, ...props }: ButtonProps) => {
         endIcon={arrow ? <ArrowDropDownRounded /> : undefined}
         variant={variant}
         onClick={onClickHandler}
+        onMouseMove={isCursorVariant ? mouseMoveHandler : undefined}
         href={href}>
         {!!props.text && (
           <Box fontStyle={"normal"} fontSize={"14px"} lineHeight={"20px"}>
