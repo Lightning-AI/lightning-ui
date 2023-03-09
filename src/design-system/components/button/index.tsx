@@ -1,4 +1,4 @@
-import { MouseEventHandler, ReactNode, useRef } from "react";
+import { MouseEventHandler, ReactNode } from "react";
 
 import { ArrowDropDownRounded } from "@mui/icons-material";
 import { Button as MuiButton, ButtonProps as MuiButtonProps } from "@mui/material";
@@ -48,8 +48,6 @@ const Button = ({ arrow, loading, href, ...props }: ButtonProps) => {
   };
 
   const mouseMoveHandler = (event: any) => {
-    const target = event.target;
-
     // Get the bounding rectangle of target
     const rect = event.target?.getBoundingClientRect();
 
