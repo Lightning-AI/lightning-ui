@@ -135,7 +135,6 @@ const TextField = React.forwardRef(
             endAdornment={
               loading ? <CircularProgress thickness={2} color="inherit" size={20} /> : status && statusIcon[status]
             }
-            // @ts-ignore -webkit-appearance and -moz-appearance
             sx={{
               "font": INPUT_TEXT_FONT,
               "height": "36px",
@@ -145,11 +144,11 @@ const TextField = React.forwardRef(
                 marginRight: `${marginRightPx}px`,
               },
               "input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button": {
-                "-webkit-appearance": "none",
-                "margin": 0 /* <-- Apparently some margin are still there even though it's hidden */,
+                WebkitAppearance: "none",
+                margin: 0 /* <-- Apparently some margin are still there even though it's hidden */,
               },
               "input[type=number]": {
-                "-moz-appearance": "textfield" /* Firefox */,
+                MozAppearance: "textfield" /* Firefox */,
               },
               "&.MuiInputBase-colorPrimary:hover .MuiOutlinedInput-notchedOutline": {
                 borderColor: (theme: any) => theme.palette[status ?? "primary"].main,
