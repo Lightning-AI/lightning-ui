@@ -3,7 +3,7 @@ import { ReactNode } from "react";
 import TextField from "design-system/components/text-field";
 
 import { Dialog, DialogActions, DialogContent, DialogTitle } from ".";
-import { Box, Stack, Typography } from "..";
+import { Stack } from "..";
 import { DialogProps } from "./Dialog";
 
 export type DialogFormActionsProps = {
