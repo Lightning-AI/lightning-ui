@@ -96,7 +96,7 @@ will download and include the `lightning-ui` that is in the bucket above
 
 ## Design System Documentation
 
-https://congenial-chainsaw-5d118edf.pages.github.io/?path=/story/introduction--page
+https://lightning-ai.github.io/lightning-ui/?path=/story/introduction--page
 
 **Run locally**
 
