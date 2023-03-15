@@ -4,6 +4,7 @@ import { DialogActions, DialogContent, DialogTitle } from "design-system/compone
 import Dialog, { DialogProps } from "design-system/components/dialog/Dialog";
 
 import { Box, Stack } from "..";
+import DialogFormActions, { DialogFormActionsProps } from "./DialogFormActions";
 import DialogImageActions, { DialogImageActionsProps } from "./DialogImageActions";
 import DialogNotification, { DialogNotificationProps } from "./DialogNotification";
 import phantomSrc from "./phantom.svg";
@@ -154,3 +155,24 @@ const NotificationTemplate: ComponentStory<any> = (args: DialogNotificationProps
 
 export const Notifications = NotificationTemplate.bind({});
 Notifications.parameters = { controls: { include: ["open", "variant", "message", "description"] } };
+
+const formActions = {
+  submit: (
+    <Stack width={"100%"} direction={"row"} justifyContent={"space-between"}>
+      <Button text="Cancel" color={"grey"} onClick={buttonOnClickHandler} />
+      <Button text="Submit" onClick={buttonOnClickHandler} fullWidth />
+    </Stack>
+  ),
+};
+
+const FormActionsTemplate: ComponentStory<any> = (args: DialogFormActionsProps) => {
+  const actions = (
+    <Stack width={"100%"} direction={"row"} spacing={1}>
+      {formActions.submit}
+    </Stack>
+  );
+  return <DialogFormActions {...args} actions={actions}></DialogFormActions>;
+};
+
+export const FormActions = FormActionsTemplate.bind({});
+FormActions.parameters = { controls: { include: ["open", "variant", "message", "description"] } };
