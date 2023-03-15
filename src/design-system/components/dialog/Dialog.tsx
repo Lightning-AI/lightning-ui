@@ -8,6 +8,10 @@ const Dialog = ({ PaperProps, ...props }: DialogProps) => (
       ...PaperProps,
       style: { borderRadius: "8px", ...PaperProps?.style },
     }}
+    sx={{
+      "color": (theme: any) => theme.palette.text.primary,
+      ".MuiFormControl-root p, .MuiButton-containedGrey": { color: (theme: any) => theme.palette.text.primary },
+    }}
     {...props}
   />
 );
