@@ -108,7 +108,7 @@ const Select = React.forwardRef(
             },
             renderValue: areLabelType
               ? selected => {
-                  const selectedLabel = props.options.find(option => option.value === selected)!.label;
+                  const selectedLabel = props.options.find(option => option.value === selected)?.label ?? "";
                   if (typeof selectedLabel === "string") return selectedLabel;
                   return (
                     <Stack direction={"row"}>
@@ -148,7 +148,7 @@ const Select = React.forwardRef(
                     ? `${itemsSelected.length} items selected`
                     : props.options.find(option => option.value === itemsSelected?.[0])?.label ?? "";
                 }
-              : selected => props.options.find(option => option.value === selected)!.label,
+              : selected => props.options.find(option => option.value === selected)?.label ?? "",
           }}
           sx={{
             "& .MuiOutlinedInput-root": {
