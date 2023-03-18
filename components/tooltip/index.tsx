@@ -16,8 +16,8 @@ const Tooltip = ({
   placement = "top",
   width,
   interactive = true,
-  delay = 700,
-  enterNextDelay = 700,
+  delay = 500,
+  enterNextDelay = 400,
 }: TooltipProps) => {
   return (
     <MuiTooltip
