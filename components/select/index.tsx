@@ -40,6 +40,7 @@ export type SelectProps = {
   optional?: boolean;
   tooltip?: string;
   multiple?: boolean;
+  defaultValue?: string;
 } & Pick<MuiTextFieldProps, "disabled" | "fullWidth" | "size" | "value" | "autoFocus">;
 
 const Select = React.forwardRef(
@@ -56,6 +57,7 @@ const Select = React.forwardRef(
       multiple,
       onChange,
       size,
+      defaultValue,
       ...props
     }: SelectProps,
     ref,
@@ -85,6 +87,7 @@ const Select = React.forwardRef(
         <MuiTextField
           inputRef={ref}
           value={selectedValue}
+          defaultValue={defaultValue}
           fullWidth={fullWidth}
           onChange={onChangeHandler}
           size={areLabelType ? "medium" : size}
