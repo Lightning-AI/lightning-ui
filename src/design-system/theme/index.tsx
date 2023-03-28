@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { ReactNode, useEffect } from "react";
 
 import { ThemeProvider as MuiThemeProvider, createTheme } from "@mui/material/styles";
 
@@ -23,6 +23,11 @@ export const darkTheme = createTheme({
 });
 
 const ThemeProvider = ({ children, colorScheme }: { children: ReactNode; colorScheme?: "light" | "dark" }) => {
+  useEffect(() => {
+    colorScheme === "dark"
+      ? parent.document.getElementById("storybook-preview-wrapper")?.style.setProperty("background", "#0e061c")
+      : parent.document.getElementById("storybook-preview-wrapper")?.style.setProperty("background", "#fff");
+  }, []);
   return <MuiThemeProvider theme={colorScheme === "dark" ? darkTheme : theme} children={children} />;
 };
 

@@ -39,6 +39,10 @@ export default {
       control: "boolean",
       defaultValue: false,
     },
+    bordered: {
+      control: "boolean",
+      defaultValue: false,
+    },
     size: {
       options: ["medium", "small"],
       control: "select",
