@@ -21,7 +21,7 @@ export type ButtonProps = {
 } & Pick<MuiButtonProps, "disabled" | "fullWidth" | "variant" | "href" | "onClick" | "size">;
 
 const Button = ({ arrow, loading, href, ...props }: ButtonProps) => {
-  const theme = useTheme();
+  const theme: any = useTheme();
   const isDark = theme.palette.mode === "dark";
   const isTextVariant = props.variant === "text";
   const buttonRef = useRef<HTMLButtonElement>(null);
@@ -87,6 +87,7 @@ const Button = ({ arrow, loading, href, ...props }: ButtonProps) => {
       margin: 0,
     },
   };
+
   return (
     <Tooltip title={props.tooltip}>
       <MuiButton
@@ -96,13 +97,30 @@ const Button = ({ arrow, loading, href, ...props }: ButtonProps) => {
           color,
           backgroundColor,
           background,
+          ...(isGreyColor &&
+            isDark && {
+              "background": theme.palette.grey[70],
+              "& .MuiButton-startIcon": {
+                transition: "0.2s ease-in-out",
+              },
+              "&:hover": {
+                "background": theme.palette.secondary[40],
+                "color": theme.palette.common.white,
+                "& .MuiButton-startIcon": {
+                  color: theme.palette.common.white,
+                },
+              },
+              "svg": {
+                fill: "currentColor",
+              },
+            }),
           ...(isBorderedVariant && {
             "position": "relative",
             "overflow": "hidden",
             "transition": "0.3s ease-in-out",
             "borderRadius": "5px",
             "background": "transparent",
-            "color": (theme: any) => theme.palette.grey[70],
+            "color": theme.palette.grey[70],
             "boxShadow": "inset 0 0 0 1px, 0 0 0 0, 0 0 0 0",
             "fontWeight": "500",
             "div.MuiBox-root": {
@@ -140,7 +158,7 @@ const Button = ({ arrow, loading, href, ...props }: ButtonProps) => {
               top: "1.5px",
               left: "1.5px",
               zIndex: "-1",
-              background: isDark ? "#000" : "#fff",
+              background: isDark ? theme.palette.primary[10] : "#fff",
               transition: "0.3s ease-in-out",
               boxShadow: isDark
                 ? "inset 0 0 2px -5px #000, inset 0 0 8px -10px #222"
@@ -151,15 +169,16 @@ const Button = ({ arrow, loading, href, ...props }: ButtonProps) => {
               "boxShadow": isDark
                 ? "inset 0 0 0 2px transparent, 0 0 0 1px #000, 0 1px 5px 0 rgba(0, 0, 0, 0.15)"
                 : "inset 0 0 0 2px transparent, 0 0 0 1px #fff, 0 1px 5px 0 rgba(0, 0, 0, 0.15)",
-              "color": isDark ? (theme: any) => theme.palette.common.white : (theme: any) => theme.palette.primary[70],
+              "color": isDark ? theme.palette.common.white : theme.palette.primary[70],
               "div.MuiBox-root": {
-                color: isDark ? (theme: any) => theme.palette.common.white : (theme: any) => theme.palette.primary[70],
+                color: isDark ? theme.palette.common.white : theme.palette.primary[70],
               },
               "&:before": {
                 opacity: "1",
                 animationPlayState: "running",
               },
               "&:after": {
+                background: isDark ? theme.palette.primary[20] : "#fff",
                 boxShadow: isDark
                   ? "inset 0 0 2px 1px #000, inset 0 0 8px 2px #222"
                   : "inset 0 0 2px 1px #fff, inset 0 0 8px 2px #fff",
@@ -176,16 +195,12 @@ const Button = ({ arrow, loading, href, ...props }: ButtonProps) => {
                     strokeDashoffset: "0px",
                     fill: "transparent",
                     strokeWidth: "1px",
-                    stroke: (theme: any) => theme.palette.primary[70],
+                    stroke: theme.palette.primary[70],
                   },
                   "100%": {
                     strokeDashoffset: "0px",
-                    fill: isDark
-                      ? (theme: any) => theme.palette.common.white
-                      : (theme: any) => theme.palette.primary[70],
-                    stroke: isDark
-                      ? (theme: any) => theme.palette.common.white
-                      : (theme: any) => theme.palette.primary[70],
+                    fill: isDark ? theme.palette.common.white : theme.palette.primary[70],
+                    stroke: isDark ? theme.palette.common.white : theme.palette.primary[70],
                     strokeWidth: "0px",
                   },
                 },
@@ -240,10 +255,10 @@ const Button = ({ arrow, loading, href, ...props }: ButtonProps) => {
             backgroundColor,
           },
           "& .MuiButton-startIcon": {
-            color: isGreyColor ? (theme: any) => theme.palette.grey[70] : "inherit",
+            color: isGreyColor ? (theme: any) => theme.palette.grey[20] : "inherit",
           },
           "& .MuiButton-endIcon": {
-            color: isGreyColor ? (theme: any) => theme.palette.grey[70] : "inherit",
+            color: isGreyColor ? (theme: any) => theme.palette.grey[20] : "inherit",
           },
           ...onlyIconStyle,
         }}

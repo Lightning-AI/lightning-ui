@@ -25,9 +25,9 @@ export const darkTheme = createTheme({
 const ThemeProvider = ({ children, colorScheme }: { children: ReactNode; colorScheme?: "light" | "dark" }) => {
   useEffect(() => {
     colorScheme === "dark"
-      ? parent.document.getElementById("storybook-preview-wrapper")?.style.setProperty("background", "#0e061c")
-      : parent.document.getElementById("storybook-preview-wrapper")?.style.setProperty("background", "#fff");
-  }, []);
+      ? document.body?.style.setProperty("background", "#0e061c")
+      : document.body?.style.setProperty("background", "fff");
+  }, [colorScheme]);
   return <MuiThemeProvider theme={colorScheme === "dark" ? darkTheme : theme} children={children} />;
 };
 
