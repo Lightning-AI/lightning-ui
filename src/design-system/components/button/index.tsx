@@ -67,14 +67,6 @@ const Button = ({ arrow, loading, href, ...props }: ButtonProps) => {
     }
   };
 
-  const mouseOverHandler = (event: any) => {
-    let path = buttonRef?.current?.querySelector("svg path") as SVGPathElement;
-    let total = path?.getTotalLength();
-    if (total) {
-      path?.style.setProperty("--path-length", total.toString() + "px");
-    }
-  };
-
   const onClickHandler = !props.onClick && href ? navigateHandler(href) : props.onClick;
   const hasNoText = typeof props.text === "undefined" || props.text === "";
   const onlyIconStyle = hasNoText && {
