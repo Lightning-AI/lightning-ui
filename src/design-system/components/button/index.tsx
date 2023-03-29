@@ -249,6 +249,19 @@ const Button = ({ arrow, loading, href, ...props }: ButtonProps) => {
                 zIndex: "0",
               },
             }),
+
+          ...(isTextVariant &&
+            isDark && {
+              "color": theme.palette.grey[100],
+              "background": "transparent",
+              "&:hover": {
+                "background": theme.palette.grey[70],
+                "color": theme.palette.grey[10],
+                "svg path": {
+                  fill: theme.palette.grey[10],
+                },
+              },
+            }),
           "&.Mui-disabled": {
             opacity: isGreyColor ? 0.3 : 0.5,
             color,
