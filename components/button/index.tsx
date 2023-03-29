@@ -1,7 +1,8 @@
-import { MouseEventHandler, ReactNode } from "react";
+import { MouseEventHandler, ReactNode, useRef } from "react";
 
 import { ArrowDropDownRounded } from "@mui/icons-material";
 import { Button as MuiButton, ButtonProps as MuiButtonProps } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
 import { useNavigate } from "react-router-dom";
 
 import { Box, CircularProgress, Tooltip } from "../";
@@ -16,16 +17,22 @@ export type ButtonProps = {
   tooltip?: TooltipProps["title"];
   children?: ReactNode;
   cursor?: boolean;
+  bordered?: boolean;
+  pill?: boolean;
 } & Pick<MuiButtonProps, "disabled" | "fullWidth" | "variant" | "href" | "onClick" | "size">;
 
 const Button = ({ arrow, loading, href, ...props }: ButtonProps) => {
+  const theme: any = useTheme();
+  const isDark = theme.palette.mode === "dark";
   const isTextVariant = props.variant === "text";
+  const buttonRef = useRef<HTMLButtonElement>(null);
   const isCursorVariant = props.cursor;
   const isPrimaryColor = !isTextVariant && (typeof props.color === "undefined" || props.color?.startsWith("primary"));
   const isGreyColor = isTextVariant || props.color?.startsWith("grey");
   const variant = isTextVariant ? props.variant : "contained";
   const isSmallSize = props.size === "small";
   const height = (isSmallSize && "28px") || "36px";
+  const isPill = props.pill;
   const color = (theme: any) => {
     return (isGreyColor && theme.palette.common.black) || theme.palette.common.white;
   };
@@ -72,6 +79,7 @@ const Button = ({ arrow, loading, href, ...props }: ButtonProps) => {
       margin: 0,
     },
   };
+
   return (
     <Tooltip title={props.tooltip}>
       <MuiButton
@@ -81,6 +89,24 @@ const Button = ({ arrow, loading, href, ...props }: ButtonProps) => {
           color,
           backgroundColor,
           background,
+          "borderRadius": isPill ? "20px" : "8px",
+          ...(isGreyColor &&
+            isDark && {
+              "background": theme.palette.grey[70],
+              "& .MuiButton-startIcon": {
+                transition: "0.2s ease-in-out",
+              },
+              "&:hover": {
+                "background": theme.palette.secondary[40],
+                "color": theme.palette.common.white,
+                "& .MuiButton-startIcon": {
+                  color: theme.palette.common.white,
+                },
+              },
+              "svg": {
+                fill: "currentColor",
+              },
+            }),
           ...(!isTextVariant &&
             isPrimaryColor && {
               "transition": "0.3s ease-in-out",
@@ -121,17 +147,35 @@ const Button = ({ arrow, loading, href, ...props }: ButtonProps) => {
               zIndex: "0",
             },
           }),
+
+          ...(isTextVariant &&
+            isDark && {
+              "color": theme.palette.grey[100],
+              "background": "transparent",
+              "&:hover": {
+                "background": theme.palette.grey[70],
+                "color": theme.palette.grey[10],
+                "svg path": {
+                  fill: theme.palette.grey[10],
+                },
+              },
+            }),
           "&.Mui-disabled": {
             opacity: isGreyColor ? 0.3 : 0.5,
             color,
             backgroundColor,
           },
           "& .MuiButton-startIcon": {
-            color: isGreyColor ? (theme: any) => theme.palette.grey[70] : "inherit",
+            color: "inherit",
           },
           "& .MuiButton-endIcon": {
-            color: isGreyColor ? (theme: any) => theme.palette.grey[70] : "inherit",
+            color: "inherit",
           },
+          ...(isGreyColor && {
+            "&:hover": {
+              backgroundColor: theme.palette.grey[40],
+            },
+          }),
           ...onlyIconStyle,
         }}
         {...props}
@@ -143,6 +187,7 @@ const Button = ({ arrow, loading, href, ...props }: ButtonProps) => {
         variant={variant}
         onClick={onClickHandler}
         onMouseMove={isCursorVariant ? mouseMoveHandler : undefined}
+        ref={buttonRef}
         href={href}>
         {!!props.text && (
           <Box fontStyle={"normal"} fontSize={"14px"} lineHeight={"20px"}>

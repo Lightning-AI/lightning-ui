@@ -10,7 +10,7 @@ const FormHelperText = (props: FormHelperTextProps) => (
   <Typography
     {...props}
     sx={{
-      color: "rgba(91, 94, 105, 1)",
+      color: (theme: any) => theme.palette.text.secondary,
       fontWeight: 400,
       fontStyle: "normal",
       fontSize: "12px",

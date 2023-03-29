@@ -2,6 +2,7 @@ import React, { ChangeEventHandler, ReactNode, useEffect } from "react";
 
 import { CircularProgress } from "@mui/material";
 import MuiOutlinedInput, { OutlinedInputProps as MuiOutlinedInputProps } from "@mui/material/OutlinedInput";
+import { useTheme } from "@mui/material/styles";
 
 import { Box, Stack } from "..";
 import getTextWidth from "../../../shared/utils/getTextWidth";
@@ -70,6 +71,8 @@ const TextField = React.forwardRef(
     // tracking current value to be able to correctly offset the suffix
     const [valueInternal, setValueInternal] = React.useState(props.value);
     const internalRef = React.useRef<HTMLInputElement>();
+    const theme: any = useTheme();
+    const isDark = theme.palette.mode === "dark";
 
     useEffect(() => setValueInternal(props.value), [props.value]);
 
@@ -138,7 +141,7 @@ const TextField = React.forwardRef(
             sx={{
               "font": INPUT_TEXT_FONT,
               "height": "36px",
-              "backgroundColor": (theme: any) => theme.palette.background.default,
+              "backgroundColor": isDark ? theme.palette.grey["40"] : theme.palette.background.default,
               "borderRadius": type === "number" ? "6px 0 0 6px" : "6px",
               "input": {
                 marginRight: `${marginRightPx}px`,

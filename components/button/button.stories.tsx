@@ -39,6 +39,10 @@ export default {
       control: "boolean",
       defaultValue: false,
     },
+    pill: {
+      control: "boolean",
+      defaultValue: false,
+    },
     size: {
       options: ["medium", "small"],
       control: "select",
