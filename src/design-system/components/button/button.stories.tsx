@@ -39,10 +39,6 @@ export default {
       control: "boolean",
       defaultValue: false,
     },
-    bordered: {
-      control: "boolean",
-      defaultValue: false,
-    },
     pill: {
       control: "boolean",
       defaultValue: false,
