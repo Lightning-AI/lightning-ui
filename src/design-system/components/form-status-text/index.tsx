@@ -13,7 +13,7 @@ const FormStatusText = (props: FormStatusTextProps) => (
       minHeight: "16px",
       height: "auto",
       padding: "8px 12px",
-      color: "rgba(28, 28, 28, 1)",
+      color: (theme: any) => theme.palette.text.secondary,
       fontWeight: 700,
       fontStyle: "normal",
       fontSize: "12px",

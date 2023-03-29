@@ -12,7 +12,7 @@ const FormLabel = ({ optional, tooltip, children }: FormLabelProps) => (
   <Stack direction={"row"} alignItems={"center"} spacing={0.5}>
     <Typography
       sx={{
-        color: "rgba(28, 28, 28, 1)",
+        color: (theme: any) => theme.palette.text.primary,
         fontWeight: 600,
         fontStyle: "normal",
         fontSize: "14px",
