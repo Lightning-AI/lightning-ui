@@ -18,6 +18,7 @@ export type ButtonProps = {
   children?: ReactNode;
   cursor?: boolean;
   bordered?: boolean;
+  pill?: boolean;
 } & Pick<MuiButtonProps, "disabled" | "fullWidth" | "variant" | "href" | "onClick" | "size">;
 
 const Button = ({ arrow, loading, href, ...props }: ButtonProps) => {
@@ -32,6 +33,7 @@ const Button = ({ arrow, loading, href, ...props }: ButtonProps) => {
   const variant = isTextVariant ? props.variant : "contained";
   const isSmallSize = props.size === "small";
   const height = (isSmallSize && "28px") || "36px";
+  const isPill = props.pill;
   const color = (theme: any) => {
     return (isGreyColor && theme.palette.common.black) || theme.palette.common.white;
   };
@@ -97,6 +99,7 @@ const Button = ({ arrow, loading, href, ...props }: ButtonProps) => {
           color,
           backgroundColor,
           background,
+          "borderRadius": isPill ? "20px" : "8px",
           ...(isGreyColor &&
             isDark && {
               "background": theme.palette.grey[70],
@@ -268,11 +271,17 @@ const Button = ({ arrow, loading, href, ...props }: ButtonProps) => {
             backgroundColor,
           },
           "& .MuiButton-startIcon": {
-            color: isGreyColor ? (theme: any) => theme.palette.grey[20] : "inherit",
+            color: "inherit",
           },
           "& .MuiButton-endIcon": {
-            color: isGreyColor ? (theme: any) => theme.palette.grey[20] : "inherit",
+            color: "inherit",
           },
+          ...(isGreyColor &&
+            !isBorderedVariant && {
+              "&:hover": {
+                backgroundColor: theme.palette.grey[40],
+              },
+            }),
           ...onlyIconStyle,
         }}
         {...props}
