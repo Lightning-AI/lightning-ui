@@ -119,7 +119,6 @@ const palette: PaletteOptions = {
   divider,
   background,
   text,
-  mode: "dark",
 };
 
 export default palette;

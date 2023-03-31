@@ -120,7 +120,6 @@ const palette: PaletteOptions = {
   divider,
   background,
   text,
-  mode: "light",
 };
 
 export default palette;
