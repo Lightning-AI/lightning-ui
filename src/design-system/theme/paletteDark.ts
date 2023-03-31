@@ -17,18 +17,18 @@ const primary: PaletteColorOptions & Record<string, any> = {
   "gradient": "linear-gradient(205deg, #BB8BFF 8.49%, #75F6FF 91.51%)",
 };
 const secondary: PaletteColorOptions & Record<string, string> = {
-  "main": "#5B5E69",
-  "10": "#131416",
-  "20": "#2B2C31",
-  "30": "#42444C",
-  "40": "#5B5E69",
-  "50": "#727583",
-  "60": "#8C909C",
-  "70": "#A8AAB3",
-  "80": "#C3C5CB",
-  "90": "#DEDFE3",
-  "100": "#FAFAFA",
-  "contrastText": "#5B5E69",
+  "main": "#008087",
+  "10": "#000708",
+  "20": "#001F21",
+  "30": "#00383B",
+  "40": "#005054",
+  "50": "#00686E",
+  "60": "#008087",
+  "70": "#0098A1",
+  "80": "#00B0BA",
+  "90": "#00C9D4",
+  "100": "#00E1ED",
+  "contrastText": "#1C1C1C",
 };
 const info: PaletteColorOptions & Record<string, string> = {
   "main": "#1877F2",
@@ -84,30 +84,30 @@ const error: PaletteColorOptions & Record<string, string> = {
 };
 const grey: ColorPartial & Record<string, string> = {
   "main": "#DEDFE3",
-  "10": "#131416",
-  "20": "#2B2C31",
-  "30": "#42444C",
-  "40": "#5B5E69",
-  "50": "#727583",
-  "60": "#8C909C",
-  "70": "#A8AAB3",
-  "80": "#C3C5CB",
-  "90": "#DEDFE3",
-  "100": "#FAFAFA",
-  "contrastText": "#131416",
+  "10": "#030303",
+  "20": "#1C1C1C",
+  "30": "#363636",
+  "40": "#4F4F4F",
+  "50": "#696969",
+  "60": "#828282",
+  "70": "#9C9C9C",
+  "80": "#B5B5B5",
+  "90": "#CFCFCF",
+  "100": "#E8E8E8",
+  "contrastText": "#1C1C1C",
 };
 const background: Partial<TypeBackground> = {
-  default: "#131416",
-  paper: "#131416",
+  default: "#1C1C1C",
+  paper: "#1C1C1C",
 };
 
 const text: Partial<TypeText> = {
-  primary: "#DEDFE3",
-  secondary: "#C3C5CB",
-  disabled: "#8C909C",
+  primary: "#FAFAFA",
+  secondary: "#CFCFCF",
+  disabled: "#828282",
 };
 
-const divider = grey["90"];
+const divider = grey["80"];
 const palette: PaletteOptions = {
   primary,
   secondary,
