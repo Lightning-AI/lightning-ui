@@ -21,9 +21,33 @@ export const All = () => {
         </Typography>
         <Box display={"flex"}>
           <Box display={"flex"} flexDirection={"column"}>
+            <Box m={1} width={65} height={65} sx={{ backgroundColor: "primary.100" }}></Box>
+            <Typography variant={"body1"} align={"center"}>
+              100
+            </Typography>
+          </Box>
+          <Box display={"flex"} flexDirection={"column"}>
+            <Box m={1} width={65} height={65} sx={{ backgroundColor: "primary.90" }}></Box>
+            <Typography variant={"body1"} align={"center"}>
+              90
+            </Typography>
+          </Box>
+          <Box display={"flex"} flexDirection={"column"}>
+            <Box m={1} width={65} height={65} sx={{ backgroundColor: "primary.80" }}></Box>
+            <Typography variant={"body1"} align={"center"}>
+              80
+            </Typography>
+          </Box>
+          <Box display={"flex"} flexDirection={"column"}>
             <Box m={1} width={65} height={65} sx={{ backgroundColor: "primary.70" }}></Box>
             <Typography variant={"body1"} align={"center"}>
               70
+            </Typography>
+          </Box>
+          <Box display={"flex"} flexDirection={"column"}>
+            <Box m={1} width={65} height={65} sx={{ backgroundColor: "primary.60" }}></Box>
+            <Typography variant={"body1"} align={"center"}>
+              60
             </Typography>
           </Box>
           <Box display={"flex"} flexDirection={"column"}>
@@ -36,6 +60,12 @@ export const All = () => {
             <Box m={1} width={65} height={65} sx={{ backgroundColor: "primary.40" }}></Box>
             <Typography variant={"body1"} align={"center"}>
               40
+            </Typography>
+          </Box>
+          <Box display={"flex"} flexDirection={"column"}>
+            <Box m={1} width={65} height={65} sx={{ backgroundColor: "primary.30" }}></Box>
+            <Typography variant={"body1"} align={"center"}>
+              30
             </Typography>
           </Box>
           <Box display={"flex"} flexDirection={"column"}>
@@ -74,6 +104,12 @@ export const All = () => {
             </Typography>
           </Box>
           <Box display={"flex"} flexDirection={"column"}>
+            <Box m={1} width={65} height={65} sx={{ backgroundColor: "secondary.60" }}></Box>
+            <Typography variant={"body1"} align={"center"}>
+              60
+            </Typography>
+          </Box>
+          <Box display={"flex"} flexDirection={"column"}>
             <Box m={1} width={65} height={65} sx={{ backgroundColor: "secondary.50" }}></Box>
             <Typography variant={"body1"} align={"center"}>
               50
@@ -83,6 +119,12 @@ export const All = () => {
             <Box m={1} width={65} height={65} sx={{ backgroundColor: "secondary.40" }}></Box>
             <Typography variant={"body1"} align={"center"}>
               40
+            </Typography>
+          </Box>
+          <Box display={"flex"} flexDirection={"column"}>
+            <Box m={1} width={65} height={65} sx={{ backgroundColor: "secondary.30" }}></Box>
+            <Typography variant={"body1"} align={"center"}>
+              30
             </Typography>
           </Box>
           <Box display={"flex"} flexDirection={"column"}>
@@ -111,9 +153,27 @@ export const All = () => {
             </Typography>
           </Box>
           <Box display={"flex"} flexDirection={"column"}>
+            <Box m={1} width={65} height={65} sx={{ backgroundColor: "success.60" }}></Box>
+            <Typography variant={"body1"} align={"center"}>
+              60
+            </Typography>
+          </Box>
+          <Box display={"flex"} flexDirection={"column"}>
             <Box m={1} width={65} height={65} sx={{ backgroundColor: "success.50" }}></Box>
             <Typography variant={"body1"} align={"center"}>
               50
+            </Typography>
+          </Box>
+          <Box display={"flex"} flexDirection={"column"}>
+            <Box m={1} width={65} height={65} sx={{ backgroundColor: "success.40" }}></Box>
+            <Typography variant={"body1"} align={"center"}>
+              40
+            </Typography>
+          </Box>
+          <Box display={"flex"} flexDirection={"column"}>
+            <Box m={1} width={65} height={65} sx={{ backgroundColor: "success.30" }}></Box>
+            <Typography variant={"body1"} align={"center"}>
+              30
             </Typography>
           </Box>
           <Box display={"flex"} flexDirection={"column"}>
@@ -206,7 +266,25 @@ export const All = () => {
           <Box display={"flex"} flexDirection={"column"}>
             <Box m={1} width={65} height={65} sx={{ backgroundColor: "grey.70" }}></Box>
             <Typography variant={"body1"} align={"center"}>
+              90
+            </Typography>
+          </Box>
+          <Box display={"flex"} flexDirection={"column"}>
+            <Box m={1} width={65} height={65} sx={{ backgroundColor: "grey.70" }}></Box>
+            <Typography variant={"body1"} align={"center"}>
+              80
+            </Typography>
+          </Box>
+          <Box display={"flex"} flexDirection={"column"}>
+            <Box m={1} width={65} height={65} sx={{ backgroundColor: "grey.70" }}></Box>
+            <Typography variant={"body1"} align={"center"}>
               70
+            </Typography>
+          </Box>
+          <Box display={"flex"} flexDirection={"column"}>
+            <Box m={1} width={65} height={65} sx={{ backgroundColor: "grey.60" }}></Box>
+            <Typography variant={"body1"} align={"center"}>
+              60
             </Typography>
           </Box>
           <Box display={"flex"} flexDirection={"column"}>
@@ -219,6 +297,12 @@ export const All = () => {
             <Box m={1} width={65} height={65} sx={{ backgroundColor: "grey.40" }}></Box>
             <Typography variant={"body1"} align={"center"}>
               40
+            </Typography>
+          </Box>
+          <Box display={"flex"} flexDirection={"column"}>
+            <Box m={1} width={65} height={65} sx={{ backgroundColor: "grey.30" }}></Box>
+            <Typography variant={"body1"} align={"center"}>
+              30
             </Typography>
           </Box>
           <Box display={"flex"} flexDirection={"column"}>
