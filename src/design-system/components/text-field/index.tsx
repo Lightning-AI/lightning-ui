@@ -141,7 +141,7 @@ const TextField = React.forwardRef(
             sx={{
               "font": INPUT_TEXT_FONT,
               "height": "36px",
-              "backgroundColor": isDark ? theme.palette.grey["40"] : theme.palette.background.default,
+              "backgroundColor": isDark ? theme.palette.grey["30"] : theme.palette.background.default,
               "borderRadius": type === "number" ? "6px 0 0 6px" : "6px",
               "input": {
                 marginRight: `${marginRightPx}px`,

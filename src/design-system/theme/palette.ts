@@ -103,7 +103,7 @@ const background: Partial<TypeBackground> = {
 };
 
 const text: Partial<TypeText> = {
-  primary: "#FAFAFA",
+  primary: "#1C1C1C",
   secondary: "#CFCFCF",
   disabled: "#828282",
 };
@@ -120,6 +120,7 @@ const palette: PaletteOptions = {
   divider,
   background,
   text,
+  mode: "light",
 };
 
 export default palette;

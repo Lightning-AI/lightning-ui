@@ -34,7 +34,11 @@ const Button = ({ arrow, loading, href, ...props }: ButtonProps) => {
   const height = (isSmallSize && "28px") || "36px";
   const isPill = props.pill;
   const color = (theme: any) => {
-    return (isGreyColor && theme.palette.common.black) || theme.palette.common.white;
+    return (
+      (isGreyColor && theme.palette.common.black) ||
+      (isDark && theme.palette.common.black) ||
+      theme.palette.common.white
+    );
   };
   const background = (theme: any) => {
     return isPrimaryColor && theme.palette.primary.gradient;
