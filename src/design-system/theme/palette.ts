@@ -3,6 +3,7 @@ import { ColorPartial, TypeBackground, TypeText } from "@mui/material/styles/cre
 
 const primary: PaletteColorOptions & Record<string, any> = {
   "main": "#792EE5",
+  "5": "#F7F6FF",
   "10": "#F7F1FD",
   "20": "#EEE4FC",
   "30": "#D0B6F6",
@@ -13,7 +14,7 @@ const primary: PaletteColorOptions & Record<string, any> = {
   "80": "#4B139A",
   "90": "#350E6D",
   "100": "#1F0840",
-  "contrastText": "#FFFFFF",
+  "contrastText": "#4F00BA",
   "oppositeMainText": "#FFFFFF",
   "gradient": "linear-gradient(225deg, #792EE5 0%, #428FF4 100%)",
 };
@@ -29,7 +30,7 @@ const secondary: PaletteColorOptions & Record<string, string> = {
   "80": "#00383B",
   "90": "#001F21",
   "100": "#000708",
-  "contrastText": "#1C1C1C",
+  "contrastText": "#008087",
 };
 const info: PaletteColorOptions & Record<string, string> = {
   "main": "#1877F2",
@@ -42,7 +43,7 @@ const info: PaletteColorOptions & Record<string, string> = {
   "70": "#09489B",
   "80": "#06326A",
   "90": "#031B3A",
-  "contrastText": "#FFFFFF",
+  "contrastText": "rgba(0, 59, 135, 1)",
 };
 const success: PaletteColorOptions & Record<string, string> = {
   "main": "#3F9956",
@@ -55,7 +56,7 @@ const success: PaletteColorOptions & Record<string, string> = {
   "70": "#257939",
   "80": "#195227",
   "90": "#0D2B14",
-  "contrastText": "FFFFFF",
+  "contrastText": "#16593D",
 };
 const warning: PaletteColorOptions & Record<string, string> = {
   "main": "#FCBE2E",
@@ -68,7 +69,7 @@ const warning: PaletteColorOptions & Record<string, string> = {
   "70": "#823E1A",
   "80": "#5B4001",
   "90": "#281C01",
-  "contrastText": "#1C1C1C",
+  "contrastText": "#823E1A",
 };
 const error: PaletteColorOptions & Record<string, string> = {
   "main": "#E02C2D",
@@ -81,7 +82,7 @@ const error: PaletteColorOptions & Record<string, string> = {
   "70": "#931616",
   "80": "#660F10",
   "90": "#3A0809",
-  "contrastText": "#FFFFFF",
+  "contrastText": "#821D1E",
 };
 const grey: ColorPartial & Record<string, string> = {
   "main": "#E8E8E8",
@@ -95,7 +96,10 @@ const grey: ColorPartial & Record<string, string> = {
   "80": "#363636",
   "90": "#1C1C1C",
   "100": "#030303",
-  "contrastText": "#1C1C1C",
+  "contrastText": "#5B5E69",
+  "oppositeBackground": "#0E061C",
+  "shadow":
+    "0px 3px 5px -1px rgba(45, 64, 86, 0.2), 0px 6px 10px rgba(45, 64, 86, 0.14), 0px 1px 18px rgba(45, 64, 86, 0.12)",
 };
 const background: Partial<TypeBackground> = {
   default: "#FFF",
@@ -108,7 +112,7 @@ const text: Partial<TypeText> = {
   disabled: "#828282",
 };
 
-const divider = grey["10"];
+const divider = grey["20"];
 const palette: PaletteOptions = {
   primary,
   secondary,
