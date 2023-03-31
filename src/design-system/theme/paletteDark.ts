@@ -85,7 +85,7 @@ const error: PaletteColorOptions & Record<string, string> = {
 const grey: ColorPartial & Record<string, string> = {
   "main": "#DEDFE3",
   "10": "#030303",
-  "20": "#1C1C1C",
+  "20": "#373942",
   "30": "#363636",
   "40": "#4F4F4F",
   "50": "#696969",
