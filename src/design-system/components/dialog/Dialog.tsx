@@ -28,6 +28,12 @@ const Dialog = ({ PaperProps, ...props }: DialogProps) => {
             "color": theme.palette.common.black,
             "&:hover": { color: theme.palette.common.white },
           },
+          "*:hover::-webkit-scrollbar-thumb": {
+            background: theme.palette.primary[60],
+          },
+          "*:hover::-webkit-scrollbar-track": {
+            background: theme.palette.common.black,
+          },
         }),
       }}
       {...props}
