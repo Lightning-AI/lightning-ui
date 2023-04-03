@@ -51,11 +51,7 @@ export default function Breadcrumbs({ items }: BreadcrumbsProps) {
   if (previousItems.length > 2) {
     previousItems = [
       previousItems[0],
-      <Box
-        display={"flex"}
-        alignItems={"end"}
-        key={items.length - 1}
-        color={isDark ? theme.palette.grey[70] : "rgba(91, 94, 105, 1)"}>
+      <Box display={"flex"} alignItems={"end"} key={items.length - 1} color={theme.palette.grey[70]}>
         <MoreHoriz />
       </Box>,
       previousItems.slice(-1)[0],
