@@ -17,10 +17,13 @@ const Dialog = ({ PaperProps, ...props }: DialogProps) => {
         },
       }}
       sx={{
-        "color": (theme: any) => theme.palette.text.primary,
-        ".MuiFormControl-root p, .MuiButton-containedGrey": { color: (theme: any) => theme.palette.text.primary },
-        "svg[data-testid='CloseIcon']:hover": { color: (theme: any) => theme.palette.primary[50] },
+        "color": theme.palette.text.primary,
+        ".MuiFormControl-root p, .MuiButton-containedGrey": { color: theme.palette.text.primary },
+        "svg[data-testid='CloseIcon']:hover": { color: theme.palette.primary[50] },
         ...(isDark && {
+          ".MuiOutlinedInput-root": {
+            background: theme.palette.grey["20"],
+          },
           ".MuiButton-containedGrey": {
             "color": theme.palette.common.black,
             "&:hover": { color: theme.palette.common.white },
