@@ -72,7 +72,7 @@ const warning: PaletteColorOptions & Record<string, string> = {
 };
 const error: PaletteColorOptions & Record<string, string> = {
   "main": "#E02C2D",
-  "10": "#3A0809",
+  "10": "#660F10",
   "20": "#660F10",
   "30": "#931616",
   "40": "#BF1C1D",
