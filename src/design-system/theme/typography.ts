@@ -1,7 +1,7 @@
 import { TypographyOptions } from "@mui/material/styles/createTypography";
 
 const typography: TypographyOptions = {
-  fontFamily: `"Inter var", Roboto, sans-serif`,
+  fontFamily: `"Inter", Roboto, sans-serif`,
   h1: {
     fontWeight: 700,
     fontSize: "80px",
