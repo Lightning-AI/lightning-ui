@@ -3,12 +3,12 @@ import { ColorPartial, TypeBackground, TypeText } from "@mui/material/styles/cre
 
 const primary: PaletteColorOptions & Record<string, any> = {
   "main": "#792EE5",
-  "5": "#E8E8E8",
+  "5": "#F7F1FD",
   "10": "#F7F1FD",
   "20": "#EEE4FC",
   "30": "#D0B6F6",
   "40": "#B389F0",
-  "50": "#965CEB",
+  "50": "#6019C8",
   "60": "#792EE5",
   "70": "#6019C8",
   "80": "#4B139A",
