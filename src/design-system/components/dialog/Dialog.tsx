@@ -21,7 +21,7 @@ const Dialog = ({ PaperProps, ...props }: DialogProps) => {
         ".MuiFormControl-root p, .MuiButton-containedGrey": { color: theme.palette.text.primary },
         "svg[data-testid='CloseIcon']:hover": { color: theme.palette.primary[50] },
         ...(isDark && {
-          ".MuiOutlinedInput-root": {
+          ".MuiOutlinedInput-root:not(.body2)": {
             background: theme.palette.grey["20"],
           },
           ".MuiButton-containedGrey": {
