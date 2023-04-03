@@ -2,6 +2,7 @@ import { ReactNode } from "react";
 
 import MuiAlert, { AlertProps as MuiAlertProps } from "@mui/material/Alert";
 import MuiAlertTitle from "@mui/material/AlertTitle";
+import { useTheme } from "@mui/material/styles";
 
 import { Box } from "..";
 import { CheckCircle, Dangerous, Info, Warning } from "../../icons";
@@ -35,6 +36,8 @@ const Alert = ({ children, show, ...props }: AlertProps) => {
   const iconPaddingBottom = !hasChildren ? 0 : 0.5;
   const alignItems = hasMoreThanOneLine ? "flex-start" : "center";
   const alignItemsAction = typeof props?.action !== "undefined" ? "center" : "flex-start";
+  const theme: any = useTheme();
+  const isDark = theme.palette.mode === "dark";
   const onCloseHandler = (event: any) => {
     props.onClose && props.onClose(event);
   };
@@ -83,7 +86,18 @@ const Alert = ({ children, show, ...props }: AlertProps) => {
         }}>
         {props.title}
       </MuiAlertTitle>
-      {children && <Box paddingTop={props?.title && 0.5}>{children}</Box>}
+      {children && (
+        <Box
+          sx={{
+            ...(isDark && {
+              "color": theme.palette.common.black,
+              ".MuiTypography-root": { color: theme.palette.common.black },
+            }),
+          }}
+          paddingTop={props?.title && 0.5}>
+          {children}
+        </Box>
+      )}
     </MuiAlert>
   ) : null;
 };

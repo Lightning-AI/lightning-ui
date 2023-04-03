@@ -259,7 +259,7 @@ const Select = React.forwardRef(
                       <CheckboxBase checked={(selectedValue as Array<string>).includes(option.value)} />
                     </Box>
                   ) : (
-                    <Box marginTop={-1.75} marginLeft={-1} paddingRight={2}>
+                    <Box marginTop={-1.15} marginLeft={-1} paddingRight={2}>
                       <RadioBase checked={option.value === selectedValue} />
                     </Box>
                   )}

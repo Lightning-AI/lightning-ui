@@ -2,6 +2,7 @@ import React from "react";
 
 import MuiBreadcrumbs from "@mui/material/Breadcrumbs";
 import MuiLink from "@mui/material/Link";
+import { useTheme } from "@mui/material/styles";
 import { useNavigate } from "react-router-dom";
 
 import { Box, Typography } from "../";
@@ -15,6 +16,8 @@ export type BreadcrumbsProps = {
 
 export default function Breadcrumbs({ items }: BreadcrumbsProps) {
   const navigate = useNavigate();
+  const theme: any = useTheme();
+  const isDark = theme.palette.mode === "dark";
   const onClickHandler = (
     url: string,
   ): React.MouseEventHandler<HTMLAnchorElement> & React.MouseEventHandler<HTMLSpanElement> => {
@@ -31,7 +34,10 @@ export default function Breadcrumbs({ items }: BreadcrumbsProps) {
     textDecoration: "none",
   };
   const lastItem = items.slice(-1).map(item => (
-    <Typography key={items.length - 1} color={"black"} sx={itemStyle}>
+    <Typography
+      key={items.length - 1}
+      color={isDark ? theme.palette.common.white : theme.palette.common.black}
+      sx={itemStyle}>
       {item.title}
     </Typography>
   ));
@@ -45,7 +51,7 @@ export default function Breadcrumbs({ items }: BreadcrumbsProps) {
   if (previousItems.length > 2) {
     previousItems = [
       previousItems[0],
-      <Box display={"flex"} alignItems={"end"} key={items.length - 1} color={"rgba(91, 94, 105, 1)"}>
+      <Box display={"flex"} alignItems={"end"} key={items.length - 1} color={theme.palette.grey[70]}>
         <MoreHoriz />
       </Box>,
       previousItems.slice(-1)[0],

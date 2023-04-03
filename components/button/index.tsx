@@ -1,4 +1,4 @@
-import { MouseEventHandler, ReactNode, useRef } from "react";
+import { MouseEventHandler, ReactNode } from "react";
 
 import { ArrowDropDownRounded } from "@mui/icons-material";
 import { Button as MuiButton, ButtonProps as MuiButtonProps } from "@mui/material";
@@ -25,7 +25,6 @@ const Button = ({ arrow, loading, href, ...props }: ButtonProps) => {
   const theme: any = useTheme();
   const isDark = theme.palette.mode === "dark";
   const isTextVariant = props.variant === "text";
-  const buttonRef = useRef<HTMLButtonElement>(null);
   const isCursorVariant = props.cursor;
   const isPrimaryColor = !isTextVariant && (typeof props.color === "undefined" || props.color?.startsWith("primary"));
   const isGreyColor = isTextVariant || props.color?.startsWith("grey");
@@ -34,7 +33,11 @@ const Button = ({ arrow, loading, href, ...props }: ButtonProps) => {
   const height = (isSmallSize && "28px") || "36px";
   const isPill = props.pill;
   const color = (theme: any) => {
-    return (isGreyColor && theme.palette.common.black) || theme.palette.common.white;
+    return (
+      (isGreyColor && theme.palette.common.black) ||
+      (isDark && theme.palette.common.black) ||
+      theme.palette.common.white
+    );
   };
   const background = (theme: any) => {
     return isPrimaryColor && theme.palette.primary.gradient;
@@ -187,7 +190,6 @@ const Button = ({ arrow, loading, href, ...props }: ButtonProps) => {
         variant={variant}
         onClick={onClickHandler}
         onMouseMove={isCursorVariant ? mouseMoveHandler : undefined}
-        ref={buttonRef}
         href={href}>
         {!!props.text && (
           <Box fontStyle={"normal"} fontSize={"14px"} lineHeight={"20px"}>
