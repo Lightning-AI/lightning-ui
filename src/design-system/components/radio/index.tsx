@@ -1,6 +1,7 @@
 import React, { ReactNode } from "react";
 
 import { CheckCircle, Dangerous, Info, Warning } from "@mui/icons-material";
+import { useTheme } from "@mui/material/styles";
 
 import { FormControlLabel, Stack } from "../";
 import FormControlContainer, { FormControlContainerProps } from "../form-control/FormControlContainer";
@@ -32,6 +33,7 @@ const statusIcon = {
 
 const Radio = (props: RadioProps) => {
   const { statusText, status } = props;
+  const theme: any = useTheme();
   return (
     <FormControlContainer {...props}>
       <FormControlLabel
@@ -44,7 +46,8 @@ const Radio = (props: RadioProps) => {
           "display": "block",
           "marginX": 0,
           "borderRadius": "6px",
-          "backgroundColor": props.checked ? "#EFEEFF" : "initial",
+          "backgroundColor": props.checked ? theme.palette.primary[5] : "initial",
+          "color": theme.palette.text.primary,
           "& .MuiFormControlLabel-label": {
             fontWeight: 400,
             fontSize: "14px",
