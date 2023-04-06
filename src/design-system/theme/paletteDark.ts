@@ -14,6 +14,7 @@ const primary: PaletteColorOptions & Record<string, any> = {
   "80": "#D0B6F6",
   "90": "#EEE4FC",
   "100": "#F7F1FD",
+  "oppositeMainText": "#1C1C1C",
   "contrastText": "#FFFFFF",
   "gradient": "linear-gradient(205deg, #BB8BFF 8.49%, #75F6FF 91.51%)",
 };
@@ -95,6 +96,7 @@ const grey: ColorPartial & Record<string, string> = {
   "80": "#B5B5B5",
   "90": "#CFCFCF",
   "100": "#E8E8E8",
+  "oppositeBackground": "#FFF",
   "contrastText": "#1C1C1C",
 };
 const background: Partial<TypeBackground> = {
