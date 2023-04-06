@@ -20,6 +20,20 @@ const Dialog = ({ PaperProps, ...props }: DialogProps) => {
         "color": theme.palette.text.primary,
         ".MuiFormControl-root p, .MuiButton-containedGrey": { color: theme.palette.text.primary },
         "svg[data-testid='CloseIcon']:hover": { color: theme.palette.primary[50] },
+        "*:hover::-webkit-scrollbar-thumb": {
+          background: isDark ? theme.palette.primary[60] : theme.palette.primary[30],
+        },
+        "*:hover::-webkit-scrollbar-track": {
+          background: isDark ? theme.palette.common.black : theme.palette.primary[10],
+        },
+        "*::-webkit-scrollbar-thumb, *::-webkit-scrollbar-track": {
+          background: "transparent",
+          borderRadius: "8px",
+        },
+        "*::-webkit-scrollbar": {
+          width: "4px",
+          height: "4px",
+        },
         ...(isDark && {
           ".MuiOutlinedInput-root:not(.body2)": {
             background: theme.palette.grey["20"],
@@ -27,12 +41,6 @@ const Dialog = ({ PaperProps, ...props }: DialogProps) => {
           ".MuiButton-containedGrey": {
             "color": theme.palette.common.black,
             "&:hover": { color: theme.palette.common.white },
-          },
-          "*:hover::-webkit-scrollbar-thumb": {
-            background: theme.palette.primary[60],
-          },
-          "*:hover::-webkit-scrollbar-track": {
-            background: theme.palette.common.black,
           },
         }),
       }}

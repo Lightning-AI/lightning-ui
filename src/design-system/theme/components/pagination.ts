@@ -19,7 +19,7 @@ const pagination: any = {
           },
           "&.Mui-selected": {
             color: theme.palette.primary.main,
-            backgroundColor: theme.palette.primary["10"],
+            backgroundColor: theme.palette.primary["5"],
           },
           "&.Mui-selected:hover": {
             color: theme.palette.primary.main,
