@@ -52,13 +52,13 @@ const typography: TypographyOptions = {
   },
   body1: {
     fontWeight: 400,
-    fontSize: "14px",
+    fontSize: "16px",
     letterSpacing: "-0.015em",
     lineHeight: "normal",
   },
   body2: {
     fontWeight: 400,
-    fontSize: "12px",
+    fontSize: "14px",
     letterSpacing: "-0.01em",
   },
   caption: {
