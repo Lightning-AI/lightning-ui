@@ -201,7 +201,7 @@ const Select = React.forwardRef(
               paddingLeft: "8px",
             },
             "& .MuiInputBase-adornedStart > .MuiSvgIcon-root:first-of-type": {
-              color: "#050505",
+              color: (theme: any) => theme.palette.grey[100],
               paddingRight: "8px",
               paddingLeft: "12px",
               left: "0px",

@@ -15,11 +15,13 @@ const tabs: any = {
         return {
           "textTransform": "none",
           "fontSize": "14px",
-          "&.Mui-selected": {
+          "&.MuiTab-root.Mui-selected": {
             border: ownerState.variant === "outlined" && "1px solid",
             borderRadius: "6px 6px 0 0",
             borderColor: theme.palette.divider,
-            backgroundColor: ownerState.variant === "outlined" && "white",
+            backgroundColor: ownerState.variant === "outlined" ? "white" : theme.palette.primary[5],
+            color: theme.palette.primary[50],
+            background: ownerState.variant === "outlined" ? "white" : theme.palette.primary[5],
           },
         };
       },
