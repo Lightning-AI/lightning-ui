@@ -15,7 +15,7 @@ const Tooltip = ({
   children,
   placement = "top",
   width,
-  interactive = true,
+  interactive = false,
   delay = 500,
   enterNextDelay = 400,
 }: TooltipProps) => {
@@ -23,7 +23,7 @@ const Tooltip = ({
     <MuiTooltip
       title={title}
       placement={placement}
-      disableInteractive={interactive}
+      disableInteractive={!interactive}
       enterDelay={delay}
       enterNextDelay={enterNextDelay}>
       <Box component={"span"} sx={{ cursor: title ? "pointer" : "inherit", width }}>
