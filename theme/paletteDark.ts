@@ -18,7 +18,32 @@ const primary: PaletteColorOptions & Record<string, any> = {
   "contrastText": "#FFFFFF",
   "gradient": "linear-gradient(205deg, #BB8BFF 8.49%, #75F6FF 91.51%)",
 };
+
+const wheel: PaletteColorOptions & Record<string, string> = {
+  c1: "#FA00F0", // purple
+  c2: "#00FA9A", // green
+  c3: "#FA0000", // red
+  c4: "#0091FA", // blue
+  c5: "#FFD700", // yellow
+  c6: "#FF6666", // fuscia
+  c7: "#D22CE0", // coral
+  c8: "#5CDB95", // turquoise
+  c9: "#FFA500", // orange
+  c10: "#00CED1", // dark turquoise
+  c11: "#F1AA03", // gold
+  c12: "#BA55D3", // medium orchid
+  c13: "#1E90FF", // dodger blue
+  c14: "#FF1493", // deep pink
+  c15: "#228B22", // forest green
+  c16: "#800000", // maroon
+  c17: "#FF00FF", // magenta
+  c18: "#3FC55F", // medium spring green
+  c19: "#8B008B", // dark magenta
+  c20: "#808080", // gray
+};
+
 const secondary: PaletteColorOptions & Record<string, string> = {
+  ...wheel,
   "main": "#008087",
   "10": "#000708",
   "20": "#001F21",
@@ -99,6 +124,7 @@ const grey: ColorPartial & Record<string, string> = {
   "oppositeBackground": "#FFF",
   "contrastText": "#1C1C1C",
 };
+
 const background: Partial<TypeBackground> = {
   default: "#1C1C1C",
   paper: "#1C1C1C",

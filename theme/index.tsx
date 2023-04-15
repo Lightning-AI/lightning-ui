@@ -24,7 +24,10 @@ export const darkTheme = createTheme({
 
 const ThemeProvider = ({ children, colorScheme }: { children: ReactNode; colorScheme?: "light" | "dark" }) => {
   useEffect(() => {
-    document.body?.style.setProperty("background",  colorScheme === "dark" ? darkTheme.palette.background.default : theme.palette.background.default);
+    document.body?.style.setProperty(
+      "background",
+      colorScheme === "dark" ? darkTheme.palette.background.default : theme.palette.background.default,
+    );
   }, [colorScheme]);
   return <MuiThemeProvider theme={colorScheme === "dark" ? darkTheme : theme} children={children} />;
 };
