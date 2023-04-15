@@ -84,6 +84,7 @@ const error: PaletteColorOptions & Record<string, string> = {
   "90": "#3A0809",
   "contrastText": "#821D1E",
 };
+
 const grey: ColorPartial & Record<string, string> = {
   "main": "#E8E8E8",
   "10": "#E8E8E8",
@@ -101,6 +102,31 @@ const grey: ColorPartial & Record<string, string> = {
   "shadow":
     "0px 3px 5px -1px rgba(45, 64, 86, 0.2), 0px 6px 10px rgba(45, 64, 86, 0.14), 0px 1px 18px rgba(45, 64, 86, 0.12)",
 };
+
+const wheel: ColorPartial & Record<string, string> = {
+  "1": "#792EE5", // purple
+  "2": "#3FC55F", // green
+  "3": "#E02C2D", // red
+  "4": "#0046FA", // blue
+  "5": "#F1AA03", // yellow
+  "6": "#D22CE0", // fuscia
+  "7": "#FF6666", // coral
+  "8": "#5CDB95", // turquoise
+  "9": "#FFA500", // orange
+  "10": "#00CED1", // dark turquoise
+  "11": "#FFD700", // gold
+  "12": "#BA55D3", // medium orchid
+  "13": "#1E90FF", // dodger blue
+  "14": "#FF1493", // deep pink
+  "15": "#228B22", // forest green
+  "16": "#800000", // maroon
+  "17": "#FF00FF", // magenta
+  "18": "#00FA9A", // medium spring green
+  "19": "#8B008B", // dark magenta
+  "20": "#808080" // gray
+};
+
+
 const background: Partial<TypeBackground> = {
   default: "#FFF",
   paper: "#FFF",

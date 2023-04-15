@@ -99,6 +99,29 @@ const grey: ColorPartial & Record<string, string> = {
   "oppositeBackground": "#FFF",
   "contrastText": "#1C1C1C",
 };
+const wheel: ColorPartial & Record<string, string> = {
+  "1": "#FA00F0", // purple
+  "2": "#00FA9A", // green
+  "3": "#FA0000", // red
+  "4": "#0091FA", // blue
+  "5": "#FFD700", // yellow
+  "6": "#FF6666", // fuscia
+  "7": "#D22CE0", // coral
+  "8": "#5CDB95", // turquoise
+  "9": "#FFA500", // orange
+  "10": "#00CED1", // dark turquoise
+  "11": "#F1AA03", // gold
+  "12": "#BA55D3", // medium orchid
+  "13": "#1E90FF", // dodger blue
+  "14": "#FF1493", // deep pink
+  "15": "#228B22", // forest green
+  "16": "#800000", // maroon
+  "17": "#FF00FF", // magenta
+  "18": "#3FC55F", // medium spring green
+  "19": "#8B008B", // dark magenta
+  "20": "#808080" // gray
+};
+
 const background: Partial<TypeBackground> = {
   default: "#1C1C1C",
   paper: "#1C1C1C",
