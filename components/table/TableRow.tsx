@@ -1,4 +1,4 @@
-import React, { ReactNode, useState } from "react";
+import { ReactNode, useState } from "react";
 
 import MuiTableCell from "@mui/material/TableCell";
 import MuiTableRow from "@mui/material/TableRow";
