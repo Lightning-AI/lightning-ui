@@ -26,7 +26,10 @@ export default function TableRow(props: TableRowProps) {
   return (
     <>
       <MuiTableRow
-        sx={{ ":hover": { bgcolor: (theme: any) => +theme.palette.primary[5] + " !important" } }}
+        sx={{
+          ":hover": { bgcolor: (theme: any) => +theme.palette.primary[5] + " !important" },
+          "transition": "0.2s ease-in-out",
+        }}
         hover={!!props.hover}>
         {props.cells.map((cell, index) => (
           <MuiTableCell key={index} sx={cellStyle}>

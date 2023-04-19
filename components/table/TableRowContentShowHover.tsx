@@ -8,5 +8,9 @@ type TableRowContentShowOnHoverProps = {
 export const TableRowContentShowOnHoverClass = "LaiTableRowContentShowOnHover";
 
 export function TableRowContentShowOnHoverWrapper({ children, showAlways }: TableRowContentShowOnHoverProps) {
-  return <Box display={"inline"} className={showAlways ? undefined : TableRowContentShowOnHoverClass}>{children}</Box>;
+  return (
+    <Box display={"inline"} className={showAlways ? undefined : TableRowContentShowOnHoverClass}>
+      {children}
+    </Box>
+  );
 }

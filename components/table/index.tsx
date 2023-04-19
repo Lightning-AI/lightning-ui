@@ -37,9 +37,11 @@ const Table = (props: TableProps) => {
         sx={{
           [`& .MuiTableRow-root:hover .${TableRowContentShowOnHoverClass}`]: {
             opacity: 1,
+            transition: "0.2s ease-in-out",
           },
           [`& .MuiTableRow-root .${TableRowContentShowOnHoverClass}`]: {
             opacity: 0,
+            transition: "0.2s ease-in-out",
           },
           ...(props.border
             ? {
