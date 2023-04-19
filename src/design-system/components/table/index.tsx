@@ -34,27 +34,24 @@ const Table = (props: TableProps) => {
   return (
     <MuiTableContainer>
       <Box
-        sx={
-          {
-            [`& .MuiTableRow-root:hover .${TableRowContentShowOnHoverClass}`]: {
-              opacity: 0,
-            },
-            [`& .MuiTableRow-root .${TableRowContentShowOnHoverClass}`]: {
-              opacity: 1,
-            },
-            ...(props.border
-              ? {
-                  padding: "24px",
-                  margin: "8px",
-                  boxShadow: "0px 2px 8px rgba(0, 0, 0, 0.1), 0px 1px 1px rgba(0, 0, 0, 0.1)",
-                  borderRadius: "8px",
-                  minWidth: "fit-content",
-                }
-              : {}
-            ),
-            ...props.sx,
-          }
-        }>
+        sx={{
+          [`& .MuiTableRow-root:hover .${TableRowContentShowOnHoverClass}`]: {
+            opacity: 0,
+          },
+          [`& .MuiTableRow-root .${TableRowContentShowOnHoverClass}`]: {
+            opacity: 1,
+          },
+          ...(props.border
+            ? {
+                padding: "24px",
+                margin: "8px",
+                boxShadow: "0px 2px 8px rgba(0, 0, 0, 0.1), 0px 1px 1px rgba(0, 0, 0, 0.1)",
+                borderRadius: "8px",
+                minWidth: "fit-content",
+              }
+            : {}),
+          ...props.sx,
+        }}>
         <MuiTable>
           <MuiTableHead>
             <MuiTableRow>
