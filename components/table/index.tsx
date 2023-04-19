@@ -7,9 +7,8 @@ import MuiTableContainer from "@mui/material/TableContainer";
 import MuiTableHead from "@mui/material/TableHead";
 import MuiTableRow from "@mui/material/TableRow";
 
-import { Box, BoxProps } from "..";
+import { Box } from "..";
 import TableRow from "./TableRow";
-import { TableRowContentShowOnHoverClass } from "./TableRowContentShowHover";
 
 const tableCellHeaderStyle = {
   fontWeight: 700,
@@ -27,7 +26,6 @@ export type TableProps = {
   rowHover?: boolean;
   rowClick?: any;
   border?: boolean;
-  sx?: BoxProps["sx"];
 };
 
 const Table = (props: TableProps) => {
@@ -35,25 +33,15 @@ const Table = (props: TableProps) => {
     <MuiTableContainer>
       <Box
         sx={
-          {
-            [`& .MuiTableRow-root:hover .${TableRowContentShowOnHoverClass}`]: {
-              opacity: 0,
-            },
-            [`& .MuiTableRow-root .${TableRowContentShowOnHoverClass}`]: {
-              opacity: 1,
-            },
-            ...(props.border
-              ? {
-                  padding: "24px",
-                  margin: "8px",
-                  boxShadow: "0px 2px 8px rgba(0, 0, 0, 0.1), 0px 1px 1px rgba(0, 0, 0, 0.1)",
-                  borderRadius: "8px",
-                  minWidth: "fit-content",
-                }
-              : {}
-            ),
-            ...props.sx,
-          }
+          props.border
+            ? {
+                padding: "24px",
+                margin: "8px",
+                boxShadow: "0px 2px 8px rgba(0, 0, 0, 0.1), 0px 1px 1px rgba(0, 0, 0, 0.1)",
+                borderRadius: "8px",
+                minWidth: "fit-content",
+              }
+            : {}
         }>
         <MuiTable>
           <MuiTableHead>
