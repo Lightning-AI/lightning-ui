@@ -36,10 +36,10 @@ const Table = (props: TableProps) => {
       <Box
         sx={{
           [`& .MuiTableRow-root:hover .${TableRowContentShowOnHoverClass}`]: {
-            opacity: 0,
+            opacity: 1,
           },
           [`& .MuiTableRow-root .${TableRowContentShowOnHoverClass}`]: {
-            opacity: 1,
+            opacity: 0,
           },
           ...(props.border
             ? {
