@@ -30,5 +30,11 @@ jobs:
         with:
           path: ~/.cache/pre-commit
           key: pre-commit|${{ env.PY }}|${{ hashFiles('.pre-commit-config.yaml') }}
+      - uses: actions/cache@v3
+        with:
+          path: node_modules
+          key: my-cache-${{ runner.os }}-${{ hashFiles('yarn.lock') }}
+      - name: Install env.
+        run: yarn install --frozen-lockfile --silent
 
       - uses: pre-commit/action@v3.0.0
