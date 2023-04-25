@@ -53,8 +53,8 @@ repos:
           - mdformat-black
           - mdformat_frontmatter
 
-  - repo: https://github.com/PyCQA/flake8
-    rev: 5.0.4
+  - repo: https://github.com/charliermarsh/ruff-pre-commit
+    rev: v0.0.263
     hooks:
-      - id: flake8
-        name: PEP8
+      - id: ruff
+        args: ["--fix"]
