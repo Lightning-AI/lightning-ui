@@ -5,7 +5,7 @@ ci:
   autofix_prs: true
   autoupdate_commit_msg: "[pre-commit.ci] pre-commit suggestions"
   autoupdate_schedule: quarterly
-  ci-skip-hooks: ["eslint"]
+  skip: ["eslint"]
 
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
