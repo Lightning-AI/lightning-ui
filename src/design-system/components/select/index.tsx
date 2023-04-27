@@ -2,6 +2,7 @@ import React, { ReactNode, useState } from "react";
 
 import { Typography } from "@mui/material";
 import MuiTextField, { TextFieldProps as MuiTextFieldProps } from "@mui/material/TextField";
+import { useTheme } from "@mui/material/styles";
 
 import { Box, MenuItem, Stack } from "../";
 import { CheckCircle, Dangerous, Info, Warning } from "../../icons";
@@ -68,6 +69,8 @@ const Select = React.forwardRef(
 
     const hasStatus = typeof status !== "undefined";
     const isSmall = size === "small";
+    const theme: any = useTheme();
+    const isDark = theme.palette.mode === "dark";
     const onChangeHandler = (event: any) => {
       const value = event.target.value;
       setSelectedValue(value);
@@ -161,10 +164,15 @@ const Select = React.forwardRef(
               fontWeight: "normal",
               fontSize: "14px",
               lineHeight: "20px",
-              backgroundColor: (theme: any) => theme.palette.background.default,
+              backgroundColor: isDark ? theme.palette.grey["10"] : theme.palette.background.default,
               borderRadius: "6px",
               padding: 0,
             },
+            ...(isDark && {
+              "fieldset.MuiOutlinedInput-notchedOutline": {
+                borderColor: theme.palette.grey["50"],
+              },
+            }),
             "& .MuiInputBase-colorPrimary:hover .MuiOutlinedInput-notchedOutline": {
               borderColor: (theme: any) => theme.palette[status ?? "primary"].main,
             },

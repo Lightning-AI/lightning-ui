@@ -141,11 +141,16 @@ const TextField = React.forwardRef(
             sx={{
               "font": INPUT_TEXT_FONT,
               "height": "36px",
-              "backgroundColor": isDark ? theme.palette.grey["30"] : theme.palette.background.default,
+              "backgroundColor": isDark ? theme.palette.grey["10"] : theme.palette.background.default,
               "borderRadius": type === "number" ? "6px 0 0 6px" : "6px",
               "input": {
                 marginRight: `${marginRightPx}px`,
               },
+              ...(isDark && {
+                ".MuiOutlinedInput-notchedOutline": {
+                  borderColor: theme.palette.grey["50"],
+                },
+              }),
               "input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button": {
                 WebkitAppearance: "none",
                 margin: 0 /* <-- Apparently some margin are still there even though it's hidden */,
