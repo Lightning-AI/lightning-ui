@@ -133,7 +133,7 @@ const background: Partial<TypeBackground> = {
 
 const text: Partial<TypeText> = {
   primary: "#FAFAFA",
-  secondary: "#CFCFCF",
+  secondary: "#4F4F4F",
   disabled: "#828282",
 };
 
