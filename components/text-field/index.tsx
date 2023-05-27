@@ -142,7 +142,7 @@ const TextField = React.forwardRef(
               "font": INPUT_TEXT_FONT,
               "height": "36px",
               "backgroundColor": isDark ? theme.palette.grey["10"] : theme.palette.background.default,
-              "borderRadius": type === "number" ? "6px 0 0 6px" : "6px",
+              "borderRadius": type === "number" ? "8px 0 0 8px" : "8px",
               "input": {
                 marginRight: `${marginRightPx}px`,
               },
@@ -166,7 +166,8 @@ const TextField = React.forwardRef(
                 borderColor: (theme: any) => (status ? theme.palette[status].main : undefined),
               },
               "&.Mui-disabled": {
-                backgroundColor: (theme: any) => theme.palette.grey["10"],
+                backgroundColor: "transparent",
+                opacity: 0.5,
               },
               "&.Mui-disabled:hover .MuiOutlinedInput-notchedOutline, &.Mui-error.Mui-disabled .MuiOutlinedInput-notchedOutline":
                 {

@@ -21,7 +21,7 @@ const CheckboxBase = (props: CheckboxOnlyProps) => {
         "& .MuiSvgIcon-root": {
           border: "1.5px solid",
           background: "#FFFFFF",
-          borderRadius: "6px",
+          borderRadius: "8px",
           backgroundSize: "auto",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
