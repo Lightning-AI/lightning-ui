@@ -166,7 +166,8 @@ const TextField = React.forwardRef(
                 borderColor: (theme: any) => (status ? theme.palette[status].main : undefined),
               },
               "&.Mui-disabled": {
-                backgroundColor: (theme: any) => theme.palette.grey["10"],
+                backgroundColor: 'transparent',
+                opacity: 0.5,
               },
               "&.Mui-disabled:hover .MuiOutlinedInput-notchedOutline, &.Mui-error.Mui-disabled .MuiOutlinedInput-notchedOutline":
                 {
