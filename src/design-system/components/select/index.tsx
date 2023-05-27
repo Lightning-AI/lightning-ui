@@ -165,7 +165,7 @@ const Select = React.forwardRef(
               fontSize: "14px",
               lineHeight: "20px",
               backgroundColor: isDark ? theme.palette.grey["10"] : theme.palette.background.default,
-              borderRadius: "6px",
+              borderRadius: "8px",
               padding: 0,
             },
             ...(isDark && {

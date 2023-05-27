@@ -17,7 +17,7 @@ const FormControl = (props: FormControlProps) => {
         display={"flex"}
         flexDirection={"column"}
         sx={{
-          borderRadius: "6px",
+          borderRadius: "8px",
           backgroundColor: status && statusText ? (theme: any) => theme.palette[status]["20"] : "transparent",
         }}>
         {children}
