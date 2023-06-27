@@ -209,8 +209,11 @@ const Select = React.forwardRef(
             },
             ...(multiple && {
               "li.MuiMenuItem-root > div": {
-                height: "23px",
-                alignItems: "center",
+                "height": "23px",
+                "alignItems": "center",
+                "> .MuiBox-root": {
+                  paddingRight: 1.5,
+                },
               },
             }),
             "& .MuiInputBase-adornedEnd > svg:not(.MuiSelect-icon)": {
