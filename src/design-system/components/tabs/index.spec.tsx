@@ -41,7 +41,7 @@ describe("PrerenderableTabPanel", () => {
         <PrerenderableTabPanel index={0} selectedIndex={1}>
           tab content
         </PrerenderableTabPanel>
-      </Box>
+      </Box>,
     );
     cy.get("[data-testid=prerenderable-tab-panel]").should("have.css", "position", "absolute");
     cy.get("[data-testid=prerenderable-tab-panel]").should("have.css", "minHeight", "100%");
