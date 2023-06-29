@@ -163,6 +163,10 @@ type PrerenderableTabPanelProps = {
   prerender?: boolean;
 };
 
+/**
+ * PrerenderableTabPanel container should have `position: relative` for it to be able to maintain
+ * its size when its inactive
+ */
 export function PrerenderableTabPanel({ sx, children, selectedIndex, index, prerender }: PrerenderableTabPanelProps) {
   return (
     <Box
