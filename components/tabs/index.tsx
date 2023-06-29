@@ -137,7 +137,8 @@ const Tabs = ({
       </MuiTabs>
       {divider && <Divider />}
       {hasContent && (
-        <Box paddingTop={3} paddingBottom={1.5} sx={sxContent}>
+        /* `position: relative` is required for the background PrerenderedTabPanel to maintain it's width */
+        <Box paddingTop={3} paddingBottom={1.5} sx={sxContent} position={"relative"}>
           {tabItems.map((tabItem, index) => (
             <PrerenderableTabPanel
               sx={{ padding: 0, background: "white" }}
@@ -162,16 +163,20 @@ type PrerenderableTabPanelProps = {
   prerender?: boolean;
 };
 
+/**
+ * PrerenderableTabPanel container should have `position: relative` for it to be able to maintain
+ * its size when its inactive
+ */
 export function PrerenderableTabPanel({ sx, children, selectedIndex, index, prerender }: PrerenderableTabPanelProps) {
   return (
     <Box
       data-testid={"prerenderable-tab-panel"}
       role={"tabpanel"}
       sx={{
+        width: "100%",
+        minHeight: "100%",
+        ...(selectedIndex !== index ? { zIndex: -100500, opacity: 0, position: "absolute" } : undefined),
         ...sx,
-        ...(selectedIndex !== index
-          ? { zIndex: -100500, opacity: 0, position: "absolute", minHeight: "50px", minWidth: "50px" }
-          : undefined),
       }}>
       {prerender || selectedIndex === index ? children : null}
     </Box>
