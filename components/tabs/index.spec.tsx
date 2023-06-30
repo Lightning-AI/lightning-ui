@@ -1,7 +1,6 @@
 import { mount } from "@cypress/react";
 
 import { PrerenderableTabPanel } from ".";
-import { Box } from "..";
 
 describe("PrerenderableTabPanel", () => {
   /**
@@ -19,6 +18,8 @@ describe("PrerenderableTabPanel", () => {
     cy.get("[data-testid=prerenderable-tab-panel]").should("have.css", "opacity", "0");
     cy.get("[data-testid=prerenderable-tab-panel]").should("have.css", "zIndex", "-100500");
     cy.get("[data-testid=prerenderable-tab-panel]").should("have.css", "position", "absolute");
+    cy.get("[data-testid=prerenderable-tab-panel]").should("have.css", "minHeight", "50px");
+    cy.get("[data-testid=prerenderable-tab-panel]").should("have.css", "minWidth", "50px");
   });
 
   it(`doesn't have any hiding styles and min size if it's active`, () => {
@@ -32,20 +33,8 @@ describe("PrerenderableTabPanel", () => {
     cy.get("[data-testid=prerenderable-tab-panel]").should("not.have.css", "opacity", "0");
     cy.get("[data-testid=prerenderable-tab-panel]").should("not.have.css", "zIndex", "-100500");
     cy.get("[data-testid=prerenderable-tab-panel]").should("not.have.css", "position", "absolute");
-  });
-
-  it(`maintains size if it's inactive`, () => {
-    mount(
-      // PrerenderableTabPanel container should have `position: relative`
-      <Box width={"600px"} height={"400px"} position={"relative"}>
-        <PrerenderableTabPanel index={0} selectedIndex={1}>
-          tab content
-        </PrerenderableTabPanel>
-      </Box>,
-    );
-    cy.get("[data-testid=prerenderable-tab-panel]").should("have.css", "position", "absolute");
-    cy.get("[data-testid=prerenderable-tab-panel]").should("have.css", "minHeight", "100%");
-    cy.get("[data-testid=prerenderable-tab-panel]").should("have.css", "width", "600px");
+    cy.get("[data-testid=prerenderable-tab-panel]").should("not.have.css", "minHeight", "50px");
+    cy.get("[data-testid=prerenderable-tab-panel]").should("not.have.css", "minWidth", "50px");
   });
 
   it(`renders content if it's inactive and prerender is enabled`, () => {
