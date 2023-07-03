@@ -140,7 +140,7 @@ const Tabs = ({
         <Box paddingTop={3} paddingBottom={1.5} sx={sxContent}>
           {tabItems.map((tabItem, index) => (
             <PrerenderableTabPanel
-              sx={{ padding: 0, background: "white" }}
+              sx={{ padding: 0, background: (theme: any) => theme.palette.background.default }}
               key={index}
               index={index}
               selectedIndex={selectedTab}
