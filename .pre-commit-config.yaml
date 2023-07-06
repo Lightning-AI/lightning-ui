@@ -5,7 +5,7 @@ ci:
   autofix_prs: true
   autoupdate_commit_msg: "[pre-commit.ci] pre-commit suggestions"
   autoupdate_schedule: quarterly
-  # submodules: true
+  skip: ["local"]
 
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
@@ -29,21 +29,14 @@ repos:
     hooks:
       - id: prettier
         args: [--write]
-        exclude: |
-          (?x)^(
-              .github/ISSUE_TEMPLATE/bug_report.md|
-              .github/ISSUE_TEMPLATE/feature_request.md|
-              .github/*.md
-          )$
 
-  # TODO
   #- repo: https://github.com/pre-commit/mirrors-eslint
   #  rev: v8.28.0
   #  hooks:
   #    - id: eslint
   #      files: \.[jt]sx?$ # *.js, *.jsx, *.ts and *.tsx
   #      types: [file]
-  #      args: ["--fix"]
+  #      args: ["--fix", "--cache", "--max-warnings=0"]
 
   - repo: https://github.com/executablebooks/mdformat
     rev: 0.7.16
@@ -54,8 +47,16 @@ repos:
           - mdformat-black
           - mdformat_frontmatter
 
-  - repo: https://github.com/PyCQA/flake8
-    rev: 5.0.4
+  - repo: https://github.com/charliermarsh/ruff-pre-commit
+    rev: v0.0.263
     hooks:
-      - id: flake8
-        name: PEP8
+      - id: ruff
+        args: ["--fix"]
+
+  - repo: local
+    hooks:
+      - id: ui_lint
+        name: ui_lint
+        description: Lint and fix (when possible) UI
+        entry: bash -c 'yarn lint:fix'
+        language: system

@@ -8,7 +8,7 @@ on:
 
 jobs:
   check-schema:
-    uses: Lightning-AI/utilities/.github/workflows/check-schema.yml@v0.4.1
+    uses: Lightning-AI/utilities/.github/workflows/check-schema.yml@v0.9.0
     with:
       azure-dir: ""
 
@@ -23,12 +23,10 @@ jobs:
         with:
           node-version: 16
           cache: "npm"
-
-      - name: set PY
-        run: echo "PY=$(python -VV | sha256sum | cut -d' ' -f1)" >> $GITHUB_ENV
       - uses: actions/cache@v3
         with:
           path: ~/.cache/pre-commit
-          key: pre-commit|${{ env.PY }}|${{ hashFiles('.pre-commit-config.yaml') }}
-
+          key: pre-commit|${{ hashFiles('.pre-commit-config.yaml') }}
+      - name: Install yarn env.
+        run: yarn install --frozen-lockfile
       - uses: pre-commit/action@v3.0.0
