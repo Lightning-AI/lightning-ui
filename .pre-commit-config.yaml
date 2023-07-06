@@ -29,12 +29,7 @@ repos:
     hooks:
       - id: prettier
         args: [--write]
-        exclude: |
-          (?x)^(
-              .github/ISSUE_TEMPLATE/bug_report.md|
-              .github/ISSUE_TEMPLATE/feature_request.md|
-              .github/*.md
-          )$
+        exclude: .github
 
   #- repo: https://github.com/pre-commit/mirrors-eslint
   #  rev: v8.28.0
@@ -58,11 +53,11 @@ repos:
     hooks:
       - id: ruff
         args: ["--fix"]
-
-  - repo: local
-    hooks:
-      - id: ui_lint
-        name: ui_lint
-        description: Lint and fix (when possible) UI
-        entry: bash -c 'yarn lint:fix'
-        language: system
+#  - repo: local
+#    hooks:
+#      - id: ui_lint
+#        name: ui_lint
+#        description: Lint and fix (when possible) UI
+#        entry: bash -c 'yarn lint:fix'
+#        language: system
+#        exclude: .github/
