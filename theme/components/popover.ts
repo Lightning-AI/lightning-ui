@@ -3,7 +3,7 @@ const popover: any = {
     styleOverrides: {
       root: ({ theme }: any) => {
         return {
-          ".MuiPaper-root":{
+          ".MuiPaper-root": {
             backgroundImage: "none",
           },
         };
