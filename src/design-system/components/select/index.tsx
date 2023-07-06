@@ -165,7 +165,7 @@ const Select = React.forwardRef(
               fontSize: "14px",
               lineHeight: "20px",
               backgroundColor: isDark ? theme.palette.grey["10"] : theme.palette.background.default,
-              borderRadius: "6px",
+              borderRadius: "8px",
               padding: 0,
             },
             ...(isDark && {
@@ -202,7 +202,20 @@ const Select = React.forwardRef(
             "& .MuiSvgIcon-root:not(.MuiSelect-icon)": {
               fontSize: "16px",
               position: "absolute",
+              ...(multiple && {
+                height: "23px",
+                width: "23px",
+              }),
             },
+            ...(multiple && {
+              "li.MuiMenuItem-root > div": {
+                "height": "23px",
+                "alignItems": "center",
+                "> .MuiBox-root": {
+                  paddingRight: 1.5,
+                },
+              },
+            }),
             "& .MuiInputBase-adornedEnd > svg:not(.MuiSelect-icon)": {
               paddingRight: "8px",
               right: "22px",

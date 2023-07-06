@@ -45,15 +45,15 @@ const wheel: ColorPartial & Record<string, string> = {
 const secondary: PaletteColorOptions & Record<string, string> = {
   ...wheel,
   "main": "#008087",
-  "10": "#00E1ED",
-  "20": "#00C9D4",
-  "30": "#00B0BA",
-  "40": "#0098A1",
-  "50": "#008087",
-  "60": "#00686E",
-  "70": "#005054",
-  "80": "#00383B",
-  "90": "#001F21",
+  "10": "#E4E6EB",
+  "20": "#C7CBD6",
+  "30": "#AAB0C0",
+  "40": "#8D95AA",
+  "50": "#6F7A95",
+  "60": "#596278",
+  "70": "#434A5B",
+  "80": "#2D323E",
+  "90": "#2D323E",
   "100": "#000708",
   "contrastText": "#008087",
 };
@@ -112,6 +112,7 @@ const error: PaletteColorOptions & Record<string, string> = {
 
 const grey: ColorPartial & Record<string, string> = {
   "main": "#E8E8E8",
+  "5": "#F5F5F5",
   "10": "#E8E8E8",
   "20": "#CFCFCF",
   "30": "#B5B5B5",
@@ -135,7 +136,7 @@ const background: Partial<TypeBackground> = {
 
 const text: Partial<TypeText> = {
   primary: "#1C1C1C",
-  secondary: "#212529",
+  secondary: "#696969",
   disabled: "#828282",
 };
 
