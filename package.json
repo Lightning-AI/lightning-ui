@@ -85,6 +85,7 @@
       "plugin:compat/recommended"
     ],
     "ignorePatterns": [
+      ".github/**",
       "node_modules/**",
       "build/**"
     ],
