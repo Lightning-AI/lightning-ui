@@ -28,5 +28,5 @@ jobs:
           path: ~/.cache/pre-commit
           key: pre-commit|${{ hashFiles('.pre-commit-config.yaml') }}
       - name: Install yarn env.
-        run: yarn install --frozen-lockfile --silent
+        run: yarn install --frozen-lockfile
       - uses: pre-commit/action@v3.0.0
