@@ -11,7 +11,7 @@ function App() {
 
   return (
     <ThemeProvider>
-      <Router basename={window.app_prefix ?? ""}>
+      <Router basename={    window.app_prefix ?? ""}>
         <AppRoutes />
       </Router>
     </ThemeProvider>
