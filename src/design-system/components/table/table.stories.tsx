@@ -27,8 +27,8 @@ const Template: ComponentStory<typeof Table> = ({ header, rowDetails, border }: 
     "AWS",
     "Not yet run",
   ];
-  const rows = [rowCell, rowCell, rowCell];
-  return <Table header={header} rows={rows} rowDetails={rowDetails} border={border} />;
+  const rows = [rowCell, rowCell, rowCell, rowCell, rowCell, rowCell];
+  return <Table header={header} rows={rows} rowDetails={rowDetails} border={border} sticky />;
 };
 
 export const WithHeader = Template.bind({});

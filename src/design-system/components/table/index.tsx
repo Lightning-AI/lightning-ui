@@ -6,6 +6,7 @@ import MuiTableCell from "@mui/material/TableCell";
 import MuiTableContainer from "@mui/material/TableContainer";
 import MuiTableHead from "@mui/material/TableHead";
 import MuiTableRow from "@mui/material/TableRow";
+import { useTheme } from "@mui/material/styles";
 
 import { Box, BoxProps } from "..";
 import TableRow from "./TableRow";
@@ -27,13 +28,16 @@ export type TableProps = {
   rowHover?: boolean;
   rowClick?: any;
   border?: boolean;
+  sticky?: boolean;
   sx?: BoxProps["sx"];
 };
 
 const Table = (props: TableProps) => {
+  const theme: any = useTheme();
   return (
     <MuiTableContainer>
       <Box
+        position={"relative"}
         sx={{
           [`& .MuiTableRow-root:hover .${TableRowContentShowOnHoverClass}`]: {
             opacity: 1,
@@ -53,6 +57,22 @@ const Table = (props: TableProps) => {
               }
             : {}),
           ...props.sx,
+          ...(props.sticky && {
+            th: {
+              position: "sticky",
+              top: "0",
+              zIndex: 2,
+              background: theme.palette.background.default,
+            },
+            tbody: {
+              overflow: "auto",
+              height: "100%",
+              maxHeight: "100%",
+            },
+            overflow: "auto",
+            height: "100%",
+            maxHeight: "100%",
+          }),
         }}>
         <MuiTable>
           <MuiTableHead>
