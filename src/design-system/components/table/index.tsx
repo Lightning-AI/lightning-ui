@@ -37,7 +37,6 @@ const Table = (props: TableProps) => {
   return (
     <MuiTableContainer>
       <Box
-        position={"relative"}
         sx={{
           [`& .MuiTableRow-root:hover .${TableRowContentShowOnHoverClass}`]: {
             opacity: 1,
@@ -72,6 +71,7 @@ const Table = (props: TableProps) => {
             overflow: "auto",
             height: "100%",
             maxHeight: "100%",
+            position: "relative",
           }),
         }}>
         <MuiTable>
