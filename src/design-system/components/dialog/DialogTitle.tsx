@@ -4,7 +4,7 @@ import { IconButton, Stack, Typography } from "..";
 import { Close } from "../../icons";
 
 export type DialogTitleProps = {
-  text: string;
+  text?: string;
   subtext?: string;
   onCloseClick?: () => void;
   center?: boolean;
@@ -13,7 +13,11 @@ export type DialogTitleProps = {
 const DialogTitle = ({ text, subtext, onCloseClick, center }: DialogTitleProps) => (
   <MuiDialogTitle>
     <Stack spacing={0.75} alignItems={center ? "center" : undefined}>
-      <Stack direction={"row"} justifyContent={center ? "center" : "flex-start"} alignItems={"center"}>
+      <Stack
+        minHeight={"20px"}
+        direction={"row"}
+        justifyContent={center ? "center" : "flex-start"}
+        alignItems={"center"}>
         <Typography
           sx={{
             marginX: center ? "20px" : undefined,
