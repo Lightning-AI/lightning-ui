@@ -192,7 +192,11 @@ const Button = ({ arrow, loading, href, ...props }: ButtonProps) => {
         onMouseMove={isCursorVariant ? mouseMoveHandler : undefined}
         href={href}>
         {!!props.text && (
-          <Box fontStyle={"normal"} fontSize={"14px"} lineHeight={"20px"}>
+          <Box
+            fontStyle={"normal"}
+            fontSize={"14px"}
+            lineHeight={"20px"}
+            sx={{ ...(isDark && isPrimaryColor && { color: theme.palette.background.default }) }}>
             {props.text}
           </Box>
         )}
