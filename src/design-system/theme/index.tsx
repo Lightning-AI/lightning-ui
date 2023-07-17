@@ -32,15 +32,14 @@ const ThemeProvider = ({ children, colorScheme }: { children: ReactNode; colorSc
     // listen to DARK_MODE event
     channel.on(DARK_MODE_EVENT_NAME, setDark);
     return () => channel.off(DARK_MODE_EVENT_NAME, setDark);
-  }, [channel, setDark]);
+  }, [setDark]);
   useEffect(() => {
     theme.palette.mode = isDark ? "dark" : "light";
-    colorScheme = isDark ? "dark" : "light";
     document.body?.style.setProperty(
       "background",
       isDark ? darkTheme.palette.background.default : theme.palette.background.default,
     );
-  }, [isDark, colorScheme]);
+  }, [isDark]);
   return <MuiThemeProvider theme={isDark ? darkTheme : theme} children={children} />;
 };
 
