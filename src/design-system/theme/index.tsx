@@ -10,7 +10,7 @@ import typography from "./typography";
 
 export const theme = createTheme({
   typography,
-  palette: paletteDark,
+  palette,
   shadows,
   components,
 });
