@@ -1,9 +1,6 @@
 import { ReactNode, useEffect } from "react";
-import { useState } from "react";
 
 import { ThemeProvider as MuiThemeProvider, createTheme } from "@mui/material/styles";
-import addons from "@storybook/addons";
-import { DARK_MODE_EVENT_NAME } from "storybook-dark-mode";
 
 import components from "./components";
 import palette from "./palette";
@@ -11,7 +8,6 @@ import paletteDark from "./paletteDark";
 import shadows from "./shadows";
 import typography from "./typography";
 
-const channel = addons.getChannel();
 export const theme = createTheme({
   typography,
   palette,
@@ -27,20 +23,13 @@ export const darkTheme = createTheme({
 });
 
 const ThemeProvider = ({ children, colorScheme }: { children: ReactNode; colorScheme?: "light" | "dark" }) => {
-  const [isDark, setDark] = useState(false);
   useEffect(() => {
-    // listen to DARK_MODE event
-    channel.on(DARK_MODE_EVENT_NAME, setDark);
-    return () => channel.off(DARK_MODE_EVENT_NAME, setDark);
-  }, [setDark]);
-  useEffect(() => {
-    theme.palette.mode = isDark ? "dark" : "light";
     document.body?.style.setProperty(
       "background",
-      isDark ? darkTheme.palette.background.default : theme.palette.background.default,
+      colorScheme === "dark" ? darkTheme.palette.background.default : theme.palette.background.default,
     );
-  }, [isDark]);
-  return <MuiThemeProvider theme={isDark ? darkTheme : theme} children={children} />;
+  }, [colorScheme]);
+  return <MuiThemeProvider theme={colorScheme === "dark" ? darkTheme : theme} children={children} />;
 };
 
 export default ThemeProvider;
