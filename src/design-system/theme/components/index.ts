@@ -4,6 +4,7 @@ import pagination from "./pagination";
 import popover from "./popover";
 import tabs from "./tabs";
 import tooltip from "./tooltip";
+import dialog from "./dialog";
 
 const components = {
   ...button,
@@ -12,6 +13,7 @@ const components = {
   ...tabs,
   ...popover,
   ...pagination,
+  ...dialog,
 };
 
 export default components;
