@@ -1,5 +1,6 @@
 import alert from "./alert";
 import button from "./button";
+import dialog from "./dialog";
 import pagination from "./pagination";
 import popover from "./popover";
 import tabs from "./tabs";
@@ -12,6 +13,7 @@ const components = {
   ...tabs,
   ...popover,
   ...pagination,
+  ...dialog,
 };
 
 export default components;
