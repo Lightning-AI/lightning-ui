@@ -1,4 +1,4 @@
-import React, { ReactNode, useState } from "react";
+import React, { ReactNode, useEffect, useState } from "react";
 
 import { Typography } from "@mui/material";
 import MuiTextField, { TextFieldProps as MuiTextFieldProps } from "@mui/material/TextField";
@@ -77,6 +77,11 @@ const Select = React.forwardRef(
       if (typeof onChange === "undefined") return;
       onChange(value);
     };
+
+    useEffect(() => {
+      const value = typeof props.value !== "undefined" ? props.value : multiple ? [] : "";
+      setSelectedValue(value);
+    }, [props.value, multiple]);
 
     return (
       <FormControl
