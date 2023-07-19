@@ -42,6 +42,7 @@ export type SelectProps = {
   tooltip?: string;
   multiple?: boolean;
   defaultValue?: string;
+  multiSelectedItemName?: string;
 } & Pick<MuiTextFieldProps, "disabled" | "fullWidth" | "size" | "value" | "autoFocus">;
 
 const Select = React.forwardRef(
@@ -59,6 +60,7 @@ const Select = React.forwardRef(
       onChange,
       size,
       defaultValue,
+      multiSelectedItemName,
       ...props
     }: SelectProps,
     ref,
@@ -156,7 +158,7 @@ const Select = React.forwardRef(
               ? selected => {
                   const itemsSelected = selected as string[];
                   return itemsSelected.length > 1
-                    ? `${itemsSelected.length} items selected`
+                    ? `${itemsSelected.length} ${multiSelectedItemName ?? "items"} selected`
                     : props.options.find(option => option.value === itemsSelected?.[0])?.label ?? "";
                 }
               : selected => props.options.find(option => option.value === selected)?.label ?? "",
