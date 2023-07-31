@@ -37,7 +37,15 @@ export type TextFieldProps = {
 } & FormControlProps &
   Pick<
     MuiOutlinedInputProps,
-    "disabled" | "placeholder" | "fullWidth" | "size" | "autoComplete" | "aria-autocomplete" | "autoCapitalize" | "autoCorrect" | "autoFocus"
+    | "disabled"
+    | "placeholder"
+    | "fullWidth"
+    | "size"
+    | "autoComplete"
+    | "aria-autocomplete"
+    | "autoCapitalize"
+    | "autoCorrect"
+    | "autoFocus"
   >;
 
 const INPUT_TEXT_FONT = `normal 14px/20px "Inter"`;
