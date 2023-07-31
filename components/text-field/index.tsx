@@ -141,11 +141,17 @@ const TextField = React.forwardRef(
             onChange={onChangeHandler}
             type={type}
             autoComplete={autoComplete}
-            aria-autocomplete={ariaAutocomplete}
             {...props}
             inputProps={{
-              max: max !== undefined ? Math.min(max, MAX_NUMBER) : MAX_NUMBER,
-              min: min !== undefined ? Math.max(min, -MAX_NUMBER) : -MAX_NUMBER,
+              "max": max !== undefined ? Math.min(max, MAX_NUMBER) : MAX_NUMBER,
+              "min": min !== undefined ? Math.max(min, -MAX_NUMBER) : -MAX_NUMBER,
+              "aria-autocomplete": ariaAutocomplete,
+              ...(autoComplete === "nope" || autoComplete === "off"
+                ? {
+                    "data-form-type": "other",
+                    "data-lpignore": "true",
+                  }
+                : {}),
             }}
             error={hasStatus}
             startAdornment={icon}
