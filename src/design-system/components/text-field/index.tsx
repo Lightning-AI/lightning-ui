@@ -1,6 +1,6 @@
 import React, { ChangeEventHandler, ReactNode, useEffect } from "react";
 
-import { CircularProgress } from "@mui/material";
+import { CircularProgress, InputProps } from "@mui/material";
 import MuiOutlinedInput, { OutlinedInputProps as MuiOutlinedInputProps } from "@mui/material/OutlinedInput";
 import { useTheme } from "@mui/material/styles";
 
@@ -10,6 +10,16 @@ import { CheckCircle, Dangerous, Info, Warning } from "../../icons";
 import FormControl, { FormControlProps } from "../form-control";
 import NumberInputButtons from "./NumberInputButtons";
 import { BORDER_COLOR } from "./constants";
+
+export const TURN_OFF_AUTOCOMPLETE_INPUT_PROPS = {
+  // "nope" is better at disabling autocomplete, than "off"
+  // because most modern browsers ignore "off" https://stackoverflow.com/a/38961567
+  "autocomplete": "nope",
+  "aria-autocomplete": "none" as InputProps["aria-autocomplete"],
+  "data-form-type": "other",
+  "data-1p-ignore": "true",
+  "data-lpignore": "true",
+};
 
 const statusColor: Record<string, any> = {
   info: "#1877F2",
@@ -146,13 +156,7 @@ const TextField = React.forwardRef(
               "max": max !== undefined ? Math.min(max, MAX_NUMBER) : MAX_NUMBER,
               "min": min !== undefined ? Math.max(min, -MAX_NUMBER) : -MAX_NUMBER,
               "aria-autocomplete": ariaAutocomplete,
-              ...(autoComplete === "nope" || autoComplete === "off"
-                ? {
-                    "data-form-type": "other",
-                    "data-1p-ignore": "true",
-                    "data-lpignore": "true",
-                  }
-                : {}),
+              ...(autoComplete === "nope" || autoComplete === "off" ? TURN_OFF_AUTOCOMPLETE_INPUT_PROPS : undefined),
             }}
             error={hasStatus}
             startAdornment={icon}
