@@ -130,6 +130,8 @@ const TextField = React.forwardRef(
       }
     };
 
+    const isAutocompleteDisabled = autoComplete === "nope" || autoComplete === "off";
+
     return (
       <FormControl
         label={label}
@@ -156,7 +158,7 @@ const TextField = React.forwardRef(
               "max": max !== undefined ? Math.min(max, MAX_NUMBER) : MAX_NUMBER,
               "min": min !== undefined ? Math.max(min, -MAX_NUMBER) : -MAX_NUMBER,
               "aria-autocomplete": ariaAutocomplete,
-              ...(autoComplete === "nope" || autoComplete === "off" ? TURN_OFF_AUTOCOMPLETE_INPUT_PROPS : undefined),
+              ...(isAutocompleteDisabled ? TURN_OFF_AUTOCOMPLETE_INPUT_PROPS : undefined),
             }}
             error={hasStatus}
             startAdornment={icon}
@@ -171,6 +173,12 @@ const TextField = React.forwardRef(
               "input": {
                 marginRight: `${marginRightPx}px`,
               },
+              ...(isAutocompleteDisabled && {
+                // LastPass doesn't always respect `data-lpignore="true"` on the input
+                "[data-lastpass-icon-root]": {
+                  display: "none !important",
+                },
+              }),
               ...(isDark && {
                 ".MuiOutlinedInput-notchedOutline": {
                   borderColor: theme.palette.grey["50"],
