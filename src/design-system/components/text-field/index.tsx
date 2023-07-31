@@ -149,6 +149,7 @@ const TextField = React.forwardRef(
               ...(autoComplete === "nope" || autoComplete === "off"
                 ? {
                     "data-form-type": "other",
+                    "data-1p-ignore": "true",
                     "data-lpignore": "true",
                   }
                 : {}),
