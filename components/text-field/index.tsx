@@ -37,7 +37,15 @@ export type TextFieldProps = {
 } & FormControlProps &
   Pick<
     MuiOutlinedInputProps,
-    "disabled" | "placeholder" | "fullWidth" | "size" | "autoComplete" | "autoCapitalize" | "autoCorrect" | "autoFocus"
+    | "disabled"
+    | "placeholder"
+    | "fullWidth"
+    | "size"
+    | "autoComplete"
+    | "aria-autocomplete"
+    | "autoCapitalize"
+    | "autoCorrect"
+    | "autoFocus"
   >;
 
 const INPUT_TEXT_FONT = `normal 14px/20px "Inter"`;
@@ -62,6 +70,10 @@ const TextField = React.forwardRef(
       max,
       min,
       loading,
+      // "nope" is better at disabling autocomplete, than "off"
+      // because most modern browsers ignore "off" https://stackoverflow.com/a/38961567
+      autoComplete = "nope",
+      "aria-autocomplete": ariaAutocomplete = "none",
       ...props
     }: TextFieldProps,
     ref: any,
@@ -128,6 +140,8 @@ const TextField = React.forwardRef(
             fullWidth={fullWidth}
             onChange={onChangeHandler}
             type={type}
+            autoComplete={autoComplete}
+            aria-autocomplete={ariaAutocomplete}
             {...props}
             inputProps={{
               max: max !== undefined ? Math.min(max, MAX_NUMBER) : MAX_NUMBER,
