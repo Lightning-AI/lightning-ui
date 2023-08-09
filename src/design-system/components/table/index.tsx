@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import { List, AutoSizer } from "react-virtualized";
 
 import MuiTable from "@mui/material/Table";
 import MuiTableBody from "@mui/material/TableBody";
@@ -29,11 +30,17 @@ export type TableProps = {
   rowClick?: any;
   border?: boolean;
   sticky?: boolean;
+  virtualized?: boolean;
+  virtualizedRowHeightPx?: number;
   sx?: BoxProps["sx"];
 };
 
-const Table = (props: TableProps) => {
+const Table = ({ virtualized, virtualizedRowHeightPx, ...props }: TableProps) => {
   const theme: any = useTheme();
+  if (virtualized && !virtualizedRowHeightPx) {
+    console.error("virtualizedRowHeightPx is required when using virtualized, disabling virtualized");
+    virtualized = false;
+  }
   return (
     <MuiTableContainer>
       <Box
@@ -86,9 +93,27 @@ const Table = (props: TableProps) => {
             </MuiTableRow>
           </MuiTableHead>
           <MuiTableBody>
-            {props.rows.map((row, index) => (
-              <TableRow key={index} hover={!!props.rowHover} cells={row} details={props.rowDetails?.[index]} />
-            ))}
+            {virtualized && virtualizedRowHeightPx ? (
+              <AutoSizer>
+                {({ height, width }: { height: number; width: number }) => (
+                  <List
+                    width={width}
+                    height={height}
+                    rowCount={props.rows.length}
+                    rowHeight={virtualizedRowHeightPx}
+                    rowRenderer={({ index, key, style }) => (
+                      <Box key={key} style={style}>
+                        <TableRow hover={!!props.rowHover} cells={props.rows[0]} details={props.rowDetails?.[index]} />
+                      </Box>
+                    )}
+                  />
+                )}
+              </AutoSizer>
+            ) : (
+              props.rows.map((row, index) => (
+                <TableRow key={index} hover={!!props.rowHover} cells={row} details={props.rowDetails?.[index]} />
+              ))
+            )}
           </MuiTableBody>
         </MuiTable>
       </Box>
