@@ -134,7 +134,7 @@ const Table = ({ virtualizedParams, ...props }: TableProps) => {
                 rowHeight={virtualizedParams.rowHeightPx}
                 rowRenderer={({ index, key, style }) => (
                   <Box key={key} style={style}>
-                    <TableRow hover={!!props.rowHover} cells={props.rows[0]} details={props.rowDetails?.[index]} />
+                    <TableRow hover={!!props.rowHover} cells={props.rows[index]} />
                   </Box>
                 )}
               />
