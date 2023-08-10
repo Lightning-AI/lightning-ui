@@ -29,6 +29,7 @@ type VirtualizedParams = {
   widthPx: number;
   heightPx: number;
   columnWidthsPx: number[];
+  overscanRowCount?: number;
 };
 
 export type TableProps = {
@@ -132,6 +133,7 @@ const Table = ({ virtualizedParams, ...props }: TableProps) => {
                 height={virtualizedParams.heightPx - virtualizedParams.headerHeightPx}
                 rowCount={props.rows.length}
                 rowHeight={virtualizedParams.rowHeightPx}
+                overscanRowCount={virtualizedParams.overscanRowCount}
                 rowRenderer={({ index, key, style }) => (
                   <Box key={key} style={style}>
                     <TableRow hover={!!props.rowHover} cells={props.rows[index]} />
