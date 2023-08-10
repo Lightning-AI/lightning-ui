@@ -100,7 +100,7 @@ const Table = ({ virtualizedParams, ...props }: TableProps) => {
             ...(virtualizedParams?.enabled
               ? {
                   ".MuiTableRow-root": { width: "100%", display: "flex" },
-                  ".MuiTableCell-root": { display: "inline-block", flexGrow: 1 },
+                  ".MuiTableCell-root": { display: "flex", flexGrow: 1, alignItems: "center" },
                   ...virtualizedParams.columnWidthsPx.reduce((style, width, index) => {
                     style[`.MuiTableCell-root:nth-child(${index + 1})`] = { width: `${width}px` };
                     return style;
