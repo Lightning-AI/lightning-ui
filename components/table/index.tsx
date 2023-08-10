@@ -50,7 +50,8 @@ const Table = ({ virtualizedParams, ...props }: TableProps) => {
   if (virtualizedParams?.enabled && props.rowDetails) {
     throw new Error("rowDetails is not supported when using virtualized");
   }
-  if (virtualizedParams?.enabled && virtualizedParams.columnWidthsPx.length !== props.header?.length) {
+  const columnCount: number | undefined = props.header?.length ?? props.rows[0]?.length;
+  if (virtualizedParams?.enabled && columnCount && virtualizedParams.columnWidthsPx.length !== columnCount) {
     // TODO(yurij/alec): support virtualized tables with variable column widths
     throw new Error("virtualized table should have all column widths specified");
   }
