@@ -1,13 +1,13 @@
 import { ReactNode } from "react";
-import { List, AutoSizer } from "react-virtualized";
 
 import MuiTable from "@mui/material/Table";
 import MuiTableBody from "@mui/material/TableBody";
-import MuiTableCell from "@mui/material/TableCell";
+import MuiTableCell, { TableCellProps as MuiTableCellProps } from "@mui/material/TableCell";
 import MuiTableContainer from "@mui/material/TableContainer";
 import MuiTableHead from "@mui/material/TableHead";
 import MuiTableRow from "@mui/material/TableRow";
 import { useTheme } from "@mui/material/styles";
+import { List } from "react-virtualized";
 
 import { Box, BoxProps } from "..";
 import TableRow from "./TableRow";
@@ -22,6 +22,15 @@ const tableCellHeaderStyle = {
   padding: "8px 16px",
 };
 
+type VirtualizedParams = {
+  enabled: boolean;
+  rowHeightPx: number;
+  headerHeightPx: number;
+  widthPx: number;
+  heightPx: number;
+  columnWidthsPx: number[];
+};
+
 export type TableProps = {
   header?: ReactNode[];
   rows: ReactNode[][];
@@ -30,16 +39,19 @@ export type TableProps = {
   rowClick?: any;
   border?: boolean;
   sticky?: boolean;
-  virtualized?: boolean;
-  virtualizedRowHeightPx?: number;
+  // if using virtualized table, you may want to wrap it with `AutoSizer`, depending on the context
+  virtualizedParams?: VirtualizedParams;
   sx?: BoxProps["sx"];
 };
 
-const Table = ({ virtualized, virtualizedRowHeightPx, ...props }: TableProps) => {
+const Table = ({ virtualizedParams, ...props }: TableProps) => {
   const theme: any = useTheme();
-  if (virtualized && !virtualizedRowHeightPx) {
-    console.error("virtualizedRowHeightPx is required when using virtualized, disabling virtualized");
-    virtualized = false;
+  if (virtualizedParams?.enabled && props.rowDetails) {
+    throw new Error("rowDetails is not supported when using virtualized");
+  }
+  if (virtualizedParams?.enabled && virtualizedParams.columnWidthsPx.length !== props.header?.length) {
+    // TODO(yurij/alec): support virtualized tables with variable column widths
+    throw new Error("virtualized table should have all column widths specified");
   }
   return (
     <MuiTableContainer>
@@ -53,6 +65,7 @@ const Table = ({ virtualized, virtualizedRowHeightPx, ...props }: TableProps) =>
             opacity: 0,
             transition: "0.2s ease-in-out",
           },
+          ".MuiTableCell-root": { overflow: "hidden", textOverflow: "ellipsis" },
           ...(props.border
             ? {
                 padding: "24px",
@@ -81,8 +94,28 @@ const Table = ({ virtualized, virtualizedRowHeightPx, ...props }: TableProps) =>
             position: "relative",
           }),
         }}>
-        <MuiTable>
-          <MuiTableHead>
+        <MuiTable
+          sx={{
+            ...(virtualizedParams?.enabled
+              ? {
+                  ".MuiTableRow-root": { width: "100%", display: "flex" },
+                  ".MuiTableCell-root": { display: "inline-block", flexGrow: 1 },
+                  ...virtualizedParams.columnWidthsPx.reduce((style, width, index) => {
+                    style[`.MuiTableCell-root:nth-child(${index + 1})`] = { width: `${width}px` };
+                    return style;
+                  }, {} as Record<string, MuiTableCellProps["sx"]>),
+                }
+              : undefined),
+          }}>
+          <MuiTableHead
+            sx={{
+              ...(virtualizedParams?.enabled
+                ? {
+                    width: virtualizedParams.widthPx,
+                    display: "inline-block",
+                  }
+                : undefined),
+            }}>
             <MuiTableRow>
               {props.header?.map((cell, index) => (
                 <MuiTableCell key={index} sx={tableCellHeaderStyle}>
@@ -93,22 +126,18 @@ const Table = ({ virtualized, virtualizedRowHeightPx, ...props }: TableProps) =>
             </MuiTableRow>
           </MuiTableHead>
           <MuiTableBody>
-            {virtualized && virtualizedRowHeightPx ? (
-              <AutoSizer>
-                {({ height, width }: { height: number; width: number }) => (
-                  <List
-                    width={width}
-                    height={height}
-                    rowCount={props.rows.length}
-                    rowHeight={virtualizedRowHeightPx}
-                    rowRenderer={({ index, key, style }) => (
-                      <Box key={key} style={style}>
-                        <TableRow hover={!!props.rowHover} cells={props.rows[0]} details={props.rowDetails?.[index]} />
-                      </Box>
-                    )}
-                  />
+            {virtualizedParams?.enabled ? (
+              <List
+                width={virtualizedParams.widthPx}
+                height={virtualizedParams.heightPx - virtualizedParams.headerHeightPx}
+                rowCount={props.rows.length}
+                rowHeight={virtualizedParams.rowHeightPx}
+                rowRenderer={({ index, key, style }) => (
+                  <Box key={key} style={style}>
+                    <TableRow hover={!!props.rowHover} cells={props.rows[0]} details={props.rowDetails?.[index]} />
+                  </Box>
                 )}
-              </AutoSizer>
+              />
             ) : (
               props.rows.map((row, index) => (
                 <TableRow key={index} hover={!!props.rowHover} cells={row} details={props.rowDetails?.[index]} />
