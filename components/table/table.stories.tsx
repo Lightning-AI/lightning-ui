@@ -1,4 +1,3 @@
-import React from "react";
 import { ReactNode } from "react";
 
 import { ComponentMeta, ComponentStory } from "@storybook/react";
@@ -17,7 +16,7 @@ export default {
   },
 } as ComponentMeta<typeof Table>;
 
-const Template: ComponentStory<typeof Table> = ({ header, rowDetails, border }: TableProps) => {
+const Template: ComponentStory<typeof Table> = ({ header, rowDetails, border, virtualizedParams }: TableProps) => {
   const rowCell: ReactNode[] = [
     <Stack direction={"row"} alignItems={"center"} spacing={1}>
       <Circle sx={{ fontSize: "12px", color: "#19A004" }} /> <Box>Running</Box>
@@ -28,7 +27,18 @@ const Template: ComponentStory<typeof Table> = ({ header, rowDetails, border }: 
     "Not yet run",
   ];
   const rows = [rowCell, rowCell, rowCell, rowCell, rowCell, rowCell];
-  return <Table header={header} rows={rows} rowDetails={rowDetails} border={border} sticky />;
+  return (
+    <Box width={"100%"} height={"100%"}>
+      <Table
+        virtualizedParams={virtualizedParams}
+        header={header}
+        rows={rows}
+        rowDetails={rowDetails}
+        border={border}
+        sticky
+      />
+    </Box>
+  );
 };
 
 export const WithHeader = Template.bind({});
@@ -49,4 +59,17 @@ export const WithDetails = Template.bind({});
 WithDetails.args = {
   header: ["Status", "Name", "Type", "Source", "Last Run"],
   rowDetails: [detailsComponent, detailsComponent, detailsComponent, detailsComponent, detailsComponent],
+};
+
+export const Virtualized = Template.bind({});
+Virtualized.args = {
+  header: ["Status", "Name", "Type", "Source", "Last Run"],
+  virtualizedParams: {
+    enabled: true,
+    rowHeightPx: 57,
+    headerHeightPx: 57,
+    widthPx: 800,
+    heightPx: 300,
+    columnWidthsPx: [100, 200, 200, 100, 200],
+  },
 };
