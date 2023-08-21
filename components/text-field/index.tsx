@@ -41,6 +41,7 @@ export type TextFieldProps = {
   onChange: (value: string | null) => void;
   value?: unknown;
   suffix?: string;
+  arrows?: boolean;
   max?: number;
   min?: number;
   loading?: boolean;
@@ -74,6 +75,7 @@ const TextField = React.forwardRef(
       fullWidth,
       optional,
       tooltip,
+      arrows,
       onChange,
       type = "text",
       suffix,
@@ -169,7 +171,7 @@ const TextField = React.forwardRef(
               "font": INPUT_TEXT_FONT,
               "height": "36px",
               "backgroundColor": isDark ? theme.palette.grey["10"] : theme.palette.background.default,
-              "borderRadius": type === "number" ? "8px 0 0 8px" : "8px",
+              "borderRadius": type === "number" && arrows ? "8px 0 0 8px" : "8px",
               "input": {
                 marginRight: `${marginRightPx}px`,
               },
@@ -227,7 +229,7 @@ const TextField = React.forwardRef(
               },
             }}
           />
-          {type === "number" && (
+          {type === "number" && arrows && (
             <NumberInputButtons
               onIncreaseClick={() => {
                 internalRef.current?.stepUp();

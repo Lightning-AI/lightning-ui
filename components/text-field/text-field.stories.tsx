@@ -81,6 +81,10 @@ export default {
       options: ["text", "number", "password"],
       control: "select",
     },
+    arrows: {
+      defaultValue: false,
+      control: "boolean",
+    },
     onChange: { action: "changed" },
   },
 } as ComponentMeta<typeof TextField>;
