@@ -29,7 +29,7 @@ jobs:
         # Without this, Cypress tests break on file renaming or removal
         run: rm -rf ./node_modules/.cache
       - name: Run Component tests 🧪
-        uses: cypress-io/github-action@v5
+        uses: cypress-io/github-action@v6
         with:
           install-command: yarn install --frozen-lockfile --silent
           browser: ${{ matrix.browser }}
