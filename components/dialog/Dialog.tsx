@@ -34,6 +34,10 @@ const Dialog = ({ PaperProps, ...props }: DialogProps) => {
           width: "4px",
           height: "4px",
         },
+
+        "*::selection": {
+          background: isDark ? theme.palette.primary[30] : theme.palette.primary[80],
+        },
         ...(isDark && {
           ".MuiOutlinedInput-root:not(.body2)": {
             background: theme.palette.grey["20"],
