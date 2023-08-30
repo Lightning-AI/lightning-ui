@@ -1,5 +1,6 @@
 import { ReactNode, useEffect } from "react";
 
+import { GlobalStyles } from "@mui/material";
 import { ThemeProvider as MuiThemeProvider, createTheme } from "@mui/material/styles";
 
 import components from "./components";
@@ -29,7 +30,18 @@ const ThemeProvider = ({ children, colorScheme }: { children: ReactNode; colorSc
       colorScheme === "dark" ? darkTheme.palette.background.default : theme.palette.background.default,
     );
   }, [colorScheme]);
-  return <MuiThemeProvider theme={colorScheme === "dark" ? darkTheme : theme} children={children} />;
+  return (
+    <MuiThemeProvider theme={colorScheme === "dark" ? darkTheme : theme}>
+      <GlobalStyles
+        styles={{
+          "*::selection": {
+            background: theme.palette.primary[20],
+          },
+        }}
+      />
+      {children}
+    </MuiThemeProvider>
+  );
 };
 
 export default ThemeProvider;
