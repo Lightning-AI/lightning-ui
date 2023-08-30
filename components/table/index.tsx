@@ -68,6 +68,7 @@ const Table = ({ virtualizedParams, ...props }: TableProps) => {
             transition: "0.2s ease-in-out",
           },
           ".MuiTableCell-root": { overflow: "hidden", textOverflow: "ellipsis" },
+          "th.MuiTableCell-head, .MuiTableCell-head": { overflow: "visible" },
           ...(props.border
             ? {
                 padding: "24px",

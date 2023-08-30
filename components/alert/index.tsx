@@ -57,7 +57,7 @@ const Alert = ({ children, show, ...props }: AlertProps) => {
         "fontSize": "14px",
         "lineHeight": "20px",
         "borderLeft": `8px solid ${severityColor[props.severity ?? "info"]}`,
-        "backgroundColor": "white",
+        "backgroundColor": "white !important" as any,
         "padding": "12px",
         "width": "500px",
         "wordBreak": "break-all",
