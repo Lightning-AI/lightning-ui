@@ -3,6 +3,7 @@
 # Lightning UI
 
 [![CI Testing](https://github.com/gridai/lightning-ui/actions/workflows/ci-testing.yaml/badge.svg?branch=master)](https://github.com/gridai/lightning-ui/actions/workflows/ci-testing.yaml)
+[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/Lightning-AI/lightning-ui/master.svg)](https://results.pre-commit.ci/latest/github/Lightning-AI/lightning-ui/master)
 
 This project contains the source code for the Lightning app frontend. The frontend is a scaffold which reacts to change
 in the app's internal state and renders components accordingly.
