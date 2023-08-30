@@ -35,7 +35,7 @@ const ThemeProvider = ({ children, colorScheme }: { children: ReactNode; colorSc
       <GlobalStyles
         styles={{
           "*::selection": {
-            background: darkTheme ? darkTheme.palette.primary[50] : theme.palette.primary[20],
+            background: theme.palette.primary[20],
           },
         }}
       />
