@@ -5,7 +5,7 @@ import { ThemeProvider as EmotionThemeProvider } from "emotion-theming";
 import { BrowserRouter } from "react-router-dom";
 
 import SnackbarProvider from "../src/design-system/components/snackbar-provider";
-import ThemeProvider, {darkTheme, theme as lightTheme} from "../src/design-system/theme";
+import ThemeProvider, { darkTheme, theme as lightTheme } from "../src/design-system/theme";
 
 // toggle here to switch between light and dark theme
 const defaultTheme = "light";

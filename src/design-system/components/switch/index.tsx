@@ -1,9 +1,9 @@
-import React, {ChangeEvent, ReactNode} from "react";
+import React, { ChangeEvent } from "react";
 
-import MuiSwitch, {SwitchProps as MuiSwitchProps} from "@mui/material/Switch";
-import {useTheme} from "@mui/material/styles";
+import MuiSwitch, { SwitchProps as MuiSwitchProps } from "@mui/material/Switch";
+import { useTheme } from "@mui/material/styles";
 
-import {InfoIconWithHelpTooltip, Stack, Typography} from "..";
+import { InfoIconWithHelpTooltip, Stack, Typography } from "..";
 
 type ColorProp = string | ((theme: any) => string);
 
@@ -11,14 +11,26 @@ export type SwitchProps = Pick<MuiSwitchProps, "onChange" | "checked" | "disable
   label?: string;
   tooltip?: string;
   thumbColor?: ColorProp;
-  thumbColorDisabled?: ColorProp;
   trackColor?: ColorProp;
   trackColorChecked?: ColorProp;
   dataCy?: string;
   dataTestId?: string;
 };
 
-function Switch({onChange, checked, disabled, icon, checkedIcon, label, tooltip, thumbColor, thumbColorDisabled, trackColor, trackColorChecked, dataCy, dataTestId}: SwitchProps) {
+function Switch({
+  onChange,
+  checked,
+  disabled,
+  icon,
+  checkedIcon,
+  label,
+  tooltip,
+  thumbColor,
+  trackColor,
+  trackColorChecked,
+  dataCy,
+  dataTestId,
+}: SwitchProps) {
   const theme: any = useTheme();
   const isDark = theme.palette.mode === "dark";
 
@@ -42,7 +54,7 @@ function Switch({onChange, checked, disabled, icon, checkedIcon, label, tooltip,
         }}>
         {label}
       </Typography>
-      {tooltip && <InfoIconWithHelpTooltip message={tooltip} size={"small"}/>}
+      {tooltip && <InfoIconWithHelpTooltip message={tooltip} size={"small"} />}
       <MuiSwitch
         checked={checked}
         onChange={onChangeHandler}
@@ -69,10 +81,11 @@ function Switch({onChange, checked, disabled, icon, checkedIcon, label, tooltip,
             borderRadius: "20px",
             width: "36px",
             opacity: 1,
-            backgroundColor: trackColor ?? ((theme: any) => isDark ? "rgba(255, 255, 255, 0.4)" : theme.palette.secondary[40]),
+            backgroundColor:
+              trackColor ?? ((theme: any) => (isDark ? "rgba(255, 255, 255, 0.4)" : theme.palette.secondary[40])),
           },
           ".MuiSwitch-switchBase": {
-            padding: "2px",
+            "padding": "2px",
 
             "&.Mui-checked": {
               transform: "translateX(16px)",
@@ -82,11 +95,11 @@ function Switch({onChange, checked, disabled, icon, checkedIcon, label, tooltip,
               opacity: 1,
             },
             "&.Mui-disabled.Mui-checked + .MuiSwitch-track": {
-              backgroundColor: (theme: any) => isDark ? "rgba(255, 255, 255, 0.3)" : theme.palette.secondary[30],
+              backgroundColor: (theme: any) => (isDark ? "rgba(255, 255, 255, 0.3)" : theme.palette.secondary[30]),
               opacity: 1,
             },
             "&.Mui-disabled + .MuiSwitch-track": {
-              backgroundColor: (theme: any) => isDark ? "rgba(255, 255, 255, 0.3)" : theme.palette.secondary[30],
+              backgroundColor: (theme: any) => (isDark ? "rgba(255, 255, 255, 0.3)" : theme.palette.secondary[30]),
               opacity: 1,
             },
             "&.Mui-disabled > .MuiSwitch-thumb": {
@@ -94,8 +107,8 @@ function Switch({onChange, checked, disabled, icon, checkedIcon, label, tooltip,
             },
           },
         }}
-        {...(icon && {icon})}
-        {...(checkedIcon && {checkedIcon})}
+        {...(icon && { icon })}
+        {...(checkedIcon && { checkedIcon })}
       />
     </Stack>
   );
