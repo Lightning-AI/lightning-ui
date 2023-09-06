@@ -10,7 +10,6 @@ import { CheckCircle, Dangerous, Info, Warning } from "../../icons";
 import FormControl, { FormControlProps } from "../form-control";
 import NumberInputButtons from "./NumberInputButtons";
 import { BORDER_COLOR } from "./constants";
-import { unset } from "lodash";
 
 export const TURN_OFF_AUTOCOMPLETE_INPUT_PROPS = {
   // "nope" is better at disabling autocomplete, than "off"
