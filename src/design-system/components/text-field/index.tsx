@@ -161,7 +161,7 @@ const TextField = React.forwardRef(
             autoComplete={autoComplete}
             {...props}
             inputProps={{
-              maxLength: maxLength,
+              "maxLength": maxLength,
               "max": max !== undefined ? Math.min(max, MAX_NUMBER) : MAX_NUMBER,
               "min": min !== undefined ? Math.max(min, -MAX_NUMBER) : -MAX_NUMBER,
               "aria-autocomplete": ariaAutocomplete,
