@@ -44,7 +44,10 @@ export type TextFieldProps = {
   arrows?: boolean;
   max?: number;
   min?: number;
+  multiline?: boolean;
+  rows?: number;
   loading?: boolean;
+  maxLength?: number;
 } & FormControlProps &
   Pick<
     MuiOutlinedInputProps,
@@ -82,6 +85,7 @@ const TextField = React.forwardRef(
       max,
       min,
       loading,
+      maxLength,
       // "nope" is better at disabling autocomplete, than "off"
       // because most modern browsers ignore "off" https://stackoverflow.com/a/38961567
       autoComplete = "nope",
@@ -157,6 +161,7 @@ const TextField = React.forwardRef(
             autoComplete={autoComplete}
             {...props}
             inputProps={{
+              "maxLength": maxLength,
               "max": max !== undefined ? Math.min(max, MAX_NUMBER) : MAX_NUMBER,
               "min": min !== undefined ? Math.max(min, -MAX_NUMBER) : -MAX_NUMBER,
               "aria-autocomplete": ariaAutocomplete,
@@ -169,7 +174,7 @@ const TextField = React.forwardRef(
             }
             sx={{
               "font": INPUT_TEXT_FONT,
-              "height": "36px",
+              "height": props.multiline ? undefined : "36px",
               "backgroundColor": isDark ? theme.palette.grey["10"] : theme.palette.background.default,
               "borderRadius": type === "number" && arrows ? "8px 0 0 8px" : "8px",
               "input": {
