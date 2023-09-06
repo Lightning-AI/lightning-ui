@@ -10,6 +10,7 @@ import { CheckCircle, Dangerous, Info, Warning } from "../../icons";
 import FormControl, { FormControlProps } from "../form-control";
 import NumberInputButtons from "./NumberInputButtons";
 import { BORDER_COLOR } from "./constants";
+import { unset } from "lodash";
 
 export const TURN_OFF_AUTOCOMPLETE_INPUT_PROPS = {
   // "nope" is better at disabling autocomplete, than "off"
@@ -83,8 +84,6 @@ const TextField = React.forwardRef(
       suffix,
       max,
       min,
-      multiline = false,
-      rows = 1,
       loading,
       // "nope" is better at disabling autocomplete, than "off"
       // because most modern browsers ignore "off" https://stackoverflow.com/a/38961567
@@ -156,8 +155,6 @@ const TextField = React.forwardRef(
               }
             }}
             fullWidth={fullWidth}
-            multiline={multiline}
-            rows={rows}
             onChange={onChangeHandler}
             type={type}
             autoComplete={autoComplete}
@@ -175,7 +172,7 @@ const TextField = React.forwardRef(
             }
             sx={{
               "font": INPUT_TEXT_FONT,
-              //"height": "36px",
+              "height": props.multiline ? undefined : "36px",
               "backgroundColor": isDark ? theme.palette.grey["10"] : theme.palette.background.default,
               "borderRadius": type === "number" && arrows ? "8px 0 0 8px" : "8px",
               "input": {
