@@ -84,6 +84,8 @@ const TextField = React.forwardRef(
       suffix,
       max,
       min,
+      multiline = false,
+      rows = 1,
       loading,
       maxLength,
       // "nope" is better at disabling autocomplete, than "off"
@@ -156,6 +158,8 @@ const TextField = React.forwardRef(
               }
             }}
             fullWidth={fullWidth}
+            multiline={multiline}
+            rows={rows}
             onChange={onChangeHandler}
             type={type}
             autoComplete={autoComplete}
