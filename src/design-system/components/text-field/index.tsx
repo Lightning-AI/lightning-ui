@@ -175,7 +175,7 @@ const TextField = React.forwardRef(
             }
             sx={{
               "font": INPUT_TEXT_FONT,
-              "height": "36px",
+              //"height": "36px",
               "backgroundColor": isDark ? theme.palette.grey["10"] : theme.palette.background.default,
               "borderRadius": type === "number" && arrows ? "8px 0 0 8px" : "8px",
               "input": {
