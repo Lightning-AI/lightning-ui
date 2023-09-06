@@ -44,6 +44,8 @@ export type TextFieldProps = {
   arrows?: boolean;
   max?: number;
   min?: number;
+  multiline?: boolean;
+  rows?: number;
   loading?: boolean;
 } & FormControlProps &
   Pick<
@@ -81,6 +83,8 @@ const TextField = React.forwardRef(
       suffix,
       max,
       min,
+      multiline = false,
+      rows = 1,
       loading,
       // "nope" is better at disabling autocomplete, than "off"
       // because most modern browsers ignore "off" https://stackoverflow.com/a/38961567
@@ -152,6 +156,8 @@ const TextField = React.forwardRef(
               }
             }}
             fullWidth={fullWidth}
+            multiline={multiline}
+            rows={rows}
             onChange={onChangeHandler}
             type={type}
             autoComplete={autoComplete}
