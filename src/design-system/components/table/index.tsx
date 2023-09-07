@@ -80,21 +80,24 @@ const Table = ({ virtualizedParams, ...props }: TableProps) => {
             : {}),
           ...props.sx,
           ...(props.sticky && {
-            th: {
+            "th": {
               position: "sticky",
               top: "0",
               zIndex: 2,
               background: theme.palette.background.default,
             },
-            tbody: {
+            "th:has([data-testid='checkbox'])": {
+              zIndex: "999 !important" as any,
+            },
+            "tbody": {
               overflow: "auto",
               height: "100%",
               maxHeight: "100%",
             },
-            overflow: "auto",
-            height: "100%",
-            maxHeight: "100%",
-            position: "relative",
+            "overflow": "auto",
+            "height": "100%",
+            "maxHeight": "100%",
+            "position": "relative",
           }),
         }}>
         <MuiTable
