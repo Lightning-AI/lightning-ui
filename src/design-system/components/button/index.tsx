@@ -167,7 +167,7 @@ const Button = ({ arrow, loading, href, ...props }: ButtonProps) => {
             opacity: isGreyColor ? 0.3 : 0.5,
             color,
             backgroundColor,
-            cursor: undefined
+            cursor: undefined,
           },
           "& .MuiButton-startIcon": {
             color: "inherit",
