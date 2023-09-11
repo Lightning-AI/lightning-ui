@@ -37,6 +37,9 @@ const ThemeProvider = ({ children, colorScheme }: { children: ReactNode; colorSc
           "*::selection": {
             background: colorScheme === "dark" ? darkTheme.palette.primary[20] : theme.palette.primary[20],
           },
+          ".MuiAlert-root *::selection": {
+            background: colorScheme === "dark" ? "#EEE4FC" : "#EEE4FC",
+          },
         }}
       />
       {children}
