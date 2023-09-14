@@ -46,6 +46,7 @@ const ThemeProvider = ({ children, colorScheme }: { children: ReactNode; colorSc
           },
         }}
       />
+      {children}
     </MuiThemeProvider>
   );
 };
