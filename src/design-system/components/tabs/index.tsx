@@ -2,6 +2,7 @@ import { MouseEventHandler, ReactNode, useEffect, useState } from "react";
 
 import { TabContext } from "@mui/lab";
 import { BoxProps, Tab as MuiTab, TabProps as MuiTabProps, Tabs as MuiTabs } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
 import { useLocation, useNavigate } from "react-router-dom";
 
 import { Tooltip } from "..";
@@ -28,7 +29,7 @@ export type TabItem = (StaticTabItem | NavigableTabItem) & TabItemMetadata;
 export type TabsProps = {
   selectedTab?: number;
   tabItems: TabItem[];
-  variant?: "text" | "outlined";
+  variant?: "text" | "outlined" | "grouped";
   /**
    * @default true
    */
@@ -69,6 +70,8 @@ const Tabs = ({
 
   const hasContent = tabItems.some(tabItem => typeof tabItem.content !== "undefined");
   const pathIndex = tabItems.findIndex(tabItem => "path" in tabItem && tabItem.path === location.pathname);
+  const theme: any = useTheme();
+  const isDark = theme.palette.mode === "dark";
 
   useEffect(() => {
     const newSelectedTab = pathIndex !== -1 ? pathIndex : tabItems.findIndex(tabItem => !tabItem.disabled);
@@ -121,6 +124,32 @@ const Tabs = ({
                   overflow: "hidden",
                   userSelect: "none",
                 },
+                ...(variant === "grouped" && {
+                  "fontSize": "12px",
+                  "background": isDark ? "#262626" : "#f9fafb",
+                  "position": "relative",
+                  "zIndex": "1",
+                  "margin": "0 -12px 0 0",
+                  "padding": "4px 16px",
+                  "height": "auto",
+                  "minHeight": "0px",
+                  "&.Mui-selected": {
+                    zIndex: "9",
+                    boxShadow: isDark ? "0 1px 1.5px 0.25px rgba(0,0,0,0.5)" : "0 1px 1.5px 0.5px rgba(0,0,0,0.175)",
+                    background: isDark ? "#363636" : (`${theme.palette.common.white} !important` as any),
+                    color: isDark
+                      ? (`${theme.palette.common.white} !important` as any)
+                      : (`${theme.palette.common.black} !important` as any),
+                  },
+                  "&:hover": {
+                    color: isDark
+                      ? (`${theme.palette.common.white} !important` as any)
+                      : (`${theme.palette.common.black} !important` as any),
+                  },
+                  ...(isDark && {
+                    color: "#828282",
+                  }),
+                }),
               }}
               onClick={"path" in tabItem && navigateHandler(tabItem.path, index)}
             />
