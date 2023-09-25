@@ -3,6 +3,8 @@ name: Publish package
 on:
   push:
     branches: ["master"]
+  pull_request:
+    branches: ["master"]
   release:
     types: [published]
 
@@ -23,16 +25,38 @@ jobs:
         run: yarn build
       - run: ls -lh .
 
+      - uses: actions/upload-artifact@v3
+        with:
+          name: build-${{ github.sha }}
+          path: build
+
+  upload-package:
+    runs-on: ubuntu-20.04
+    needs: build-package
+    if: startsWith(github.event.ref, 'refs/tags') || github.event_name == 'release'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v3
+        with:
+          name: build-${{ github.sha }}
+          path: build
+      - run: ls -lh dist/
+      - name: Upload to release
+        uses: AButler/upload-release-assets@v2.0
+        with:
+          files: "build/*"
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+
 #  publish-package:
 #    runs-on: ubuntu-20.04
 #    needs: build-package
-#    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+#    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
 #    steps:
 #      - uses: actions/checkout@v4
 #      - uses: actions/download-artifact@v3
 #        with:
-#          name: dist-packages-${{ github.sha }}
-#          path: dist
+#          name: build-${{ github.sha }}
+#          path: build
 #      - run: ls -lh dist/
 #
 #      - name: Configure AWS credentials
@@ -43,6 +67,4 @@ jobs:
 #          aws-region: us-east-1
 #
 #      - name: Upload to S3
-#        working-directory: dist/
-#        #run: aws s3 sync dist/ s3://sphinx-packages/
 #        run: aws s3 cp *.whl s3://lightning-packages/ --acl public-read
