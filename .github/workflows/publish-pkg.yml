@@ -61,12 +61,12 @@ jobs:
           name: build-${{ github.sha }}
       - run: ls -lh .
 
-#      - name: Configure AWS credentials
-#        uses: aws-actions/configure-aws-credentials@v4
-#        with:
-#          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-#          aws-secret-access-key: ${{ secrets.AWS_SECRET_KEY_ID }}
-#          aws-region: us-east-1
-#
-#      - name: Upload to S3
-#        run: aws s3 cp *.whl s3://lightning-packages/ --acl public-read
+      - name: Upload build to S3
+        working-directory: ${{ env.legacy_dir }}
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_PUB_ACCESS_KEY }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_PUB_SECRET_KEY }}
+          AWS_DEFAULT_REGION: ${{ secrets.AWS_REGION }}
+        run: |
+          pip install -q awscli
+          aws s3 cp *.zip s3:/lightning-packages/ui/ --acl public-read
