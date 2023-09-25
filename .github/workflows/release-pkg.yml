@@ -23,12 +23,16 @@ jobs:
 
       - name: Build UI
         run: yarn build
+      - run: ls -lh build/
+      - name: Pack UI
+        working-directory: build/
+        run: zip ../v0.0.0.zip -r .
       - run: ls -lh .
 
       - uses: actions/upload-artifact@v3
         with:
           name: build-${{ github.sha }}
-          path: build
+          path: "*.zip"
 
   upload-package:
     runs-on: ubuntu-20.04
@@ -39,26 +43,24 @@ jobs:
       - uses: actions/download-artifact@v3
         with:
           name: build-${{ github.sha }}
-          path: build
-      - run: ls -lh dist/
+      - run: ls -lh .
       - name: Upload to release
         uses: AButler/upload-release-assets@v2.0
         with:
-          files: "build/*"
+          files: "*.zip"
           repo-token: ${{ secrets.GITHUB_TOKEN }}
 
-#  publish-package:
-#    runs-on: ubuntu-20.04
-#    needs: build-package
-#    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
-#    steps:
-#      - uses: actions/checkout@v4
-#      - uses: actions/download-artifact@v3
-#        with:
-#          name: build-${{ github.sha }}
-#          path: build
-#      - run: ls -lh dist/
-#
+  publish-package:
+    runs-on: ubuntu-20.04
+    needs: build-package
+    # if: github.event_name == 'push' && github.ref == 'refs/heads/master' # FIXME
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v3
+        with:
+          name: build-${{ github.sha }}
+      - run: ls -lh .
+
 #      - name: Configure AWS credentials
 #        uses: aws-actions/configure-aws-credentials@v4
 #        with:
