@@ -24,7 +24,7 @@ export default {
       control: "select",
     },
     children: {
-      defaultValue: "You are offline, Please check your connectiviy",
+      defaultValue: "You are offline, Please check your connectivity",
       control: "text",
     },
     show: {

@@ -137,7 +137,7 @@ const Tabs = ({
       </MuiTabs>
       {divider && <Divider />}
       {hasContent && (
-        <Box paddingTop={3} paddingBottom={1.5} sx={sxContent}>
+        <Box paddingTop={divider ? 3 : 0} paddingBottom={1.5} sx={sxContent}>
           {tabItems.map((tabItem, index) => (
             <PrerenderableTabPanel
               sx={{ padding: 0, background: (theme: any) => theme.palette.background.default }}
