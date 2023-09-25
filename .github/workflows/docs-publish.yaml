@@ -1,8 +1,7 @@
 name: Storybook Doc Builder
 on:
   push:
-    branches:
-      - "master"
+    branches: ["master"]
   workflow_dispatch:
 
 jobs:

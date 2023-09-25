@@ -1,0 +1,48 @@
+name: Publish package
+
+on:
+  push:
+    branches: ["master"]
+  release:
+    types: [published]
+
+jobs:
+  build-package:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16.x
+      - name: Install env.
+        run: |
+          yarn install
+          yarn husky install
+
+      - name: Build UI
+        run: yarn build
+      - run: ls -lh .
+
+#  publish-package:
+#    runs-on: ubuntu-20.04
+#    needs: build-package
+#    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+#    steps:
+#      - uses: actions/checkout@v4
+#      - uses: actions/download-artifact@v3
+#        with:
+#          name: dist-packages-${{ github.sha }}
+#          path: dist
+#      - run: ls -lh dist/
+#
+#      - name: Configure AWS credentials
+#        uses: aws-actions/configure-aws-credentials@v4
+#        with:
+#          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+#          aws-secret-access-key: ${{ secrets.AWS_SECRET_KEY_ID }}
+#          aws-region: us-east-1
+#
+#      - name: Upload to S3
+#        working-directory: dist/
+#        #run: aws s3 sync dist/ s3://sphinx-packages/
+#        run: aws s3 cp *.whl s3://lightning-packages/ --acl public-read
