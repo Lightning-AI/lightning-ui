@@ -83,4 +83,4 @@ jobs:
         run: |
           pip install -q awscli
           ls -lh .
-          aws s3 cp "${VERSION}.tar.gz" s3:/lightning-packages/ui/ --acl public-read
+          aws s3 cp ${VERSION}.tar.gz s3://lightning-packages/ui/ --acl public-read
