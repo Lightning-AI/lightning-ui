@@ -52,7 +52,7 @@ jobs:
       - name: Upload to release
         uses: AButler/upload-release-assets@v2.0
         with:
-          files: "*.gz"
+          files: "*.tar.gz"
           repo-token: ${{ secrets.GITHUB_TOKEN }}
 
   publish-package:
@@ -60,7 +60,7 @@ jobs:
     needs: build-package
     # if: github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags') # FIXME
     env:
-      VERSION: "v0.0.0"
+      VERSION: "v0.0.0" # fixme
     steps:
       - uses: actions/checkout@v4
       - uses: actions/download-artifact@v3
@@ -74,14 +74,13 @@ jobs:
         run: |
           echo "$VERSION" > version.info
           tar -czvf ../${VERSION}.tar.gz .
-      - run: ls -lh .
 
       - name: Upload build to S3
-        working-directory: ${{ env.legacy_dir }}
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_PUB_ACCESS_KEY }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_PUB_SECRET_KEY }}
           AWS_DEFAULT_REGION: ${{ secrets.AWS_REGION }}
         run: |
           pip install -q awscli
-          aws s3 cp *.gz s3:/lightning-packages/ui/ --acl public-read
+          ls -lh .
+          aws s3 cp *.tar.gz s3:/lightning-packages/ui/ --acl public-read
