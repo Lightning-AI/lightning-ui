@@ -12,7 +12,7 @@ export default {
   },
   argTypes: {
     variant: {
-      options: ["text", "outlined"],
+      options: ["text", "outlined", "grouped"],
       control: "select",
     },
     divider: {
