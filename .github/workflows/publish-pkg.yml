@@ -59,13 +59,16 @@ jobs:
     runs-on: ubuntu-20.04
     needs: build-package
     # if: github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags') # FIXME
+    env:
+      VERSION: "v0.0.0"
     steps:
       - uses: actions/checkout@v4
       - uses: actions/download-artifact@v3
         with:
           name: build-${{ github.sha }}
           path: build/
-      - run: echo "VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
+      # fixme
+      # - run: echo "VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
       - name: Pack UI
         working-directory: build/
         run: |
