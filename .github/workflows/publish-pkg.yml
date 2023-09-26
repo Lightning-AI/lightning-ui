@@ -24,41 +24,53 @@ jobs:
       - name: Build UI
         run: yarn build
       - run: ls -lh build/
-      - name: Pack UI
-        working-directory: build/
-        run: zip ../v0.0.0.zip -r .
-      - run: ls -lh .
 
       - uses: actions/upload-artifact@v3
         with:
           name: build-${{ github.sha }}
-          path: "*.zip"
+          path: build/
 
   upload-package:
     runs-on: ubuntu-20.04
     needs: build-package
-    if: startsWith(github.event.ref, 'refs/tags') || github.event_name == 'release'
+    if: github.event_name == 'release'
+    env:
+      # see: https://stackoverflow.com/a/61329476/4521646
+      VERSION: ${{ github.event.release.tag_name }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/download-artifact@v3
         with:
           name: build-${{ github.sha }}
+          path: build/
+      - name: Pack UI
+        working-directory: build/
+        run: |
+          echo "$VERSION" > version.info
+          tar -czvf ../${VERSION}.tar.gz .
       - run: ls -lh .
       - name: Upload to release
         uses: AButler/upload-release-assets@v2.0
         with:
-          files: "*.zip"
+          files: "*.gz"
           repo-token: ${{ secrets.GITHUB_TOKEN }}
 
   publish-package:
     runs-on: ubuntu-20.04
     needs: build-package
-    # if: github.event_name == 'push' && github.ref == 'refs/heads/master' # FIXME
+    # if: github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags') # FIXME
     steps:
       - uses: actions/checkout@v4
       - uses: actions/download-artifact@v3
         with:
           name: build-${{ github.sha }}
+          path: build/
+      - run: echo "VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
+      - name: Pack UI
+        working-directory: build/
+        run: |
+          echo "$VERSION" > version.info
+          tar -czvf ../${VERSION}.tar.gz .
       - run: ls -lh .
 
       - name: Upload build to S3
@@ -69,4 +81,4 @@ jobs:
           AWS_DEFAULT_REGION: ${{ secrets.AWS_REGION }}
         run: |
           pip install -q awscli
-          aws s3 cp *.zip s3:/lightning-packages/ui/ --acl public-read
+          aws s3 cp *.gz s3:/lightning-packages/ui/ --acl public-read
