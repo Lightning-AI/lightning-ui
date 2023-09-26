@@ -47,7 +47,7 @@ jobs:
         working-directory: build/
         run: |
           echo "$VERSION" > version.info
-          tar -czvf ../${VERSION}.tar.gz .
+          tar -czvf ../${VERSION}.tar.gz *
       - run: ls -lh .
       - name: Upload to release
         uses: AButler/upload-release-assets@v2.0
@@ -58,19 +58,21 @@ jobs:
   publish-package:
     runs-on: ubuntu-20.04
     needs: build-package
-    if: github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags')
+    # if: github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags') # fixme
+    env: # fixme
+      VERSION: "v0.0.0"
     steps:
       - uses: actions/checkout@v4
       - uses: actions/download-artifact@v3
         with:
           name: build-${{ github.sha }}
           path: build/
-      - run: echo "VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
+      #- run: echo "VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV # fixme
       - name: Pack UI
         working-directory: build/
         run: |
           echo "$VERSION" > version.info
-          tar -czvf ../${VERSION}.tar.gz .
+          tar -czvf ../${VERSION}.tar.gz *
 
       - name: Upload build to S3
         env:
