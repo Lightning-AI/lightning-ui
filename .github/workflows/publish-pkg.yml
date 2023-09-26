@@ -52,7 +52,7 @@ jobs:
       - name: Upload to release
         uses: AButler/upload-release-assets@v2.0
         with:
-          files: "*.tar.gz"
+          files: "${{ env.VERSION }}.tar.gz"
           repo-token: ${{ secrets.GITHUB_TOKEN }}
 
   publish-package:
@@ -83,4 +83,4 @@ jobs:
         run: |
           pip install -q awscli
           ls -lh .
-          aws s3 cp *.tar.gz s3:/lightning-packages/ui/ --acl public-read
+          aws s3 cp "${VERSION}.tar.gz" s3:/lightning-packages/ui/ --acl public-read
