@@ -69,7 +69,7 @@ frontend code, simply run `yarn build` again, and refresh the browser window to 
 
 ## How do I release a new local UI version for the Lightning.ai framework?
 
-The `lightning-ui` release process is automated with GitHub actions and being published to S bucket or as artifact to eventual GH release.
+The `lightning-ui` release process is automated with GitHub actions and being published to [S3 bucket](s3:/lightning-packages/ui/) or as artifact to eventual GitHub release.
 
 ### Automated releasing
 
