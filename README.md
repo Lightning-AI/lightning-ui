@@ -67,26 +67,33 @@ To set up both projects together, follow the steps below:
 The `lightning` CLI will now serve the frontend code at `http://localhost:7501`. Any time you make changes to the
 frontend code, simply run `yarn build` again, and refresh the browser window to see the changes.
 
-## How do I release a new local UI version for the Lightning.ai framework?
+## How to update Lightning.ai framework with new UI
 
-The `lightning-ui` release process is automated with GitHub actions and being published to
-[S3 bucket](s3:/lightning-packages/ui/) or as artifact to eventual GitHub release.
+**How do I release a new local UI version for the Lightning.ai framework?**
+
+The `lightning-ui` release process is automated with GitHub actions and is published to
+[S3 bucket](s3:/lightning-packages/ui/) or as an artifact to eventual GitHub release.
+
+Note that the automation assumes the new release shall have an incremented version, such as `v0.0.n`.
+To be used in [lightning](https://github.com/Lightning-AI/lightning) you also need to update version in:
+- [`_ASSISTANT._download_frontend(os.path.join(_SOURCE_ROOT, "lightning", "app"), version="v0.0.0")`](https://github.com/Lightning-AI/lightning/blob/master/src/lightning/__setup__.py#L82)
+- [`assistant._download_frontend(_PACKAGE_ROOT, version="v0.0.0")`](https://github.com/Lightning-AI/lightning/blob/master/src/lightning_app/__setup__.py#L59)
 
 ### Automated releasing
 
-We are building the UI for two occasion - creating GH release in UI or pushing any tag to git and then it is uploaded
-do S3 with the names used as the tag. (Note that making release in Github yields in making tag with the same name.)
+We are building the UI for two occasions - creating GH release in UI or pushing any tag to git, and then it is uploaded
+to S3 with the names used as the tag. (Note that making a release in Github yields making a tag with the same name.)
 
 ### Manual releasing
 
-In a gase you really have to:
+In a gap you really have to:
 
 ```shell
 yarn build
 tar -czvf build.tar.gz ./build
 ```
 
-with:
+With explanation:
 
 - **c**: This stands for "create." It tells tar that you want to create a new archive.
 - **z**: This option is used to compress the archive using gzip compression. When you specify z, tar will compress the
@@ -97,7 +104,7 @@ with:
 
 Then, upload the file to
 [this bucket](https://console.cloud.google.com/storage/browser/grid-packages/lightning-ui/v0.0.0;tab=objects?pli=1&prefix=&forceOnObjectsSortingFiltering=false)
-and overwrite existing.
+and overwrite existing ones.
 
 ~~New releases of the Lightning.ai framework happen automatically from a GitHub action with every merge to `master`.
 This will download and include the `lightning-ui` that is in the bucket above.~~
