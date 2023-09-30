@@ -32,21 +32,23 @@ const ThemeProvider = ({ children, colorScheme }: { children: ReactNode; colorSc
   }, [colorScheme]);
   return (
     <MuiThemeProvider theme={colorScheme === "dark" ? darkTheme : theme}>
-      <GlobalStyles
-        styles={{
-          "*::selection": {
-            background: colorScheme === "dark" ? darkTheme.palette.primary[20] : theme.palette.primary[20],
-          },
-          ".MuiAlert-root *::selection": {
-            background: "#EEE4FC",
-          },
-          "* .MuiTooltip-popper *::selection": {
-            background: "#EEE4FC",
-            color: theme.palette.common.black,
-          },
-        }}
-      />
-      {children}
+      <>
+        <GlobalStyles
+          styles={{
+            "*::selection": {
+              background: colorScheme === "dark" ? darkTheme.palette.primary[20] : theme.palette.primary[20],
+            },
+            ".MuiAlert-root *::selection": {
+              background: "#EEE4FC",
+            },
+            "* .MuiTooltip-popper *::selection": {
+              background: "#EEE4FC",
+              color: theme.palette.common.black,
+            },
+          }}
+        />
+        {children}
+      </>
     </MuiThemeProvider>
   );
 };
