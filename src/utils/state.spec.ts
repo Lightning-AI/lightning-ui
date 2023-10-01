@@ -110,7 +110,7 @@ describe("childFor", () => {
     const tests = [
       { path: "", expected: undefined },
       { path: "root.dashboard", expected: appState.flows.dashboard },
-      { path: "root.results.download", expected: appState.flows.results.flows.download },
+      { path: "root.results.download", expected: appState.flows.results?.flows.download },
     ];
 
     tests.forEach(test => {
@@ -130,7 +130,7 @@ describe("routesFor", () => {
     cy.fixture("app-state--simple-layout.json").then((state: LightningState) => {
       const stateWithSingleLayout = {
         ...state,
-        vars: { ...state.vars, _layout: (state.vars._layout as Layout[])[0] },
+        vars: { ...state.vars, _layout: (state.vars._layout as Layout[])[0] as Layout },
       };
 
       expect(routesFor(stateWithSingleLayout)).to.deep.equal([stateWithSingleLayout.vars._layout]);

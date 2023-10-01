@@ -1,5 +1,3 @@
-import React from "react";
-
 import { Stack } from "design-system/components";
 
 import useLightningState from "hooks/useLightningState";

@@ -16,7 +16,7 @@ describe("LayoutView", () => {
     cy.fixture("app-state--simple-layout").then((state: LightningState) => {
       const layout = state.vars._layout as Layout[];
 
-      mount(<LayoutView layout={layout[0]} />);
+      mount(<LayoutView layout={layout[0] as Layout} />);
 
       cy.wait("@getState");
     });
@@ -34,7 +34,7 @@ describe("LayoutView", () => {
     cy.fixture("app-state--simple-layout").then((state: LightningState) => {
       const layout = state.vars._layout as Layout[];
 
-      mount(<LayoutView layout={layout[2]} />);
+      mount(<LayoutView layout={layout[2] as Layout} />);
 
       cy.wait("@getState");
 
@@ -46,7 +46,7 @@ describe("LayoutView", () => {
     cy.fixture("app-state--simple-layout").then((state: LightningState) => {
       const layout = state.vars._layout as Layout[];
 
-      mount(<LayoutView layout={layout[1]} />);
+      mount(<LayoutView layout={layout[1] as Layout} />);
 
       cy.wait("@getState");
 
