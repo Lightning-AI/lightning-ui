@@ -138,7 +138,7 @@ const Table = ({ virtualizedParams, ...props }: TableProps) => {
                 overscanRowCount={virtualizedParams.overscanRowCount}
                 rowRenderer={({ index, key, style }) => (
                   <Box key={key} style={style}>
-                    <TableRow hover={!!props.rowHover} cells={props.rows[index]} />
+                    <TableRow hover={!!props.rowHover} cells={props.rows[index] || []} />
                   </Box>
                 )}
               />
