@@ -75,10 +75,7 @@ The `lightning-ui` release process is automated with GitHub actions and is publi
 [S3 bucket](s3:/lightning-packages/ui/) or as an artifact to eventual GitHub release.
 
 Note that the automation assumes the new release shall have an incremented version, such as `v0.0.n`. To be used in
-[lightning](https://github.com/Lightning-AI/lightning) you also need to update version in:
-
-- [`_ASSISTANT._download_frontend(os.path.join(_SOURCE_ROOT, "lightning", "app"), version="v0.0.0")`](https://github.com/Lightning-AI/lightning/blob/master/src/lightning/__setup__.py#L82)
-- [`assistant._download_frontend(_PACKAGE_ROOT, version="v0.0.0")`](https://github.com/Lightning-AI/lightning/blob/master/src/lightning_app/__setup__.py#L59)
+[lightning](https://github.com/Lightning-AI/lightning) you also need to update version in [`src/app-ui-version.info`](https://github.com/Lightning-AI/lightning/blob/master/src/app-ui-version.info).
 
 ### Automated releasing
 
