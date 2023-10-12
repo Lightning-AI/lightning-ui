@@ -103,10 +103,13 @@ const Table = ({ virtualizedParams, ...props }: TableProps) => {
               ? {
                   ".MuiTableRow-root": { width: "100%", display: "flex" },
                   ".MuiTableCell-root": { display: "flex", flexGrow: 1, alignItems: "center" },
-                  ...virtualizedParams.columnWidthsPx.reduce((style, width, index) => {
-                    style[`.MuiTableCell-root:nth-child(${index + 1})`] = { width: `${width}px` };
-                    return style;
-                  }, {} as Record<string, MuiTableCellProps["sx"]>),
+                  ...virtualizedParams.columnWidthsPx.reduce(
+                    (style, width, index) => {
+                      style[`.MuiTableCell-root:nth-child(${index + 1})`] = { width: `${width}px` };
+                      return style;
+                    },
+                    {} as Record<string, MuiTableCellProps["sx"]>,
+                  ),
                 }
               : undefined),
           }}>
