@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { Box, Stack } from "@mui/material";
 import { Alert, CircularProgress } from "design-system/components";
@@ -39,7 +39,11 @@ export default function IFrameRoute(props: Props) {
         const internalPort = message.ports[0];
         setIframePort(internalPort);
 
-        message.ports[0].onmessage = (message: MessageEvent) => {
+        if (!internalPort) {
+          console.error("Failed to establish communication with iframe, expecting `internalPort`");
+          return;
+        }
+        internalPort.onmessage = (message: MessageEvent) => {
           lightningStateMutation.mutate(message.data);
         };
       }

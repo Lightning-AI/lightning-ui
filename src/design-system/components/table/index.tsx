@@ -106,10 +106,13 @@ const Table = ({ virtualizedParams, ...props }: TableProps) => {
               ? {
                   ".MuiTableRow-root": { width: "100%", display: "flex" },
                   ".MuiTableCell-root": { display: "flex", flexGrow: 1, alignItems: "center" },
-                  ...virtualizedParams.columnWidthsPx.reduce((style, width, index) => {
-                    style[`.MuiTableCell-root:nth-child(${index + 1})`] = { width: `${width}px` };
-                    return style;
-                  }, {} as Record<string, MuiTableCellProps["sx"]>),
+                  ...virtualizedParams.columnWidthsPx.reduce(
+                    (style, width, index) => {
+                      style[`.MuiTableCell-root:nth-child(${index + 1})`] = { width: `${width}px` };
+                      return style;
+                    },
+                    {} as Record<string, MuiTableCellProps["sx"]>,
+                  ),
                 }
               : undefined),
           }}>
@@ -141,7 +144,7 @@ const Table = ({ virtualizedParams, ...props }: TableProps) => {
                 overscanRowCount={virtualizedParams.overscanRowCount}
                 rowRenderer={({ index, key, style }) => (
                   <Box key={key} style={style}>
-                    <TableRow hover={!!props.rowHover} cells={props.rows[index]} />
+                    <TableRow hover={!!props.rowHover} cells={props.rows[index] || []} />
                   </Box>
                 )}
               />

@@ -1,9 +1,9 @@
 name: CI Testing
 on:
   push:
-    branches:
-      - "master"
-  pull_request:
+    branches: ["master"]
+  pull_request: {}
+
 jobs:
   component-tests:
     runs-on: ubuntu-20.04
