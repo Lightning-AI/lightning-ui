@@ -10,7 +10,7 @@ on:
 
 jobs:
   build-package:
-    runs-on: ubuntu-20.04
+    runs-on: "ubuntu-22.04"
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v3
@@ -31,7 +31,7 @@ jobs:
           path: build/
 
   upload-package:
-    runs-on: ubuntu-20.04
+    runs-on: "ubuntu-22.04"
     needs: build-package
     if: github.event_name == 'release'
     env:
@@ -56,21 +56,28 @@ jobs:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
 
   publish-package:
-    runs-on: ubuntu-20.04
     needs: build-package
     if: github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags')
+    runs-on: "ubuntu-22.04"
+    outputs:
+      ui-version: ${{ steps.parse.outputs.VERSION }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/download-artifact@v3
         with:
           name: build-${{ github.sha }}
           path: build/
-      - run: echo "VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
+      - name: parse version
+        id: parse
+        run: |
+          echo "VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
+          echo "VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_OUTPUT
       - name: Pack UI
         working-directory: build/
         run: |
           echo "$VERSION" > version.info
           tar -czvf ../${VERSION}.tar.gz *
+          ls -lh .
 
       - name: Upload build to S3
         env:
@@ -79,5 +86,44 @@ jobs:
           AWS_DEFAULT_REGION: ${{ secrets.AWS_REGION }}
         run: |
           pip install -q awscli
-          ls -lh .
           aws s3 cp ${VERSION}.tar.gz s3://lightning-packages/ui/ --acl public-read
+
+  bump-UI:
+    runs-on: "ubuntu-22.04"
+    needs: publish-package
+    env:
+      TAG: ${{ needs.publish-package.outputs.ui-version }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          repository: Lightning-AI/lightning
+          token: ${{ secrets.PAT_GHOST }}
+      - name: Update UI version
+        working-directory: src/
+        run: echo "${TAG}" > app-ui-version.info
+
+      - name: Create Pull Request
+        if: github.event_name != 'pull_request'
+        uses: peter-evans/create-pull-request@v5
+        with:
+          title: "Bump UI ver `${{ env.TAG }}`"
+          committer: GitHub <noreply@github.com>
+          author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
+          token: ${{ secrets.PAT_GHOST }}
+          commit-message: "bumping UI version -> (${{ env.TAG }})"
+          branch: "bump/ui-${{ env.TAG }}"
+          # Delete the branch when closing pull requests, and when undeleted after merging.
+          delete-branch: true
+          # the PR"s body/content
+          body: >
+            **This is automated update with the latest UI
+              [release](https://github.com/Lightning-AI/lightning-ui/releases/tag/${{ env.TAG }})!**
+
+            Please, proceed with this update in timely manner...
+          assignees: |
+            yurijmikhalevich
+            borda
+          reviewers: |
+            justusschock
+            ethanwharris
+            borda
