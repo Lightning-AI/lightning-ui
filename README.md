@@ -74,9 +74,10 @@ frontend code, simply run `yarn build` again, and refresh the browser window to 
 The `lightning-ui` release process is automated with GitHub actions and is published to
 [S3 bucket](s3:/lightning-packages/ui/) or as an artifact to eventual GitHub release.
 
-Note that the automation assumes the new release shall have an incremented version, such as `v0.0.n`. To be used in
-[lightning](https://github.com/Lightning-AI/lightning) you also need to update version in
-[`src/app-ui-version.info`](https://github.com/Lightning-AI/lightning/blob/master/src/app-ui-version.info).
+Note that the automation assumes the new release shall have an incremented version, such as `v0.0.n`. 
+With creating a tag and uploading to S3 it will also create PR with bumpit this version in [lightning](https://github.com/Lightning-AI/lightning) repository.
+
+In case such PR is not created, you need to update version in [`src/app-ui-version.info`](https://github.com/Lightning-AI/lightning/blob/master/src/app-ui-version.info).
 
 ### Automated releasing
 
