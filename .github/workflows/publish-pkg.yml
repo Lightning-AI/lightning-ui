@@ -71,7 +71,7 @@ jobs:
         id: parse
         run: |
           echo "VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
-          echo "VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
+          echo "VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_OUTPUT
       - name: Pack UI
         working-directory: build/
         run: |
