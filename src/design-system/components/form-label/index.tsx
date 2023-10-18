@@ -10,7 +10,7 @@ export type FormLabelProps = {
 
 const FormLabel = ({ optional, tooltip, children }: FormLabelProps) => (
   <Stack direction={"row"} alignItems={"center"} spacing={0.5}>
-    <Typography
+    <Stack
       sx={{
         color: (theme: any) => theme.palette.text.primary,
         fontWeight: 600,
@@ -19,7 +19,7 @@ const FormLabel = ({ optional, tooltip, children }: FormLabelProps) => (
         lineHeight: "20px",
       }}>
       {children}
-    </Typography>
+    </Stack>
     {optional && (
       <Typography
         sx={{

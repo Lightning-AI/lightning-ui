@@ -91,7 +91,6 @@ const Tabs = ({
           "& .MuiTabs-indicator": { display: "none" },
         }}>
         {tabItems.map((tabItem, index) => {
-          console.log("HERE")
           const tab = (
             // @ts-ignore
             <MuiTab
