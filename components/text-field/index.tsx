@@ -14,7 +14,7 @@ import { BORDER_COLOR } from "./constants";
 export const TURN_OFF_AUTOCOMPLETE_INPUT_PROPS = {
   // "nope" is better at disabling autocomplete, than "off"
   // because most modern browsers ignore "off" https://stackoverflow.com/a/38961567
-  "autocomplete": "nope",
+  "autoComplete": "nope",
   "aria-autocomplete": "none" as InputProps["aria-autocomplete"],
   "data-form-type": "other",
   "data-1p-ignore": "true",
