@@ -1,6 +1,6 @@
-import { ReactNode } from "react";
+import {ReactNode} from "react";
 
-import { InfoIconWithHelpTooltip, Stack, Typography } from "../";
+import {InfoIconWithHelpTooltip, Stack, Typography} from "../";
 
 export type FormLabelProps = {
   optional?: boolean;
@@ -8,18 +8,15 @@ export type FormLabelProps = {
   children: ReactNode;
 };
 
-const FormLabel = ({ optional, tooltip, children }: FormLabelProps) => (
-  <Stack direction={"row"} alignItems={"center"} spacing={0.5}>
-    <Stack
-      sx={{
-        color: (theme: any) => theme.palette.text.primary,
-        fontWeight: 600,
-        fontStyle: "normal",
-        fontSize: "14px",
-        lineHeight: "20px",
-      }}>
-      {children}
-    </Stack>
+const FormLabel = ({optional, tooltip, children}: FormLabelProps) => (
+  <Stack direction={"row"} alignItems={"center"} spacing={0.5} sx={{
+    color: (theme: any) => theme.palette.text.primary,
+    fontWeight: 600,
+    fontStyle: "normal",
+    fontSize: "14px",
+    lineHeight: "20px",
+  }}>
+    {children}
     {optional && (
       <Typography
         sx={{
@@ -33,7 +30,7 @@ const FormLabel = ({ optional, tooltip, children }: FormLabelProps) => (
         &bull; Optional
       </Typography>
     )}
-    {tooltip && <InfoIconWithHelpTooltip message={tooltip} size={"small"} />}
+    {tooltip && <InfoIconWithHelpTooltip message={tooltip} size={"small"}/>}
   </Stack>
 );
 
