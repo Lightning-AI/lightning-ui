@@ -91,6 +91,7 @@ const Tabs = ({
           "& .MuiTabs-indicator": { display: "none" },
         }}>
         {tabItems.map((tabItem, index) => {
+          console.log("HERE")
           const tab = (
             // @ts-ignore
             <MuiTab
@@ -151,7 +152,7 @@ const Tabs = ({
                   }),
                 }),
               }}
-              onClick={"path" in tabItem && navigateHandler(tabItem.path, index)}
+              onClick={"path" in tabItem ? navigateHandler(tabItem.path, index) : undefined}
             />
           );
 
