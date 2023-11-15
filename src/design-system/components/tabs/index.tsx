@@ -151,7 +151,7 @@ const Tabs = ({
                   }),
                 }),
               }}
-              onClick={"path" in tabItem && navigateHandler(tabItem.path, index)}
+              onClick={"path" in tabItem ? navigateHandler(tabItem.path, index) : undefined}
             />
           );
 
