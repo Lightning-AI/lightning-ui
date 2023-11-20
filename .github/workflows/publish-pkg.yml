@@ -50,7 +50,7 @@ jobs:
           tar -czvf ../${VERSION}.tar.gz *
       - run: ls -lh .
       - name: Upload to release
-        uses: AButler/upload-release-assets@v2.0
+        uses: AButler/upload-release-assets@v3.0
         with:
           files: "${{ env.VERSION }}.tar.gz"
           repo-token: ${{ secrets.GITHUB_TOKEN }}
