@@ -39,7 +39,7 @@ jobs:
       VERSION: ${{ github.event.release.tag_name }}
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/download-artifact@v3
+      - uses: actions/download-artifact@v4
         with:
           name: build-${{ github.sha }}
           path: build/
@@ -63,7 +63,7 @@ jobs:
       ui-version: ${{ steps.parse.outputs.VERSION }}
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/download-artifact@v3
+      - uses: actions/download-artifact@v4
         with:
           name: build-${{ github.sha }}
           path: build/
