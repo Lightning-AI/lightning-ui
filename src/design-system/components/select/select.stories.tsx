@@ -49,6 +49,14 @@ export default {
       defaultValue: false,
       control: "boolean",
     },
+    minWidth: {
+      defaultValue: undefined,
+      control: "number",
+    },
+    height: {
+      defaultValue: undefined,
+      control: "number",
+    },
     disabled: {
       defaultValue: false,
       control: "boolean",
