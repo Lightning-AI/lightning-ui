@@ -73,7 +73,6 @@ const Select = React.forwardRef(
     const areLabelType = props.options.some(option => typeof option.label !== "string");
     const value = typeof props.value !== "undefined" ? props.value : multiple ? [] : "";
     const [selectedValue, setSelectedValue] = useState(value);
-    const defaultHeight = 36;
     const labelHeight = 20;
 
     const hasStatus = typeof status !== "undefined";
@@ -87,7 +86,7 @@ const Select = React.forwardRef(
       onChange(value);
     };
 
-    const getHeight = () => {
+    const getHeight = (defaultHeight: number) => {
       if (areLabelType) {
         return `${height === undefined ? defaultHeight : height + labelHeight}px`;
       } else {
@@ -181,7 +180,7 @@ const Select = React.forwardRef(
           sx={{
             "& .MuiOutlinedInput-root": {
               minWidth: minWidth ? `${minWidth}px` : "150px",
-              height: getHeight(),
+              height: getHeight(36),
               fontStyle: "normal",
               fontWeight: "normal",
               fontSize: "14px",
@@ -215,7 +214,7 @@ const Select = React.forwardRef(
               color: (theme: any) => theme.palette.grey["20"],
             },
             "& .MuiOutlinedInput-root.MuiInputBase-sizeSmall": {
-              height: "28px",
+              height: getHeight(28),
             },
             "& .MuiSelect-select.MuiSelect-outlined.MuiOutlinedInput-input": {
               paddingLeft: !areLabelType && icon ? "36px" : "12px",
