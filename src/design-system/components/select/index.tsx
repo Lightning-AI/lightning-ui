@@ -10,6 +10,8 @@ import CheckboxBase from "../checkbox/CheckboxBase";
 import FormControl from "../form-control";
 import RadioBase from "../radio/RadioBase";
 
+const LABEL_HEIGHT_PX = 20;
+
 const statusColor: Record<string, any> = {
   info: "#1877F2",
   success: "#31A24C",
@@ -73,7 +75,6 @@ const Select = React.forwardRef(
     const areLabelType = props.options.some(option => typeof option.label !== "string");
     const value = typeof props.value !== "undefined" ? props.value : multiple ? [] : "";
     const [selectedValue, setSelectedValue] = useState(value);
-    const labelHeight = 20;
 
     const hasStatus = typeof status !== "undefined";
     const isSmall = size === "small";
@@ -88,7 +89,7 @@ const Select = React.forwardRef(
 
     const getHeight = (defaultHeight: number) => {
       if (areLabelType) {
-        return `${height === undefined ? defaultHeight : height + labelHeight}px`;
+        return `${height === undefined ? defaultHeight : height + LABEL_HEIGHT_PX}px`;
       } else {
         return `${height === undefined ? defaultHeight : height}px`;
       }
