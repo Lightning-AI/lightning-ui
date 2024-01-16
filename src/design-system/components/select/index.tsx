@@ -45,8 +45,8 @@ export type SelectProps = {
   multiple?: boolean;
   defaultValue?: string;
   multiSelectedItemName?: string;
-  minWidth?: number;
-  height?: number;
+  minWidthPx?: number;
+  heightPx?: number;
 } & Pick<MuiTextFieldProps, "disabled" | "fullWidth" | "size" | "value" | "autoFocus">;
 
 const Select = React.forwardRef(
@@ -58,8 +58,8 @@ const Select = React.forwardRef(
       status,
       icon,
       fullWidth,
-      minWidth,
-      height,
+      minWidthPx,
+      heightPx,
       optional,
       tooltip,
       multiple,
@@ -87,11 +87,11 @@ const Select = React.forwardRef(
       onChange(value);
     };
 
-    const getHeight = (defaultHeight: number) => {
+    const getHeight = (defaultHeightPx: number) => {
       if (areLabelType) {
-        return `${height === undefined ? defaultHeight : height + LABEL_HEIGHT_PX}px`;
+        return `${heightPx === undefined ? defaultHeightPx : heightPx + LABEL_HEIGHT_PX}px`;
       } else {
-        return `${height === undefined ? defaultHeight : height}px`;
+        return `${heightPx === undefined ? defaultHeightPx : heightPx}px`;
       }
     };
 
@@ -180,7 +180,7 @@ const Select = React.forwardRef(
           }}
           sx={{
             "& .MuiOutlinedInput-root": {
-              minWidth: minWidth ? `${minWidth}px` : "150px",
+              minWidth: minWidthPx ? `${minWidthPx}px` : "150px",
               height: getHeight(36),
               fontStyle: "normal",
               fontWeight: "normal",

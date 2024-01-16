@@ -49,11 +49,11 @@ export default {
       defaultValue: false,
       control: "boolean",
     },
-    minWidth: {
+    minWidthPx: {
       defaultValue: undefined,
       control: "number",
     },
-    height: {
+    heightPx: {
       defaultValue: undefined,
       control: "number",
     },
