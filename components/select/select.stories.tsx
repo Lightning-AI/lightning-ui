@@ -49,6 +49,14 @@ export default {
       defaultValue: false,
       control: "boolean",
     },
+    minWidthPx: {
+      defaultValue: undefined,
+      control: "number",
+    },
+    heightPx: {
+      defaultValue: undefined,
+      control: "number",
+    },
     disabled: {
       defaultValue: false,
       control: "boolean",

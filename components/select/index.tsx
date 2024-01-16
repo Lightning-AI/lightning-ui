@@ -10,6 +10,8 @@ import CheckboxBase from "../checkbox/CheckboxBase";
 import FormControl from "../form-control";
 import RadioBase from "../radio/RadioBase";
 
+const LABEL_HEIGHT_PX = 20;
+
 const statusColor: Record<string, any> = {
   info: "#1877F2",
   success: "#31A24C",
@@ -43,6 +45,8 @@ export type SelectProps = {
   multiple?: boolean;
   defaultValue?: string;
   multiSelectedItemName?: string;
+  minWidthPx?: number;
+  heightPx?: number;
 } & Pick<MuiTextFieldProps, "disabled" | "fullWidth" | "size" | "value" | "autoFocus">;
 
 const Select = React.forwardRef(
@@ -54,6 +58,8 @@ const Select = React.forwardRef(
       status,
       icon,
       fullWidth,
+      minWidthPx,
+      heightPx,
       optional,
       tooltip,
       multiple,
@@ -61,6 +67,7 @@ const Select = React.forwardRef(
       size,
       defaultValue,
       multiSelectedItemName,
+      disabled,
       ...props
     }: SelectProps,
     ref,
@@ -78,6 +85,14 @@ const Select = React.forwardRef(
       setSelectedValue(value);
       if (typeof onChange === "undefined") return;
       onChange(value);
+    };
+
+    const getHeight = (defaultHeightPx: number) => {
+      if (areLabelType) {
+        return `${heightPx === undefined ? defaultHeightPx : heightPx + LABEL_HEIGHT_PX}px`;
+      } else {
+        return `${heightPx === undefined ? defaultHeightPx : heightPx}px`;
+      }
     };
 
     useEffect(() => {
@@ -165,8 +180,8 @@ const Select = React.forwardRef(
           }}
           sx={{
             "& .MuiOutlinedInput-root": {
-              minWidth: "150px",
-              height: areLabelType ? "56px" : "36px",
+              minWidth: minWidthPx ? `${minWidthPx}px` : "150px",
+              height: getHeight(36),
               fontStyle: "normal",
               fontWeight: "normal",
               fontSize: "14px",
@@ -181,7 +196,7 @@ const Select = React.forwardRef(
               },
             }),
             "& .MuiInputBase-colorPrimary:hover .MuiOutlinedInput-notchedOutline": {
-              borderColor: (theme: any) => theme.palette[status ?? "primary"].main,
+              borderColor: (theme: any) => (disabled ? "rgba(0,0,0,0.26)" : theme.palette[status ?? "primary"].main),
             },
             "& .Mui-error fieldset.MuiOutlinedInput-notchedOutline": {
               padding: 0,
@@ -200,7 +215,7 @@ const Select = React.forwardRef(
               color: (theme: any) => theme.palette.grey["20"],
             },
             "& .MuiOutlinedInput-root.MuiInputBase-sizeSmall": {
-              height: "28px",
+              height: getHeight(28),
             },
             "& .MuiSelect-select.MuiSelect-outlined.MuiOutlinedInput-input": {
               paddingLeft: !areLabelType && icon ? "36px" : "12px",

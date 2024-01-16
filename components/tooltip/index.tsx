@@ -27,7 +27,7 @@ const Tooltip = ({
       enterDelay={delay}
       enterNextDelay={enterNextDelay}
       {...otherTooltipProps}>
-      <Box component={"span"} sx={{ cursor: title ? "pointer" : "inherit", width }}>
+      <Box component={"span"} sx={{ cursor: interactive ? "pointer" : "inherit", width }}>
         {children}
       </Box>
     </MuiTooltip>
