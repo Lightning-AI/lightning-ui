@@ -36,8 +36,7 @@ const DialogTitle = ({ text, subtext, onCloseClick, closeDataTestId, center }: D
             disableFocusRipple
             sx={{ color: (theme: any) => theme.palette.text.primary, padding: 0, position: "absolute", right: "24px" }}
             onClick={onCloseClick}
-            data-testid={closeDataTestId}
-          >
+            data-testid={closeDataTestId}>
             <Close sx={{ fontSize: "16px" }} />
           </IconButton>
         )}
