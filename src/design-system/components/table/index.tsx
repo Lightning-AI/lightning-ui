@@ -152,21 +152,9 @@ const Table = ({ virtualizedParams, ...props }: TableProps) => {
                 rowHeight={virtualizedParams.rowHeightPx}
                 overscanRowCount={virtualizedParams.overscanRowCount}
                 rowRenderer={({ index, key, style }) => {
-                  <Box key={key} style={style}>
-                    <TableRow hover={!!props.rowHover} cells={"cells" in props.rows?[index] ? props.rows[index]?.cells : props.rows[index] || []} />
-                  </Box>
-
-                  // if ("cells" in props.rows?[index]) {
-                  //   return (
-                  //     <Box key={key} style={style}>
-                  //       <TableRow hover={!!props.rowHover} cells={props.rows[index]?.cells || []} />
-                  //     </Box>);
-                  // } else {
-                  //   return (
-                  //     <Box key={key} style={style}>
-                  //       <TableRow hover={!!props.rowHover} cells={props.rows[index] || []} />
-                  //     </Box>);
-                  // }
+                    return <Box key={key} style={style}>
+                      <TableRow hover={!!props.rowHover} cells={ "cells" in props.rows[index] ? props.rows[index]?.cells : props.rows[index] || []} />
+                    </Box>
                 }}
               />
             ) : (
