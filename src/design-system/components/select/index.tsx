@@ -170,13 +170,13 @@ const Select = React.forwardRef(
                   );
                 }
               : multiple
-                ? selected => {
-                    const itemsSelected = selected as string[];
-                    return itemsSelected.length > 1
-                      ? `${itemsSelected.length} ${multiSelectedItemName ?? "items"} selected`
-                      : props.options.find(option => option.value === itemsSelected?.[0])?.label ?? "";
-                  }
-                : selected => props.options.find(option => option.value === selected)?.label ?? "",
+              ? selected => {
+                  const itemsSelected = selected as string[];
+                  return itemsSelected.length > 1
+                    ? `${itemsSelected.length} ${multiSelectedItemName ?? "items"} selected`
+                    : props.options.find(option => option.value === itemsSelected?.[0])?.label ?? "";
+                }
+              : selected => props.options.find(option => option.value === selected)?.label ?? "",
           }}
           sx={{
             "& .MuiOutlinedInput-root": {

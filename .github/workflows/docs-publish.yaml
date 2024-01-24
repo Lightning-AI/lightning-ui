@@ -13,7 +13,7 @@ jobs:
       - name: Setting up Node
         uses: actions/setup-node@v4
         with:
-          node-version: 16
+          node-version: 18
       - name: Generate Docs
         run: |
           yarn install --frozen-lockfile --silent
