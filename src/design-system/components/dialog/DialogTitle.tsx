@@ -7,10 +7,11 @@ export type DialogTitleProps = {
   text?: string;
   subtext?: string;
   onCloseClick?: () => void;
+  closeDataTestId?: string;
   center?: boolean;
 };
 
-const DialogTitle = ({ text, subtext, onCloseClick, center }: DialogTitleProps) => (
+const DialogTitle = ({ text, subtext, onCloseClick, closeDataTestId, center }: DialogTitleProps) => (
   <MuiDialogTitle>
     <Stack spacing={0.75} alignItems={center ? "center" : undefined}>
       <Stack
@@ -34,7 +35,8 @@ const DialogTitle = ({ text, subtext, onCloseClick, center }: DialogTitleProps) 
             disableRipple
             disableFocusRipple
             sx={{ color: (theme: any) => theme.palette.text.primary, padding: 0, position: "absolute", right: "24px" }}
-            onClick={onCloseClick}>
+            onClick={onCloseClick}
+            data-testid={closeDataTestId}>
             <Close sx={{ fontSize: "16px" }} />
           </IconButton>
         )}
