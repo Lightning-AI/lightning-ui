@@ -154,16 +154,6 @@ const Table = ({ virtualizedParams, ...props }: TableProps) => {
                 rowHeight={virtualizedParams.rowHeightPx}
                 overscanRowCount={virtualizedParams.overscanRowCount}
                 rowRenderer={({ index, key, style }) => {
-<<<<<<< HEAD
-                  return (
-                    <Box key={key} style={style}>
-                      <TableRow
-                        hover={!!props.rowHover}
-                        cells={"cells" in props.rows[index] ? props.rows[index]?.cells : props.rows[index] || []}
-                      />
-                    </Box>
-                  );
-=======
                     const row = props.rows[index] || [];
                     if ("cells" in row) {
                       return <Box key={key} style={style}>
@@ -175,7 +165,6 @@ const Table = ({ virtualizedParams, ...props }: TableProps) => {
                       </Box>
                     }
                     
->>>>>>> 2cc1623 (update)
                 }}
               />
             ) : (
