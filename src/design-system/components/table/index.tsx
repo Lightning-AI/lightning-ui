@@ -32,9 +32,18 @@ type VirtualizedParams = {
   overscanRowCount?: number;
 };
 
+type TableRowWithKey = {
+  key: string;
+  cells: ReactNode[],
+};
+
+type TableRowNoKey = ReactNode[];
+
+type TableRows = Array<TableRowWithKey | TableRowNoKey>;
+
 export type TableProps = {
   header?: ReactNode[];
-  rows: ReactNode[][];
+  rows: TableRows;
   rowDetails?: ReactNode[];
   rowHover?: boolean;
   rowClick?: any;
@@ -149,9 +158,14 @@ const Table = ({ virtualizedParams, ...props }: TableProps) => {
                 )}
               />
             ) : (
-              props.rows.map((row, index) => (
-                <TableRow key={index} hover={!!props.rowHover} cells={row} details={props.rowDetails?.[index]} />
-              ))
+              props.rows.map((row, index) => {
+                if ("key" in row) {
+                  return <TableRow key={row.key} hover={!!props.rowHover} cells={row.cells} details={props.rowDetails?.[index]} />
+                } 
+                else {
+                  return <TableRow key={index} hover={!!props.rowHover} cells={row} details={props.rowDetails?.[index]} /> 
+                }
+              })
             )}
           </MuiTableBody>
         </MuiTable>
