@@ -32,9 +32,18 @@ type VirtualizedParams = {
   overscanRowCount?: number;
 };
 
+type TableRowWithKey = {
+  key: string;
+  cells: ReactNode[];
+};
+
+type TableRowNoKey = ReactNode[];
+
+type TableRows = Array<TableRowWithKey | TableRowNoKey>;
+
 export type TableProps = {
   header?: ReactNode[];
-  rows: ReactNode[][];
+  rows: TableRows;
   rowDetails?: ReactNode[];
   rowHover?: boolean;
   rowClick?: any;
@@ -50,7 +59,9 @@ const Table = ({ virtualizedParams, ...props }: TableProps) => {
   if (virtualizedParams?.enabled && props.rowDetails) {
     throw new Error("rowDetails is not supported when using virtualized");
   }
-  const columnCount: number | undefined = props.header?.length ?? props.rows[0]?.length;
+  const columnCount: number | undefined =
+    props.header?.length ??
+    (props.rows[0] && "cells" in props.rows[0] ? props.rows[0]?.cells.length : props.rows[0]?.length);
   if (virtualizedParams?.enabled && columnCount && virtualizedParams.columnWidthsPx.length !== columnCount) {
     // TODO(yurij/alec): support virtualized tables with variable column widths
     throw new Error("virtualized table should have all column widths specified");
@@ -142,16 +153,40 @@ const Table = ({ virtualizedParams, ...props }: TableProps) => {
                 rowCount={props.rows.length}
                 rowHeight={virtualizedParams.rowHeightPx}
                 overscanRowCount={virtualizedParams.overscanRowCount}
-                rowRenderer={({ index, key, style }) => (
-                  <Box key={key} style={style}>
-                    <TableRow hover={!!props.rowHover} cells={props.rows[index] || []} />
-                  </Box>
-                )}
+                rowRenderer={({ index, key, style }) => {
+                  const row = props.rows[index] || [];
+                  if ("cells" in row) {
+                    return (
+                      <Box key={row.key} style={style}>
+                        <TableRow hover={!!props.rowHover} cells={row.cells} />
+                      </Box>
+                    );
+                  } else {
+                    return (
+                      <Box key={key} style={style}>
+                        <TableRow hover={!!props.rowHover} cells={row} />
+                      </Box>
+                    );
+                  }
+                }}
               />
             ) : (
-              props.rows.map((row, index) => (
-                <TableRow key={index} hover={!!props.rowHover} cells={row} details={props.rowDetails?.[index]} />
-              ))
+              props.rows.map((row, index) => {
+                if ("key" in row) {
+                  return (
+                    <TableRow
+                      key={row.key}
+                      hover={!!props.rowHover}
+                      cells={row.cells}
+                      details={props.rowDetails?.[index]}
+                    />
+                  );
+                } else {
+                  return (
+                    <TableRow key={index} hover={!!props.rowHover} cells={row} details={props.rowDetails?.[index]} />
+                  );
+                }
+              })
             )}
           </MuiTableBody>
         </MuiTable>
