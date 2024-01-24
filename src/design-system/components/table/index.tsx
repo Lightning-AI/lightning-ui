@@ -34,7 +34,7 @@ type VirtualizedParams = {
 
 type TableRowWithKey = {
   key: string;
-  cells: ReactNode[],
+  cells: ReactNode[];
 };
 
 type TableRowNoKey = ReactNode[];
@@ -160,10 +160,18 @@ const Table = ({ virtualizedParams, ...props }: TableProps) => {
             ) : (
               props.rows.map((row, index) => {
                 if ("key" in row) {
-                  return <TableRow key={row.key} hover={!!props.rowHover} cells={row.cells} details={props.rowDetails?.[index]} />
-                } 
-                else {
-                  return <TableRow key={index} hover={!!props.rowHover} cells={row} details={props.rowDetails?.[index]} /> 
+                  return (
+                    <TableRow
+                      key={row.key}
+                      hover={!!props.rowHover}
+                      cells={row.cells}
+                      details={props.rowDetails?.[index]}
+                    />
+                  );
+                } else {
+                  return (
+                    <TableRow key={index} hover={!!props.rowHover} cells={row} details={props.rowDetails?.[index]} />
+                  );
                 }
               })
             )}
