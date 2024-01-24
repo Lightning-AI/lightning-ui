@@ -59,7 +59,7 @@ const Table = ({ virtualizedParams, ...props }: TableProps) => {
   if (virtualizedParams?.enabled && props.rowDetails) {
     throw new Error("rowDetails is not supported when using virtualized");
   }
-  const columnCount: number | undefined = props.header?.length ?? props.rows[0]?.length;
+  const columnCount: number | undefined = props.header?.length ?? (props.rows[0] && "cells" in props.rows[0] ? props.rows[0]?.cells.length : props.rows[0]?.length);
   if (virtualizedParams?.enabled && columnCount && virtualizedParams.columnWidthsPx.length !== columnCount) {
     // TODO(yurij/alec): support virtualized tables with variable column widths
     throw new Error("virtualized table should have all column widths specified");
@@ -151,11 +151,23 @@ const Table = ({ virtualizedParams, ...props }: TableProps) => {
                 rowCount={props.rows.length}
                 rowHeight={virtualizedParams.rowHeightPx}
                 overscanRowCount={virtualizedParams.overscanRowCount}
-                rowRenderer={({ index, key, style }) => (
+                rowRenderer={({ index, key, style }) => {
                   <Box key={key} style={style}>
-                    <TableRow hover={!!props.rowHover} cells={props.rows[index] || []} />
+                    <TableRow hover={!!props.rowHover} cells={"cells" in props.rows?[index] ? props.rows[index]?.cells : props.rows[index] || []} />
                   </Box>
-                )}
+
+                  // if ("cells" in props.rows?[index]) {
+                  //   return (
+                  //     <Box key={key} style={style}>
+                  //       <TableRow hover={!!props.rowHover} cells={props.rows[index]?.cells || []} />
+                  //     </Box>);
+                  // } else {
+                  //   return (
+                  //     <Box key={key} style={style}>
+                  //       <TableRow hover={!!props.rowHover} cells={props.rows[index] || []} />
+                  //     </Box>);
+                  // }
+                }}
               />
             ) : (
               props.rows.map((row, index) => {
