@@ -157,7 +157,7 @@ const Table = ({ virtualizedParams, ...props }: TableProps) => {
                   const row = props.rows[index] || [];
                   if ("cells" in row) {
                     return (
-                      <Box key={key} style={style}>
+                      <Box key={row.key} style={style}>
                         <TableRow hover={!!props.rowHover} cells={row.cells} />
                       </Box>
                     );
