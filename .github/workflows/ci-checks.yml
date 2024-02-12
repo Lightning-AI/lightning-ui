@@ -29,4 +29,4 @@ jobs:
           key: pre-commit|${{ hashFiles('.pre-commit-config.yaml') }}
       - name: Install yarn env.
         run: yarn install --frozen-lockfile
-      - uses: pre-commit/action@v3.0.0
+      - uses: pre-commit/action@v3.0.1
