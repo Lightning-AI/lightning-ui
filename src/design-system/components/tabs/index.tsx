@@ -50,7 +50,10 @@ const Tabs = ({
   prerenderTabs = true,
   divider = true,
 }: TabsProps) => {
-  const [selectedTab, setSelectedTab] = useState(propSelectedTab || tabItems.findIndex(tabItem => !tabItem.disabled));
+  const [selectedTab, setSelectedTab] = useState(tabItems.findIndex(tabItem => !tabItem.disabled));
+  useEffect(() => {
+    propSelectedTab && setSelectedTab(propSelectedTab);
+  }, [propSelectedTab]);
 
   const navigate = useNavigate();
   const location = useLocation();
