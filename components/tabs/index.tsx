@@ -50,7 +50,10 @@ const Tabs = ({
   prerenderTabs = true,
   divider = true,
 }: TabsProps) => {
-  const [selectedTab, setSelectedTab] = useState(propSelectedTab || tabItems.findIndex(tabItem => !tabItem.disabled));
+  const [selectedTab, setSelectedTab] = useState(tabItems.findIndex(tabItem => !tabItem.disabled));
+  useEffect(() => {
+    propSelectedTab && setSelectedTab(propSelectedTab);
+  }, [propSelectedTab]);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -74,9 +77,10 @@ const Tabs = ({
   const isDark = theme.palette.mode === "dark";
 
   useEffect(() => {
-    const newSelectedTab = pathIndex !== -1 ? pathIndex : tabItems.findIndex(tabItem => !tabItem.disabled);
-    setSelectedTab(newSelectedTab);
-    onTabChanged?.(newSelectedTab);
+    if (pathIndex !== -1) {
+      setSelectedTab(pathIndex);
+      onTabChanged?.(pathIndex);
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps -- we don't want to call this on onTabChanged change
   }, [pathIndex, location.pathname]);
 
