@@ -255,6 +255,9 @@ const Select = React.forwardRef(
             "& .Mui-disabled.MuiInputBase-adornedEnd svg": {
               color: (theme: any) => theme.palette.grey["50"],
             },
+            ".MuiPopover-paper": {
+              maxHeight: "300px",
+            },
           }}>
           {props.options.map(option =>
             areLabelType ? (
