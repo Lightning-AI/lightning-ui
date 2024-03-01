@@ -90,6 +90,13 @@ const Template: ComponentStory<typeof Select> = ({ icon, ...args }: SelectProps)
 
 export const Playground = Template.bind({});
 
+export const LongOptionList = Template.bind({});
+const longOptions = Array.from({ length: 100 }, (_, i) => ({
+  value: `value-${i}`,
+  label: `Option ${i}`,
+}));
+LongOptionList.args = { options: longOptions };
+
 export const LabelObject = Template.bind({});
 const labelObjectOptions = [
   {
