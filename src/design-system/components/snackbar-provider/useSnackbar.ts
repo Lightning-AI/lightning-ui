@@ -12,6 +12,17 @@ export function useSnackbar() {
 
   const enqueueSnackbar = useCallback(
     (props: EnqueueSnackbarProps, options?: OptionsObject) => {
+      /**
+       * Deduplicate snackbar by {@link props.title} if set, provided {@link options.key} isn't set, and
+       * {@link options.preventDuplicate} isn't explicitly set to false.
+       */
+      const canDeduplicateByTitle =
+        props?.title != null && options?.key == null && options?.preventDuplicate !== false;
+      if (canDeduplicateByTitle) {
+        options.key = props.title;
+        options.preventDuplicate = true;
+      }
+
       return enqueueNotistackSnackbar(props, options);
     },
     [enqueueNotistackSnackbar],
