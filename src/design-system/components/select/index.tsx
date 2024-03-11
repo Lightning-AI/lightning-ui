@@ -48,6 +48,7 @@ export type SelectProps = {
   multiSelectedItemName?: string;
   minWidthPx?: number;
   heightPx?: number;
+  fontSize?: string;
   sx?: BoxProps["sx"];
 } & Pick<MuiTextFieldProps, "disabled" | "fullWidth" | "size" | "value" | "autoFocus">;
 
@@ -70,6 +71,7 @@ const Select = React.forwardRef(
       defaultValue,
       multiSelectedItemName,
       disabled,
+      fontSize,
       sx,
       ...props
     }: SelectProps,
@@ -157,7 +159,7 @@ const Select = React.forwardRef(
                     <Box paddingLeft={3}>
                       <Typography
                         fontWeight={400}
-                        fontSize={"14px"}
+                        fontSize={fontSize || "14px"}
                         lineHeight={"20px"}
                         color={(theme: any) => theme.palette.text.primary}>
                         {selectedLabel.text}
@@ -189,7 +191,7 @@ const Select = React.forwardRef(
               height: getHeight(36),
               fontStyle: "normal",
               fontWeight: "normal",
-              fontSize: "14px",
+              fontSize: fontSize || "14px",
               lineHeight: "20px",
               backgroundColor: isDark ? theme.palette.grey["10"] : theme.palette.background.default,
               borderRadius: "8px",
@@ -274,7 +276,7 @@ const Select = React.forwardRef(
                   <Box paddingX={1.5} paddingRight={6}>
                     <Typography
                       fontWeight={400}
-                      fontSize={"14px"}
+                      fontSize={fontSize || "14px"}
                       lineHeight={"20px"}
                       color={(theme: any) => theme.palette.text.primary}>
                       {(option.label as LabelType).text}
