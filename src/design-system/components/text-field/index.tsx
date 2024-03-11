@@ -173,7 +173,7 @@ const TextField = React.forwardRef(
             startAdornment={icon}
             endAdornment={
               endAdornment ? (
-                { endAdornment }
+                endAdornment
               ) : (
                 loading ? <CircularProgress thickness={2} color="inherit" size={20} /> : status && statusIcon[status])
             }
