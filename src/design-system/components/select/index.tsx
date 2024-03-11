@@ -9,6 +9,7 @@ import { CheckCircle, Dangerous, Info, Warning } from "../../icons";
 import CheckboxBase from "../checkbox/CheckboxBase";
 import FormControl from "../form-control";
 import RadioBase from "../radio/RadioBase";
+import { BoxProps } from "..";
 
 const LABEL_HEIGHT_PX = 20;
 
@@ -47,6 +48,7 @@ export type SelectProps = {
   multiSelectedItemName?: string;
   minWidthPx?: number;
   heightPx?: number;
+  sx?: BoxProps["sx"];
 } & Pick<MuiTextFieldProps, "disabled" | "fullWidth" | "size" | "value" | "autoFocus">;
 
 const Select = React.forwardRef(
@@ -68,6 +70,7 @@ const Select = React.forwardRef(
       defaultValue,
       multiSelectedItemName,
       disabled,
+      sx,
       ...props
     }: SelectProps,
     ref,
@@ -108,7 +111,8 @@ const Select = React.forwardRef(
         statusText={statusText}
         fullWidth={fullWidth}
         optional={optional}
-        tooltip={tooltip}>
+        tooltip={tooltip}
+      >
         <MuiTextField
           inputRef={ref}
           value={selectedValue}
@@ -136,49 +140,50 @@ const Select = React.forwardRef(
             },
             renderValue: areLabelType
               ? selected => {
-                  const selectedLabel = props.options.find(option => option.value === selected)?.label ?? "";
-                  if (typeof selectedLabel === "string") return selectedLabel;
-                  return (
-                    <Stack direction={"row"}>
-                      <Box
-                        sx={{
-                          "& svg.MuiSvgIcon-root:not(.MuiSelect-icon)": {
-                            fontSize: "20px",
-                            paddingTop: 0.5,
-                            color: (theme: any) => theme.palette.grey[70],
-                          },
-                        }}>
-                        {selectedLabel.icon}
-                      </Box>
-                      <Box paddingLeft={3}>
-                        <Typography
-                          fontWeight={400}
-                          fontSize={"14px"}
-                          lineHeight={"20px"}
-                          color={(theme: any) => theme.palette.text.primary}>
-                          {selectedLabel.text}
-                        </Typography>
-                        <Typography
-                          fontWeight={400}
-                          fontSize={"12px"}
-                          lineHeight={"16px"}
-                          color={(theme: any) => theme.palette.text.secondary}>
-                          {selectedLabel.helpText}
-                        </Typography>
-                      </Box>
-                    </Stack>
-                  );
-                }
+                const selectedLabel = props.options.find(option => option.value === selected)?.label ?? "";
+                if (typeof selectedLabel === "string") return selectedLabel;
+                return (
+                  <Stack direction={"row"}>
+                    <Box
+                      sx={{
+                        "& svg.MuiSvgIcon-root:not(.MuiSelect-icon)": {
+                          fontSize: "20px",
+                          paddingTop: 0.5,
+                          color: (theme: any) => theme.palette.grey[70],
+                        },
+                      }}>
+                      {selectedLabel.icon}
+                    </Box>
+                    <Box paddingLeft={3}>
+                      <Typography
+                        fontWeight={400}
+                        fontSize={"14px"}
+                        lineHeight={"20px"}
+                        color={(theme: any) => theme.palette.text.primary}>
+                        {selectedLabel.text}
+                      </Typography>
+                      <Typography
+                        fontWeight={400}
+                        fontSize={"12px"}
+                        lineHeight={"16px"}
+                        color={(theme: any) => theme.palette.text.secondary}>
+                        {selectedLabel.helpText}
+                      </Typography>
+                    </Box>
+                  </Stack>
+                );
+              }
               : multiple
-              ? selected => {
+                ? selected => {
                   const itemsSelected = selected as string[];
                   return itemsSelected.length > 1
                     ? `${itemsSelected.length} ${multiSelectedItemName ?? "items"} selected`
                     : props.options.find(option => option.value === itemsSelected?.[0])?.label ?? "";
                 }
-              : selected => props.options.find(option => option.value === selected)?.label ?? "",
+                : selected => props.options.find(option => option.value === selected)?.label ?? "",
           }}
           sx={{
+            ...sx,
             "& .MuiOutlinedInput-root": {
               minWidth: minWidthPx ? `${minWidthPx}px` : "150px",
               height: getHeight(36),
