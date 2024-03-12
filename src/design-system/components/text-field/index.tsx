@@ -174,8 +174,11 @@ const TextField = React.forwardRef(
             endAdornment={
               endAdornment ? (
                 endAdornment
+              ) : loading ? (
+                <CircularProgress thickness={2} color="inherit" size={20} />
               ) : (
-                loading ? <CircularProgress thickness={2} color="inherit" size={20} /> : status && statusIcon[status])
+                status && statusIcon[status]
+              )
             }
             sx={{
               "font": INPUT_TEXT_FONT,
@@ -215,9 +218,9 @@ const TextField = React.forwardRef(
                 opacity: 0.5,
               },
               "&.Mui-disabled:hover .MuiOutlinedInput-notchedOutline, &.Mui-error.Mui-disabled .MuiOutlinedInput-notchedOutline":
-              {
-                borderColor: BORDER_COLOR,
-              },
+                {
+                  borderColor: BORDER_COLOR,
+                },
               "&.Mui-disabled .MuiOutlinedInput-input": {
                 color: (theme: any) => theme.palette.grey["20"],
               },
