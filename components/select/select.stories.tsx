@@ -57,6 +57,10 @@ export default {
       defaultValue: undefined,
       control: "number",
     },
+    fontSize: {
+      defaultValue: undefined,
+      control: "string",
+    },
     disabled: {
       defaultValue: false,
       control: "boolean",

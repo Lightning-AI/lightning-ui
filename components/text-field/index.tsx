@@ -48,6 +48,7 @@ export type TextFieldProps = {
   rows?: number;
   loading?: boolean;
   maxLength?: number;
+  endAdornment?: ReactNode;
 } & FormControlProps &
   Pick<
     MuiOutlinedInputProps,
@@ -90,6 +91,7 @@ const TextField = React.forwardRef(
       // because most modern browsers ignore "off" https://stackoverflow.com/a/38961567
       autoComplete = "nope",
       "aria-autocomplete": ariaAutocomplete = "none",
+      endAdornment,
       ...props
     }: TextFieldProps,
     ref: any,
@@ -170,7 +172,13 @@ const TextField = React.forwardRef(
             error={hasStatus}
             startAdornment={icon}
             endAdornment={
-              loading ? <CircularProgress thickness={2} color="inherit" size={20} /> : status && statusIcon[status]
+              endAdornment ? (
+                endAdornment
+              ) : loading ? (
+                <CircularProgress thickness={2} color="inherit" size={20} />
+              ) : (
+                status && statusIcon[status]
+              )
             }
             sx={{
               "font": INPUT_TEXT_FONT,
