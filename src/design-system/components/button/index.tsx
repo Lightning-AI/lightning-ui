@@ -34,7 +34,11 @@ const Button = ({ arrow, loading, href, ...props }: ButtonProps) => {
   const isPill = props.pill;
   const color = (theme: any) => {
     if (isGreyColor) {
-      return isDark ? theme.palette.common.white : theme.palette.common.black;
+      if (isTextVariant) {
+        return isDark ? theme.palette.common.white : theme.palette.common.black;
+      }
+
+      return theme.palette.common.black;
     }
 
     return isDark ? theme.palette.common.black : theme.palette.common.white;
