@@ -37,7 +37,7 @@ const Button = ({ arrow, loading, href, ...props }: ButtonProps) => {
       return isDark ? theme.palette.common.white : theme.palette.common.black;
     }
 
-    return isDark ? theme.palette.common.black: theme.palette.common.white;
+    return isDark ? theme.palette.common.black : theme.palette.common.white;
   };
   const background = (theme: any) => {
     return isPrimaryColor && theme.palette.primary.gradient;
