@@ -32,7 +32,7 @@ export default {
       control: "select",
     },
     variant: {
-      options: ["contained", "text"],
+      options: ["outlined", "contained", "text"],
       control: "select",
     },
     cursor: {
