@@ -168,7 +168,7 @@ const Button = ({ arrow, loading, href, ...props }: ButtonProps) => {
               },
             }),
           "&.Mui-disabled": {
-            opacity: isGreyColor ? 1.0 : 0.5,
+            opacity: isGreyColor ? (isDark && variant === "contained" ? 1.0 : 0.3) : 0.5,
             color,
             backgroundColor,
           },
