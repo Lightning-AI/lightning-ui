@@ -36,6 +36,7 @@ const Template: ComponentStory<typeof Table> = ({ header, rowDetails, border, vi
         rowDetails={rowDetails}
         border={border}
         sticky
+        sx={{"th:has(input)": { zIndex: "100" }}}
       />
     </Box>
   );
